@@ -1,73 +1,254 @@
-export const metrics = [
-  { value: '50%', label: 'Save Water & Utility Cost' },
-  { value: '12M+', label: 'Trusted Global Jobs' },
-  { value: '30 Min', label: 'Emergency Rapid Arrival' },
-  { value: '100%', label: 'Guaranteed Satisfaction' },
+// Shared content for the landing page.
+// Images live in /public/images so they can be swapped without touching components.
+
+export const contact = {
+  phone: '0401 411 636',
+  phoneHref: 'tel:0401411636',
+  email: 'info@quickreplace.com.au',
+  emailHref: 'mailto:info@quickreplace.com.au',
+  headOffice: 'Sunshine West',
+}
+
+export const navLinks = [
+  { label: 'Services', href: '#services' },
+  { label: 'Clients', href: '#industries' },
+  { label: 'Our work', href: '#projects' },
+  { label: 'About Us', href: '#about' },
+  { label: 'Contact', href: '#contact' },
 ]
 
-export const projectFilters = ['All Works', 'Clog Cleaning', 'Installation', 'Kitchen Plumbing', 'Repair']
+export const trades = [
+  'Plumbing',
+  'Glazing',
+  'Electrical',
+  'Locksmith',
+  'Painting & Plastering',
+  'Make Safe',
+  'Heating & Cooling',
+  'Carpentry',
+  'Handyman',
+  'Guttering',
+]
 
+export const metrics = [
+  { value: '2,842+', label: 'Properties Serviced' },
+  { value: '165+', label: 'In-house Team & Contractor Network' },
+  { value: '15+', label: 'Years of Experience' },
+  { value: '38+', label: 'Trade & Maintenance Services' },
+]
+
+// `icon` keys map to lucide-react icons inside Services.jsx
+export const services = [
+  {
+    icon: 'plumbing',
+    title: 'Plumbing',
+    description:
+      'Blocked drain clearing, tap repairs, high-pressure hydro-jetting, mechanical drain cleaning, leak detection, pipe replacements and emergency plumbing repairs.',
+  },
+  {
+    icon: 'painting',
+    title: 'Painting & Plastering',
+    description:
+      'Wall and ceiling repairs, damaged plaster, cracks and holes, water-damaged plaster, patching, interior and exterior painting, touch-ups and make-good works.',
+  },
+  {
+    icon: 'electrical',
+    title: 'Electrical',
+    description:
+      'Power and lighting faults, switchboards, power points, safety switches, electrical repairs, installations and electrical make-safe work.',
+  },
+  {
+    icon: 'glazing',
+    title: 'Glazing',
+    description:
+      'Broken and cracked glass, window and door glass replacement, shopfront glazing, glass repairs and emergency boarding and make-safe services.',
+  },
+  {
+    icon: 'makeSafe',
+    title: 'Make Safe',
+    description:
+      'Urgent make-safe repairs for broken glass, damaged doors and windows, water leaks, electrical hazards and other property damage that needs to be secured quickly.',
+  },
+  {
+    icon: 'locksmith',
+    title: 'Locksmith',
+    description:
+      'Lock repairs and replacements, door locks, rekeying, lockouts, damaged locks and security upgrades for residential and commercial properties.',
+  },
+]
+
+// `icon` keys map to lucide-react icons inside Industries.jsx
+export const industries = [
+  {
+    icon: 'commercial',
+    title: 'Commercial Property Managers & Owners',
+    description: 'We support facility managers with structured rapid response & SLA compliance.',
+  },
+  {
+    icon: 'residential',
+    title: 'Residential Property Managers & Owners',
+    description:
+      'We can coordinate directly with tenants, arrange access, organise the required trades and provide before-and-after photos once the work is completed',
+  },
+  {
+    icon: 'strata',
+    title: 'Owners Corporations & Strata Managers',
+    description:
+      'Maintenance and repairs for common areas and shared property. We can coordinate with building managers, committee members and site contacts throughout the job.',
+  },
+  {
+    icon: 'agedCare',
+    title: 'Aged Care & Retirement Living',
+    description:
+      'Repairs and maintenance with minimal disruption to residents and staff. National Police Checks can be provided for tradespeople attending where required.',
+  },
+]
+
+export const projectFilters = [
+  'All Works',
+  'Plumbing',
+  'Glazing',
+  'Locksmith',
+  'Painting & Plastering',
+  'Make Safe',
+  'Heating & Cooling',
+  'Carpentry',
+]
+
+// Placeholder titles - replace with the real job details from the client
 export const projects = [
   {
-    alt: 'Matte black kitchen faucet installation',
-    label: 'Under-mount Sink & Faucet',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1ZSOSTrbzd1UgWSRtnYXhwdmK76UPZSXA1POznBsiffWIwWWh75iYuKsZqDcuFQu4FIukdnbMk9KD3g8RSvITQPd_XS3ZnHrYC_5P2WB2ii2vhdrQRDZKfCMebu-IIO9eZG0gb41SZoJzNVVE3yDbwnmqeLdw2v4m_7OUZPyongKp75LoW47Q1TTcHt9jry_-vJmDnLiEyUNSPzICNtxIhkHkf1WjtNKls7I9HMeApSEE4eaeDhZv',
+    src: '/images/project-gas-meter.jpg',
+    alt: 'Gas meter and regulator connection beside a brick wall',
+    title: 'Gas Meter Connection',
+    subtitle: 'Plumbing, Gas Fitting & Compliance',
+    category: 'Plumbing',
   },
   {
-    alt: 'Granite countertop sink and faucet setup',
-    label: 'Kitchen Island Waterline',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDlmQEu7lxz9zbsREPpYs_eY875CKsfPQWWEw64tkjRy0SAmXx7BrCJUF_qvWm20sezf_uKrmCqBLn51zeTBvCCpW68bKaUL4Al7CHRG2heP8yGyknnGvV1JUHkcMunJlOm5fIVLr6SGiBUW_Km8Zi2P1znFmkhAKVShNmzNhqFllCBJDGyWuYXkNIO4drGOujBt_KacIvLyhK4JZ52MnbEAaMB1YU1E5HxtZdre2H9plMGWDP-qsTj',
+    src: '/images/project-kitchen-sink.jpg',
+    alt: 'Double kitchen sink with new waste pipes and disposal unit',
+    title: 'Kitchen Plumbing',
+    subtitle: 'Installation, Kitchen Plumbing & Upgrades',
+    category: 'Plumbing',
   },
   {
-    alt: 'White composite undermount kitchen sink',
-    label: 'Composite Basin Integration',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCceiOZ7W_eK9bwenBqMegoD_JY9_fEkoJI5beZhGvcT29NCdrte3St9LwIUolHX1N_UNgJlalXL1iVRSpa3hc3Ii6G0Va79SFOkYWiFrry3eVsu3o4HBQV-JQXst3q7Z0iGVBY00NdahkAXSdMCRGHjeoB5IubmaXM7_-5RKRYs5g0NoOBfNoKCLvPkkM048hRDgRxs91Az1wAAaFaJi7GboM_RnNYEnPoPfMdXlDqrpl5aHYPcZ0u',
+    src: '/images/project-garden-tap.jpg',
+    alt: 'Replacement garden tap on an external brick wall',
+    title: 'Garden Tap Replacement',
+    subtitle: 'Repair, External Taps & Fittings',
+    category: 'Plumbing',
   },
   {
-    alt: 'Chrome double basin kitchen sink',
-    label: 'Double Drain Disposal System',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCmlbg3EDK_u3H-Gg-E38H7dVG1XYSU2m8RipgXMMDLkaq9NBkyKpGegie1cvTSuSR_AWIqSi5q2pvJrU5fqdp7tS2oSEj0kyYAG_uJhd4KLdKhFybDqZDoHmOhpLqDCKQg7XEi09ay9RnyBE-lMv-5IUFjI_vsQkb64F__Qnel_D7_EZUuOwnTXcZqtJZVtQXf7vhY0moheEkzQxcFH5S6pJ4YhbM17HjWWnLpHM4BomKM5ucjxugR',
+    src: '/images/project-living-room.jpg',
+    alt: 'Freshly painted living room with large windows',
+    title: 'Interior Repaint',
+    subtitle: 'Painting, Plaster Patching & Make-Good',
+    category: 'Painting & Plastering',
   },
   {
-    alt: 'Full kitchen plumbing layout and prep',
-    label: 'Custom Cabinet & Piping Fit',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBvQyD431D9_9LtyzGb4u3qM82942FTVP3StfrwF0zmj6R_3jxJXF6QQIiy9DQ-GPY_yXLNVwtZiVEIRBdeBKu-1KW-qX3QQrOCO7gikCGMBk8RBOCT7CRQcKvFEwGDF4ELYfY6XJj6r80XWRct_D96u4nMbzJZ5jYUN18cZ0YAzdCNGu9s5RVShhhmOKO1tXDZqkaQPCOvX1g_NEECezuqGWEna4XZOG3151sEo5ufPDxNLWnHP2ef',
+    src: '/images/project-door-lock.jpg',
+    alt: 'Security screen door with new lever lock and keys',
+    title: 'Security Door Lock',
+    subtitle: 'Locksmith, Lock Replacement & Rekeying',
+    category: 'Locksmith',
   },
   {
-    alt: 'Brushed nickel gooseneck faucet fixture',
-    label: 'Pull-Down Spray Head Install',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC9svJrMuGR8xNJyHtq76xnEokvemsHPg_PLSb6h8OyXuOu7YcYnB7XmBfYVuzoTzFoy6qDtqVLa4usxQUg1IPGh3W1R_W_tbEkbQ5EXbfPGp5BocwkT7V2-psGg7P3pnTz6KgMPUPieAKc51j99jKIqHjcWxs_gBHBTNS_8VFynGiA0gnFYGpgQUSoBpXVZK9-n8eHRjXFhydUk6d6490FwFp7Iz7tE450CrQYzftUg0kuJE_nqd_r',
+    src: '/images/project-aircon-roof.jpg',
+    alt: 'Split system outdoor unit installed on a metal roof',
+    title: 'Split System Install',
+    subtitle: 'Heating & Cooling, Rooftop Installation',
+    category: 'Heating & Cooling',
   },
   {
-    alt: 'Brass kitchen fixture and minimalist sink',
-    label: 'Architectural Brass Setup',
-    src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDP18lYswT_j7ClUQgtV9pBSv1ENY9DFBV5LWGZLxUips84vSfkt0d8WDD62N3CFLL6o9bZZFaZvf3fMWdcJnh1s_j65TdPP5O13AU3Z7EPD_Idvos3jb1KaWkLoIjvvW6DWbXQ1w4EbHv1wHfWhlr74lpA1WCf7yh60wu5ioFyTTrtZ5s1pZp-heSY4eAwjHQYKa2IVtFQMEkR5m7MN-eeUvdmn2dn2aP6mGeEw5Wr59xGiRcWLCwU',
+    src: '/images/project-install-team.jpg',
+    alt: 'Technicians fitting a large glass panel',
+    title: 'Glass Panel Fit-Out',
+    subtitle: 'Glazing, Measure & Install',
+    category: 'Glazing',
   },
 ]
 
 export const testimonials = [
   {
-    avatar:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCrT1koizBupfBThZDZcUMAVacb33gFSU9d4sykimv0hJJXTPWEQB7q5Ly9cVXg9V8ijs5sMiM6eFuwx3LuxSh6hxxgH2OWkarOLwefWihJ1XNXoPJVw8XzdYn9F7o9sUhfF5f1pqqy-_XQnrRkJHoGZNYS8kFT2ZZB84_Q0IbkFN9vq8H2RamLa_hTmtmdcRaySLN2HbUVvW8aaIegDBrCGspcgCR6ivPQBYnKSUZQr1ssvyMX3pBa',
-    name: 'Denis Slavska',
-    role: 'CTO, Ailitic • New York City',
-    badge: 'Ailitic',
-    quote: 'They tailor their solutions to our specific needs and goals.',
+    avatar: '/images/avatar-1.jpg',
+    name: 'Andelka Susa',
+    quote:
+      "There is almost nothing these guys can't do when it comes to property repairs. Very honest, well-priced & proud of their work. Definitely the best we've used in Melbourne in a long time.",
   },
   {
-    avatar:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCfxI1nIV6O9grfc2-HzLYI08yOSJsj6j_ObLwh_HiTyQXmhYjCbHcHo79eqZTqqAIwXHRQqBYRh4Dmw1Vez83lzRZMN4kZ9eKPqmuW2Lv0eVivVr0hyLqh630wrB_5cOHppU6-nuDfLb9yVhITBwcU7hsx8neY93tNzc5SubYhbfEuATIHtseHRzny96SAolxWFrXWDWuoeHcqcDnjUMzcJLJnA17mx2o8duChtLCRugPrOZSgu_TS',
-    name: 'Jahan Melad',
-    role: 'Project Manager, Buildwave • New York City',
-    badge: 'BUILDWAVE',
-    quote: 'They organized their work and internal management was outstanding.',
+    avatar: '/images/avatar-2.jpg',
+    name: 'Bryan Harrison',
+    quote:
+      'I would say they are the best commercial maintenance company in Melbourne. We initially gave them one job to start with, and now they take care of everything that goes wrong at our aged care facility.',
   },
   {
-    avatar:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuA1JiVww82uwfwVtrNnRZouaTWIj882SISS0sqMCc_c0N_h45-fQlwjBTKIjqsIJlz7deaNNmIZGo_AmQYa9TO8bN1T2EM2S4bEe9ZY86ySAYVojp1Ht-eTFF82o1NMze0k22A4vET4-HaZJlGVDEDBm7Gio2pz1mJQUWlJoTgNALpgg087XdjDf3eWpE265yac0cC_ewfv070tCOqbkWdHZi3nU7CPXw2ejMFE5YnbuQmX6Dq3ZDQQ',
-    name: 'Jim Halpert',
-    role: 'Lead Engineering, Inhive Space • New York',
-    badge: 'InHive',
-    quote: 'Working with them was a great experience from dispatch to sign-off.',
+    avatar: '/images/avatar-3.jpg',
+    name: 'Eduard Mjeda',
+    quote:
+      'Great people to work with! Sonny was very responsive from the minute I called to inquire about his services. He went over every detail with me and we set up a plan for the day of work.',
   },
+]
+
+export const clients = [
+  { name: 'Australian Unity', src: '/images/client-australian-unity.png' },
+  { name: 'Ray White', src: '/images/client-ray-white.png' },
+  { name: 'Select Strata Communities', src: '/images/client-select-strata.png' },
+  { name: 'Belle Property', src: '/images/client-belle-property.png' },
+  { name: "L'Occitane", src: '/images/client-loccitane.png' },
+  { name: 'Barry Plant', src: '/images/client-barry-plant.png' },
+  { name: 'McGrath', src: '/images/client-mcgrath.png' },
+  { name: 'Jellis Craig', src: '/images/client-jellis-craig.png' },
+  { name: 'Kelemen Commercial Property', src: '/images/client-kelemen.png' },
+]
+
+export const beforeAfter = [
+  {
+    src: '/images/before-after-1.jpg',
+    alt: 'Old corroded hot water unit beside the new replacement unit',
+    title: 'Plumbing',
+    tag: 'Plumbing',
+    location: 'South Yarra',
+  },
+  {
+    src: '/images/before-after-2.jpg',
+    alt: 'Brick wall under scaffolding beside the finished repointed wall',
+    title: 'Brick Wall Repairment',
+    tag: 'Brick Repointing & Mortar Repairs',
+    location: 'Prahran VIC',
+  },
+  {
+    src: '/images/before-after-3.jpg',
+    alt: 'Shattered shower screen beside the new glass screen',
+    title: 'Shower Screen Replacement',
+    tag: 'Glazier',
+    location: 'Maribyrnong',
+  },
+]
+
+// Postcode ranges covered (Greater Melbourne, Geelong, Mornington Peninsula,
+// Melton, Sunbury and Macedon Ranges). Confirm with the client before launch.
+export const servicePostcodeRanges = [
+  [3000, 3230],
+  [3335, 3341],
+  [3427, 3442],
+  [3750, 3812],
+  [3910, 3944],
+  [3975, 3978],
+]
+
+export const footerServices = [
+  'Plumbing',
+  'Electrical',
+  'Glazing',
+  'Hazard Containment',
+  'Locksmith & Security',
+  'Painting & Plastering',
+]
+
+export const footerCompany = [
+  { label: 'About Us', href: '#about' },
+  { label: 'Recent Projects', href: '#projects' },
+  { label: 'Customer Reviews', href: '#reviews' },
+  { label: 'Pricing & Estimates', href: '#contact' },
+  { label: 'Careers', href: '#contact' },
 ]

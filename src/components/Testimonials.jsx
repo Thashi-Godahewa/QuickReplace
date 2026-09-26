@@ -1,70 +1,67 @@
-import { useState } from 'react'
+import { Star } from 'lucide-react'
 import { testimonials } from '../data/siteData'
+import useScroller from '../hooks/useScroller'
+import Clients from './Clients'
+import { Accent, CarouselArrows, Container, SectionBadge } from './ui'
 
 export default function Testimonials() {
-  const [start, setStart] = useState(0)
-  const count = testimonials.length
-  const visible = [0, 1, 2].map((i) => testimonials[(start + i) % count])
-
-  const prev = () => setStart((s) => (s - 1 + count) % count)
-  const next = () => setStart((s) => (s + 1) % count)
+  const { ref, atStart, atEnd, prev, next } = useScroller()
 
   return (
-    <section aria-labelledby="testimonials-heading" className="py-24 px-6 md:px-12 bg-[#fafbfc]">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-12">
-          <div className="space-y-2">
-            <span className="text-xs uppercase font-extrabold tracking-widest text-slate-400">Our Reviews</span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900" id="testimonials-heading">
-              What Our <span className="text-slate-400 font-medium">Clients</span> Say
-            </h2>
-          </div>
-          <div className="flex items-center gap-3">
-            <button
-              aria-label="Previous review"
-              onClick={prev}
-              className="w-12 h-12 rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center shadow-md transition-transform hover:-translate-x-0.5 focus:outline-none"
-            >
-              <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                <path d="M19 12H5M12 19l-7-7 7-7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-            <button
-              aria-label="Next review"
-              onClick={next}
-              className="w-12 h-12 rounded-full bg-slate-900 hover:bg-slate-800 text-white flex items-center justify-center shadow-md transition-transform hover:translate-x-0.5 focus:outline-none"
-            >
-              <svg className="w-5 h-5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-          </div>
+    <section aria-labelledby="reviews-heading" className="bg-white pb-16 pt-16 lg:pt-11" id="reviews">
+      <Container>
+        <SectionBadge>Our Reviews</SectionBadge>
+        <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <h2 className="text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]" id="reviews-heading">
+            What our <Accent>Clients</Accent> say
+          </h2>
+          <CarouselArrows
+            label="review"
+            nextDisabled={atEnd}
+            onNext={next}
+            onPrev={prev}
+            prevDisabled={atStart}
+          />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {visible.map((r) => (
-            <article key={r.name} className="bg-white p-8 sm:p-10 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-lg transition-shadow">
-              <div>
-                <div className="flex items-center justify-between mb-8">
-                  <img alt={r.name} className="w-12 h-12 rounded-full object-cover ring-2 ring-slate-100" src={r.avatar} />
-                  <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-blue-100 bg-blue-50 text-xs font-semibold text-blue-700">
-                    <svg className="w-3.5 h-3.5 text-blue-600 fill-current" viewBox="0 0 24 24">
-                      <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                    </svg>
-                    <span>{r.badge}</span>
-                  </div>
+        <ul className="no-scrollbar mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto" ref={ref}>
+          {testimonials.map((t) => (
+            <li
+              className="flex w-[85%] shrink-0 snap-start flex-col rounded-3xl border border-brand-line bg-brand-mist p-8 sm:w-[calc(50%-12px)] lg:w-[calc((100%-48px)/3)]"
+              data-card
+              key={t.name}
+            >
+              <img
+                alt=""
+                className="h-12 w-12 rounded-full object-cover ring-2 ring-white"
+                loading="lazy"
+                src={t.avatar}
+              />
+              <blockquote className="mt-5 flex-1">
+                <span aria-hidden="true" className="block font-serif text-2xl leading-none text-brand-sky">
+                  &ldquo;
+                </span>
+                <p className="mt-3 text-[15px] leading-relaxed text-brand-muted">{t.quote}</p>
+              </blockquote>
+              <div className="mt-10 border-t border-brand-line pt-6">
+                <div aria-label="5 out of 5 stars" className="flex gap-1 text-amber-400" role="img">
+                  {[...Array(5)].map((_, i) => (
+                    <Star aria-hidden="true" className="h-4 w-4" fill="currentColor" key={i} strokeWidth={0} />
+                  ))}
                 </div>
-                <div className="text-blue-500 font-serif text-4xl leading-none mb-3">&ldquo;</div>
-                <blockquote className="text-lg sm:text-xl font-medium text-slate-900 leading-snug mb-8">{r.quote}</blockquote>
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <p className="text-lg font-semibold text-brand-ink">{t.name}</p>
+                  <span className="shrink-0 whitespace-nowrap rounded bg-brand-skySoft px-2.5 py-0.5 text-sm font-medium text-brand-sky">
+                    Verified Client
+                  </span>
+                </div>
               </div>
-              <div className="border-t border-slate-100 pt-6">
-                <div className="text-sm font-bold text-slate-900">{r.name}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{r.role}</div>
-              </div>
-            </article>
+            </li>
           ))}
-        </div>
-      </div>
+        </ul>
+      </Container>
+
+      <Clients />
     </section>
   )
 }

@@ -4,20 +4,14 @@
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #0f172a;
-  background-color: #fcfdfd;
+  color: #0b1a2e;
+  background-color: #ffffff;
   overflow-x: hidden;
 }
 
-.glass-effect {
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-}
-
+/* Frosted card used in the hero */
 .dark-glass-effect {
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(0, 27, 51, 0.72);
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -25,9 +19,36 @@ body {
 
 .hero-mask {
   background: linear-gradient(
-    135deg,
-    rgba(15, 23, 42, 0.9) 0%,
-    rgba(15, 23, 42, 0.6) 45%,
-    rgba(15, 23, 42, 0.25) 100%
+    90deg,
+    rgba(0, 19, 36, 0.92) 0%,
+    rgba(0, 27, 51, 0.72) 45%,
+    rgba(0, 27, 51, 0.35) 100%
   );
+}
+
+/* Soft fade on the left and right edges of scrolling rows */
+.edge-fade {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pause any marquee while the pointer is over it */
+.marquee-pause:hover > * {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-slow,
+  .animate-marquee-reverse {
+    animation: none;
+  }
 }
