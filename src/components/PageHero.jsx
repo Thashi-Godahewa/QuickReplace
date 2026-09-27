@@ -3,9 +3,22 @@ import { ArrowRight, Phone, Star } from 'lucide-react'
 import { contact } from '../data/siteData'
 import TradesMarquee from './TradesMarquee'
 
-// Hero used at the top of inner pages (Contact, Services, About Us ...).
+// Hero used at the top of inner pages (Contact, Clients, Services ...).
 // `accent` is the sky-blue first part of the heading, `title` the white rest.
-export default function PageHero({ breadcrumb, accent, title, description, image, imageAlt }) {
+// `showActions` toggles the phone / Explore Past Works buttons.
+// `singleLine` keeps a short heading on one line on desktop.
+export default function PageHero({
+  breadcrumb,
+  accent,
+  title,
+  description,
+  image,
+  imageAlt,
+  showActions = true,
+  singleLine = false,
+  reviewsLabel = '5-Star Customer Reviews',
+  descriptionWidth = 'max-w-[560px]',
+}) {
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
       <div className="absolute inset-0 z-0 lg:left-auto lg:w-[46%]">
@@ -38,16 +51,17 @@ export default function PageHero({ breadcrumb, accent, title, description, image
           </p>
 
           <h1
-            className="text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:whitespace-nowrap lg:text-[64px]"
+            className={`text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px] ${singleLine ? 'lg:whitespace-nowrap' : 'max-w-[700px]'}`}
             id="page-heading"
           >
             <span className="text-brand-sky">{accent}</span> {title}
           </h1>
 
-          <p className="max-w-[560px] text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl">
+          <p className={`${descriptionWidth} text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl`}>
             {description}
           </p>
 
+          {showActions && (
           <div className="flex flex-wrap items-center gap-4">
             <a
               className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-brand-ink shadow-lg transition-colors hover:bg-brand-sky hover:text-white"
@@ -64,6 +78,7 @@ export default function PageHero({ breadcrumb, accent, title, description, image
               <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
+          )}
 
           <div className="flex max-w-md items-center gap-3 border-t border-white/10 pt-6">
             <div aria-hidden="true" className="flex gap-1 text-amber-400">
@@ -71,7 +86,7 @@ export default function PageHero({ breadcrumb, accent, title, description, image
                 <Star className="h-4 w-4" fill="currentColor" key={i} strokeWidth={0} />
               ))}
             </div>
-            <span className="text-sm text-white/85">5-Star Customer Reviews</span>
+            <span className="text-sm text-white/85">{reviewsLabel}</span>
           </div>
         </div>
       </div>
