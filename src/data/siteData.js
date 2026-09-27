@@ -15,7 +15,7 @@ export const contact = {
 // Swap each one to its own route (e.g. '/services') as the page is built.
 export const navLinks = [
   { label: 'Services', to: '/#services' },
-  { label: 'Clients', to: '/#industries' },
+  { label: 'Clients', to: '/clients' },
   { label: 'Our work', to: '/#projects' },
   { label: 'About Us', to: '/#about' },
   { label: 'Contact', to: '/contact' },
