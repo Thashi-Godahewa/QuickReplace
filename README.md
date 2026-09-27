@@ -36,7 +36,23 @@ npm run build
 
 Builds the production bundle into `build/`.
 
-## Page sections (in order)
+## Pages and routes
+
+| URL | Page | File |
+| --- | --- | --- |
+| `/` | Home (landing page) | `src/pages/HomePage.jsx` |
+| `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
+
+Routing uses `react-router-dom` (`BrowserRouter` in `src/App.js`). Inner pages share
+`components/PageHero.jsx`. Nav links that point to `/#section` scroll to that section of the
+home page until the matching page is built.
+
+When deploying, the host must send every URL to `index.html` (for example a Netlify
+`_redirects` rule or a Vercel rewrite), otherwise refreshing `/contact` shows a 404.
+
+The contact form does not send anywhere yet. Connect it in `src/services/enquiry.js`.
+
+## Home page sections (in order)
 
 | Section | Component | Notes |
 | --- | --- | --- |
