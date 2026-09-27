@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { contact, footerCompany, footerServices } from '../data/siteData'
 
 export default function Footer() {
@@ -25,9 +26,9 @@ export default function Footer() {
             <ul className="mt-5 space-y-1.5">
               {footerServices.map((s) => (
                 <li key={s}>
-                  <a className={link} href="#services">
+                  <Link className={link} to="/#services">
                     {s}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -38,9 +39,9 @@ export default function Footer() {
             <ul className="mt-5 space-y-1.5">
               {footerCompany.map((c) => (
                 <li key={c.label}>
-                  <a className={link} href={c.href}>
+                  <Link className={link} to={c.to}>
                     {c.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

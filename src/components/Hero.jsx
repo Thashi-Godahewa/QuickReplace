@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, Phone, Star } from 'lucide-react'
 import { contact } from '../data/siteData'
 import TradesMarquee from './TradesMarquee'
@@ -70,13 +71,13 @@ export default function Hero() {
               With multiple trades under one roof, we have the right people for the job. We&rsquo;ll organise the work,
               coordinate everything and keep you updated from start to finish.
             </p>
-            <a
+            <Link
               className="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-sky hover:text-white"
-              href="#contact"
+              to="/contact"
             >
               Get a Quote
               <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

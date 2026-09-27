@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, Wrench } from 'lucide-react'
 
 // Shared building blocks used across the landing page sections.
@@ -33,15 +34,23 @@ export function ArrowDot({ tone = 'dark' }) {
   )
 }
 
-// Navy pill button with the round arrow on the right
-export function PillLink({ href, children, className = '' }) {
-  return (
-    <a
-      className={`group inline-flex items-center gap-3 rounded-full bg-brand-navy py-2.5 pl-5 pr-2.5 text-base font-medium text-white shadow-card transition-colors hover:bg-brand-navyLight ${className}`}
-      href={href}
-    >
+// Navy pill button with the round arrow on the right.
+// Pass `to` for an in-app route, or `href` for a normal link.
+export function PillLink({ href, to, children, className = '' }) {
+  const classes = `group inline-flex items-center gap-3 rounded-full bg-brand-navy py-2.5 pl-5 pr-2.5 text-base font-medium text-white shadow-card transition-colors hover:bg-brand-navyLight ${className}`
+  const content = (
+    <>
       <span>{children}</span>
       <ArrowDot />
+    </>
+  )
+  return to ? (
+    <Link className={classes} to={to}>
+      {content}
+    </Link>
+  ) : (
+    <a className={classes} href={href}>
+      {content}
     </a>
   )
 }

@@ -1,34 +1,26 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Metrics from './components/Metrics'
-import Services from './components/Services'
-import About from './components/About'
-import CTA from './components/CTA'
-import Industries from './components/Industries'
-import Projects from './components/Projects'
-import Testimonials from './components/Testimonials'
-import BeforeAfter from './components/BeforeAfter'
-import ServiceLocator from './components/ServiceLocator'
 import Footer from './components/Footer'
+import ScrollManager from './components/ScrollManager'
+import HomePage from './pages/HomePage'
+import ContactPage from './pages/ContactPage'
 
 export default function App() {
   return (
-    <div className="antialiased selection:bg-brand-sky selection:text-white">
-      <Navbar />
-      <main>
-        <Hero />
-        <Metrics />
-        <Services />
-        <About />
-        <CTA variant="compact" />
-        <Industries />
-        <Projects />
-        <Testimonials />
-        <BeforeAfter />
-        <ServiceLocator />
-        <CTA variant="emergency" />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <ScrollManager />
+      <div className="antialiased selection:bg-brand-sky selection:text-white">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route element={<HomePage />} path="/" />
+            <Route element={<ContactPage />} path="/contact" />
+            {/* Unknown URLs fall back to the home page for now */}
+            <Route element={<HomePage />} path="*" />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   )
 }
