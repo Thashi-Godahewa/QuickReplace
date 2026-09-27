@@ -41,6 +41,7 @@ Builds the production bundle into `build/`.
 | URL | Page | File |
 | --- | --- | --- |
 | `/` | Home (landing page) | `src/pages/HomePage.jsx` |
+| `/clients` | Clients (Who We Serve) | `src/pages/ClientsPage.jsx` |
 | `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
 
 Routing uses `react-router-dom` (`BrowserRouter` in `src/App.js`). Inner pages share
@@ -49,6 +50,9 @@ home page until the matching page is built.
 
 When deploying, the host must send every URL to `index.html` (for example a Netlify
 `_redirects` rule or a Vercel rewrite), otherwise refreshing `/contact` shows a 404.
+
+Clients page content (sectors, accreditations, case study) lives in `src/data/clientsData.js`.
+Licence numbers, figures and the case study come from the design and need confirming with the client.
 
 The contact form does not send anywhere yet. Connect it in `src/services/enquiry.js`.
 

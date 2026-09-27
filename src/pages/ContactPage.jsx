@@ -16,6 +16,7 @@ export default function ContactPage() {
         description="Have a property repair or maintenance job you need help with? Send us the details and we'll take it from there. From small repairs to jobs requiring multiple trades, our team can coordinate the work from start to finish."
         image="/images/contact-hero-team.jpg"
         imageAlt="The Quick Replace team standing outside a commercial building"
+        singleLine
         title="Quick Replace"
       />
 

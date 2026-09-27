@@ -3,8 +3,11 @@ import { ArrowLeft, ArrowRight, Wrench } from 'lucide-react'
 
 // Shared building blocks used across the landing page sections.
 
-export function Container({ className = '', children }) {
-  return <div className={`mx-auto w-full max-w-7xl px-6 lg:px-12 ${className}`}>{children}</div>
+// `wide` uses 32px side margins on desktop instead of 48px (used on the Clients page)
+export function Container({ className = '', wide = false, children }) {
+  return (
+    <div className={`mx-auto w-full max-w-7xl px-6 ${wide ? 'lg:px-8' : 'lg:px-12'} ${className}`}>{children}</div>
+  )
 }
 
 export function SectionBadge({ children, className = '' }) {
