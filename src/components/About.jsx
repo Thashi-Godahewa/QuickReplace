@@ -16,7 +16,7 @@ export default function About() {
             Repairs and ongoing maintenance for offices, commercial buildings and managed properties. One point of
             contact for everything from small repairs to jobs requiring multiple trades.
           </p>
-          <PillLink className="mt-10" href="#about">
+          <PillLink className="mt-10" to="/about">
             About Us
           </PillLink>
         </div>
