@@ -6,15 +6,19 @@ export const contact = {
   phoneHref: 'tel:0401411636',
   email: 'info@quickreplace.com.au',
   emailHref: 'mailto:info@quickreplace.com.au',
+  accountsEmail: 'accounts@quickreplace.com.au',
+  accountsEmailHref: 'mailto:accounts@quickreplace.com.au',
   headOffice: 'Sunshine West',
 }
 
+// `to` values starting with "/#" scroll to a section on the home page.
+// Swap each one to its own route (e.g. '/services') as the page is built.
 export const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Clients', href: '#industries' },
-  { label: 'Our work', href: '#projects' },
-  { label: 'About Us', href: '#about' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', to: '/#services' },
+  { label: 'Clients', to: '/#industries' },
+  { label: 'Our work', to: '/#projects' },
+  { label: 'About Us', to: '/#about' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 export const trades = [
@@ -246,9 +250,24 @@ export const footerServices = [
 ]
 
 export const footerCompany = [
-  { label: 'About Us', href: '#about' },
-  { label: 'Recent Projects', href: '#projects' },
-  { label: 'Customer Reviews', href: '#reviews' },
-  { label: 'Pricing & Estimates', href: '#contact' },
-  { label: 'Careers', href: '#contact' },
+  { label: 'About Us', to: '/#about' },
+  { label: 'Recent Projects', to: '/#projects' },
+  { label: 'Customer Reviews', to: '/#reviews' },
+  { label: 'Pricing & Estimates', to: '/contact' },
+  { label: 'Careers', to: '/contact' },
+]
+
+export const contactStandards = [
+  {
+    title: '100% Honest & Transparent Pricing:',
+    text: "We explain what you're paying for and provide clear pricing before work proceeds wherever possible.",
+  },
+  {
+    title: 'Licensed Trades:',
+    text: 'Licensed Master Plumbers and Electricians will review your uploaded photos.',
+  },
+  {
+    title: 'Insurance Compliant Invoices:',
+    text: 'Itemised codes compliant with all commercial strata and home insurance policies.',
+  },
 ]
