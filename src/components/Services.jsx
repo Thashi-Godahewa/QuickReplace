@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { ArrowRight, Grid2x2, KeyRound, PaintRoller, PlugZap, Shield, Wrench } from 'lucide-react'
 import { services } from '../data/siteData'
 import { Accent, Container, PillLink, SectionBadge } from './ui'
@@ -42,13 +43,13 @@ export default function Services() {
                 </span>
                 <h3 className="mt-8 text-[22px] font-semibold text-brand-ink">{service.title}</h3>
                 <p className="mt-3 flex-1 text-[15px] leading-relaxed text-brand-muted">{service.description}</p>
-                <a
+                <Link
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-sky transition-colors hover:text-brand-skyHover"
-                  href="#contact"
+                  to="/contact"
                 >
                   Learn More <span className="sr-only">about {service.title}</span>
                   <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                </a>
+                </Link>
               </li>
             )
           })}
