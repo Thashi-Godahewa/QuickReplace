@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import { contact, navLinks } from '../data/siteData'
 import { ArrowDot } from './ui'
@@ -6,6 +7,10 @@ import { ArrowDot } from './ui'
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { pathname } = useLocation()
+
+  // Close the mobile menu whenever the page changes
+  useEffect(() => setOpen(false), [pathname])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -24,26 +29,30 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-6 lg:px-12">
-        <a aria-label="Quick Replace home" className="shrink-0" href="#top">
+        <Link aria-label="Quick Replace home" className="shrink-0" to="/">
           <img
             alt="Quick Replace - Property Maintenance Made Simple"
             className={`w-auto transition-all duration-300 ${scrolled ? 'h-11' : 'h-12 lg:h-[60px]'}`}
             src="/images/quick-replace-logo.png"
           />
-        </a>
+        </Link>
 
         <nav
           aria-label="Main navigation"
           className="hidden items-center gap-1 rounded-full bg-white px-6 py-2.5 shadow-card lg:flex"
         >
           {navLinks.map((link) => (
-            <a
-              className="rounded-full px-4 py-1.5 text-sm font-medium text-brand-ink transition-colors hover:text-brand-sky"
-              href={link.href}
+            <NavLink
+              className={({ isActive }) =>
+                `rounded-full px-4 py-1.5 text-sm font-medium transition-colors hover:text-brand-sky ${
+                  isActive && !link.to.includes('#') ? 'text-brand-sky' : 'text-brand-ink'
+                }`
+              }
               key={link.label}
+              to={link.to}
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -73,14 +82,14 @@ export default function Navbar() {
         <nav aria-label="Mobile navigation" className="mx-auto mt-3 max-w-7xl px-6 pb-4 lg:hidden">
           <div className="flex flex-col rounded-3xl bg-white p-3 shadow-card">
             {navLinks.map((link) => (
-              <a
+              <Link
                 className="rounded-2xl px-4 py-3 text-base font-medium text-brand-ink hover:bg-brand-mist hover:text-brand-sky"
-                href={link.href}
                 key={link.label}
                 onClick={() => setOpen(false)}
+                to={link.to}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <div className="mt-2 grid grid-cols-2 gap-2 md:hidden">
               <a className="rounded-full bg-brand-navy py-3 text-center text-sm font-medium text-white" href={contact.phoneHref}>
