@@ -4,6 +4,7 @@ import Footer from './components/Footer'
 import ScrollManager from './components/ScrollManager'
 import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
+import ClientsPage from './pages/ClientsPage'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <main>
           <Routes>
             <Route element={<HomePage />} path="/" />
+            <Route element={<ClientsPage />} path="/clients" />
             <Route element={<ContactPage />} path="/contact" />
             {/* Unknown URLs fall back to the home page for now */}
             <Route element={<HomePage />} path="*" />
