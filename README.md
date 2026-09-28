@@ -42,6 +42,7 @@ Builds the production bundle into `build/`.
 | --- | --- | --- |
 | `/` | Home (landing page) | `src/pages/HomePage.jsx` |
 | `/services` | Services (all services with search) | `src/pages/ServicesPage.jsx` |
+| `/services/:slug` | Service detail (e.g. `/services/painting-plastering`) | `src/pages/ServiceDetailPage.jsx` |
 | `/our-work` | Our Work (before & after, FAQ) | `src/pages/OurWorkPage.jsx` |
 | `/about` | About Us | `src/pages/AboutPage.jsx` |
 | `/clients` | Clients (Who We Serve) | `src/pages/ClientsPage.jsx` |
@@ -57,6 +58,7 @@ Clients page content (sectors, accreditations, case study) lives in `src/data/cl
 About Us page content (story, principles, trades, trust stats) lives in `src/data/aboutData.js`.
 Our Work page content (projects, filters, FAQ) lives in `src/data/workData.js`.
 Services page content (all 16 services, popular searches) lives in `src/data/servicesData.js`.
+Service detail pages live in `src/data/serviceDetails.js` - add an entry there to give another service its own page.
 Licence numbers, figures and the case study come from the design and need confirming with the client.
 
 The contact form does not send anywhere yet. Connect it in `src/services/enquiry.js`.
