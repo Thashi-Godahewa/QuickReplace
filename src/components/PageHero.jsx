@@ -7,6 +7,9 @@ import TradesMarquee from './TradesMarquee'
 // `accent` is the sky-blue first part of the heading, `title` the white rest.
 // `showActions` toggles the phone / Explore Past Works buttons.
 // `singleLine` keeps a short heading on one line on desktop.
+// `heading` replaces accent + title when the blue words are not first.
+// `secondaryAction` is the outlined button next to the phone number.
+// `imageWidth` sets how much of the hero the photo covers on desktop.
 export default function PageHero({
   breadcrumb,
   accent,
@@ -18,10 +21,13 @@ export default function PageHero({
   singleLine = false,
   reviewsLabel = '5-Star Customer Reviews',
   descriptionWidth = 'max-w-[560px]',
+  heading = null,
+  secondaryAction = { label: 'Explore Past Works', to: '/our-work' },
+  imageWidth = 'lg:w-[46%]',
 }) {
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
-      <div className="absolute inset-0 z-0 lg:left-auto lg:w-[46%]">
+      <div className={`absolute inset-0 z-0 lg:left-auto ${imageWidth}`}>
         <img alt={imageAlt} className="h-full w-full object-cover object-top" src={image} />
         {/* Blend the photo into the navy background on the left */}
         <div className="absolute inset-0 bg-brand-footer/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-brand-footer lg:to-transparent lg:to-40%" />
@@ -54,7 +60,11 @@ export default function PageHero({
             className={`text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px] ${singleLine ? 'lg:whitespace-nowrap' : 'max-w-[700px]'}`}
             id="page-heading"
           >
-            <span className="text-brand-sky">{accent}</span> {title}
+            {heading || (
+              <>
+                <span className="text-brand-sky">{accent}</span> {title}
+              </>
+            )}
           </h1>
 
           <p className={`${descriptionWidth} text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl`}>
@@ -72,9 +82,9 @@ export default function PageHero({
             </a>
             <Link
               className="group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3.5 text-base font-medium text-white transition-colors hover:border-brand-sky hover:text-brand-sky"
-              to="/#projects"
+              to={secondaryAction.to}
             >
-              Explore Past Works
+              {secondaryAction.label}
               <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
