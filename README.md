@@ -41,6 +41,7 @@ Builds the production bundle into `build/`.
 | URL | Page | File |
 | --- | --- | --- |
 | `/` | Home (landing page) | `src/pages/HomePage.jsx` |
+| `/our-work` | Our Work (before & after, FAQ) | `src/pages/OurWorkPage.jsx` |
 | `/about` | About Us | `src/pages/AboutPage.jsx` |
 | `/clients` | Clients (Who We Serve) | `src/pages/ClientsPage.jsx` |
 | `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
@@ -54,6 +55,7 @@ When deploying, the host must send every URL to `index.html` (for example a Netl
 
 Clients page content (sectors, accreditations, case study) lives in `src/data/clientsData.js`.
 About Us page content (story, principles, trades, trust stats) lives in `src/data/aboutData.js`.
+Our Work page content (projects, filters, FAQ) lives in `src/data/workData.js`.
 Licence numbers, figures and the case study come from the design and need confirming with the client.
 
 The contact form does not send anywhere yet. Connect it in `src/services/enquiry.js`.
