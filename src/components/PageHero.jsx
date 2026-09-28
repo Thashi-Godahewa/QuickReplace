@@ -10,6 +10,7 @@ import TradesMarquee from './TradesMarquee'
 // `heading` replaces accent + title when the blue words are not first.
 // `secondaryAction` is the outlined button next to the phone number.
 // `imageWidth` sets how much of the hero the photo covers on desktop.
+// `breadcrumbParent` adds a middle breadcrumb link, e.g. { label: 'Services', to: '/services' }.
 export default function PageHero({
   breadcrumb,
   accent,
@@ -24,6 +25,7 @@ export default function PageHero({
   heading = null,
   secondaryAction = { label: 'Explore Past Works', to: '/our-work' },
   imageWidth = 'lg:w-[46%]',
+  breadcrumbParent = null,
 }) {
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
@@ -45,6 +47,18 @@ export default function PageHero({
               <li aria-hidden="true" className="text-white/40">
                 /
               </li>
+              {breadcrumbParent && (
+                <>
+                  <li>
+                    <Link className="text-white transition-colors hover:text-brand-sky" to={breadcrumbParent.to}>
+                      {breadcrumbParent.label}
+                    </Link>
+                  </li>
+                  <li aria-hidden="true" className="text-white/40">
+                    /
+                  </li>
+                </>
+              )}
               <li aria-current="page" className="text-brand-sky">
                 {breadcrumb}
               </li>
