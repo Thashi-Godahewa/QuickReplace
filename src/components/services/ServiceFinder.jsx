@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowUpDown, Phone, Search, X } from 'lucide-react'
 import { contact } from '../../data/siteData'
 import { allServices, popularSearches } from '../../data/servicesData'
+import { servicePath } from '../../data/serviceDetails'
 import { Accent, Container } from '../ui'
 
 const SORTS = [
@@ -34,7 +35,7 @@ function ServiceCard({ service }) {
       <div className="mt-5 border-t border-brand-line bg-brand-mist/60 px-6 pb-6 pt-3">
         <Link
           className="inline-flex items-center gap-2 text-[15px] font-semibold text-brand-sky transition-colors hover:text-brand-skyHover"
-          to="/contact"
+          to={servicePath(service.slug)}
         >
           Learn More <span className="sr-only">about {service.title}</span>
           <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
