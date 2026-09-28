@@ -11,10 +11,9 @@ export const contact = {
   headOffice: 'Sunshine West',
 }
 
-// `to` values starting with "/#" scroll to a section on the home page.
-// Swap each one to its own route (e.g. '/services') as the page is built.
+// Main navigation - each link opens its own page.
 export const navLinks = [
-  { label: 'Services', to: '/#services' },
+  { label: 'Services', to: '/services' },
   { label: 'Clients', to: '/clients' },
   { label: 'Our work', to: '/our-work' },
   { label: 'About Us', to: '/about' },
