@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import ClientsPage from './pages/ClientsPage'
 import AboutPage from './pages/AboutPage'
+import OurWorkPage from './pages/OurWorkPage'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <main>
           <Routes>
             <Route element={<HomePage />} path="/" />
+            <Route element={<OurWorkPage />} path="/our-work" />
             <Route element={<AboutPage />} path="/about" />
             <Route element={<ClientsPage />} path="/clients" />
             <Route element={<ContactPage />} path="/contact" />

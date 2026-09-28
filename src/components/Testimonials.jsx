@@ -4,11 +4,12 @@ import useScroller from '../hooks/useScroller'
 import Clients from './Clients'
 import { Accent, CarouselArrows, Container, SectionBadge } from './ui'
 
-export default function Testimonials() {
+// `showClients` shows the client logo strip under the reviews (home page)
+export default function Testimonials({ showClients = true }) {
   const { ref, atStart, atEnd, prev, next } = useScroller()
 
   return (
-    <section aria-labelledby="reviews-heading" className="bg-white pb-16 pt-16 lg:pt-11" id="reviews">
+    <section aria-labelledby="reviews-heading" className={`bg-white pt-16 lg:pt-11 ${showClients ? 'pb-16' : 'pb-12'}`} id="reviews">
       <Container>
         <SectionBadge>Our Reviews</SectionBadge>
         <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
@@ -61,7 +62,7 @@ export default function Testimonials() {
         </ul>
       </Container>
 
-      <Clients />
+      {showClients && <Clients />}
     </section>
   )
 }

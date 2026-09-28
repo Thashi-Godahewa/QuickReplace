@@ -16,7 +16,7 @@ export const contact = {
 export const navLinks = [
   { label: 'Services', to: '/#services' },
   { label: 'Clients', to: '/clients' },
-  { label: 'Our work', to: '/#projects' },
+  { label: 'Our work', to: '/our-work' },
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -251,7 +251,7 @@ export const footerServices = [
 
 export const footerCompany = [
   { label: 'About Us', to: '/about' },
-  { label: 'Recent Projects', to: '/#projects' },
+  { label: 'Recent Projects', to: '/our-work' },
   { label: 'Customer Reviews', to: '/#reviews' },
   { label: 'Pricing & Estimates', to: '/contact' },
   { label: 'Careers', to: '/contact' },
