@@ -1,5 +1,11 @@
 import { Link } from 'react-router-dom'
 import { contact, footerCompany, footerServices } from '../data/siteData'
+import { serviceDetails } from '../data/serviceDetails'
+
+// Footer service names that have their own page
+const footerServiceLinks = Object.fromEntries(
+  Object.entries(serviceDetails).map(([slug, d]) => [d.title, `/services/${slug}`]),
+)
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -26,7 +32,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-1.5">
               {footerServices.map((s) => (
                 <li key={s}>
-                  <Link className={link} to="/services">
+                  <Link className={link} to={footerServiceLinks[s] || '/services'}>
                     {s}
                   </Link>
                 </li>

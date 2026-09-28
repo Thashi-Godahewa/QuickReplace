@@ -50,6 +50,7 @@ export const services = [
   },
   {
     icon: 'painting',
+    slug: 'painting-plastering',
     title: 'Painting & Plastering',
     description:
       'Wall and ceiling repairs, damaged plaster, cracks and holes, water-damaged plaster, patching, interior and exterior painting, touch-ups and make-good works.',
