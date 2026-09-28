@@ -41,14 +41,14 @@ Builds the production bundle into `build/`.
 | URL | Page | File |
 | --- | --- | --- |
 | `/` | Home (landing page) | `src/pages/HomePage.jsx` |
+| `/services` | Services (all services with search) | `src/pages/ServicesPage.jsx` |
 | `/our-work` | Our Work (before & after, FAQ) | `src/pages/OurWorkPage.jsx` |
 | `/about` | About Us | `src/pages/AboutPage.jsx` |
 | `/clients` | Clients (Who We Serve) | `src/pages/ClientsPage.jsx` |
 | `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
 
 Routing uses `react-router-dom` (`BrowserRouter` in `src/App.js`). Inner pages share
-`components/PageHero.jsx`. Nav links that point to `/#section` scroll to that section of the
-home page until the matching page is built.
+`components/PageHero.jsx`. All nav links now open their own page.
 
 When deploying, the host must send every URL to `index.html` (for example a Netlify
 `_redirects` rule or a Vercel rewrite), otherwise refreshing `/contact` shows a 404.
@@ -56,6 +56,7 @@ When deploying, the host must send every URL to `index.html` (for example a Netl
 Clients page content (sectors, accreditations, case study) lives in `src/data/clientsData.js`.
 About Us page content (story, principles, trades, trust stats) lives in `src/data/aboutData.js`.
 Our Work page content (projects, filters, FAQ) lives in `src/data/workData.js`.
+Services page content (all 16 services, popular searches) lives in `src/data/servicesData.js`.
 Licence numbers, figures and the case study come from the design and need confirming with the client.
 
 The contact form does not send anywhere yet. Connect it in `src/services/enquiry.js`.

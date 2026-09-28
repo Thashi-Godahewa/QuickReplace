@@ -26,7 +26,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-1.5">
               {footerServices.map((s) => (
                 <li key={s}>
-                  <Link className={link} to="/#services">
+                  <Link className={link} to="/services">
                     {s}
                   </Link>
                 </li>

@@ -56,7 +56,7 @@ export default function Services() {
         </ul>
 
         <div className="mt-14 flex justify-center">
-          <PillLink href="#services">View All Services</PillLink>
+          <PillLink to="/services">View All Services</PillLink>
         </div>
       </Container>
     </section>
