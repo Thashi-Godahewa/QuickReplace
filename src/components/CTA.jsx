@@ -48,7 +48,7 @@ export default function CTA({ variant = 'emergency' }) {
                 </p>
               )}
               <h2
-                className="text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl lg:text-[48px]"
+                className="text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl sm:leading-[1.12] lg:text-[48px]"
                 id={`cta-heading-${variant}`}
               >
                 {compact ? (
