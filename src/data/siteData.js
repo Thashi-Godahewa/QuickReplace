@@ -8,7 +8,7 @@ export const contact = {
   emailHref: 'mailto:info@quickreplace.com.au',
   accountsEmail: 'accounts@quickreplace.com.au',
   accountsEmailHref: 'mailto:accounts@quickreplace.com.au',
-  headOffice: 'Sunshine West',
+  headOffice: 'Sunshine West, VIC',
 }
 
 // Main navigation - each link opens its own page.
@@ -50,7 +50,6 @@ export const services = [
   },
   {
     icon: 'painting',
-    slug: 'painting-plastering',
     title: 'Painting & Plastering',
     description:
       'Wall and ceiling repairs, damaged plaster, cracks and holes, water-damaged plaster, patching, interior and exterior painting, touch-ups and make-good works.',
@@ -242,19 +241,30 @@ export const servicePostcodeRanges = [
 
 export const footerServices = [
   'Plumbing',
+  'Painting & Plastering',
   'Electrical',
   'Glazing',
-  'Hazard Containment',
-  'Locksmith & Security',
-  'Painting & Plastering',
+  'Make Safe',
+  'Locksmith',
+  'Heating & Cooling',
+  'Gutter Cleaning',
+  'Doors & Windows',
+  'Brick Repointing & Mortar Repairs',
+  'Handyman',
+  'Pressure Washing',
+  'General Property Maintenance',
+  'Removalist & Rubbish Removal',
+  'Emergency Repairs',
+  'Graffiti Removal',
+  'Window Tinting',
 ]
 
 export const footerCompany = [
   { label: 'About Us', to: '/about' },
-  { label: 'Recent Projects', to: '/our-work' },
-  { label: 'Customer Reviews', to: '/#reviews' },
-  { label: 'Pricing & Estimates', to: '/contact' },
-  { label: 'Careers', to: '/contact' },
+  { label: 'Services', to: '/services' },
+  { label: 'Our Work', to: '/our-work' },
+  { label: 'Clients', to: '/clients' },
+  { label: 'Contact Us', to: '/contact' },
 ]
 
 export const contactStandards = [
