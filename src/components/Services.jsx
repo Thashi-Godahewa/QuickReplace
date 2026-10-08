@@ -1,112 +1,65 @@
-const cards = [
-  {
-    title: 'Plumbing',
-    description: 'Rapid leak detection, pipe replacements, tap fixes, and full emergency plumbing repairs.',
-    iconBg: 'bg-blue-600 group-hover:bg-slate-900',
-    icon: (
-      <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0zM12 6.83L8.46 10.37a5 5 0 1 0 7.08 0z" />
-    ),
-  },
-  {
-    title: 'Electrical',
-    description: 'Switchboard upgrades, faulty wiring diagnostics, power point repairs, and certified make-safe inspections.',
-    iconBg: 'bg-slate-900 group-hover:bg-blue-600',
-    icon: <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />,
-  },
-  {
-    title: 'Glazing',
-    description: 'Emergency glass replacement, window pane repairs, shattered glazing board-up, and commercial security glass.',
-    iconBg: 'bg-slate-900 group-hover:bg-blue-600',
-    icon: <path d="M3 3h18v18H3V3zm9 0v18M3 12h18" strokeLinecap="round" strokeLinejoin="round" />,
-  },
-  {
-    title: 'Make Safe',
-    description: 'Immediate hazard containment, storm damage securing, structural stabilization, and priority emergency response.',
-    iconBg: 'bg-blue-600 group-hover:bg-slate-900',
-    icon: <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" strokeLinecap="round" strokeLinejoin="round" />,
-  },
-  {
-    title: 'Locksmith',
-    description: 'Emergency lockout services, deadbolt replacements, high-security lock fittings, and rekeying solutions.',
-    iconBg: 'bg-slate-900 group-hover:bg-blue-600',
-    icon: (
-      <>
-        <rect height="11" rx="2" ry="2" width="18" x="3" y="11" />
-        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-      </>
-    ),
-  },
-  {
-    title: 'Painting & Plastering',
-    description: 'Seamless drywall repairs, plaster crack patching, interior touch-ups, and full surface restoration.',
-    iconBg: 'bg-slate-900 group-hover:bg-blue-600',
-    icon: (
-      <>
-        <path d="M19 11V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1z" />
-        <path d="M19 7h2a1 1 0 0 1 1 1v3a2 2 0 0 1-2 2h-6v4a2 2 0 0 0 2 2h1a1 1 0 0 1 1 1v3" />
-      </>
-    ),
-  },
-]
+import { Link } from 'react-router-dom'
+import { ArrowRight, Grid2x2, KeyRound, PaintRoller, PlugZap, Shield, Wrench } from 'lucide-react'
+import { services } from '../data/siteData'
+import { servicePath } from '../data/serviceDetails'
+import { Accent, Container, PillLink, SectionBadge } from './ui'
+
+const icons = {
+  plumbing: Wrench,
+  painting: PaintRoller,
+  electrical: PlugZap,
+  glazing: Grid2x2,
+  makeSafe: Shield,
+  locksmith: KeyRound,
+}
 
 export default function Services() {
   return (
-    <section aria-labelledby="services-heading" className="py-24 px-6 md:px-12 bg-[#fafbfc]" id="services">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 border border-blue-200/70 text-blue-700 text-xs font-semibold">
-            <svg className="w-3.5 h-3.5 text-blue-600 fill-current" viewBox="0 0 24 24">
-              <path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
-            </svg>
-            <span>Our Services</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 leading-tight" id="services-heading">
-            Our Expertise: <span className="font-serif italic font-medium text-blue-600">Quality</span> Handyman Solutions
+    <section aria-labelledby="services-heading" className="bg-brand-mist pb-12 pt-12 lg:pt-11" id="services">
+      <Container>
+        <div className="mx-auto max-w-4xl text-center">
+          <SectionBadge>Our Services</SectionBadge>
+          <h2
+            className="mt-10 text-4xl font-bold leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]"
+            id="services-heading"
+          >
+            Our expertise: building <span className="whitespace-nowrap"><Accent>Repairs &amp;</Accent></span> property <Accent>Maintenance</Accent>
           </h2>
-          <p className="text-slate-500 text-sm sm:text-base leading-relaxed">
-            At Quick Replace, we provide comprehensive property maintenance and emergency trade solutions. From minor repairs to emergency make-safe works, our licensed multi-trade specialists are on call 24/7.
+          <p className="mx-auto mt-6 max-w-[740px] text-[15px] leading-relaxed text-brand-muted">
+            At Quick Replace, we handle everything from minor repairs to larger building maintenance jobs requiring
+            multiple trades. With the right trades for the job, we can coordinate the work from start to finish.
           </p>
         </div>
 
-        {/* 6-Card Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cards.map((card) => (
-            <article
-              key={card.title}
-              className="bg-white p-8 rounded-3xl border border-slate-200/80 hover:border-slate-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                <div className={`w-12 h-12 rounded-2xl text-white flex items-center justify-center mb-6 shadow-md transition-colors ${card.iconBg}`}>
-                  <svg className="w-6 h-6 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
-                    {card.icon}
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">{card.title}</h3>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6">{card.description}</p>
-              </div>
-              <a className="text-xs font-bold text-slate-900 hover:text-blue-600 underline underline-offset-4 flex items-center gap-1 group-hover:gap-2 transition-all" href="#contact">
-                <span>Learn More</span>
-                <svg className="w-3 h-3 stroke-current stroke-2 fill-none" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </article>
-          ))}
-        </div>
+        <ul className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {services.map((service) => {
+            const Icon = icons[service.icon]
+            return (
+              <li
+                className="group flex flex-col rounded-3xl border border-brand-line bg-white p-8 transition-shadow duration-300 hover:shadow-card"
+                key={service.title}
+              >
+                <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-navy text-brand-sky shadow-card">
+                  <Icon aria-hidden="true" className="h-6 w-6" strokeWidth={1.75} />
+                </span>
+                <h3 className="mt-8 text-[22px] font-semibold text-brand-ink">{service.title}</h3>
+                <p className="mt-3 flex-1 text-[15px] leading-relaxed text-brand-muted">{service.description}</p>
+                <Link
+                  className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-sky transition-colors hover:text-brand-skyHover"
+                  to={servicePath(service.slug)}
+                >
+                  Learn More <span className="sr-only">about {service.title}</span>
+                  <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              </li>
+            )
+          })}
+        </ul>
 
-        {/* Bottom Centered Blue Action Button */}
-        <div className="mt-14 text-center">
-          <a className="inline-flex items-center gap-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm px-7 py-3 rounded-full shadow-md shadow-blue-600/25 transition-all hover:scale-105" href="#services">
-            <div className="w-6 h-6 rounded-full bg-white text-blue-600 flex items-center justify-center">
-              <svg className="w-3 h-3 fill-current ml-0.5" viewBox="0 0 24 24">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </div>
-            <span>View all services</span>
-          </a>
+        <div className="mt-14 flex justify-center">
+          <PillLink to="/services">View All Services</PillLink>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

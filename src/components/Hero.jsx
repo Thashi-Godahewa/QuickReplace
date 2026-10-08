@@ -1,95 +1,88 @@
+import { Link } from 'react-router-dom'
+import { ArrowRight, Phone, Star } from 'lucide-react'
+import { contact } from '../data/siteData'
+import TradesMarquee from './TradesMarquee'
+
+const HERO_IMAGE =
+  'https://lh3.googleusercontent.com/aida-public/AB6AXuDrLF0mZbhpwPmlGPapwj1s-32Porpr-JJHkCXJsumvgm-UaReyr1TwfJwh5vrBSx5QIiPlzwghBlHk_v82kvjETfDhyfWmb7HPjNLYyNJH-RhFYxAQh4CYefd6cAu0VTU8gBrkUQugmLXDozSyhQZfNb44DRqYc7JHxWkMFuHG695onDPxTUz5HsoJcvXfA8B_2jJBRCNbmoOp299zj3qIw4KNtXLV4tdBy_xGDj_k7_CqOZrO6GCy'
+
 export default function Hero() {
   return (
-    <section aria-labelledby="hero-heading" className="relative min-h-[92vh] flex items-center pt-28 pb-16 px-6 md:px-12 overflow-hidden bg-slate-900">
-      {/* Hero Background Image Container */}
+    <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-brand-footer" id="top">
       <div className="absolute inset-0 z-0">
         <img
-          alt="Professional handyman technician performing property maintenance"
-          className="w-full h-full object-cover object-center scale-105"
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrLF0mZbhpwPmlGPapwj1s-32Porpr-JJHkCXJsumvgm-UaReyr1TwfJwh5vrBSx5QIiPlzwghBlHk_v82kvjETfDhyfWmb7HPjNLYyNJH-RhFYxAQh4CYefd6cAu0VTU8gBrkUQugmLXDozSyhQZfNb44DRqYc7JHxWkMFuHG695onDPxTUz5HsoJcvXfA8B_2jJBRCNbmoOp299zj3qIw4KNtXLV4tdBy_xGDj_k7_CqOZrO6GCy"
+          alt="Technician carrying out an electrical repair inside a home"
+          className="h-full w-full object-cover object-center"
+          src={HERO_IMAGE}
         />
-        <div className="absolute inset-0 hero-mask"></div>
+        <div className="hero-mask absolute inset-0" />
       </div>
 
-      {/* Hero Content Layout Container */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-        {/* Left Hero Text Column */}
-        <div className="lg:col-span-7 text-white space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/70 border border-blue-500/40 text-blue-200 text-xs font-semibold backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
-            24/7 Rapid Dispatch Available • Licensed Trades &amp; Make-Safe Pros
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-[1.08] tracking-tight text-white max-w-2xl" id="hero-heading">
-            Reliable Property Maintenance &amp; <span className="text-blue-500 font-bold">Quick Replace</span> Solutions
-          </h1>
-
-          <p className="text-base sm:text-lg text-slate-200/90 max-w-xl font-normal leading-relaxed">
-            Rapid, certified property maintenance, emergency make-safe repairs, and installations for homes &amp; commercial premises. When you need it done right, fast.
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-10 px-6 pb-20 pt-36 lg:grid-cols-12 lg:px-12 lg:pb-20 lg:pt-44">
+        <div className="space-y-7 text-white lg:col-span-7">
+          <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-sky/40 bg-brand-navy/80 px-3 py-1.5 text-[10.5px] font-medium sm:px-4 sm:text-sm text-brand-sky backdrop-blur-md sm:text-sm">
+            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-brand-sky" />
+            Residential • Commercial • Multiple Trades • Fast Response
           </p>
 
-          <div className="flex flex-wrap items-center gap-4 pt-2">
-            <a className="inline-flex items-center gap-3 bg-white text-slate-900 hover:bg-blue-600 hover:text-white font-bold text-sm px-6 py-3.5 rounded-full shadow-lg transition-all duration-200 group" href="#contact">
-              <span>Book a Free Call</span>
-              <div className="w-6 h-6 rounded-full bg-slate-900 group-hover:bg-white group-hover:text-blue-600 text-white flex items-center justify-center group-hover:translate-x-1 transition-all">
-                <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </div>
+          <h1
+            className="max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px]"
+            id="hero-heading"
+          >
+            Reliable Property Maintenance &amp; <span className="text-brand-sky">Quick Replace</span> Solutions
+          </h1>
+
+          <p className="max-w-[700px] text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl">
+            Rapid, certified property maintenance and building repairs, emergency make-safe repairs, and installations
+            for homes &amp; commercial premises. When you need it done right, fast.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-4">
+            <a
+              className="inline-flex items-center gap-3 rounded-full bg-white px-7 py-3.5 text-base font-semibold text-brand-ink shadow-lg transition-colors hover:bg-brand-sky hover:text-white"
+              href={contact.phoneHref}
+            >
+              <Phone aria-hidden="true" className="h-5 w-5" fill="currentColor" strokeWidth={0} />
+              {contact.phone}
             </a>
-            <a className="inline-flex items-center gap-2 text-white/90 hover:text-blue-400 font-medium text-sm px-4 py-3 rounded-full border border-white/20 hover:border-blue-400 backdrop-blur-sm transition-colors" href="#projects">
-              <span>Explore Past Works</span>
-            </a>
+            <Link
+              className="group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3.5 text-base font-medium text-white transition-colors hover:border-brand-sky hover:text-brand-sky"
+              to="/our-work"
+            >
+              Explore Past Works
+              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
 
-          {/* Star Rating Widget */}
-          <div className="pt-6 flex items-center gap-3 border-t border-white/10 max-w-md">
-            <div className="flex text-amber-400 gap-1">
+          <div className="flex max-w-md items-center gap-3 border-t border-white/10 pt-6">
+            <div aria-hidden="true" className="flex gap-1 text-amber-400">
               {[...Array(5)].map((_, i) => (
-                <svg key={i} className="w-4 h-4 fill-current" viewBox="0 0 20 20">
-                  <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z" />
-                </svg>
+                <Star className="h-4 w-4" fill="currentColor" key={i} strokeWidth={0} />
               ))}
             </div>
-            <span className="text-xs font-semibold text-slate-300">500+ Verified Customer Reviews</span>
+            <span className="text-sm text-white/85">5-Star Customer Reviews</span>
           </div>
         </div>
 
-        {/* Right Floating Glassmorphism Metric Card */}
-        <div className="lg:col-span-5 flex justify-end">
-          <div className="w-full max-w-md p-6 sm:p-8 rounded-3xl dark-glass-effect shadow-glass text-white space-y-6 transform hover:-translate-y-1 transition-transform">
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white flex items-center">
-                  50K<span className="text-blue-500 font-bold">+</span>
-                </div>
-                <p className="text-xs sm:text-sm text-slate-300 mt-1 font-medium leading-snug">
-                  Cured satisfied customers around the globe with precision care.
-                </p>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between pt-2">
-              <div className="flex -space-x-3 overflow-hidden p-1">
-                {[
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuAklHJqtSXk7-k_6cZ5Emt3FAG6cdVNyJ3v9XZjLW3BOGVVqKKia2aY_qLeU1xbctNyxy69staqwfgchrj9JA-km1BP5QNiH4HOKoAA-a9tJFguLXmi8Y7wq6C_lZnVHa2wBP5yEaSc7K1moXtr98kLx9E6Qsc9D9W3GrC9FpCEc6BrmAfBLXl_f_hC2MU2F7nUAsV7vOWHHOhUj3fO-ibl2YQLDcxVl2lHaYBUZJvNWOv9EEvkTI3L',
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuDEEeEcw-xpj4uBxmozFs5Wc6RJduLq0HzM7rW_gCXUrU1Dxo4rGsPfy_rpVMa8OhZd7N7YpqkXmsEuBJaejW2CD0BeLfsDzaN2kHqPLTZcXhfJuazhYn4bXKmQWQSeUMuwbkCSvCZwwjglNs7z2m9Ot9K5ayCyX9tTT1Fl1pG-SpXUIxwiKzRDxVGqmyj7yIlDMik9q17zE3S-pZTa0HjsqVgauKyM4cty8dlT6t1U0SBblDpFHU7z',
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuBBUwgqXDhSQg5pWT7GnioEiN10muK1UI2G0KlcjCBOwIPTi6WeIACl3C-GUVUCV2DNH7EPqXhj8kSEY07_B3rb8XNhR7hRzA_kv17TUyfDRmwY8TXRm_PTptU8lGflhWWXbdZbPDDdshrUcI24Nj4U_kXru6pc2854nCEy6ms9SKx_j4kff6oeRktPvna8S4BX5MdcgSIt952Jl5BruTzaa-LjB8_7M6YBsRgLDaEecHEqoadST0Ph',
-                  'https://lh3.googleusercontent.com/aida-public/AB6AXuAtrjFWfLliCOC2cvOSSOlaUGPL1lK4MR_xSbPZGScJgU2hrLkvw2M_mCDo1uZPAtNU8vZhJhBExSjbBEMQP3oAcov5NZoaukife-9Mdc2oSyW-u606KKcBCZr2QTHOewtUl0hV4PZ5saXNQe_SuGi4ZPN5d70N7lMf3OPrAWAxqIWLtb6TyvjStDE3SD3S0WNm546uDUMl_eVqV8NtmvsIFoYEbA4lzJmiAmuLjQoi6vDdhQG0ubzf',
-                ].map((src, i) => (
-                  <img key={i} alt="Customer avatar" className="inline-block h-11 w-11 rounded-full ring-2 ring-slate-900 object-cover" src={src} />
-                ))}
-              </div>
-              <a className="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-blue-600 hover:text-white text-xs font-bold py-2.5 px-4 rounded-full transition-colors shadow-sm" href="#contact">
-                <span>Contact Now</span>
-                <svg className="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+        <div className="lg:col-span-5 lg:mb-20 lg:flex lg:justify-end">
+          <div className="dark-glass-effect w-full max-w-md space-y-5 rounded-3xl p-8 text-white shadow-card">
+            <h2 className="text-xl font-extrabold uppercase tracking-tight">Property problem? We&rsquo;ll fix it.</h2>
+            <p className="text-[15px] leading-relaxed text-white/85">
+              With multiple trades under one roof, we have the right people for the job. We&rsquo;ll organise the work,
+              coordinate everything and keep you updated from start to finish.
+            </p>
+            <Link
+              className="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-sky hover:text-white"
+              to="/contact"
+            >
+              Get a Quote
+              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </div>
+
+      <TradesMarquee />
     </section>
   )
 }

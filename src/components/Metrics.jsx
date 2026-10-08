@@ -2,15 +2,22 @@ import { metrics } from '../data/siteData'
 
 export default function Metrics() {
   return (
-    <section aria-label="Key Performance Indicators" className="border-y border-slate-100 bg-white py-8 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-slate-100">
-        {metrics.map((m) => (
-          <div className="p-4" key={m.label}>
-            <div className="text-3xl lg:text-4xl font-extrabold text-slate-900">{m.value}</div>
-            <p className="text-xs uppercase tracking-wider text-slate-500 font-semibold mt-1">{m.label}</p>
+    <section aria-label="Quick Replace in numbers" className="border-b border-brand-line bg-white">
+      <dl className="mx-auto grid max-w-7xl grid-cols-2 px-6 py-8 lg:grid-cols-4 lg:px-12 lg:py-9">
+        {metrics.map((m, i) => (
+          <div
+            className={`flex flex-col items-center px-4 py-6 text-center ${
+              i % 2 === 1 ? 'border-l border-brand-line' : ''
+            } ${i > 0 ? 'lg:border-l lg:border-brand-line' : ''} ${i >= 2 ? 'border-t border-brand-line lg:border-t-0' : ''}`}
+            key={m.label}
+          >
+            <dt className="order-last mx-auto mt-2 max-w-[200px] text-sm uppercase tracking-wide text-brand-muted sm:text-base">
+              {m.label}
+            </dt>
+            <dd className="text-3xl font-bold tracking-tight text-brand-ink sm:text-[40px] sm:leading-none">{m.value}</dd>
           </div>
         ))}
-      </div>
+      </dl>
     </section>
   )
 }

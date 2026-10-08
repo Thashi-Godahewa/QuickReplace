@@ -1,21 +1,36 @@
-// Section components will be added here as they're built:
-// import Navbar from './components/Navbar'
-// import Hero from './components/Hero'
-// import Metrics from './components/Metrics'
-// import Services from './components/Services'
-// import HowItWorks from './components/HowItWorks'
-// import About from './components/About'
-// import Projects from './components/Projects'
-// import Testimonials from './components/Testimonials'
-// import CTA from './components/CTA'
-// import Footer from './components/Footer'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import ScrollManager from './components/ScrollManager'
+import HomePage from './pages/HomePage'
+import ContactPage from './pages/ContactPage'
+import ClientsPage from './pages/ClientsPage'
+import AboutPage from './pages/AboutPage'
+import OurWorkPage from './pages/OurWorkPage'
+import ServicesPage from './pages/ServicesPage'
+import ServiceDetailPage from './pages/ServiceDetailPage'
 
 export default function App() {
   return (
-    <div className="antialiased selection:bg-blue-600 selection:text-white">
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-slate-500 text-sm">Quick Replace — project scaffold. Sections coming soon.</p>
+    <BrowserRouter>
+      <ScrollManager />
+      <div className="antialiased selection:bg-brand-sky selection:text-white">
+        <Navbar />
+        <main>
+          <Routes>
+            <Route element={<HomePage />} path="/" />
+            <Route element={<ServicesPage />} path="/services" />
+            <Route element={<ServiceDetailPage />} path="/services/:slug" />
+            <Route element={<OurWorkPage />} path="/our-work" />
+            <Route element={<AboutPage />} path="/about" />
+            <Route element={<ClientsPage />} path="/clients" />
+            <Route element={<ContactPage />} path="/contact" />
+            {/* Unknown URLs fall back to the home page for now */}
+            <Route element={<HomePage />} path="*" />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-    </div>
+    </BrowserRouter>
   )
 }
