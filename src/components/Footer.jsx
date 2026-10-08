@@ -1,89 +1,119 @@
-const serviceLinks = [
-  'Plumbing & Leak Repairs',
-  'Electrical & Switchboards',
-  'Emergency Glazing & Board-Up',
-  'Make Safe & Hazard Containment',
-  'Locksmith & Security',
-  'Painting & Plastering',
-]
-
-const companyLinks = ['About Us', 'Recent Projects', 'Customer Reviews', 'Pricing & Estimates', 'Careers']
+import { Link } from 'react-router-dom'
+import { contact, footerCompany, footerServices } from '../data/siteData'
 
 export default function Footer() {
+  const year = new Date().getFullYear()
+  const heading = 'text-base font-bold uppercase tracking-wider text-white'
+  const link = 'text-[15px] leading-snug text-white/60 transition-colors hover:text-brand-sky'
+
+  // Services are split across two columns, as in the design
+  const half = Math.ceil(footerServices.length / 2)
+  const servicesLeft = footerServices.slice(0, half)
+  const servicesRight = footerServices.slice(half)
+
+  const renderServices = (items) => (
+    <ul className="space-y-3.5">
+      {items.map((s) => (
+        <li key={s}>
+          <Link className={link} to="/services">
+            {s}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  )
+
   return (
-    <footer aria-label="Footer" className="bg-slate-950 text-slate-400 py-16 px-6 md:px-12 border-t border-slate-800/80">
-      <div className="max-w-7xl mx-auto space-y-12">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
-          {/* Col 1: Brand & Bio */}
-          <div className="md:col-span-2 space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0zM12 6.83L8.46 10.37a5 5 0 1 0 7.08 0z" />
-                </svg>
-              </div>
-              <span className="text-xl font-extrabold tracking-tight text-white">Quick Replace</span>
-            </div>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Top-tier residential and commercial rapid property maintenance, plumbing, electrical, glazing, locksmith, and emergency make-safe repairs.
+    <footer className="bg-brand-footer pt-16 text-white lg:pt-20">
+      <div className="mx-auto max-w-7xl px-6 lg:px-12">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-12 pb-12 sm:grid-cols-2 lg:grid-cols-[1.9fr_1fr_1fr_1fr_1.15fr]">
+          {/* Brand */}
+          <div className="sm:col-span-2 lg:col-span-1">
+            <img
+              alt="Quick Replace - Property Maintenance Made Simple"
+              className="h-20 w-auto"
+              src="/images/quick-replace-logo.png"
+            />
+            <p className="mt-6 max-w-md text-base leading-relaxed text-white/60">
+              Top-tier residential and commercial property maintenance and building repairs across Melbourne, including
+              plumbing, electrical, glazing, locksmith services and emergency make-safe repairs.
             </p>
-            <div className="inline-flex items-center gap-2 text-xs font-semibold text-blue-300 bg-blue-950/60 border border-blue-800/60 px-3 py-1.5 rounded-lg">
-              <span>Licensed, Bonded &amp; Insured • Master Trades Lic #QR-94281</span>
-            </div>
+            <p className="mt-6 inline-block rounded-full border border-brand-sky/40 bg-brand-navyLight px-5 py-2.5 text-sm font-medium text-brand-sky/90">
+              Licensed, Bonded &amp; Insured • Master Trades Lic #QR-94281
+            </p>
           </div>
 
-          {/* Col 2: Services */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Services</h4>
-            <ul className="space-y-2 text-xs">
-              {serviceLinks.map((link) => (
-                <li key={link}>
-                  <a className="hover:text-blue-400 transition-colors" href="#services">{link}</a>
+          {/* Services - column 1 */}
+          <nav aria-label="Footer services">
+            <h2 className={heading}>Services</h2>
+            <div className="mt-6">{renderServices(servicesLeft)}</div>
+          </nav>
+
+          {/* Services - column 2 (continues the list, no heading) */}
+          <nav aria-label="Footer services, continued" className="-mt-6 sm:mt-0">
+            <h2 aria-hidden="true" className={`${heading} invisible hidden sm:block`}>
+              &nbsp;
+            </h2>
+            <div className="sm:mt-6">{renderServices(servicesRight)}</div>
+          </nav>
+
+          {/* Company */}
+          <nav aria-label="Footer company">
+            <h2 className={heading}>Company</h2>
+            <ul className="mt-6 space-y-3.5">
+              {footerCompany.map((c) => (
+                <li key={c.label}>
+                  <Link className={link} to={c.to}>
+                    {c.label}
+                  </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Col 3: Company */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Company</h4>
-            <ul className="space-y-2 text-xs">
-              {companyLinks.map((link) => (
-                <li key={link}>
-                  <a className="hover:text-blue-400 transition-colors" href="#">{link}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Col 4: Contact & Hours */}
-          <div className="space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-white">Contact</h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              <li className="flex items-start gap-2">
-                <span className="text-white font-semibold">HQ:</span>
-                <span>742 Evergreen Terrace, Suite 400, New York, NY</span>
+          {/* Contact */}
+          <address className="not-italic">
+            <h2 className={heading}>Contact</h2>
+            <ul className="mt-6 space-y-3.5 text-[15px]">
+              <li>
+                <span className="font-semibold text-white">Phone:</span>{' '}
+                <a className={`${link} ml-1.5`} href={contact.phoneHref}>
+                  {contact.phone}
+                </a>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-white font-semibold">Phone:</span>
-                <a className="hover:text-white" href="tel:8005550199">(800) 555-0199</a>
+              <li>
+                <span className="font-semibold text-white">Email:</span>{' '}
+                <a className={`${link} ml-1.5 break-all`} href={contact.emailHref}>
+                  {contact.email}
+                </a>
               </li>
-              <li className="flex items-start gap-2">
-                <span className="text-white font-semibold">Hours:</span>
-                <span>24/7 Emergency Service</span>
+              <li>
+                <span className="font-semibold text-white">Head office:</span>{' '}
+                <span className="ml-1.5 text-white/60">{contact.headOffice}</span>
               </li>
             </ul>
-          </div>
+          </address>
         </div>
 
-        {/* Bottom Legal Row */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>&copy; {new Date().getFullYear()} Quick Replace Services Inc. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a className="hover:text-slate-300 transition-colors" href="#">Privacy Policy</a>
-            <a className="hover:text-slate-300 transition-colors" href="#">Terms of Service</a>
-            <a className="hover:text-slate-300 transition-colors" href="#">Sitemap</a>
-          </div>
+        <div className="flex flex-col gap-4 border-t border-white/10 py-8 text-[15px] text-white/45 md:flex-row md:items-center md:justify-between">
+          <p>&copy; {year} Quick Replace Pty Ltd | ABN 90 632 652 727 | All rights reserved.</p>
+          <ul className="flex flex-wrap gap-x-10 gap-y-3">
+            <li>
+              <a className="transition-colors hover:text-white" href="#top">
+                Privacy Policy
+              </a>
+            </li>
+            <li>
+              <a className="transition-colors hover:text-white" href="#top">
+                Terms of Service
+              </a>
+            </li>
+            <li>
+              <a className="transition-colors hover:text-white" href="#top">
+                Sitemap
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
