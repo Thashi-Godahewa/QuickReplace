@@ -61,7 +61,24 @@ Services page content (all 16 services, popular searches) lives in `src/data/ser
 Service detail pages live in `src/data/serviceDetails.js` - add an entry there to give another service its own page.
 Licence numbers, figures and the case study come from the design and need confirming with the client.
 
-The contact form does not send anywhere yet. Connect it in `src/services/enquiry.js`.
+## Contact form email
+
+The Contact page form emails each enquiry, with the uploaded photos and videos attached,
+through a small Node server in `server/index.js` (Express + Nodemailer, sent via Gmail).
+
+1. Turn on 2-Step Verification on the sending Gmail account, then create an App Password at
+   https://myaccount.google.com/apppasswords
+2. Copy `.env.example` to `.env` and fill in `SMTP_USER`, `SMTP_PASS` (the app password) and
+   `ENQUIRY_TO` (the inbox that receives enquiries). `.env` is git-ignored - never commit it.
+3. Run `npm install`, then `npm run dev` to start the React app and the enquiry server together.
+   (`npm start` alone runs only the React app, so the form cannot send.)
+
+Limits: up to 5 files, 18MB in total (Gmail rejects emails over 25MB once attachments are encoded).
+Accepted: JPG, PNG, HEIC, PDF, MP4, MOV, M4V, WEBM, 3GP.
+
+When deploying, host `server/` on a Node host (for example Render or Railway) with the same `.env`
+values plus `ALLOWED_ORIGIN` set to the live site address, and build the React app with
+`REACT_APP_ENQUIRY_URL` set to the server's `/api/enquiry` address.
 
 ## Home page sections (in order)
 

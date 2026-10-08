@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowRight, Check, CircleCheck, FileText, ImageIcon, Lock, Mail, MapPin, Phone, User, X } from 'lucide-react'
+import { ArrowRight, Check, CircleCheck, FileText, Film, ImageIcon, Lock, Mail, MapPin, Phone, User, X } from 'lucide-react'
 import { submitEnquiry } from '../../services/enquiry'
 
 const MAX_FILES = 5
-const MAX_BYTES = 25 * 1024 * 1024
-const ACCEPTED = ['image/jpeg', 'image/png', 'image/heic', 'image/heif', 'application/pdf']
-const ACCEPT_ATTR = '.jpg,.jpeg,.png,.heic,.heif,.pdf'
+// Gmail caps an email at 25MB, so all files together must stay under 18MB
+const MAX_TOTAL_BYTES = 18 * 1024 * 1024
+const ACCEPTED = [
+  'image/jpeg', 'image/png', 'image/heic', 'image/heif', 'application/pdf',
+  'video/mp4', 'video/quicktime', 'video/webm', 'video/3gpp', 'video/x-m4v',
+]
+const ACCEPT_ATTR = '.jpg,.jpeg,.png,.heic,.heif,.pdf,.mp4,.mov,.m4v,.webm,.3gp'
 
 const emptyForm = { fullName: '', email: '', phone: '', address: '', description: '' }
 
@@ -75,6 +79,8 @@ export default function EnquiryForm() {
   const [fileError, setFileError] = useState('')
   const [dragging, setDragging] = useState(false)
   const [status, setStatus] = useState('idle') // idle | sending | sent | failed
+  const [sendError, setSendError] = useState('')
+  const [honeypot, setHoneypot] = useState('')
   const inputRef = useRef(null)
   const filesRef = useRef(files)
   filesRef.current = files
@@ -92,11 +98,15 @@ export default function EnquiryForm() {
     const incoming = Array.from(list)
     const accepted = []
     let problem = ''
+    let total = files.reduce((sum, f) => sum + f.file.size, 0)
     incoming.forEach((file) => {
-      const typeOk = ACCEPTED.includes(file.type) || /\.(heic|heif)$/i.test(file.name)
-      if (!typeOk) problem = `${file.name} is not a JPG, PNG, HEIC or PDF file.`
-      else if (file.size > MAX_BYTES) problem = `${file.name} is larger than 25MB.`
-      else accepted.push(file)
+      const typeOk = ACCEPTED.includes(file.type) || /\.(heic|heif|mov|m4v|3gp)$/i.test(file.name)
+      if (!typeOk) problem = `${file.name} is not a photo, video or PDF file.`
+      else if (total + file.size > MAX_TOTAL_BYTES) problem = `${file.name} would take your files over the 18MB total limit.`
+      else {
+        total += file.size
+        accepted.push(file)
+      }
     })
     const room = MAX_FILES - files.length
     if (accepted.length > room) problem = `You can upload up to ${MAX_FILES} files.`
@@ -129,11 +139,14 @@ export default function EnquiryForm() {
     }
     const data = new FormData()
     Object.entries(values).forEach(([k, v]) => data.append(k, v))
+    data.append('website', honeypot)
     files.forEach((f) => data.append('photos', f.file))
     setStatus('sending')
+    setSendError('')
     try {
       const res = await submitEnquiry(data)
       setStatus(res.ok ? 'sent' : 'failed')
+      if (!res.ok) setSendError(res.error || '')
     } catch {
       setStatus('failed')
     }
@@ -200,9 +213,9 @@ export default function EnquiryForm() {
       <div>
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <p className="text-[13px] font-semibold uppercase tracking-wide text-brand-ink" id="upload-label">
-            Upload photos (up to {MAX_FILES} files)
+            Upload photos or videos (up to {MAX_FILES} files)
           </p>
-          <p className="text-xs text-brand-muted">JPG, PNG, HEIC, PDF max 25MB</p>
+          <p className="text-xs text-brand-muted">JPG, PNG, HEIC, PDF, MP4, MOV - 18MB total</p>
         </div>
 
         <div
@@ -234,7 +247,7 @@ export default function EnquiryForm() {
             <ImageIcon aria-hidden="true" className="h-6 w-6" />
           </span>
           <p className="mt-4 text-[15px] font-semibold text-brand-ink">
-            Drag &amp; drop photos here, or <span className="text-brand-sky underline underline-offset-2">browse files</span>
+            Drag &amp; drop photos or videos here, or <span className="text-brand-sky underline underline-offset-2">browse files</span>
           </p>
           <p className="mt-1 text-[13px] text-brand-muted">Close-up and wider photos help us understand the work required.</p>
           <input
@@ -265,7 +278,11 @@ export default function EnquiryForm() {
                   <img alt="" className="h-10 w-10 rounded-md object-cover" src={preview} />
                 ) : (
                   <span className="flex h-10 w-10 items-center justify-center rounded-md bg-white text-brand-muted">
-                    <FileText aria-hidden="true" className="h-5 w-5" />
+                    {file.type.startsWith('video/') || /\.(mov|m4v|3gp)$/i.test(file.name) ? (
+                      <Film aria-hidden="true" className="h-5 w-5" />
+                    ) : (
+                      <FileText aria-hidden="true" className="h-5 w-5" />
+                    )}
                   </span>
                 )}
                 <div className="min-w-0 flex-1">
@@ -289,6 +306,12 @@ export default function EnquiryForm() {
         )}
       </div>
 
+      {/* Hidden from people; bots that fill it in are ignored by the server */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label htmlFor="website">Website</label>
+        <input autoComplete="off" id="website" name="website" onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} type="text" value={honeypot} />
+      </div>
+
       <div className="border-t border-brand-line pt-5">
         <button
           className="group flex h-14 w-full items-center justify-center gap-3 rounded-xl bg-brand-navy text-lg font-semibold text-white shadow-[0_14px_30px_-12px_rgba(64,110,255,0.55)] transition-colors hover:bg-brand-navyLight disabled:cursor-wait disabled:opacity-80"
@@ -302,7 +325,7 @@ export default function EnquiryForm() {
         </button>
         {status === 'failed' && (
           <p className="mt-3 text-center text-sm text-red-600" role="alert">
-            Something went wrong sending your enquiry. Please try again or call us.
+            {sendError || 'Something went wrong sending your enquiry. Please try again or call us.'}
           </p>
         )}
         <p className="mt-3 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-[13px] text-brand-muted">
