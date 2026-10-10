@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { MapContainer, Marker, Polygon, TileLayer, useMap } from 'react-leaflet'
+import { CircleMarker, MapContainer, Marker, Polygon, TileLayer, Tooltip, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import { ArrowRight, CircleAlert, CircleCheck } from 'lucide-react'
@@ -258,6 +258,33 @@ const INNER_MELBOURNE = [
   [-37.755, 144.895], [-37.725, 144.95],
 ]
 
+// Labelled towns on the map: [name, latitude, longitude, label side]
+const TOWNS = [
+  ['Macedon', -37.418, 144.563, 'right'], ['Gisborne', -37.49, 144.593, 'right'],
+  ['Sunbury', -37.578, 144.726, 'right'], ['Craigieburn', -37.6, 144.945, 'right'],
+  ['Epping', -37.645, 145.03, 'right'], ['Bundoora', -37.698, 145.06, 'right'],
+  ['Reservoir', -37.717, 145.007, 'top'], ['Lilydale', -37.757, 145.355, 'right'],
+  ['Ringwood', -37.815, 145.229, 'right'], ['Glen Waverley', -37.878, 145.164, 'right'],
+  ['Dandenong', -37.987, 145.215, 'right'], ['Berwick', -38.033, 145.35, 'right'],
+  ['Cranbourne', -38.099, 145.283, 'right'], ['Frankston', -38.144, 145.126, 'right'],
+  ['Brighton', -37.906, 144.999, 'right'], ['St Kilda', -37.868, 144.981, 'right'],
+  ['Truganina', -37.818, 144.75, 'top'], ['Tarneit', -37.832, 144.695, 'left'],
+  ['Werribee', -37.9, 144.66, 'right'], ['St Albans', -37.745, 144.8, 'right'],
+  ['Melton', -37.683, 144.585, 'right'], ['Lara', -38.023, 144.41, 'right'],
+  ['Geelong', -38.149, 144.361, 'top'], ['Highton', -38.17, 144.31, 'bottom'],
+]
+
+const LABEL_OFFSET = { right: [6, 0], left: [-6, 0], top: [0, -6], bottom: [0, 6] }
+
+// Surrounding places shown as plain text on the overview, as in the design
+const PLACES = [
+  ['Blackwood', -37.475, 144.3], ['Ballan', -37.6, 144.225], ['Darley', -37.655, 144.44],
+  ['Bacchus Marsh', -37.675, 144.44], ['Whittlesea', -37.511, 145.118], ['Yarra Junction', -37.78, 145.61],
+  ['Gembrook', -37.952, 145.553], ['Nar Nar Goon', -38.082, 145.57], ['Bayles', -38.18, 145.56],
+  ['Mornington', -38.22, 145.04], ['St Leonards', -38.17, 144.72], ['Queenscliff', -38.267, 144.66],
+  ['Ocean Grove', -38.26, 144.52], ['Clifton Springs', -38.155, 144.565],
+]
+
 const MELBOURNE = [-37.8136, 144.9631]
 const AREA_BOUNDS = L.latLngBounds(SERVICE_BOUNDARY)
 const FIT_OPTIONS = { padding: [16, 16] }
@@ -265,10 +292,13 @@ const FIT_OPTIONS = { padding: [16, 16] }
 const RED = '#e3262f'
 const BLUE = '#01aee4' // brand sky blue, used for the checked post code pin
 
-// Free satellite imagery from Esri.
+// Free satellite imagery from Esri (no place names - those are drawn by this component).
 // The attribution must stay visible.
 const SATELLITE_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
 const ATTRIBUTION = 'Imagery &copy; Esri, Maxar, Earthstar Geographics'
+
+const placeIcon = (name) =>
+  L.divIcon({ className: 'qr-place', html: `<span>${name}</span>`, iconSize: [0, 0], iconAnchor: [0, 0] })
 
 const pinIcon = (label, colour = RED) =>
   L.divIcon({
@@ -280,9 +310,15 @@ const pinIcon = (label, colour = RED) =>
     iconAnchor: [17, 42],
   })
 
-// Styles for the map pins (Leaflet renders these outside React, so plain CSS is needed)
+// Styles for the map labels (Leaflet renders these outside React, so plain CSS is needed)
 const MAP_STYLES = `
+  .qr-map .leaflet-tooltip.qr-town { background: rgba(11, 26, 46, 0.82); border: 0; border-radius: 4px; box-shadow: none;
+    color: #fff; font: 600 11px/1.3 "Plus Jakarta Sans", sans-serif; padding: 1px 6px; }
+  .qr-map .leaflet-tooltip.qr-town::before { display: none; }
   .qr-map .qr-pin { background: none; border: 0; }
+  .qr-map .qr-place { background: none; border: 0; }
+  .qr-map .qr-place span { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; color: #f1f5f9;
+    font: 500 11px/1 "Plus Jakarta Sans", sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9); pointer-events: none; }
   .qr-map .qr-pin-label { position: absolute; left: 50%; top: 46px; transform: translateX(-50%); white-space: nowrap;
     background: ${RED}; color: #fff; border: 1px solid #fff; border-radius: 4px; padding: 2px 7px;
     font: 700 12px/1.3 "Plus Jakarta Sans", sans-serif; }
@@ -329,6 +365,23 @@ function ServiceMap({ checked }) {
           pathOptions={{ color: '#fff', weight: 1.5, dashArray: '3 4', fillColor: RED, fillOpacity: 0.45 }}
           positions={INNER_MELBOURNE}
         />
+
+        {PLACES.map(([name, lat, lng]) => (
+          <Marker icon={placeIcon(name)} interactive={false} key={name} keyboard={false} position={[lat, lng]} />
+        ))}
+
+        {TOWNS.map(([name, lat, lng, side]) => (
+          <CircleMarker
+            center={[lat, lng]}
+            key={name}
+            pathOptions={{ color: '#fff', weight: 2, fillColor: RED, fillOpacity: 1 }}
+            radius={5}
+          >
+            <Tooltip className="qr-town" direction={side} offset={LABEL_OFFSET[side]} permanent>
+              {name}
+            </Tooltip>
+          </CircleMarker>
+        ))}
 
         <Marker icon={pinIcon('Melbourne')} position={MELBOURNE} zIndexOffset={1000} />
         {checked && <Marker icon={pinIcon(checked.postcode, BLUE)} position={checked.position} zIndexOffset={2000} />}
