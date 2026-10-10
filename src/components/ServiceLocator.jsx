@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import { MapContainer, Marker, Polygon, TileLayer, useMap } from 'react-leaflet'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
 import { ArrowRight, CircleAlert, CircleCheck } from 'lucide-react'
 import { contact } from '../data/siteData'
 import { Accent, Container, SectionBadge } from './ui'
@@ -233,6 +236,120 @@ const SERVICE_POSTCODES = {
   '3977': ['Cannons Creek, Cranbourne, Cranbourne East +8 more', -38.1353, 145.2689],
 }
 
+// Red service boundary drawn on the map ([latitude, longitude] points, traced from the design)
+const SERVICE_BOUNDARY = [
+  [-37.4, 144.55], [-37.47, 144.62], [-37.52, 144.74], [-37.53, 144.9],
+  [-37.55, 145.0], [-37.575, 145.08], [-37.62, 145.18], [-37.7, 145.3],
+  [-37.745, 145.4], [-37.8, 145.38], [-37.87, 145.33], [-37.95, 145.36],
+  [-38.03, 145.37], [-38.1, 145.33], [-38.16, 145.24], [-38.19, 145.15],
+  [-38.15, 145.11], [-38.06, 145.11], [-37.99, 145.06], [-37.92, 144.99],
+  [-37.87, 144.96], [-37.845, 144.92], [-37.87, 144.88], [-37.885, 144.8],
+  [-37.93, 144.76], [-37.98, 144.68], [-38.03, 144.48], [-38.09, 144.39],
+  [-38.13, 144.4], [-38.14, 144.48], [-38.18, 144.62], [-38.235, 144.58],
+  [-38.235, 144.4], [-38.235, 144.3], [-38.17, 144.26], [-38.06, 144.29],
+  [-37.97, 144.33], [-37.84, 144.45], [-37.7, 144.51], [-37.6, 144.52],
+  [-37.48, 144.51],
+]
+
+// Inner Melbourne zone shaded red on the map
+const INNER_MELBOURNE = [
+  [-37.705, 145.0], [-37.72, 145.06], [-37.79, 145.065], [-37.84, 145.05],
+  [-37.865, 145.02], [-37.875, 144.975], [-37.845, 144.925], [-37.8, 144.885],
+  [-37.755, 144.895], [-37.725, 144.95],
+]
+
+const MELBOURNE = [-37.8136, 144.9631]
+const AREA_BOUNDS = L.latLngBounds(SERVICE_BOUNDARY)
+const FIT_OPTIONS = { padding: [16, 16] }
+
+const RED = '#e3262f'
+const BLUE = '#01aee4' // brand sky blue, used for the checked post code pin
+
+// Free satellite imagery from Esri.
+// The attribution must stay visible.
+const SATELLITE_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
+const ATTRIBUTION = 'Imagery &copy; Esri, Maxar, Earthstar Geographics'
+
+const pinIcon = (label, colour = RED) =>
+  L.divIcon({
+    className: 'qr-pin',
+    html: `<svg width="34" height="44" viewBox="-2 -2 34 44" aria-hidden="true" style="overflow:visible"><path d="M15 0C6.7 0 0 6.6 0 14.8 0 25.9 15 40 15 40s15-14.1 15-25.2C30 6.6 23.3 0 15 0z" fill="${colour}" stroke="#fff" stroke-width="2"/><circle cx="15" cy="14.5" r="5.5" fill="#fff"/></svg>${
+      label ? `<span class="qr-pin-label" style="background:${colour}">${label}</span>` : ''
+    }`,
+    iconSize: [34, 44],
+    iconAnchor: [17, 42],
+  })
+
+// Styles for the map pins (Leaflet renders these outside React, so plain CSS is needed)
+const MAP_STYLES = `
+  .qr-map .qr-pin { background: none; border: 0; }
+  .qr-map .qr-pin-label { position: absolute; left: 50%; top: 46px; transform: translateX(-50%); white-space: nowrap;
+    background: ${RED}; color: #fff; border: 1px solid #fff; border-radius: 4px; padding: 2px 7px;
+    font: 700 12px/1.3 "Plus Jakarta Sans", sans-serif; }
+  .qr-map .leaflet-control-zoom a { color: #0b1a2e; }
+  .qr-map .leaflet-control-attribution { font-size: 9px; }
+`
+
+// Moves the map to the checked post code, and back to the full area when it is cleared
+function FlyTo({ target }) {
+  const map = useMap()
+  const first = useRef(true)
+  useEffect(() => {
+    if (first.current) {
+      first.current = false
+      if (!target) return
+    }
+    if (target) map.flyTo(target, 12, { duration: 1.2 })
+    else map.flyToBounds(AREA_BOUNDS, { ...FIT_OPTIONS, duration: 1.2 })
+  }, [map, target])
+  return null
+}
+
+function ServiceMap({ checked }) {
+  return (
+    <div className="qr-map isolate h-[380px] overflow-hidden rounded-2xl sm:h-[460px] lg:h-[560px]">
+      <style>{MAP_STYLES}</style>
+      <MapContainer
+        attributionControl
+        bounds={AREA_BOUNDS}
+        boundsOptions={FIT_OPTIONS}
+        className="h-full w-full"
+        scrollWheelZoom={false}
+        zoomControl={false}
+        zoomSnap={0.25}
+      >
+        <TileLayer attribution={ATTRIBUTION} url={SATELLITE_URL} />
+        <ZoomTopRight />
+
+        <Polygon
+          pathOptions={{ color: RED, weight: 3, fillColor: '#4ade80', fillOpacity: 0.35 }}
+          positions={SERVICE_BOUNDARY}
+        />
+        <Polygon
+          pathOptions={{ color: '#fff', weight: 1.5, dashArray: '3 4', fillColor: RED, fillOpacity: 0.45 }}
+          positions={INNER_MELBOURNE}
+        />
+
+        <Marker icon={pinIcon('Melbourne')} position={MELBOURNE} zIndexOffset={1000} />
+        {checked && <Marker icon={pinIcon(checked.postcode, BLUE)} position={checked.position} zIndexOffset={2000} />}
+
+        <FlyTo target={checked ? checked.position : null} />
+      </MapContainer>
+    </div>
+  )
+}
+
+// Zoom buttons in the top-right corner, as in the design
+function ZoomTopRight() {
+  const map = useMap()
+  useEffect(() => {
+    const control = L.control.zoom({ position: 'topright' })
+    control.addTo(map)
+    return () => control.remove()
+  }, [map])
+  return null
+}
+
 export default function ServiceLocator() {
   const [postcode, setPostcode] = useState('')
   const [result, setResult] = useState(null) // null | { status: 'yes' | 'no' | 'invalid', postcode, suburbs }
@@ -245,19 +362,23 @@ export default function ServiceLocator() {
       return
     }
     const match = SERVICE_POSTCODES[value]
-    setResult(match ? { status: 'yes', postcode: value, suburbs: match[0] } : { status: 'no', postcode: value })
+    setResult(
+      match
+        ? { status: 'yes', postcode: value, suburbs: match[0], position: [match[1], match[2]] }
+        : { status: 'no', postcode: value },
+    )
   }
+
+  const checked = result && result.status === 'yes' ? result : null
 
   return (
     <section aria-labelledby="locator-heading" className="bg-brand-mist py-16 lg:py-11" id="service-area">
       <Container className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-        <div className="order-2 rounded-3xl border border-brand-line bg-white p-6 lg:order-1">
-          <img
-            alt="Map of Melbourne showing the Quick Replace service area from Macedon to Mornington and Geelong to Lilydale"
-            className="w-full rounded-2xl"
-            loading="lazy"
-            src="/images/service-area-map.png"
-          />
+        <div className="order-2 rounded-3xl border border-brand-line bg-white p-4 sm:p-6 lg:order-1">
+          <h3 className="sr-only">
+            Map of the Quick Replace service area, from Macedon to Frankston and Geelong to Lilydale
+          </h3>
+          <ServiceMap checked={checked} />
         </div>
 
         <div className="order-1 lg:order-2">
