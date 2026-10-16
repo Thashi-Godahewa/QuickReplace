@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 import { contact, footerCompany, footerServices } from '../data/siteData'
+import { allServices } from '../data/servicesData'
+import { serviceDetails } from '../data/serviceDetails'
 
 export default function Footer() {
   const year = new Date().getFullYear()
@@ -11,11 +13,17 @@ export default function Footer() {
   const servicesLeft = footerServices.slice(0, half)
   const servicesRight = footerServices.slice(half)
 
+  // Services with a detail page link straight to it, the rest go to /services
+  const footerServicePath = (title) => {
+    const match = allServices.find((s) => s.title === title)
+    return match && serviceDetails[match.slug] ? `/services/${match.slug}` : '/services'
+  }
+
   const renderServices = (items) => (
     <ul className="space-y-3.5">
       {items.map((s) => (
         <li key={s}>
-          <Link className={link} to="/services">
+          <Link className={link} to={footerServicePath(s)}>
             {s}
           </Link>
         </li>
