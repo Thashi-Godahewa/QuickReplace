@@ -14,6 +14,64 @@ const sharedQuote = {
 const repairFinish = (text) => ({ label: 'Repair + Finish', text })
 
 export const serviceDetails = {
+  plumbing: {
+    title: 'Plumbing',
+    pageTitle: 'Plumbing Services Melbourne',
+    hero: {
+      accent: 'Plumbing',
+      title: 'Services Melbourne',
+      description:
+        'Plumbing repairs and maintenance for residential and commercial properties across Melbourne, from everyday plumbing issues to urgent repairs.',
+      image: '/images/service-plumbing.jpg',
+      imageAlt: 'Plumber repairing the pipes under a kitchen sink',
+    },
+    offerings: {
+      heading: { before: 'Our Plumbing', accent: 'Services' },
+      intro:
+        'Blocked drains, leaking taps, damaged pipes or urgent plumbing faults—we handle the repairs and explain what needs doing before work begins.',
+      // `icon` keys map to lucide-react icons in ServiceOfferings.jsx
+      items: [
+        {
+          icon: 'home',
+          title: 'Blocked Drains',
+          tag: 'Drainage',
+          text: 'Clearing blocked sinks, toilets and drains and identifying common drainage issues affecting residential and commercial properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Tap & Fixture Repairs',
+          tag: 'Repairs',
+          text: 'Repairs and replacement of leaking or damaged taps, toilets, fixtures and other common plumbing components.',
+        },
+        {
+          icon: 'office',
+          title: 'Leak Detection & Pipe Repairs',
+          tag: 'Pipework',
+          text: 'Locating water leaks and repairing or replacing damaged pipework to help prevent further property damage.',
+        },
+        {
+          icon: 'tower',
+          title: 'Emergency Plumbing Repairs',
+          tag: 'Urgent',
+          text: 'Responsive assistance for urgent plumbing problems including significant leaks, burst pipes and other unexpected plumbing faults.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Plumbing Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From leaking taps and blocked drains to damaged pipework and urgent plumbing problems, Quick Replace provides plumbing repairs for residential, commercial and managed properties across Melbourne.',
+      note: repairFinish('If a leak has damaged walls or ceilings, we can also take care of the plastering and painting afterwards.'),
+      items: [
+        'Blocked and slow drains',
+        'Leaks, damaged pipes and plumbing fixtures',
+        'Tap, toilet and general plumbing repairs',
+        'Hot water system faults and repairs',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
   'painting-plastering': {
     title: 'Painting & Plastering',
     pageTitle: 'Painting & Plastering Services Melbourne',
