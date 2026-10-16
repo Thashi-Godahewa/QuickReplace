@@ -184,6 +184,63 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  glazing: {
+    title: 'Glazing',
+    pageTitle: 'Glazing Services Melbourne',
+    hero: {
+      accent: 'Glazing',
+      title: 'Services Melbourne',
+      description:
+        'Glass repairs and replacement for residential and commercial properties across Melbourne, including urgent broken-glass situations.',
+      image: '/images/service-glazing.jpg',
+      imageAlt: 'Glazier cutting a sheet of glass to size',
+    },
+    offerings: {
+      heading: { before: 'Our Glazing', accent: 'Services' },
+      intro:
+        'We replace damaged window, door and shopfront glass, and can secure broken glazing until replacement is completed.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Window Glass Replacement',
+          tag: 'Windows',
+          text: 'Replacement of broken, cracked or damaged glass in residential and commercial windows.',
+        },
+        {
+          icon: 'home',
+          title: 'Door Glass Replacement',
+          tag: 'Doors',
+          text: 'Repair and replacement of damaged glass in doors and glazed entry areas.',
+        },
+        {
+          icon: 'office',
+          title: 'Commercial & Shopfront Glazing',
+          tag: 'Commercial',
+          text: 'Glass replacement and repairs for shopfronts, offices, commercial doors and other commercial glazing.',
+        },
+        {
+          icon: 'tower',
+          title: 'Emergency Glass Make-Safe',
+          tag: 'Urgent',
+          text: 'Temporary securing and make-safe work following broken glass while permanent replacement is organised.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Glazing Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From broken windows and doors to damaged commercial shopfronts, we provide glass repair, replacement and emergency make-safe services across Melbourne.',
+      note: repairFinish('After damaged glass is replaced, we can also take care of related frame, door or finishing repairs.'),
+      items: [
+        'Broken and cracked window glass',
+        'Damaged door and shopfront glass',
+        'Emergency glass securing and replacement',
+        'Broken glass in commercial entrances',
+      ],
+    },
+    quote: sharedQuote,
+  },
 }
 
 export function servicePath(slug) {
