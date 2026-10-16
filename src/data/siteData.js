@@ -44,36 +44,42 @@ export const metrics = [
 export const services = [
   {
     icon: 'plumbing',
+    slug: 'plumbing',
     title: 'Plumbing',
     description:
       'Blocked drain clearing, tap repairs, high-pressure hydro-jetting, mechanical drain cleaning, leak detection, pipe replacements and emergency plumbing repairs.',
   },
   {
     icon: 'painting',
+    slug: 'painting-plastering',
     title: 'Painting & Plastering',
     description:
       'Wall and ceiling repairs, damaged plaster, cracks and holes, water-damaged plaster, patching, interior and exterior painting, touch-ups and make-good works.',
   },
   {
     icon: 'electrical',
+    slug: 'electrical',
     title: 'Electrical',
     description:
       'Power and lighting faults, switchboards, power points, safety switches, electrical repairs, installations and electrical make-safe work.',
   },
   {
     icon: 'glazing',
+    slug: 'glazing',
     title: 'Glazing',
     description:
       'Broken and cracked glass, window and door glass replacement, shopfront glazing, glass repairs and emergency boarding and make-safe services.',
   },
   {
     icon: 'makeSafe',
+    slug: 'make-safe',
     title: 'Make Safe',
     description:
       'Urgent make-safe repairs for broken glass, damaged doors and windows, water leaks, electrical hazards and other property damage that needs to be secured quickly.',
   },
   {
     icon: 'locksmith',
+    slug: 'locksmith',
     title: 'Locksmith',
     description:
       'Lock repairs and replacements, door locks, rekeying, lockouts, damaged locks and security upgrades for residential and commercial properties.',
