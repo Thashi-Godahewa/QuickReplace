@@ -2,8 +2,14 @@
 // servicesData.js. A service with an entry here gets its own page at
 // /services/<slug>, and its Learn More links go there.
 //
-// To add another service page, copy the painting-plastering entry,
-// change the slug key and content, and add its hero photo to /public/images.
+// To add another service page, copy one of the entries below, change the
+// slug key and content, and add its hero photo to /public/images.
+
+// Shared by every service page (the light-blue statement band)
+const sharedQuote = {
+  text: 'We want our clients to know what’s happening, understand what they’re paying for, and feel confident the job is being done properly. Our goal is simple — make property maintenance easier.',
+  label: 'Built on long-term relationships',
+}
 
 export const serviceDetails = {
   'painting-plastering': {
@@ -61,10 +67,7 @@ export const serviceDetails = {
         'Exterior & building facade painting',
       ],
     },
-    quote: {
-      text: 'Our priority is to build trustworthy and long-term relationships with our customers, so we are dedicated to safety and service excellence!',
-      label: 'Quick Replace Quality Assurance Guarantee',
-    },
+    quote: sharedQuote,
   },
 }
 
