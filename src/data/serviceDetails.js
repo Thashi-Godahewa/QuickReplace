@@ -298,6 +298,62 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  locksmith: {
+    title: 'Locksmith',
+    pageTitle: 'Locksmith Services Melbourne',
+    hero: {
+      accent: 'Locksmith',
+      title: 'Services Melbourne',
+      description: 'Lock repairs, replacements and access solutions for residential and commercial properties across Melbourne.',
+      image: '/images/service-locksmith.jpg',
+      imageAlt: 'Locksmith fitting a lock to a glass door',
+    },
+    offerings: {
+      heading: { before: 'Our Locksmith', accent: 'Services' },
+      intro:
+        'Whether a lock is damaged, keys are missing or access needs to change, we can help with repairs, replacement and rekeying.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Lock Repairs',
+          tag: 'Repairs',
+          text: 'Repair of faulty or damaged locks on residential and commercial doors.',
+        },
+        {
+          icon: 'home',
+          title: 'Lock Replacement',
+          tag: 'Security',
+          text: 'Replacement of worn, damaged or outdated locking hardware.',
+        },
+        {
+          icon: 'office',
+          title: 'Rekeying',
+          tag: 'Access',
+          text: 'Rekeying existing locks when access requirements change without needing to replace the entire lock.',
+        },
+        {
+          icon: 'tower',
+          title: 'Lockout Assistance',
+          tag: 'Urgent',
+          text: 'Assistance with property access where keys are lost, unavailable or locks are preventing entry.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Locksmith Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From damaged locks and lockouts to replacements and rekeying, we provide locksmith services for residential, commercial and managed properties across Melbourne.',
+      note: repairFinish('If damaged locks have affected doors or frames, we can also take care of those repairs.'),
+      items: [
+        'Faulty and damaged locks',
+        'Lock replacement and rekeying',
+        'Property access and lockout issues',
+        'Rekeying following tenancy changes',
+      ],
+    },
+    quote: sharedQuote,
+  },
 }
 
 export function servicePath(slug) {
