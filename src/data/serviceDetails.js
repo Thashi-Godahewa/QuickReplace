@@ -354,6 +354,63 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'heating-cooling': {
+    title: 'Heating & Cooling',
+    pageTitle: 'Heating & Cooling Services Melbourne',
+    hero: {
+      accent: 'Heating & Cooling',
+      title: 'Services Melbourne',
+      description:
+        'Heating and cooling repairs and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-heating-cooling.jpg',
+      imageAlt: 'Technician servicing a split-system air conditioner',
+    },
+    offerings: {
+      heading: { before: 'Our Heating & Cooling', accent: 'Services' },
+      intro:
+        'We repair and maintain heating and cooling equipment, including split systems, ducted systems and commercial refrigeration.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Split-System Maintenance',
+          tag: 'Air Conditioning',
+          text: 'Maintenance and repairs for split-system heating and cooling units.',
+        },
+        {
+          icon: 'home',
+          title: 'Ducted System Maintenance',
+          tag: 'Ducted',
+          text: 'Maintenance and repairs for ducted heating and cooling systems.',
+        },
+        {
+          icon: 'office',
+          title: 'Heating & Cooling Repairs',
+          tag: 'Repairs',
+          text: 'Fault finding and repairs for heating and cooling systems that are not operating correctly.',
+        },
+        {
+          icon: 'tower',
+          title: 'System Replacement',
+          tag: 'Replacement',
+          text: 'Replacement of heating and cooling systems where existing equipment is no longer practical or economical to repair.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Heating & Cooling Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From systems that aren’t heating or cooling properly to breakdowns and ongoing maintenance, we provide heating and cooling services for residential, commercial and managed properties across Melbourne.',
+      note: repairFinish('If a replacement system requires related electrical or finishing work, we can manage the additional trades.'),
+      items: [
+        'Systems not heating or cooling correctly',
+        'Faulty or ageing heating and cooling equipment',
+        'Routine maintenance and repair requirements',
+        'Commercial coolroom and refrigeration faults',
+      ],
+    },
+    quote: sharedQuote,
+  },
 }
 
 export function servicePath(slug) {
