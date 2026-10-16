@@ -241,6 +241,63 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'make-safe': {
+    title: 'Make Safe',
+    pageTitle: 'Emergency Make Safe Services Melbourne',
+    hero: {
+      accent: 'Emergency Make Safe',
+      title: 'Services Melbourne',
+      description:
+        'Urgent property make-safe assistance for damage that needs to be secured before permanent repairs can be completed.',
+      image: '/images/service-make-safe.jpg',
+      imageAlt: 'Tradespeople securing a damaged roof',
+    },
+    offerings: {
+      heading: { before: 'Our Make Safe', accent: 'Services' },
+      intro:
+        'When damage leaves a property unsafe or unsecured, we can make the area safe and arrange the repairs needed afterwards.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Broken Glass Make-Safe',
+          tag: 'Glazing',
+          text: 'Securing areas affected by broken or damaged glass to reduce immediate safety and security risks.',
+        },
+        {
+          icon: 'home',
+          title: 'Door & Window Make-Safe',
+          tag: 'Security',
+          text: 'Temporary securing of damaged doors, windows and openings following unexpected property damage.',
+        },
+        {
+          icon: 'office',
+          title: 'Water Damage Make-Safe',
+          tag: 'Water',
+          text: 'Initial measures to reduce further property damage following urgent leaks or water-related incidents.',
+        },
+        {
+          icon: 'tower',
+          title: 'Electrical Make-Safe',
+          tag: 'Electrical',
+          text: 'Making electrically unsafe areas secure following faults, damage or other property incidents until permanent repairs can be completed.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Make Safe Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'When unexpected property damage creates an immediate safety or security problem, we can secure the affected area and take care of the follow-up repairs.',
+      note: repairFinish('Once the immediate risk is dealt with, we can handle the permanent repairs and any necessary make-good work.'),
+      items: [
+        'Broken glass and damaged openings',
+        'Water leaks and related property damage',
+        'Electrical hazards and urgent property damage',
+        'Damaged doors and windows requiring temporary security',
+      ],
+    },
+    quote: sharedQuote,
+  },
 }
 
 export function servicePath(slug) {
