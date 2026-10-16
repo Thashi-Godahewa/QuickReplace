@@ -128,6 +128,62 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  electrical: {
+    title: 'Electrical',
+    pageTitle: 'Electrical Services Melbourne',
+    hero: {
+      accent: 'Electrical',
+      title: 'Services Melbourne',
+      description: 'Electrical repairs, maintenance and installations for residential and commercial properties across Melbourne.',
+      image: '/images/service-electrical.jpg',
+      imageAlt: 'Electrician testing a switchboard with a multimeter',
+    },
+    offerings: {
+      heading: { before: 'Our Electrical', accent: 'Services' },
+      intro:
+        'Power faults, lighting repairs, switches and switchboards—we provide electrical work for homes, businesses and managed properties.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Power & Lighting Repairs',
+          tag: 'Electrical',
+          text: 'Assessment and repair of common power and lighting faults in homes, managed properties and commercial premises.',
+        },
+        {
+          icon: 'home',
+          title: 'Power Points & Switches',
+          tag: 'Installation',
+          text: 'Repair and replacement of damaged or faulty switches, power points and associated electrical fittings.',
+        },
+        {
+          icon: 'office',
+          title: 'Safety Switch & Switchboard Work',
+          tag: 'Safety',
+          text: 'Electrical maintenance involving safety switches, switchboards and related components where required.',
+        },
+        {
+          icon: 'tower',
+          title: 'Electrical Make-Safe',
+          tag: 'Urgent',
+          text: 'Making unsafe electrical areas secure following faults, damage or other property incidents before permanent repairs are completed.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Electrical Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From faulty lighting and power points to electrical faults and make-safe work, Quick Replace provides electrical repairs and maintenance for residential, commercial and managed properties across Melbourne.',
+      note: repairFinish('If electrical work leaves walls or ceilings needing repairs, we can also organise the plastering and painting.'),
+      items: [
+        'Power and lighting faults',
+        'Switches, power points and electrical fittings',
+        'Electrical repairs and make-safe work',
+        'Safety switch and switchboard faults',
+      ],
+    },
+    quote: sharedQuote,
+  },
 }
 
 export function servicePath(slug) {
