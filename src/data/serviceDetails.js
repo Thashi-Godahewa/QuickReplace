@@ -11,6 +11,8 @@ const sharedQuote = {
   label: 'Built on long-term relationships',
 }
 
+const repairFinish = (text) => ({ label: 'Repair + Finish', text })
+
 export const serviceDetails = {
   'painting-plastering': {
     title: 'Painting & Plastering',
@@ -26,32 +28,31 @@ export const serviceDetails = {
     offerings: {
       heading: { before: 'Our Painting', accent: 'Services' },
       intro:
-        'Painting your home or office is sometimes the fastest and easiest way to make any space look like new! New paint can make your space more relaxing or vibrant or simply more visually appealing, and can define the look and feel of your room.',
-      // `icon` keys map to lucide-react icons in ServiceOfferings.jsx
+        'From plaster patching and ceiling repairs to full interior and exterior painting, we can handle the preparation and finishing work.',
       items: [
         {
           icon: 'home',
-          title: 'Residential Interior Painting',
+          title: 'Interior Painting',
           tag: 'Interior',
-          text: 'Walls, ceilings, doors, skirting boards, cornices and other interior painting and repainting.',
+          text: 'Painting and repainting of walls, ceilings, doors, skirting boards, cornices and other interior surfaces.',
         },
         {
           icon: 'home',
-          title: 'Residential Exterior Painting',
+          title: 'Exterior Painting',
           tag: 'Exterior',
-          text: 'Exterior walls, weatherboards, render, fascia, eaves, fences, decks and other exterior surfaces.',
+          text: 'Exterior painting for walls, weatherboards, render, fascia, eaves, fences, decks and other property surfaces.',
         },
         {
           icon: 'office',
-          title: 'Commercial Interior Painting',
-          tag: 'Interior',
-          text: 'Offices, retail stores, medical clinics, common areas and other commercial properties across Melbourne.',
+          title: 'Commercial Painting',
+          tag: 'Commercial',
+          text: 'Interior and exterior painting for offices, retail premises, common areas and other commercial properties across Melbourne.',
         },
         {
           icon: 'tower',
-          title: 'Commercial Exterior Painting',
-          tag: 'Exterior',
-          text: 'Multi-story facades, warehouse protective epoxy floor coatings, and boom lift high-access painting.',
+          title: 'Plaster & Ceiling Repairs',
+          tag: 'Plastering',
+          text: 'Repairs to cracked, damaged or water-affected plaster walls and ceilings, including patching and preparation ready for painting.',
         },
       ],
     },
@@ -59,12 +60,12 @@ export const serviceDetails = {
       badge: 'Painting Solutions',
       heading: { before: 'What We Can', accent: 'Help', after: 'With' },
       text: 'From small plaster repairs and paint touch-ups to complete interior and exterior painting, we provide painting and plastering services for residential and commercial properties across Melbourne.',
-      note: { label: 'Repair + Finish', text: 'We can coordinate the plaster repair, preparation and painting from start to finish.' },
+      note: repairFinish('We can take care of the plaster repair, surface preparation and painting from start to finish.'),
       items: [
-        'Repair water-damaged ceilings & plaster',
+        'Water-damaged ceiling and plaster repairs',
         'Cracked, damaged & sagging plaster repairs',
         'Interior & exterior painting',
-        'Exterior & building facade painting',
+        'Commercial and common-area painting',
       ],
     },
     quote: sharedQuote,
