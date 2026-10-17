@@ -738,6 +738,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Pressure Washing Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From driveways and pathways to commercial entrances and common areas, pressure cleaning can help bring dirty external surfaces back to a cleaner, more presentable condition.',
+      note: repairFinish('If cleaning reveals damaged paving or other surfaces, we can also assist with related property repairs.'),
+      items: [
+        'Dirty external hard surfaces',
+        'Paths, paved areas and driveways requiring cleaning',
+        'Commercial exterior areas requiring maintenance cleaning',
+        'Pressure cleaning of commercial entrances and common areas',
+      ],
+    },
   },
 }
 
