@@ -1,16 +1,15 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpDown, Phone, Search, X } from 'lucide-react'
+import { ArrowRight, CircleCheck, LoaderCircle, Search, Sparkles, X } from 'lucide-react'
 import { contact } from '../../data/siteData'
 import { allServices, popularSearches } from '../../data/servicesData'
 import { servicePath } from '../../data/serviceDetails'
-import { Accent, Container } from '../ui'
+import { buildIndex, isConfidentMatch, searchServices } from '../../utils/serviceSearch'
+import { loadAiSearch } from '../../utils/aiServiceSearch'
+import { Accent, ArrowDot, Container } from '../ui'
 
-const SORTS = [
-  { id: 'default', label: 'Sort by' },
-  { id: 'az', label: 'A - Z' },
-  { id: 'za', label: 'Z - A' },
-]
+// Built once, so typing stays fast
+const searchIndex = buildIndex(allServices)
 
 function ServiceCard({ service }) {
   return (
@@ -47,23 +46,79 @@ function ServiceCard({ service }) {
 
 export default function ServiceFinder() {
   const [query, setQuery] = useState('')
-  const [sort, setSort] = useState('default')
+  const resultsRef = useRef(null)
 
-  const shown = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    const list = q
-      ? allServices.filter((s) => `${s.title} ${s.description}`.toLowerCase().includes(q))
-      : [...allServices]
-    if (sort === 'az') list.sort((a, b) => a.title.localeCompare(b.title))
-    if (sort === 'za') list.sort((a, b) => b.title.localeCompare(a.title))
-    return list
-  }, [query, sort])
+  // AI search: 'idle' until someone uses the search box, then 'loading',
+  // then 'ready' (or 'failed', which quietly keeps the keyword search)
+  const [aiState, setAiState] = useState('idle')
+  const aiRank = useRef(null)
+  const [aiResult, setAiResult] = useState({ query: '', services: [] })
+  // Loading progress shown under the search box
+  const [aiProgress, setAiProgress] = useState({ stage: 'downloading', percent: 0 })
+  // Shows "Smart search is ready" for a few seconds after loading
+  const [justReady, setJustReady] = useState(false)
 
-  const nextSort = () => {
-    const i = SORTS.findIndex((s) => s.id === sort)
-    setSort(SORTS[(i + 1) % SORTS.length].id)
+  const startAi = () => {
+    if (aiState !== 'idle') return
+    setAiState('loading')
+    loadAiSearch(allServices, setAiProgress)
+      .then((rank) => {
+        aiRank.current = rank
+        setAiState('ready')
+        setJustReady(true)
+      })
+      .catch(() => setAiState('failed'))
   }
-  const sortLabel = SORTS.find((s) => s.id === sort).label
+
+  useEffect(() => {
+    if (!justReady) return undefined
+    const timer = setTimeout(() => setJustReady(false), 4000)
+    return () => clearTimeout(timer)
+  }, [justReady])
+
+  const trimmed = query.trim()
+  // Keyword search handles service names and known problems instantly.
+  // Anything else ("water dripping through the roof") goes to the AI.
+  const confident = useMemo(() => isConfidentMatch(searchIndex, trimmed), [trimmed])
+  const keywordResults = useMemo(() => searchServices(searchIndex, trimmed), [trimmed])
+  const askAi = trimmed.length >= 3 && !confident
+
+  useEffect(() => {
+    if (!askAi || aiState !== 'ready') return undefined
+    let cancelled = false
+    const timer = setTimeout(() => {
+      aiRank
+        .current(trimmed)
+        .then((services) => {
+          if (!cancelled) setAiResult({ query: trimmed, services })
+        })
+        .catch(() => {})
+    }, 250)
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+  }, [askAi, aiState, trimmed])
+
+  const aiAnswered = askAi && aiState === 'ready' && aiResult.query === trimmed
+  const aiThinking = askAi && (aiState === 'loading' || (aiState === 'ready' && !aiAnswered))
+  const usingAi = aiAnswered && aiResult.services.length > 0
+
+  // Best match first
+  let shown = keywordResults
+  if (aiAnswered) shown = aiResult.services
+
+  const scrollToResults = () => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+    scrollToResults()
+  }
+
+  const viewAll = () => {
+    setQuery('')
+    scrollToResults()
+  }
 
   return (
     <section aria-labelledby="finder-heading" className="bg-brand-mist py-14" id="all-services">
@@ -73,23 +128,26 @@ export default function ServiceFinder() {
             className="border-b border-brand-line pb-5 text-3xl font-bold leading-[1.05] tracking-tight text-brand-ink sm:text-[42px]"
             id="finder-heading"
           >
-            Explore our comprehensive
-            <br />
-            <Accent>Quick Fix</Accent> solutions
+            Find the <Accent>Right Service</Accent> for Your Property
           </h2>
 
           <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center">
-            <div className="relative flex-1">
+            <form className="relative flex-1" onSubmit={onSubmit} role="search">
               <label className="sr-only" htmlFor="service-search">
                 Search by service name
               </label>
               <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-brand-muted" />
               <input
-                className="h-12 w-full rounded-lg border border-brand-line bg-brand-mist pl-12 pr-10 text-[15px] text-brand-ink placeholder:text-brand-muted focus:border-brand-sky focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-sky/25"
+                className="h-12 w-full rounded-lg border border-brand-line bg-brand-mist pl-12 pr-10 text-[15px] text-brand-ink placeholder:text-brand-muted focus:border-brand-sky focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-sky/25 [&::-webkit-search-cancel-button]:appearance-none"
                 id="service-search"
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value)
+                  startAi()
+                }}
+                onFocus={startAi}
                 placeholder="Search by service name"
                 type="search"
+                autoComplete="off"
                 value={query}
               />
               {query && (
@@ -102,31 +160,16 @@ export default function ServiceFinder() {
                   <X aria-hidden="true" className="h-4 w-4" />
                 </button>
               )}
-            </div>
+            </form>
 
-            <div className="flex items-center gap-3 sm:gap-4 lg:gap-7">
-              <button
-                aria-label={`Sort services: ${sortLabel === 'Sort by' ? 'default order' : sortLabel}`}
-                className={`inline-flex h-12 items-center gap-2 rounded-lg border px-4 text-[15px] transition-colors ${
-                  sort === 'default'
-                    ? 'border-brand-line bg-brand-mist text-brand-ink/80'
-                    : 'border-brand-sky bg-brand-skySoft text-brand-ink'
-                }`}
-                onClick={nextSort}
-                type="button"
-              >
-                {sortLabel}
-                <ArrowUpDown aria-hidden="true" className="h-4 w-4" />
-              </button>
-              <span className="font-medium text-brand-ink">OR</span>
-              <a
-                className="inline-flex h-12 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-navy px-5 text-[15px] sm:gap-3 sm:px-7 font-medium text-white transition-colors hover:bg-brand-navyLight lg:flex-none"
-                href={contact.phoneHref}
-              >
-                <Phone aria-hidden="true" className="h-4 w-4" fill="currentColor" strokeWidth={0} />
-                {contact.phone}
-              </a>
-            </div>
+            <button
+              className="group inline-flex h-12 items-center justify-center gap-3 self-start rounded-full bg-brand-navy py-2.5 pl-5 pr-2.5 text-base font-medium text-white shadow-card transition-colors hover:bg-brand-navyLight lg:self-auto"
+              onClick={viewAll}
+              type="button"
+            >
+              <span>View All Services</span>
+              <ArrowDot />
+            </button>
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -144,13 +187,59 @@ export default function ServiceFinder() {
               </button>
             ))}
           </div>
+
+          <div aria-live="polite">
+            {aiState === 'loading' && (
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[14px] text-brand-ink/80">
+                <LoaderCircle aria-hidden="true" className="h-4 w-4 shrink-0 animate-spin text-brand-sky" />
+                {aiProgress.stage === 'preparing' ? (
+                  <span>Almost ready...</span>
+                ) : (
+                  <>
+                    <span>Loading smart search... {aiProgress.percent > 0 && `${aiProgress.percent}%`}</span>
+                    <span aria-hidden="true" className="h-1.5 w-32 overflow-hidden rounded-full bg-brand-mist">
+                      <span
+                        className="block h-full rounded-full bg-brand-sky transition-[width] duration-300"
+                        style={{ width: `${Math.max(aiProgress.percent, 4)}%` }}
+                      />
+                    </span>
+                  </>
+                )}
+              </div>
+            )}
+
+            {aiState === 'ready' && (usingAi || aiThinking) && (
+              <p className="mt-4 flex items-center gap-2 text-[14px] text-brand-ink/80">
+                <Sparkles aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-sky" />
+                {usingAi ? (
+                  <span>
+                    Smart match: we think this is a job for{' '}
+                    <span className="font-semibold text-brand-ink">
+                      {aiResult.services.map((s) => s.title).join(' or ')}
+                    </span>
+                  </span>
+                ) : (
+                  <span>Finding the right service...</span>
+                )}
+              </p>
+            )}
+
+            {aiState === 'ready' && justReady && !usingAi && !aiThinking && (
+              <p className="mt-4 flex items-center gap-2 text-[14px] text-brand-ink/80">
+                <CircleCheck aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-sky" />
+                <span>Smart search is ready. Describe the problem, for example &ldquo;water leaking through the ceiling&rdquo;.</span>
+              </p>
+            )}
+          </div>
         </div>
 
         <p aria-live="polite" className="sr-only">
           {shown.length} {shown.length === 1 ? 'service' : 'services'} shown
         </p>
 
-        {shown.length > 0 ? (
+        <div className="scroll-mt-28" ref={resultsRef} />
+
+        {shown.length > 0 || aiThinking ? (
           <ul className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {shown.map((s) => (
               <ServiceCard key={s.slug} service={s} />
