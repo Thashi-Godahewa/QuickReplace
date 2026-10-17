@@ -866,6 +866,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  roofing: {
+    title: 'Roofing',
+    pageTitle: 'Roofing Services Melbourne',
+    hero: {
+      accent: 'Roofing',
+      title: 'Services Melbourne',
+      description:
+        'Roof repairs and maintenance for residential, commercial and managed properties across Melbourne, from roof leaks and damaged roofing to general maintenance and temporary make-safe work.',
+      image: '/images/project-aircon-roof.jpg',
+      imageAlt: 'Metal roof on a commercial building',
+    },
+  },
 }
 
 export function servicePath(slug) {
