@@ -13,10 +13,13 @@ export default function Footer() {
   const servicesLeft = footerServices.slice(0, half)
   const servicesRight = footerServices.slice(half)
 
-  // Services with a detail page link straight to it, the rest go to /services
+  // Services with a detail page link straight to it, the rest go to /services.
+  // Pages not listed on the Services page are matched by their own title.
   const footerServicePath = (title) => {
     const match = allServices.find((s) => s.title === title)
-    return match && serviceDetails[match.slug] ? `/services/${match.slug}` : '/services'
+    if (match && serviceDetails[match.slug]) return `/services/${match.slug}`
+    const slug = Object.keys(serviceDetails).find((key) => serviceDetails[key].title === title)
+    return slug ? `/services/${slug}` : '/services'
   }
 
   const renderServices = (items) => (
