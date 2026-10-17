@@ -138,18 +138,32 @@ export const allServices = [
     slug: 'pressure-washing',
     title: 'Pressure Washing',
     description: 'Exterior pressure cleaning for suitable residential and commercial property surfaces across Melbourne.',
+    keywords: [
+      'pressure wash', 'pressure washing', 'high pressure clean', 'dirty driveway', 'driveway',
+      'concrete cleaning', 'mould', 'moss', 'path', 'paving', 'pavers', 'exterior cleaning',
+      'oil stain', 'deck clean', 'house wash',
+    ],
   },
   {
     slug: 'general-maintenance',
     title: 'General Property Maintenance',
     description:
       'Coordinated property repairs and ongoing maintenance for residential, commercial and managed properties across Melbourne.',
+    keywords: [
+      'maintenance', 'property maintenance', 'repairs', 'general repairs', 'ongoing maintenance', 'strata',
+      'body corporate', 'property manager', 'rental property', 'inspection', 'end of lease', 'defects',
+      'maintenance contract', 'preventative maintenance',
+    ],
   },
   {
     slug: 'removalist',
     title: 'Removalist & Rubbish Removal',
     badge: 'Preventative Care',
     description: 'Property-related removal and cleanup support for residential and commercial premises across Melbourne.',
+    keywords: [
+      'rubbish', 'rubbish removal', 'junk', 'junk removal', 'hard rubbish', 'waste', 'clean up', 'cleanup',
+      'removal', 'removalist', 'furniture removal', 'green waste', 'skip', 'tip run', 'clear out', 'dump',
+    ],
   },
   {
     slug: 'emergency-repairs',
@@ -157,6 +171,10 @@ export const allServices = [
     badge: 'Preventative Care',
     description:
       'Urgent property maintenance and make-safe support when unexpected damage or faults require prompt attention.',
+    keywords: [
+      'emergency', 'urgent', 'urgent repair', 'after hours', '24 hour', '24/7', 'asap', 'flood', 'flooding',
+      'storm', 'burst pipe', 'gas leak', 'no power', 'dangerous', 'immediate',
+    ],
   },
 ]
 
