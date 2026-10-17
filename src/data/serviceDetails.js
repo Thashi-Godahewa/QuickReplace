@@ -764,6 +764,37 @@ export const serviceDetails = {
       image: '/images/service-general-maintenance.jpg',
       imageAlt: 'Tradesperson carrying out property maintenance',
     },
+    offerings: {
+      heading: { before: 'Our Property Maintenance', accent: 'Services' },
+      intro:
+        'We look after repairs and ongoing maintenance for property managers, owners corporations, businesses and homeowners—all through one point of contact.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Residential Maintenance',
+          tag: 'Residential',
+          text: 'General repairs and ongoing maintenance for houses, apartments and other residential properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Maintenance',
+          tag: 'Commercial',
+          text: 'Repairs and ongoing maintenance for offices, retail premises and other commercial properties.',
+        },
+        {
+          icon: 'office',
+          title: 'Managed Property Maintenance',
+          tag: 'Property Management',
+          text: 'Reactive and ongoing property maintenance for property managers, owners corporations and managed properties.',
+        },
+        {
+          icon: 'tower',
+          title: 'Multi-Trade Maintenance',
+          tag: 'Multi-Trade',
+          text: 'Management of repair and maintenance work requiring more than one trade, with one point of contact throughout the job.',
+        },
+      ],
+    },
   },
 }
 
