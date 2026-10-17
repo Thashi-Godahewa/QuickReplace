@@ -26,7 +26,6 @@ function ServiceDetail({ service }) {
         }
         image={service.hero.image}
         imageAlt={service.hero.imageAlt}
-        imageWidth="lg:w-[56%]"
         secondaryAction={{ label: 'Send an Enquiry', to: '/contact' }}
       />
       {/* Sections are optional, so a page can be built up one section at a time */}

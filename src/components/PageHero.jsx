@@ -9,7 +9,8 @@ import TradesMarquee from './TradesMarquee'
 // `singleLine` keeps a short heading on one line on desktop.
 // `heading` replaces accent + title when the blue words are not first.
 // `secondaryAction` is the outlined button next to the phone number.
-// `imageWidth` sets how much of the hero the photo covers on desktop.
+// The photo fills the whole hero at 50% opacity behind the same dark fade as the home page hero.
+// `imagePosition` picks which part of the photo stays in view when it is cropped.
 // `breadcrumbParent` adds a middle breadcrumb link, e.g. { label: 'Services', to: '/services' }.
 export default function PageHero({
   breadcrumb,
@@ -24,15 +25,14 @@ export default function PageHero({
   descriptionWidth = 'max-w-[560px]',
   heading = null,
   secondaryAction = { label: 'Explore Past Works', to: '/our-work' },
-  imageWidth = 'lg:w-[46%]',
   breadcrumbParent = null,
+  imagePosition = 'object-center',
 }) {
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
-      <div className={`absolute inset-0 z-0 lg:left-auto ${imageWidth}`}>
-        <img alt={imageAlt} className="h-full w-full object-cover object-top" src={image} />
-        {/* Blend the photo into the navy background on the left */}
-        <div className="absolute inset-0 bg-brand-footer/70 lg:bg-transparent lg:bg-gradient-to-r lg:from-brand-footer lg:to-transparent lg:to-40%" />
+      <div className="absolute inset-0 z-0">
+        <img alt={imageAlt} className={`h-full w-full object-cover opacity-50 ${imagePosition}`} src={image} />
+        <div className="hero-mask absolute inset-0" />
       </div>
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pb-20 pt-32 lg:px-12 lg:pb-32 lg:pt-36">
@@ -67,7 +67,7 @@ export default function PageHero({
 
           <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-sky/40 bg-brand-navy/80 px-3 py-1.5 text-[10.5px] font-medium text-brand-sky backdrop-blur-md sm:px-4 sm:text-sm">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-brand-sky" />
-            Residential • Commercial • Multiple Trades • Fast Response
+            Residential • Commercial • Multiple Trades • One Contact
           </p>
 
           <h1

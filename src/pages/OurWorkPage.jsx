@@ -24,7 +24,6 @@ export default function OurWorkPage() {
         }
         image="/images/our-work-hero.jpg"
         imageAlt="Glazier fitting a large glass panel to a commercial building shopfront"
-        imageWidth="lg:w-[53%]"
         reviewsLabel="100+ Verified Customer Reviews"
         secondaryAction={{ label: 'Send an Enquiry', to: '/contact' }}
       />

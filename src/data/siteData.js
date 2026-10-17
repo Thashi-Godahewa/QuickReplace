@@ -6,8 +6,8 @@ export const contact = {
   phoneHref: 'tel:0401411636',
   email: 'info@quickreplace.com.au',
   emailHref: 'mailto:info@quickreplace.com.au',
-  accountsEmail: 'accounts@quickreplace.com.au',
-  accountsEmailHref: 'mailto:accounts@quickreplace.com.au',
+  accountsEmail: 'info@quickreplace.com.au',
+  accountsEmailHref: 'mailto:info@quickreplace.com.au',
   headOffice: 'Sunshine West, VIC',
 }
 
@@ -382,15 +382,15 @@ export const beforeAfter = [
   {
     src: '/images/before-after-2.jpg',
     alt: 'Brick wall under scaffolding beside the finished repointed wall',
-    title: 'Brick Wall Repairment',
+    title: 'Brick Wall Repair',
     tag: 'Brick Repointing & Mortar Repairs',
-    location: 'Prahran VIC',
+    location: 'Prahran',
   },
   {
     src: '/images/before-after-3.jpg',
     alt: 'Shattered shower screen beside the new glass screen',
     title: 'Shower Screen Replacement',
-    tag: 'Glazier',
+    tag: 'Glazing',
     location: 'Maribyrnong',
   },
 ]

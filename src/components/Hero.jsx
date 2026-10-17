@@ -3,16 +3,15 @@ import { ArrowRight, Phone, Star } from 'lucide-react'
 import { contact } from '../data/siteData'
 import TradesMarquee from './TradesMarquee'
 
-const HERO_IMAGE =
-  'https://lh3.googleusercontent.com/aida-public/AB6AXuDrLF0mZbhpwPmlGPapwj1s-32Porpr-JJHkCXJsumvgm-UaReyr1TwfJwh5vrBSx5QIiPlzwghBlHk_v82kvjETfDhyfWmb7HPjNLYyNJH-RhFYxAQh4CYefd6cAu0VTU8gBrkUQugmLXDozSyhQZfNb44DRqYc7JHxWkMFuHG695onDPxTUz5HsoJcvXfA8B_2jJBRCNbmoOp299zj3qIw4KNtXLV4tdBy_xGDj_k7_CqOZrO6GCy'
+const HERO_IMAGE = '/images/hero-team.jpg'
 
 export default function Hero() {
   return (
     <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-brand-footer" id="top">
       <div className="absolute inset-0 z-0">
         <img
-          alt="Technician carrying out an electrical repair inside a home"
-          className="h-full w-full object-cover object-center"
+          alt="The Quick Replace team in uniform beside their work vans"
+          className="h-full w-full object-cover object-center opacity-50"
           src={HERO_IMAGE}
         />
         <div className="hero-mask absolute inset-0" />
@@ -22,7 +21,7 @@ export default function Hero() {
         <div className="space-y-7 text-white lg:col-span-7">
           <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-sky/40 bg-brand-navy/80 px-3 py-1.5 text-[10.5px] font-medium sm:px-4 sm:text-sm text-brand-sky backdrop-blur-md sm:text-sm">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-brand-sky" />
-            Residential • Commercial • Multiple Trades • Fast Response
+            Residential • Commercial • Multiple Trades • One Contact
           </p>
 
           <h1
