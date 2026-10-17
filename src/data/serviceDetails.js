@@ -696,6 +696,18 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'pressure-washing': {
+    title: 'Pressure Washing',
+    pageTitle: 'Pressure Washing Services Melbourne',
+    hero: {
+      accent: 'Pressure Washing',
+      title: 'Services Melbourne',
+      description: 'Exterior pressure cleaning for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-pressure-washing.jpg',
+      imageAlt: 'Pressure cleaning an outdoor paved surface',
+    },
+  },
 }
 
 export function servicePath(slug) {
