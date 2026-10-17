@@ -878,6 +878,25 @@ export const serviceDetails = {
       image: '/images/project-aircon-roof.jpg',
       imageAlt: 'Metal roof on a commercial building',
     },
+    offerings: {
+      heading: { before: 'Our Roofing', accent: 'Services' },
+      intro:
+        'Roof repairs and maintenance for residential, commercial and managed properties across Melbourne, from roof leaks and damaged roofing to general maintenance and temporary make-safe work.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Roof Leak Repairs',
+          tag: 'Leaks',
+          text: 'Investigation and repair of roof leaks and water-entry points affecting residential and commercial properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Tile Roof Repairs',
+          tag: 'Tiled Roofs',
+          text: 'Repair and replacement of cracked, broken or displaced roof tiles and other tiled-roof damage.',
+        },
+      ],
+    },
   },
 }
 
