@@ -966,6 +966,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Pest Control Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From rodents and cockroaches to ants and other common pests, we provide pest-control services for residential, commercial and managed properties across Melbourne.',
+      note: repairFinish('For managed and commercial properties, visits can be arranged around tenants, staff and operating hours.'),
+      items: [
+        'Rats and mice',
+        'Cockroaches and ants',
+        'Spiders, fleas and silverfish',
+        'Commercial pest problems',
+      ],
+    },
   },
 }
 
