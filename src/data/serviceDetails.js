@@ -852,6 +852,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Tiling & Tile Repair Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Whether you need a few damaged tiles replaced or a larger tiled area repaired, we can help with tiling work across residential, commercial and managed properties in Melbourne.',
+      note: repairFinish('If tiling is part of a larger repair, we can also take care of the related plumbing, plastering or painting needed to complete the job.'),
+      items: [
+        'Cracked, chipped or loose tiles',
+        'Damaged bathroom and shower tiles',
+        'Wall and floor tile repairs',
+        'Damaged tiles on commercial floors, staircases and steps',
+      ],
+    },
   },
 }
 
