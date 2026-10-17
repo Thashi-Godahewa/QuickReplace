@@ -138,7 +138,7 @@ export default function ServiceFinder() {
               </label>
               <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-brand-muted" />
               <input
-                className="h-12 w-full rounded-lg border border-brand-line bg-brand-mist pl-12 pr-10 text-[15px] text-brand-ink placeholder:text-brand-muted focus:border-brand-sky focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-sky/25"
+                className="h-12 w-full rounded-lg border border-brand-line bg-brand-mist pl-12 pr-10 text-[15px] text-brand-ink placeholder:text-brand-muted focus:border-brand-sky focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-sky/25 [&::-webkit-search-cancel-button]:appearance-none"
                 id="service-search"
                 onChange={(e) => {
                   setQuery(e.target.value)
@@ -147,6 +147,7 @@ export default function ServiceFinder() {
                 onFocus={startAi}
                 placeholder="Search by service name"
                 type="search"
+                autoComplete="off"
                 value={query}
               />
               {query && (
