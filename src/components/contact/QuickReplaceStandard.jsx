@@ -4,7 +4,7 @@ import { contactStandards } from '../../data/siteData'
 export default function QuickReplaceStandard() {
   return (
     <div className="rounded-2xl border border-brand-line bg-white p-6 shadow-card sm:p-7">
-      <h2 className="text-lg font-semibold uppercase tracking-wide text-brand-ink">The Quick Replace Standard</h2>
+      <h2 className="text-base font-semibold uppercase tracking-wide text-brand-ink">The Quick Replace Standard</h2>
       <ul className="mt-5 space-y-4">
         {contactStandards.map((item) => (
           <li className="flex gap-3" key={item.title}>

@@ -47,7 +47,7 @@ export default function Footer() {
               plumbing, electrical, glazing, locksmith services and emergency make-safe repairs.
             </p>
             <p className="mt-6 inline-block rounded-full border border-brand-sky/40 bg-brand-navyLight px-5 py-2.5 text-sm font-medium text-brand-sky/90">
-              Licensed, Bonded &amp; Insured • Master Trades Lic #QR-94281
+              Licensed Trades • Insured Contractors
             </p>
           </div>
 

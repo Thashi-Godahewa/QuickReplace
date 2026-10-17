@@ -29,16 +29,16 @@ export default function BeforeAfter() {
                   After
                 </span>
                 <img alt="" className="absolute bottom-3 left-4 h-10 w-10 rounded-lg" src="/images/quick-replace-mark.png" />
-                <span className="absolute bottom-4 right-3 inline-flex items-center gap-1.5 rounded-full bg-white px-4 py-1 text-sm text-brand-ink/80 shadow-sm">
-                  <MapPin aria-hidden="true" className="h-3.5 w-3.5" fill="currentColor" stroke="white" />
-                  {job.location}
-                </span>
               </div>
               <div className="px-4 pb-5 pt-4">
                 <h3 className="text-[22px] font-medium text-brand-ink">{job.title}</h3>
                 <span className="mt-1 inline-block rounded bg-brand-skySoft px-2.5 py-0.5 text-sm font-medium text-brand-sky">
                   {job.tag}
                 </span>
+                <p className="mt-3 flex items-center gap-1.5 text-[15px] text-brand-ink/80">
+                  <MapPin aria-hidden="true" className="h-4 w-4 text-brand-ink/70" strokeWidth={2} />
+                  {job.location}
+                </p>
               </div>
             </li>
           ))}

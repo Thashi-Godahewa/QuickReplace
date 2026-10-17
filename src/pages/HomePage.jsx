@@ -24,7 +24,7 @@ export default function HomePage() {
       <Testimonials />
       <BeforeAfter />
       <ServiceLocator />
-      <CTA variant="emergency" />
+      <CTA variant="urgent" />
     </>
   )
 }
