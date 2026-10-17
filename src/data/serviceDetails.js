@@ -682,6 +682,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Carpentry Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From damaged timber doors and frames to fencing, skirting and general timber repairs, we provide carpentry services across residential, commercial and managed properties.',
+      note: repairFinish('Where carpentry repairs require painting or other finishing work, we can complete the job through one contact.'),
+      items: [
+        'Damaged timber doors and frames',
+        'Broken or deteriorated timber components',
+        'General carpentry maintenance and repairs',
+        'Damaged timber fencing, posts and gates',
+      ],
+    },
   },
 }
 
