@@ -1035,6 +1035,7 @@ export const serviceDetails = {
         'Old or damaged window tint',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
