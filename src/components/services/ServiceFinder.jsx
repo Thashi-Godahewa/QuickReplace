@@ -132,9 +132,7 @@ export default function ServiceFinder() {
             className="border-b border-brand-line pb-5 text-3xl font-bold leading-[1.05] tracking-tight text-brand-ink sm:text-[42px]"
             id="finder-heading"
           >
-            Explore our comprehensive
-            <br />
-            <Accent>Quick Fix</Accent> solutions
+            Find the <Accent>Right Service</Accent> for Your Property
           </h2>
 
           <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center">
