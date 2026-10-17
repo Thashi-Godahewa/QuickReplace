@@ -707,6 +707,37 @@ export const serviceDetails = {
       image: '/images/service-pressure-washing.jpg',
       imageAlt: 'Pressure cleaning an outdoor paved surface',
     },
+    offerings: {
+      heading: { before: 'Our Pressure Washing', accent: 'Services' },
+      intro:
+        'We pressure clean driveways, paths, entrances and common areas to remove accumulated dirt and improve presentation.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Driveway Cleaning',
+          tag: 'Exterior',
+          text: 'Pressure cleaning of driveways and hard surfaces to remove built-up dirt and grime.',
+        },
+        {
+          icon: 'home',
+          title: 'Path & Paved Area Cleaning',
+          tag: 'Paving',
+          text: 'Pressure cleaning of pathways, paved areas and other external hard surfaces.',
+        },
+        {
+          icon: 'office',
+          title: 'Commercial Exterior Cleaning',
+          tag: 'Commercial',
+          text: 'Pressure cleaning for commercial entrances, pathways, common areas, loading areas and other external hard surfaces around commercial and managed properties.',
+        },
+        {
+          icon: 'tower',
+          title: 'General Property Washdowns',
+          tag: 'Cleaning',
+          text: 'Exterior washdowns as part of routine property maintenance, presentation or preparation work.',
+        },
+      ],
+    },
   },
 }
 
