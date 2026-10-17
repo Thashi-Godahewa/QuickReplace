@@ -71,15 +71,29 @@ export async function createAiSearch(extractor, services) {
   }
 }
 
-// Browser loader: downloads the library and model once, shared by every search
+// Browser loader: downloads the library and model once, shared by every search.
+// `onProgress` receives { stage: 'downloading', percent } while the model
+// files download, then { stage: 'preparing' } while the services are read.
 let loading = null
+const listeners = new Set()
+const report = (update) => listeners.forEach((fn) => fn(update))
 
-export function loadAiSearch(services) {
+export function loadAiSearch(services, onProgress) {
+  if (onProgress) listeners.add(onProgress)
   if (!loading) {
+    // The model file (.onnx) is almost all of the download, so the
+    // percentage follows that file only
+    const progress_callback = (event) => {
+      if (event.status !== 'progress' || !event.total || !String(event.file).endsWith('.onnx')) return
+      report({ stage: 'downloading', percent: Math.min(99, Math.round((event.loaded / event.total) * 100)) })
+    }
+
+    report({ stage: 'downloading', percent: 0 })
     loading = import(/* webpackIgnore: true */ LIBRARY_URL)
       .then(async ({ pipeline, env }) => {
         env.allowLocalModels = false
-        const extractor = await pipeline('feature-extraction', MODEL, { dtype: 'q8' })
+        const extractor = await pipeline('feature-extraction', MODEL, { dtype: 'q8', progress_callback })
+        report({ stage: 'preparing' })
         return createAiSearch(extractor, services)
       })
       .catch((error) => {
