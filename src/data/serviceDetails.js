@@ -909,6 +909,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Roofing Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Where a larger repair cannot be completed immediately, we can carry out temporary make-safe work to help protect the property until permanent repairs can be completed.',
+      note: repairFinish('Where a roof leak has caused internal damage, we can also take care of the plastering, painting and other repairs required to make good the affected area.'),
+      items: [
+        'Leaking roofs',
+        'Broken or displaced roof tiles',
+        'Damaged or deteriorated flashings',
+        'Temporary roof make-safe following damage',
+      ],
+    },
   },
 }
 
