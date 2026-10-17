@@ -411,6 +411,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'gutter-cleaning': {
+    title: 'Gutter Cleaning',
+    pageTitle: 'Gutter Cleaning Services Melbourne',
+    hero: {
+      accent: 'Gutter Cleaning',
+      title: 'Services Melbourne',
+      description:
+        'Gutter cleaning and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-gutter-cleaning.jpg',
+      imageAlt: 'Gutter filled with leaves and debris on a tiled roof',
+    },
+  },
 }
 
 export function servicePath(slug) {
