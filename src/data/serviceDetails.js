@@ -454,6 +454,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Gutter Cleaning Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Gutter maintenance can help keep roof drainage paths clear and identify obvious debris or blockages requiring attention.',
+      note: repairFinish('If cleaning reveals damaged gutters or roof components, we can also arrange the repairs.'),
+      items: [
+        'Blocked or debris-filled gutters',
+        'Poor gutter water flow',
+        'Routine preventative gutter maintenance',
+        'Commercial and warehouse gutter cleaning',
+      ],
+    },
   },
 }
 
