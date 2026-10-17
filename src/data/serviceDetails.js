@@ -625,6 +625,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Handyman Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'For those smaller property repairs that don’t require a specialist trade, we can take care of individual jobs or work through a list of maintenance items during the same visit.',
+      note: repairFinish('If a repair needs plastering, painting or another trade, we can manage those works together.'),
+      items: [
+        'Minor repairs around the property',
+        'Loose or damaged fixtures and fittings',
+        'Property maintenance lists with multiple repair items',
+        'Minor wall patching and surface repairs',
+      ],
+    },
   },
 }
 
