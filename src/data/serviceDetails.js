@@ -807,6 +807,7 @@ export const serviceDetails = {
         'Maintenance across multiple managed properties',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
