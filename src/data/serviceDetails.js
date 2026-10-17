@@ -921,6 +921,7 @@ export const serviceDetails = {
         'Temporary roof make-safe following damage',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
