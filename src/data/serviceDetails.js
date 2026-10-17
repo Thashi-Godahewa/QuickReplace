@@ -795,6 +795,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Property Maintenance Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From reactive repairs to ongoing maintenance and multi-trade jobs, we look after individual properties and larger managed portfolios across Melbourne.',
+      note: repairFinish('When a job requires more than one trade, we can manage the work from start to finish, giving you one point of contact throughout the job.'),
+      items: [
+        'Reactive property repairs',
+        'Routine and ongoing maintenance',
+        'Jobs requiring multiple trades',
+        'Maintenance across multiple managed properties',
+      ],
+    },
   },
 }
 
