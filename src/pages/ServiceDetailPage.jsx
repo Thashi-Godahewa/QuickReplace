@@ -29,9 +29,10 @@ function ServiceDetail({ service }) {
         imageWidth="lg:w-[56%]"
         secondaryAction={{ label: 'Send an Enquiry', to: '/contact' }}
       />
-      <ServiceOfferings offerings={service.offerings} />
-      <ServiceSolutions solutions={service.solutions} />
-      <ServiceQuote quote={service.quote} />
+      {/* Sections are optional, so a page can be built up one section at a time */}
+      {service.offerings && <ServiceOfferings offerings={service.offerings} />}
+      {service.solutions && <ServiceSolutions solutions={service.solutions} />}
+      {service.quote && <ServiceQuote quote={service.quote} />}
       <ServiceLocator />
       <CTA variant="emergency" />
     </>

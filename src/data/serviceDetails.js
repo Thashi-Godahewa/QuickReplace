@@ -411,6 +411,404 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'gutter-cleaning': {
+    title: 'Gutter Cleaning',
+    pageTitle: 'Gutter Cleaning Services Melbourne',
+    hero: {
+      accent: 'Gutter Cleaning',
+      title: 'Services Melbourne',
+      description:
+        'Gutter cleaning and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-gutter-cleaning.jpg',
+      imageAlt: 'Gutter filled with leaves and debris on a tiled roof',
+    },
+    offerings: {
+      heading: { before: 'Our Gutter Cleaning', accent: 'Services' },
+      intro:
+        'We clear gutters on houses and commercial buildings, and can schedule regular visits for properties needing ongoing maintenance.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Gutter Cleaning',
+          tag: 'Cleaning',
+          text: 'Removal of leaves, dirt and accumulated debris from accessible gutter systems.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Gutter Cleaning',
+          tag: 'Commercial',
+          text: 'Gutter cleaning for commercial buildings, warehouses, retail premises and managed properties, with one-off and scheduled maintenance available.',
+        },
+        {
+          icon: 'office',
+          title: 'Scheduled Gutter Maintenance',
+          tag: 'Preventative',
+          text: 'Scheduled gutter cleaning for managed residential and commercial properties, with recurring maintenance available where required.',
+        },
+        {
+          icon: 'tower',
+          title: 'Post-Storm Gutter Checks',
+          tag: 'Maintenance',
+          text: 'Inspection and cleaning of gutters affected by storms, leaves or heavy debris.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Gutter Cleaning Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Gutter maintenance can help keep roof drainage paths clear and identify obvious debris or blockages requiring attention.',
+      note: repairFinish('If cleaning reveals damaged gutters or roof components, we can also arrange the repairs.'),
+      items: [
+        'Blocked or debris-filled gutters',
+        'Poor gutter water flow',
+        'Routine preventative gutter maintenance',
+        'Commercial and warehouse gutter cleaning',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'doors-windows': {
+    title: 'Doors & Windows',
+    pageTitle: 'Doors & Windows Services Melbourne',
+    hero: {
+      accent: 'Doors & Windows',
+      title: 'Services Melbourne',
+      description:
+        'Repairs and maintenance for doors and windows in residential and commercial properties across Melbourne.',
+      image: '/images/service-doors-windows.jpg',
+      imageAlt: 'Tradesperson repairing a door',
+    },
+    offerings: {
+      heading: { before: 'Our Doors & Windows', accent: 'Services' },
+      intro:
+        'From sticking doors and faulty window hardware to commercial roller shutters, we repair the parts that aren’t working as they should.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Door Repairs',
+          tag: 'Doors',
+          text: 'Repairs to damaged, sticking or poorly operating doors, including door trimming, alignment and hinge adjustments.',
+        },
+        {
+          icon: 'home',
+          title: 'Window Repairs',
+          tag: 'Windows',
+          text: 'Repairs to damaged or poorly operating windows, including components and opening mechanisms.',
+        },
+        {
+          icon: 'office',
+          title: 'Door & Window Maintenance',
+          tag: 'Maintenance',
+          text: 'General maintenance for doors and windows to keep moving components, hardware and operating mechanisms working correctly.',
+        },
+        {
+          icon: 'tower',
+          title: 'Roller Doors & Shutters',
+          tag: 'Roller Doors & Shutters',
+          text: 'Repairs and maintenance for commercial roller doors and shutters, including factories, warehouses and shopfronts, as well as residential window roller shutters.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Doors & Windows Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From sticking doors and damaged hardware to window mechanisms and roller shutters, we provide door and window repairs for residential, commercial and managed properties.',
+      note: repairFinish('Where a door or window needs carpentry, glazing or hardware repairs, we can take care of the work together.'),
+      items: [
+        'Doors that stick or do not close correctly',
+        'Damaged window or door hardware',
+        'General door and window maintenance',
+        'Commercial roller doors and residential shutters',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'brick-repointing': {
+    title: 'Brick Repointing & Mortar Repairs',
+    pageTitle: 'Brick Repointing & Mortar Repairs Services Melbourne',
+    hero: {
+      accent: 'Brick Repointing & Mortar Repairs',
+      title: 'Services Melbourne',
+      description:
+        'Brick repointing, mortar repairs and brickwork maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-brick-repointing.jpg',
+      imageAlt: 'Bricklayer repointing mortar joints on a brick wall',
+    },
+    offerings: {
+      heading: { before: 'Our Brick Repointing & Mortar Repairs', accent: 'Services' },
+      intro:
+        'We repair deteriorated mortar, damaged bricks and minor brickwork cracks on residential and commercial buildings.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Mortar Repointing',
+          tag: 'Repointing',
+          text: 'Removal and replacement of deteriorated mortar to restore damaged or ageing brickwork joints.',
+        },
+        {
+          icon: 'home',
+          title: 'Brick Repairs',
+          tag: 'Brickwork',
+          text: 'Repair and replacement of cracked, damaged or deteriorated bricks.',
+        },
+        {
+          icon: 'office',
+          title: 'Crack Repairs',
+          tag: 'Repairs',
+          text: 'Assessment and repair of minor cracks affecting brickwork and mortar joints.',
+        },
+        {
+          icon: 'tower',
+          title: 'Brickwork Maintenance',
+          tag: 'Maintenance',
+          text: 'Maintenance and repairs for ageing or deteriorated brickwork across residential, commercial and managed properties.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Brick Repointing & Mortar Repairs Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From deteriorated mortar joints to damaged bricks and minor cracking, we provide brickwork repairs and repointing across residential, commercial and managed properties in Melbourne.',
+      note: repairFinish('Where brick repairs affect adjoining painted or finished surfaces, we can take care of the finishing work.'),
+      items: [
+        'Cracked or deteriorated mortar joints',
+        'Damaged or loose bricks',
+        'Ageing or deteriorated brickwork requiring repair',
+        'Minor cracking in brickwork and mortar joints',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  handyman: {
+    title: 'Handyman',
+    pageTitle: 'Handyman Services Melbourne',
+    hero: {
+      accent: 'Handyman',
+      title: 'Services Melbourne',
+      description:
+        'General property repairs and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-handyman.jpg',
+      imageAlt: 'Handyman carrying out a repair',
+    },
+    offerings: {
+      heading: { before: 'Our Handyman', accent: 'Services' },
+      intro:
+        'We handle general property repairs, fittings and maintenance lists, particularly when several items need attention at one property.',
+      items: [
+        {
+          icon: 'home',
+          title: 'General Property Repairs',
+          tag: 'Repairs',
+          text: 'General repairs for damaged or deteriorated fixtures, fittings and property components.',
+        },
+        {
+          icon: 'home',
+          title: 'Fixtures & Fittings',
+          tag: 'Installation',
+          text: 'Installation, repair, adjustment and replacement of everyday property fixtures and fittings.',
+        },
+        {
+          icon: 'office',
+          title: 'Minor Wall & Surface Repairs',
+          tag: 'Maintenance',
+          text: 'Patching, sealing and minor make-good work to damaged walls and other property surfaces.',
+        },
+        {
+          icon: 'tower',
+          title: 'Property Maintenance Lists',
+          tag: 'Multi-Task',
+          text: 'Completion of multiple property repair and maintenance items during one visit where practical.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Handyman Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'For those smaller property repairs that don’t require a specialist trade, we can take care of individual jobs or work through a list of maintenance items during the same visit.',
+      note: repairFinish('If a repair needs plastering, painting or another trade, we can manage those works together.'),
+      items: [
+        'Minor repairs around the property',
+        'Loose or damaged fixtures and fittings',
+        'Property maintenance lists with multiple repair items',
+        'Minor wall patching and surface repairs',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  carpentry: {
+    title: 'Carpentry',
+    pageTitle: 'Carpentry Services Melbourne',
+    hero: {
+      accent: 'Carpentry',
+      title: 'Services Melbourne',
+      description:
+        'Carpentry repairs and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-carpentry.jpg',
+      imageAlt: 'Carpenter working on timber joinery',
+    },
+    offerings: {
+      heading: { before: 'Our Carpentry', accent: 'Services' },
+      intro:
+        'Timber doors, frames, skirting, fencing and other carpentry repairs—we can repair or replace damaged components.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Door & Frame Repairs',
+          tag: 'Doors',
+          text: 'Repairs to timber doors, door frames, jambs and associated components.',
+        },
+        {
+          icon: 'home',
+          title: 'Timber Repairs',
+          tag: 'Repairs',
+          text: 'Repair or replacement of damaged, rotten or deteriorated timber components.',
+        },
+        {
+          icon: 'office',
+          title: 'Skirting & Trim Repairs',
+          tag: 'Finishing',
+          text: 'Repair and replacement of skirting boards, architraves, trims and other timber finishing elements.',
+        },
+        {
+          icon: 'tower',
+          title: 'General Property Carpentry',
+          tag: 'Maintenance',
+          text: 'General carpentry repairs and maintenance for residential and commercial properties.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Carpentry Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From damaged timber doors and frames to fencing, skirting and general timber repairs, we provide carpentry services across residential, commercial and managed properties.',
+      note: repairFinish('Where carpentry repairs require painting or other finishing work, we can complete the job through one contact.'),
+      items: [
+        'Damaged timber doors and frames',
+        'Broken or deteriorated timber components',
+        'General carpentry maintenance and repairs',
+        'Damaged timber fencing, posts and gates',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'pressure-washing': {
+    title: 'Pressure Washing',
+    pageTitle: 'Pressure Washing Services Melbourne',
+    hero: {
+      accent: 'Pressure Washing',
+      title: 'Services Melbourne',
+      description: 'Exterior pressure cleaning for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-pressure-washing.jpg',
+      imageAlt: 'Pressure cleaning an outdoor paved surface',
+    },
+    offerings: {
+      heading: { before: 'Our Pressure Washing', accent: 'Services' },
+      intro:
+        'We pressure clean driveways, paths, entrances and common areas to remove accumulated dirt and improve presentation.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Driveway Cleaning',
+          tag: 'Exterior',
+          text: 'Pressure cleaning of driveways and hard surfaces to remove built-up dirt and grime.',
+        },
+        {
+          icon: 'home',
+          title: 'Path & Paved Area Cleaning',
+          tag: 'Paving',
+          text: 'Pressure cleaning of pathways, paved areas and other external hard surfaces.',
+        },
+        {
+          icon: 'office',
+          title: 'Commercial Exterior Cleaning',
+          tag: 'Commercial',
+          text: 'Pressure cleaning for commercial entrances, pathways, common areas, loading areas and other external hard surfaces around commercial and managed properties.',
+        },
+        {
+          icon: 'tower',
+          title: 'General Property Washdowns',
+          tag: 'Cleaning',
+          text: 'Exterior washdowns as part of routine property maintenance, presentation or preparation work.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Pressure Washing Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From driveways and pathways to commercial entrances and common areas, pressure cleaning can help bring dirty external surfaces back to a cleaner, more presentable condition.',
+      note: repairFinish('If cleaning reveals damaged paving or other surfaces, we can also assist with related property repairs.'),
+      items: [
+        'Dirty external hard surfaces',
+        'Paths, paved areas and driveways requiring cleaning',
+        'Commercial exterior areas requiring maintenance cleaning',
+        'Pressure cleaning of commercial entrances and common areas',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'general-maintenance': {
+    title: 'Property Maintenance',
+    pageTitle: 'General Property Maintenance Services Melbourne',
+    hero: {
+      accent: 'General Property Maintenance',
+      title: 'Services Melbourne',
+      description:
+        'Property repairs and ongoing maintenance for residential, commercial and managed properties across Melbourne, with multiple trades available through one point of contact.',
+      image: '/images/service-general-maintenance.jpg',
+      imageAlt: 'Tradesperson carrying out property maintenance',
+    },
+    offerings: {
+      heading: { before: 'Our Property Maintenance', accent: 'Services' },
+      intro:
+        'We look after repairs and ongoing maintenance for property managers, owners corporations, businesses and homeowners—all through one point of contact.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Residential Maintenance',
+          tag: 'Residential',
+          text: 'General repairs and ongoing maintenance for houses, apartments and other residential properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Maintenance',
+          tag: 'Commercial',
+          text: 'Repairs and ongoing maintenance for offices, retail premises and other commercial properties.',
+        },
+        {
+          icon: 'office',
+          title: 'Managed Property Maintenance',
+          tag: 'Property Management',
+          text: 'Reactive and ongoing property maintenance for property managers, owners corporations and managed properties.',
+        },
+        {
+          icon: 'tower',
+          title: 'Multi-Trade Maintenance',
+          tag: 'Multi-Trade',
+          text: 'Management of repair and maintenance work requiring more than one trade, with one point of contact throughout the job.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Property Maintenance Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From reactive repairs to ongoing maintenance and multi-trade jobs, we look after individual properties and larger managed portfolios across Melbourne.',
+      note: repairFinish('When a job requires more than one trade, we can manage the work from start to finish, giving you one point of contact throughout the job.'),
+      items: [
+        'Reactive property repairs',
+        'Routine and ongoing maintenance',
+        'Jobs requiring multiple trades',
+        'Maintenance across multiple managed properties',
+      ],
+    },
+    quote: sharedQuote,
+  },
 }
 
 export function servicePath(slug) {
