@@ -1,21 +1,15 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpDown, CircleCheck, LoaderCircle, Phone, Search, Sparkles, X } from 'lucide-react'
+import { ArrowRight, CircleCheck, LoaderCircle, Search, Sparkles, X } from 'lucide-react'
 import { contact } from '../../data/siteData'
 import { allServices, popularSearches } from '../../data/servicesData'
 import { servicePath } from '../../data/serviceDetails'
 import { buildIndex, isConfidentMatch, searchServices } from '../../utils/serviceSearch'
 import { loadAiSearch } from '../../utils/aiServiceSearch'
-import { Accent, Container } from '../ui'
+import { Accent, ArrowDot, Container } from '../ui'
 
 // Built once, so typing stays fast
 const searchIndex = buildIndex(allServices)
-
-const SORTS = [
-  { id: 'default', label: 'Sort by' },
-  { id: 'az', label: 'A - Z' },
-  { id: 'za', label: 'Z - A' },
-]
 
 function ServiceCard({ service }) {
   return (
@@ -52,7 +46,7 @@ function ServiceCard({ service }) {
 
 export default function ServiceFinder() {
   const [query, setQuery] = useState('')
-  const [sort, setSort] = useState('default')
+  const resultsRef = useRef(null)
 
   // AI search: 'idle' until someone uses the search box, then 'loading',
   // then 'ready' (or 'failed', which quietly keeps the keyword search)
@@ -83,15 +77,10 @@ export default function ServiceFinder() {
   }, [justReady])
 
   const trimmed = query.trim()
-  // Keyword search handles service names and known problems instantly, best match first.
+  // Keyword search handles service names and known problems instantly.
   // Anything else ("water dripping through the roof") goes to the AI.
   const confident = useMemo(() => isConfidentMatch(searchIndex, trimmed), [trimmed])
-  const keywordResults = useMemo(() => {
-    const list = [...searchServices(searchIndex, trimmed)]
-    if (sort === 'az') list.sort((a, b) => a.title.localeCompare(b.title))
-    if (sort === 'za') list.sort((a, b) => b.title.localeCompare(a.title))
-    return list
-  }, [trimmed, sort])
+  const keywordResults = useMemo(() => searchServices(searchIndex, trimmed), [trimmed])
   const askAi = trimmed.length >= 3 && !confident
 
   useEffect(() => {
@@ -115,14 +104,16 @@ export default function ServiceFinder() {
   const aiThinking = askAi && (aiState === 'loading' || (aiState === 'ready' && !aiAnswered))
   const usingAi = aiAnswered && aiResult.services.length > 0
 
+  // Best match first
   let shown = keywordResults
   if (aiAnswered) shown = aiResult.services
 
-  const nextSort = () => {
-    const i = SORTS.findIndex((s) => s.id === sort)
-    setSort(SORTS[(i + 1) % SORTS.length].id)
+  const scrollToResults = () => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+  const viewAll = () => {
+    setQuery('')
+    scrollToResults()
   }
-  const sortLabel = SORTS.find((s) => s.id === sort).label
 
   return (
     <section aria-labelledby="finder-heading" className="bg-brand-mist py-14" id="all-services">
@@ -165,29 +156,14 @@ export default function ServiceFinder() {
               )}
             </div>
 
-            <div className="flex items-center gap-3 sm:gap-4 lg:gap-7">
-              <button
-                aria-label={`Sort services: ${sortLabel === 'Sort by' ? 'default order' : sortLabel}`}
-                className={`inline-flex h-12 items-center gap-2 rounded-lg border px-4 text-[15px] transition-colors ${
-                  sort === 'default'
-                    ? 'border-brand-line bg-brand-mist text-brand-ink/80'
-                    : 'border-brand-sky bg-brand-skySoft text-brand-ink'
-                }`}
-                onClick={nextSort}
-                type="button"
-              >
-                {sortLabel}
-                <ArrowUpDown aria-hidden="true" className="h-4 w-4" />
-              </button>
-              <span className="font-medium text-brand-ink">OR</span>
-              <a
-                className="inline-flex h-12 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-brand-navy px-5 text-[15px] sm:gap-3 sm:px-7 font-medium text-white transition-colors hover:bg-brand-navyLight lg:flex-none"
-                href={contact.phoneHref}
-              >
-                <Phone aria-hidden="true" className="h-4 w-4" fill="currentColor" strokeWidth={0} />
-                {contact.phone}
-              </a>
-            </div>
+            <button
+              className="group inline-flex h-12 items-center justify-center gap-3 self-start rounded-full bg-brand-navy py-2.5 pl-5 pr-2.5 text-base font-medium text-white shadow-card transition-colors hover:bg-brand-navyLight lg:self-auto"
+              onClick={viewAll}
+              type="button"
+            >
+              <span>View All Services</span>
+              <ArrowDot />
+            </button>
           </div>
 
           <div className="mt-4 flex flex-wrap items-center gap-2">
@@ -254,6 +230,8 @@ export default function ServiceFinder() {
         <p aria-live="polite" className="sr-only">
           {shown.length} {shown.length === 1 ? 'service' : 'services'} shown
         </p>
+
+        <div className="scroll-mt-28" ref={resultsRef} />
 
         {shown.length > 0 || aiThinking ? (
           <ul className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
