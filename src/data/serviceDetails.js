@@ -537,6 +537,37 @@ export const serviceDetails = {
       image: '/images/service-brick-repointing.jpg',
       imageAlt: 'Bricklayer repointing mortar joints on a brick wall',
     },
+    offerings: {
+      heading: { before: 'Our Brick Repointing & Mortar Repairs', accent: 'Services' },
+      intro:
+        'We repair deteriorated mortar, damaged bricks and minor brickwork cracks on residential and commercial buildings.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Mortar Repointing',
+          tag: 'Repointing',
+          text: 'Removal and replacement of deteriorated mortar to restore damaged or ageing brickwork joints.',
+        },
+        {
+          icon: 'home',
+          title: 'Brick Repairs',
+          tag: 'Brickwork',
+          text: 'Repair and replacement of cracked, damaged or deteriorated bricks.',
+        },
+        {
+          icon: 'office',
+          title: 'Crack Repairs',
+          tag: 'Repairs',
+          text: 'Assessment and repair of minor cracks affecting brickwork and mortar joints.',
+        },
+        {
+          icon: 'tower',
+          title: 'Brickwork Maintenance',
+          tag: 'Maintenance',
+          text: 'Maintenance and repairs for ageing or deteriorated brickwork across residential, commercial and managed properties.',
+        },
+      ],
+    },
   },
 }
 
