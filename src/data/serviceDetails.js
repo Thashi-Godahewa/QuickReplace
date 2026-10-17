@@ -1137,6 +1137,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Emergency Repairs Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Quick Replace provides urgent property repairs and make-safe services when unexpected damage or faults require prompt attention.',
+      note: repairFinish('Once the immediate risk is dealt with, we can arrange the permanent repairs and any make-good work needed afterwards.'),
+      items: [
+        'Unexpected leaks and water-related damage',
+        'Broken glazing, doors and unsecured openings',
+        'Electrical faults and other urgent property damage',
+        'Storm damage and other urgent make-safe work',
+      ],
+    },
   },
 }
 
