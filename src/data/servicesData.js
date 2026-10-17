@@ -100,21 +100,39 @@ export const allServices = [
     slug: 'doors-windows',
     title: 'Doors & Windows',
     description: 'Repairs and maintenance for doors and windows in residential and commercial properties across Melbourne.',
+    keywords: [
+      'door', 'doors', 'sticking door', 'squeaky door', 'door not closing', 'door handle', 'door hinge', 'hinge',
+      'sliding door', 'screen door', 'flyscreen', 'fly screen', 'window frame', 'window not opening',
+      'window latch', 'window', 'door closer', 'roller door',
+    ],
   },
   {
     slug: 'brick-repointing',
     title: 'Brick Repointing & Mortar Repairs',
     description: 'Professional brickwork and mortar repairs for residential and commercial properties across Melbourne.',
+    keywords: [
+      'brick', 'bricks', 'brickwork', 'mortar', 'repointing', 'crumbling mortar', 'cracked brick', 'loose brick',
+      'brick wall', 'retaining wall', 'chimney', 'bricklayer', 'masonry',
+    ],
   },
   {
     slug: 'handyman',
     title: 'Handyman',
     description: 'Practical general repairs and small maintenance jobs for residential and commercial properties across Melbourne.',
+    keywords: [
+      'handyman', 'odd jobs', 'small jobs', 'hang picture', 'hang pictures', 'hang a mirror', 'shelves', 'shelf', 'assemble furniture', 'flat pack',
+      'curtain rail', 'blinds', 'towel rail', 'minor repairs', 'fix', 'mount tv', 'caulking', 'silicone',
+    ],
   },
   {
     slug: 'carpentry',
     title: 'Carpentry',
     description: 'Professional carpentry repairs and maintenance for residential and commercial properties across Melbourne.',
+    keywords: [
+      'carpenter', 'carpentry', 'timber', 'wood', 'decking', 'deck', 'rotten wood', 'rotten timber', 'skirting',
+      'skirting board', 'architrave', 'cabinet', 'cupboard', 'kitchen cupboard', 'floorboards', 'squeaky floor',
+      'fence', 'pergola', 'stairs', 'wooden',
+    ],
   },
   {
     slug: 'pressure-washing',
