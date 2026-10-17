@@ -694,6 +694,7 @@ export const serviceDetails = {
         'Damaged timber fencing, posts and gates',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
