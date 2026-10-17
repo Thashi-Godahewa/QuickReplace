@@ -935,6 +935,25 @@ export const serviceDetails = {
       image: '/images/service-general-maintenance.jpg',
       imageAlt: 'Technician carrying out a property service',
     },
+    offerings: {
+      heading: { before: 'Our Pest Control', accent: 'Services' },
+      intro:
+        'We arrange treatment for rodents, cockroaches, ants and other pests across residential and commercial properties.',
+      items: [
+        {
+          icon: 'home',
+          title: 'General Pest Control',
+          tag: 'Pest Control',
+          text: 'Treatment for common pests including cockroaches, ants, spiders, fleas and silverfish in residential and commercial properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Rodent Control',
+          tag: 'Rodents',
+          text: 'Inspection and treatment for rats and mice affecting residential, commercial and managed properties.',
+        },
+      ],
+    },
   },
 }
 
