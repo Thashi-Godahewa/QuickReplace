@@ -2,6 +2,23 @@ import { useMemo, useState } from 'react'
 import { projectFilters, projects } from '../data/siteData'
 import { Accent, Container, SectionBadge } from './ui'
 
+// Seconds each tile takes to scroll past. The loop time grows with the number of
+// tiles, so the speed stays the same however many projects are shown.
+// Higher = slower.
+const SECONDS_PER_TILE = 9
+
+// A trade filter only shows once it has at least this many photos
+const MIN_PHOTOS_FOR_FILTER = 4
+// Below this many photos, everything goes in one row instead of two
+const MIN_PHOTOS_FOR_TWO_ROWS = 8
+
+const photoCount = (filter) => projects.filter((p) => p.category === filter).length
+
+// "All Works" is always shown; trade filters only when they have enough photos
+const visibleFilters = projectFilters.filter(
+  (f, i) => i === 0 || photoCount(f) >= MIN_PHOTOS_FOR_FILTER,
+)
+
 // Repeat the list so each marquee row is always wide enough to loop smoothly
 function fillRow(items, minLength = 6) {
   if (items.length === 0) return []
@@ -35,8 +52,14 @@ export default function Projects() {
     () => (filter === projectFilters[0] ? projects : projects.filter((p) => p.category === filter)),
     [filter],
   )
-  const rowOne = fillRow(filtered)
-  const rowTwo = fillRow([...filtered].reverse())
+  // With enough photos, split them between the two rows (alternating), so the same
+  // photo never shows in both rows. Otherwise use one row. A row can still repeat
+  // its own photos to fill the width.
+  const twoRows = filtered.length >= MIN_PHOTOS_FOR_TWO_ROWS
+  const rowOne = fillRow(twoRows ? filtered.filter((_, i) => i % 2 === 0) : filtered)
+  const rowTwo = twoRows ? fillRow(filtered.filter((_, i) => i % 2 === 1)) : []
+  // Each row holds its tiles twice, so one loop is half the row
+  const speedFor = (row) => ({ animationDuration: `${(row.length / 2) * SECONDS_PER_TILE}s` })
 
   return (
     <section aria-labelledby="projects-heading" className="border-b border-brand-line bg-white py-16 lg:py-11" id="projects">
@@ -50,10 +73,10 @@ export default function Projects() {
 
         <div
           aria-label="Filter projects by trade"
-          className="no-scrollbar -mx-6 mt-14 flex gap-2.5 overflow-x-auto px-6 lg:mx-0 lg:justify-between lg:px-1"
+          className="no-scrollbar -mx-6 mt-14 flex gap-3 overflow-x-auto px-6 lg:mx-0 lg:justify-center lg:px-1"
           role="group"
         >
-          {projectFilters.map((f) => (
+          {visibleFilters.map((f) => (
             <button
               aria-pressed={filter === f}
               className={`shrink-0 rounded-full border px-5 py-2 text-[15px] transition-colors ${
@@ -78,19 +101,21 @@ export default function Projects() {
       ) : (
         <div className="mx-auto mt-8 max-w-7xl space-y-6 px-6 lg:px-12">
           <div className="edge-fade marquee-pause overflow-hidden">
-            <div className="flex w-max animate-marquee-slow gap-6" key={`one-${filter}`}>
+            <div className="flex w-max animate-marquee-slow gap-6" key={`one-${filter}`} style={speedFor(rowOne)}>
               {rowOne.map((p, i) => (
                 <ProjectTile hidden={i >= rowOne.length / 2} key={`${p.src}-${i}`} project={p} />
               ))}
             </div>
           </div>
-          <div className="edge-fade marquee-pause overflow-hidden">
-            <div className="flex w-max animate-marquee-reverse gap-6" key={`two-${filter}`}>
-              {rowTwo.map((p, i) => (
-                <ProjectTile hidden={i >= rowTwo.length / 2} key={`${p.src}-${i}`} project={p} />
-              ))}
+          {rowTwo.length > 0 && (
+            <div className="edge-fade marquee-pause overflow-hidden">
+              <div className="flex w-max animate-marquee-reverse gap-6" key={`two-${filter}`} style={speedFor(rowTwo)}>
+                {rowTwo.map((p, i) => (
+                  <ProjectTile hidden={i >= rowTwo.length / 2} key={`${p.src}-${i}`} project={p} />
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </section>
