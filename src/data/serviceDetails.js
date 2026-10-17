@@ -1023,6 +1023,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Window Tinting Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Window film can provide a practical solution where existing glazing needs greater privacy, glare reduction or solar control without replacing the glass.',
+      note: repairFinish('We can help identify an appropriate film based on the property, glazing and the result you are looking to achieve.'),
+      items: [
+        'Excessive glare and solar heat',
+        'Privacy for offices and meeting rooms',
+        'Frosted and decorative glass film',
+        'Old or damaged window tint',
+      ],
+    },
   },
 }
 
