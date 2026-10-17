@@ -10,6 +10,9 @@
 // browser caches them. If anything fails (offline, old browser), the page
 // simply keeps using the keyword search in serviceSearch.js.
 
+const LIBRARY_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.6/dist/transformers.min.js'
+const MODEL = 'Xenova/all-MiniLM-L6-v2'
+
 // How sure the AI must be before its answer is shown (0 to 1)
 const MIN_SIMILARITY = 0.45
 // Also show services that are nearly as close as the best one
@@ -66,4 +69,23 @@ export async function createAiSearch(extractor, services) {
       .slice(0, MAX_RESULTS)
       .map((r) => r.service)
   }
+}
+
+// Browser loader: downloads the library and model once, shared by every search
+let loading = null
+
+export function loadAiSearch(services) {
+  if (!loading) {
+    loading = import(/* webpackIgnore: true */ LIBRARY_URL)
+      .then(async ({ pipeline, env }) => {
+        env.allowLocalModels = false
+        const extractor = await pipeline('feature-extraction', MODEL, { dtype: 'q8' })
+        return createAiSearch(extractor, services)
+      })
+      .catch((error) => {
+        loading = null // allow another try later
+        throw error
+      })
+  }
+  return loading
 }
