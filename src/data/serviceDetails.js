@@ -923,6 +923,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'pest-control': {
+    title: 'Pest Control',
+    pageTitle: 'Pest Control Services Melbourne',
+    hero: {
+      accent: 'Pest Control',
+      title: 'Services Melbourne',
+      description:
+        'Pest control and treatment for common pest problems affecting residential and commercial properties across Melbourne.',
+      image: '/images/service-general-maintenance.jpg',
+      imageAlt: 'Technician carrying out a property service',
+    },
+  },
 }
 
 export function servicePath(slug) {
