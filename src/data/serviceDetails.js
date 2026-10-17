@@ -838,6 +838,18 @@ export const serviceDetails = {
           tag: 'Bathrooms',
           text: 'Tiling repairs and replacement for bathrooms, showers and other wet areas, including work following plumbing or water damage.',
         },
+        {
+          icon: 'office',
+          title: 'Commercial Tiling & Repairs',
+          tag: 'Commercial',
+          text: 'Tile repairs and replacement for commercial properties, including damaged floor tiles, tiled staircases, steps, common areas and other tiled surfaces.',
+        },
+        {
+          icon: 'tower',
+          title: 'Kitchen & General Tiling',
+          tag: 'Tiling',
+          text: 'Tiling and tile repairs for kitchen splashbacks, floors, walls and other tiled areas in residential and commercial properties.',
+        },
       ],
     },
   },
