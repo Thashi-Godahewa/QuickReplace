@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Building2, HeartHandshake, House, Landmark } from 'lucide-react'
 import { industries } from '../data/siteData'
-import { Accent, CarouselArrows, Container, SectionBadge } from './ui'
+import { Accent, Container, SectionBadge } from './ui'
 
 const icons = {
   commercial: Building2,
@@ -11,19 +11,8 @@ const icons = {
 }
 
 export default function Industries() {
+  // The highlighted card follows the mouse (or a tap on touch screens)
   const [active, setActive] = useState(1)
-  const rowRef = useRef(null)
-
-  const goTo = (index) => {
-    const next = (index + industries.length) % industries.length
-    setActive(next)
-    // On narrow screens the row scrolls, so bring the active card into view
-    const row = rowRef.current
-    const card = row && row.children[next]
-    if (row && card && row.scrollWidth > row.clientWidth) {
-      row.scrollTo({ left: card.offsetLeft - row.offsetLeft, behavior: 'smooth' })
-    }
-  }
 
   return (
     <section aria-labelledby="industries-heading" className="border-b border-brand-line bg-white py-16 lg:py-10" id="industries">
@@ -39,10 +28,9 @@ export default function Industries() {
               regulatory, and delivery requirements.
             </p>
           </div>
-          <CarouselArrows label="industry" onNext={() => goTo(active + 1)} onPrev={() => goTo(active - 1)} />
         </div>
 
-        <ul className="no-scrollbar mt-16 flex snap-x snap-mandatory overflow-x-auto" ref={rowRef}>
+        <ul className="no-scrollbar mt-16 flex snap-x snap-mandatory overflow-x-auto">
           {industries.map((item, i) => {
             const Icon = icons[item.icon]
             const isActive = i === active
@@ -54,6 +42,7 @@ export default function Industries() {
                     : 'border-brand-line bg-white text-brand-ink'
                 } ${i > 0 ? '-ml-px' : ''}`}
                 key={item.title}
+                onClick={() => setActive(i)}
                 onMouseEnter={() => setActive(i)}
               >
                 <span className={`text-xl tracking-wider ${isActive ? 'text-white/80' : 'text-brand-muted/70'}`}>
