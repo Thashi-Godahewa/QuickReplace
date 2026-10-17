@@ -952,6 +952,18 @@ export const serviceDetails = {
           tag: 'Rodents',
           text: 'Inspection and treatment for rats and mice affecting residential, commercial and managed properties.',
         },
+        {
+          icon: 'office',
+          title: 'Cockroach & Ant Treatment',
+          tag: 'Insects',
+          text: 'Treatment for cockroach and ant activity in and around residential and commercial properties.',
+        },
+        {
+          icon: 'tower',
+          title: 'Commercial Pest Control',
+          tag: 'Commercial',
+          text: 'Pest control for offices, retail premises, warehouses and other commercial properties, including ongoing treatment where required.',
+        },
       ],
     },
   },
