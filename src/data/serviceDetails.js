@@ -978,6 +978,7 @@ export const serviceDetails = {
         'Commercial pest problems',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
