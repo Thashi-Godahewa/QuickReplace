@@ -568,6 +568,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Brick Repointing & Mortar Repairs Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From deteriorated mortar joints to damaged bricks and minor cracking, we provide brickwork repairs and repointing across residential, commercial and managed properties in Melbourne.',
+      note: repairFinish('Where brick repairs affect adjoining painted or finished surfaces, we can take care of the finishing work.'),
+      items: [
+        'Cracked or deteriorated mortar joints',
+        'Damaged or loose bricks',
+        'Ageing or deteriorated brickwork requiring repair',
+        'Minor cracking in brickwork and mortar joints',
+      ],
+    },
   },
 }
 
