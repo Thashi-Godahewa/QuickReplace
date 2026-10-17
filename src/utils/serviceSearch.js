@@ -144,6 +144,15 @@ function scoreEntry(entry, query, queryWords, weight) {
   return score
 }
 
+// True when the keyword search found a clear match (a service name or a
+// whole keyword phrase). Otherwise the AI search is asked as well.
+export function isConfidentMatch(index, rawQuery) {
+  const query = normalise(rawQuery)
+  if (!query) return true
+  const queryWords = tokens(query)
+  return index.entries.some((entry) => scoreEntry(entry, query, queryWords, index.weight) >= PHRASE_MATCH)
+}
+
 // Returns the matching services, best match first
 export function searchServices(index, rawQuery) {
   const query = normalise(rawQuery)
