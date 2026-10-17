@@ -511,6 +511,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Doors & Windows Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From sticking doors and damaged hardware to window mechanisms and roller shutters, we provide door and window repairs for residential, commercial and managed properties.',
+      note: repairFinish('Where a door or window needs carpentry, glazing or hardware repairs, we can take care of the work together.'),
+      items: [
+        'Doors that stick or do not close correctly',
+        'Damaged window or door hardware',
+        'General door and window maintenance',
+        'Commercial roller doors and residential shutters',
+      ],
+    },
   },
 }
 
