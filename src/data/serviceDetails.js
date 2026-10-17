@@ -821,6 +821,25 @@ export const serviceDetails = {
       image: '/images/before-after-shower.jpg',
       imageAlt: 'Shower with a cracked tiled wall before and after repair',
     },
+    offerings: {
+      heading: { before: 'Our Tiling & Tile Repair', accent: 'Services' },
+      intro:
+        'We repair and replace damaged wall and floor tiles in bathrooms, kitchens, commercial staircases and other tiled areas.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Damaged Tile Repairs & Replacement',
+          tag: 'Tile Repairs',
+          text: 'Repair and replacement of cracked, chipped, loose or damaged wall and floor tiles.',
+        },
+        {
+          icon: 'home',
+          title: 'Bathroom & Wet Area Tiling',
+          tag: 'Bathrooms',
+          text: 'Tiling repairs and replacement for bathrooms, showers and other wet areas, including work following plumbing or water damage.',
+        },
+      ],
+    },
   },
 }
 
