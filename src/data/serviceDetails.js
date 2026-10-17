@@ -1037,6 +1037,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'graffiti-removal': {
+    title: 'Graffiti Removal',
+    pageTitle: 'Graffiti Removal Services Melbourne',
+    hero: {
+      accent: 'Graffiti Removal',
+      title: 'Services Melbourne',
+      description:
+        'Graffiti removal and exterior surface cleaning for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-pressure-washing.jpg',
+      imageAlt: 'Pressure cleaning the outside of a property',
+    },
+  },
 }
 
 export function servicePath(slug) {
