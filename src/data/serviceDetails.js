@@ -1094,6 +1094,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'emergency-repairs': {
+    title: 'Emergency Repairs',
+    pageTitle: 'Emergency Property Repairs Services Melbourne',
+    hero: {
+      accent: 'Emergency Property Repairs',
+      title: 'Services Melbourne',
+      description:
+        'Urgent property maintenance and make-safe support when unexpected damage or faults require prompt attention.',
+      image: '/images/service-emergency-repairs.jpg',
+      imageAlt: 'Plumber clearing a blocked floor drain in a tiled bathroom',
+    },
+  },
 }
 
 export function servicePath(slug) {
