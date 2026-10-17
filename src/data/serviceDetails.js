@@ -992,6 +992,25 @@ export const serviceDetails = {
       image: '/images/before-after-window.jpg',
       imageAlt: 'Glazed door with frosted window film applied',
     },
+    offerings: {
+      heading: { before: 'Our Window Tinting', accent: 'Services' },
+      intro:
+        'We install and replace window films for privacy, glare reduction and solar control in homes, offices and commercial premises.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Residential Window Tinting',
+          tag: 'Residential',
+          text: 'Window tinting for houses, apartments and units to improve privacy and help reduce glare, solar heat and UV exposure.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Window Tinting',
+          tag: 'Commercial',
+          text: 'Window film for offices, shopfronts and other commercial premises to help reduce glare and solar heat and improve privacy.',
+        },
+      ],
+    },
   },
 }
 
