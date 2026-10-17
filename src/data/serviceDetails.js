@@ -752,6 +752,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'general-maintenance': {
+    title: 'Property Maintenance',
+    pageTitle: 'General Property Maintenance Services Melbourne',
+    hero: {
+      accent: 'General Property Maintenance',
+      title: 'Services Melbourne',
+      description:
+        'Property repairs and ongoing maintenance for residential, commercial and managed properties across Melbourne, with multiple trades available through one point of contact.',
+      image: '/images/service-general-maintenance.jpg',
+      imageAlt: 'Tradesperson carrying out property maintenance',
+    },
+  },
 }
 
 export function servicePath(slug) {
