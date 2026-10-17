@@ -4,8 +4,12 @@ import { ArrowRight, ArrowUpDown, CircleCheck, LoaderCircle, Phone, Search, Spar
 import { contact } from '../../data/siteData'
 import { allServices, popularSearches } from '../../data/servicesData'
 import { servicePath } from '../../data/serviceDetails'
+import { buildIndex, isConfidentMatch, searchServices } from '../../utils/serviceSearch'
 import { loadAiSearch } from '../../utils/aiServiceSearch'
 import { Accent, Container } from '../ui'
+
+// Built once, so typing stays fast
+const searchIndex = buildIndex(allServices)
 
 const SORTS = [
   { id: 'default', label: 'Sort by' },
@@ -51,7 +55,7 @@ export default function ServiceFinder() {
   const [sort, setSort] = useState('default')
 
   // AI search: 'idle' until someone uses the search box, then 'loading',
-  // then 'ready' (or 'failed', which quietly keeps the text search)
+  // then 'ready' (or 'failed', which quietly keeps the keyword search)
   const [aiState, setAiState] = useState('idle')
   const aiRank = useRef(null)
   const [aiResult, setAiResult] = useState({ query: '', services: [] })
@@ -79,18 +83,16 @@ export default function ServiceFinder() {
   }, [justReady])
 
   const trimmed = query.trim()
-  // Text search on service names and descriptions
-  const textResults = useMemo(() => {
-    const q = trimmed.toLowerCase()
-    const list = q
-      ? allServices.filter((s) => `${s.title} ${s.description}`.toLowerCase().includes(q))
-      : [...allServices]
+  // Keyword search handles service names and known problems instantly, best match first.
+  // Anything else ("water dripping through the roof") goes to the AI.
+  const confident = useMemo(() => isConfidentMatch(searchIndex, trimmed), [trimmed])
+  const keywordResults = useMemo(() => {
+    const list = [...searchServices(searchIndex, trimmed)]
     if (sort === 'az') list.sort((a, b) => a.title.localeCompare(b.title))
     if (sort === 'za') list.sort((a, b) => b.title.localeCompare(a.title))
     return list
   }, [trimmed, sort])
-  // Anything the text search cannot find ("water dripping through the roof") goes to the AI
-  const askAi = trimmed.length >= 3 && textResults.length === 0
+  const askAi = trimmed.length >= 3 && !confident
 
   useEffect(() => {
     if (!askAi || aiState !== 'ready') return undefined
@@ -113,7 +115,7 @@ export default function ServiceFinder() {
   const aiThinking = askAi && (aiState === 'loading' || (aiState === 'ready' && !aiAnswered))
   const usingAi = aiAnswered && aiResult.services.length > 0
 
-  let shown = textResults
+  let shown = keywordResults
   if (aiAnswered) shown = aiResult.services
 
   const nextSort = () => {
