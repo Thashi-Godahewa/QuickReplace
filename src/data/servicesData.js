@@ -219,6 +219,18 @@ export const allServices = [
       'ridge capping', 'flashing', 'roof plumber', 'storm damaged roof', 'water coming through the ceiling',
     ],
   },
+  {
+    slug: 'tiling',
+    title: 'Tiling & Tile Repairs',
+    description:
+      'Quality tiling and tile repair services to replace damaged tiles, restore surfaces, and maintain a clean, finished appearance.',
+    keywords: [
+      'tiling', 'tiler', 'tile', 'tiles', 'tile repair', 'cracked tile', 'broken tile', 'loose tile', 'drummy tiles',
+      'regrout', 'grout', 'mouldy grout', 'bathroom tiles', 'kitchen splashback tiles', 'floor tiles', 'shower tiles',
+      'retile', 'waterproofing', 'silicone around shower',
+    ],
+  },
+
 ]
 
 export const popularSearches = ['Plumbing', 'Painting & Plastering', 'Electrical', 'Glazing', 'Make Safe']
