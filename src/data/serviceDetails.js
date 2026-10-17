@@ -1009,6 +1009,18 @@ export const serviceDetails = {
           tag: 'Commercial',
           text: 'Window film for offices, shopfronts and other commercial premises to help reduce glare and solar heat and improve privacy.',
         },
+        {
+          icon: 'office',
+          title: 'Privacy & Frosted Film',
+          tag: 'Privacy',
+          text: 'Privacy and decorative films for windows, glazed doors, offices, meeting rooms and other glass areas.',
+        },
+        {
+          icon: 'tower',
+          title: 'Existing Film Removal & Replacement',
+          tag: 'Replacement',
+          text: 'Removal and replacement of old, damaged, bubbling or deteriorated window film.',
+        },
       ],
     },
   },
