@@ -523,6 +523,7 @@ export const serviceDetails = {
         'Commercial roller doors and residential shutters',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
