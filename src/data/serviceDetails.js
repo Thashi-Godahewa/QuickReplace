@@ -895,6 +895,18 @@ export const serviceDetails = {
           tag: 'Tiled Roofs',
           text: 'Repair and replacement of cracked, broken or displaced roof tiles and other tiled-roof damage.',
         },
+        {
+          icon: 'office',
+          title: 'Metal Roof Repairs',
+          tag: 'Metal Roofs',
+          text: 'Repairs and maintenance for damaged metal roofing, flashings and other associated roof components.',
+        },
+        {
+          icon: 'tower',
+          title: 'Temporary Roof Make-Safe',
+          tag: 'Make Safe',
+          text: 'Where a larger repair cannot be completed immediately, we can carry out temporary make-safe work to help protect the property until permanent repairs can be completed.',
+        },
       ],
     },
   },
