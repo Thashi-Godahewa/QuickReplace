@@ -1123,6 +1123,18 @@ export const serviceDetails = {
           tag: 'Glazing',
           text: 'Urgent assistance following broken glass, including securing affected windows, doors or shopfronts and arranging replacement.',
         },
+        {
+          icon: 'office',
+          title: 'Emergency Electrical',
+          tag: 'Electrical',
+          text: 'Urgent electrical assistance for power outages, electrical faults or damage that may present an immediate safety concern.',
+        },
+        {
+          icon: 'tower',
+          title: 'Emergency Property Make-Safe',
+          tag: 'Make Safe',
+          text: 'Temporary measures to secure damaged property, minimise further damage and reduce immediate risks until permanent repairs or flood restoration can be completed.',
+        },
       ],
     },
   },
