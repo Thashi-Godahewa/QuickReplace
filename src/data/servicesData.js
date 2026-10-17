@@ -208,6 +208,17 @@ export const allServices = [
       'bugs', 'insects', 'noises in the roof', 'mouse droppings',
     ],
   },
+  {
+    slug: 'roofing',
+    title: 'Roofing',
+    description:
+      'Reliable roofing repairs and maintenance to address leaks, damage, and weather-related issues while protecting your property.',
+    keywords: [
+      'roof', 'roofing', 'roof leak', 'leaking roof', 'roof repair', 'roof damage', 'broken roof tiles', 'cracked roof tile',
+      'roof tiles', 'missing tiles on roof', 'metal roof', 'colorbond roof', 'rusty roof', 'roof restoration',
+      'ridge capping', 'flashing', 'roof plumber', 'storm damaged roof', 'water coming through the ceiling',
+    ],
+  },
 ]
 
 export const popularSearches = ['Plumbing', 'Painting & Plastering', 'Electrical', 'Glazing', 'Make Safe']
