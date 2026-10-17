@@ -1049,6 +1049,25 @@ export const serviceDetails = {
       image: '/images/service-pressure-washing.jpg',
       imageAlt: 'Pressure cleaning the outside of a property',
     },
+    offerings: {
+      heading: { before: 'Our Graffiti Removal', accent: 'Services' },
+      intro:
+        'We remove graffiti from brick, concrete, walls and shopfronts, with repainting available when cleaning alone won’t restore the finish.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Graffiti Removal',
+          tag: 'Graffiti',
+          text: 'Removal of graffiti from walls, brickwork, concrete and other external surfaces.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Graffiti Removal',
+          tag: 'Commercial',
+          text: 'Graffiti removal for shops, offices, warehouses, commercial buildings and managed properties.',
+        },
+      ],
+    },
   },
 }
 
