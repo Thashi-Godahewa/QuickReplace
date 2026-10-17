@@ -197,6 +197,17 @@ export const allServices = [
       'neighbours can see in', 'office tinting', 'security film',
     ],
   },
+  {
+    slug: 'pest-control',
+    title: 'Pest Control',
+    description:
+      'Professional pest control solutions to protect your property from unwanted pests, infestations, and potential damage.',
+    keywords: [
+      'pest control', 'pests', 'pest', 'termites', 'white ants', 'cockroaches', 'roaches', 'ants', 'spiders', 'rats',
+      'mice', 'rodents', 'possum in roof', 'bed bugs', 'fleas', 'wasps', 'bees nest', 'infestation', 'exterminator',
+      'bugs', 'insects', 'noises in the roof', 'mouse droppings',
+    ],
+  },
 ]
 
 export const popularSearches = ['Plumbing', 'Painting & Plastering', 'Electrical', 'Glazing', 'Make Safe']
