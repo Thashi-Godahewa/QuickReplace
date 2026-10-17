@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpDown, Phone, Search, Sparkles, X } from 'lucide-react'
+import { ArrowRight, ArrowUpDown, CircleCheck, LoaderCircle, Phone, Search, Sparkles, X } from 'lucide-react'
 import { contact } from '../../data/siteData'
 import { allServices, popularSearches } from '../../data/servicesData'
 import { servicePath } from '../../data/serviceDetails'
@@ -55,17 +55,28 @@ export default function ServiceFinder() {
   const [aiState, setAiState] = useState('idle')
   const aiRank = useRef(null)
   const [aiResult, setAiResult] = useState({ query: '', services: [] })
+  // Loading progress shown under the search box
+  const [aiProgress, setAiProgress] = useState({ stage: 'downloading', percent: 0 })
+  // Shows "Smart search is ready" for a few seconds after loading
+  const [justReady, setJustReady] = useState(false)
 
   const startAi = () => {
     if (aiState !== 'idle') return
     setAiState('loading')
-    loadAiSearch(allServices)
+    loadAiSearch(allServices, setAiProgress)
       .then((rank) => {
         aiRank.current = rank
         setAiState('ready')
+        setJustReady(true)
       })
       .catch(() => setAiState('failed'))
   }
+
+  useEffect(() => {
+    if (!justReady) return undefined
+    const timer = setTimeout(() => setJustReady(false), 4000)
+    return () => clearTimeout(timer)
+  }, [justReady])
 
   const trimmed = query.trim()
   // Text search on service names and descriptions
@@ -196,6 +207,25 @@ export default function ServiceFinder() {
           </div>
 
           <div aria-live="polite">
+            {aiState === 'loading' && (
+              <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-[14px] text-brand-ink/80">
+                <LoaderCircle aria-hidden="true" className="h-4 w-4 shrink-0 animate-spin text-brand-sky" />
+                {aiProgress.stage === 'preparing' ? (
+                  <span>Almost ready...</span>
+                ) : (
+                  <>
+                    <span>Loading smart search... {aiProgress.percent > 0 && `${aiProgress.percent}%`}</span>
+                    <span aria-hidden="true" className="h-1.5 w-32 overflow-hidden rounded-full bg-brand-mist">
+                      <span
+                        className="block h-full rounded-full bg-brand-sky transition-[width] duration-300"
+                        style={{ width: `${Math.max(aiProgress.percent, 4)}%` }}
+                      />
+                    </span>
+                  </>
+                )}
+              </div>
+            )}
+
             {aiState === 'ready' && (usingAi || aiThinking) && (
               <p className="mt-4 flex items-center gap-2 text-[14px] text-brand-ink/80">
                 <Sparkles aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-sky" />
@@ -209,6 +239,13 @@ export default function ServiceFinder() {
                 ) : (
                   <span>Finding the right service...</span>
                 )}
+              </p>
+            )}
+
+            {aiState === 'ready' && justReady && !usingAi && !aiThinking && (
+              <p className="mt-4 flex items-center gap-2 text-[14px] text-brand-ink/80">
+                <CircleCheck aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-sky" />
+                <span>Smart search is ready. Describe the problem, for example &ldquo;water leaking through the ceiling&rdquo;.</span>
               </p>
             )}
           </div>
