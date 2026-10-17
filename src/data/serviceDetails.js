@@ -594,6 +594,37 @@ export const serviceDetails = {
       image: '/images/service-handyman.jpg',
       imageAlt: 'Handyman carrying out a repair',
     },
+    offerings: {
+      heading: { before: 'Our Handyman', accent: 'Services' },
+      intro:
+        'We handle general property repairs, fittings and maintenance lists, particularly when several items need attention at one property.',
+      items: [
+        {
+          icon: 'home',
+          title: 'General Property Repairs',
+          tag: 'Repairs',
+          text: 'General repairs for damaged or deteriorated fixtures, fittings and property components.',
+        },
+        {
+          icon: 'home',
+          title: 'Fixtures & Fittings',
+          tag: 'Installation',
+          text: 'Installation, repair, adjustment and replacement of everyday property fixtures and fittings.',
+        },
+        {
+          icon: 'office',
+          title: 'Minor Wall & Surface Repairs',
+          tag: 'Maintenance',
+          text: 'Patching, sealing and minor make-good work to damaged walls and other property surfaces.',
+        },
+        {
+          icon: 'tower',
+          title: 'Property Maintenance Lists',
+          tag: 'Multi-Task',
+          text: 'Completion of multiple property repair and maintenance items during one visit where practical.',
+        },
+      ],
+    },
   },
 }
 
