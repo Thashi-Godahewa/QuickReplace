@@ -1080,6 +1080,18 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Graffiti Removal Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'We remove graffiti from shopfronts, commercial buildings, common areas and residential properties across Melbourne.',
+      note: repairFinish('Where graffiti cannot be completely removed or has damaged the existing finish, we can prepare and repaint the affected area to restore the surface.'),
+      items: [
+        'Spray paint and marker graffiti',
+        'Graffiti on brick, concrete and painted surfaces',
+        'Shopfronts, walls and common areas',
+        'Surface preparation and repainting where required',
+      ],
+    },
   },
 }
 
