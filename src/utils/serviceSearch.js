@@ -20,6 +20,11 @@ const STOP_WORDS = new Set([
   'please', 'some', 'the', 'there', 'to', 'up', 'want', 'with', 'wont',
 ])
 
+// Score thresholds
+const TITLE_MATCH = 10
+const PHRASE_MATCH = 6
+const MIN_SHARE_OF_BEST = 0.4
+
 export function normalise(text) {
   return text
     .toLowerCase()
@@ -55,6 +60,38 @@ function tokens(text) {
     .map(stem)
 }
 
+// Allows one wrong, missing or extra letter in longer words
+function closeEnough(a, b) {
+  if (Math.abs(a.length - b.length) > 1 || Math.min(a.length, b.length) < 5) return false
+  let i = 0
+  let j = 0
+  let edits = 0
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) {
+      i += 1
+      j += 1
+    } else {
+      edits += 1
+      if (edits > 1) return false
+      if (a.length > b.length) i += 1
+      else if (b.length > a.length) j += 1
+      else {
+        i += 1
+        j += 1
+      }
+    }
+  }
+  return edits + (a.length - i) + (b.length - j) <= 1
+}
+
+// How well one typed word matches one keyword word (0 to 1)
+function wordMatch(typed, known) {
+  if (typed === known) return 1
+  if (typed.length >= 3 && known.startsWith(typed)) return 0.8 // still typing
+  if (closeEnough(typed, known)) return 0.7 // small typo
+  return 0
+}
+
 // Build the search index once per list of services
 export function buildIndex(services) {
   const entries = services.map((service) => {
@@ -71,4 +108,54 @@ export function buildIndex(services) {
   const weight = (w) => 1 / (counts[w] || 1)
 
   return { entries, weight }
+}
+
+function scoreEntry(entry, query, queryWords, weight) {
+  let score = 0
+
+  // Whole title or whole keyword phrase (matched on whole words, so "lock"
+  // does not match inside "blocked")
+  const padded = ` ${query} `
+  const has = (phrase) => padded.includes(` ${phrase} `)
+  const typed = new Set(queryWords)
+  // A one-word keyword only counts as a clear match for short searches, so a
+  // longer sentence like "scratching noises in the ceiling" goes to the AI
+  // instead of matching Painting on the word "ceiling"
+  const phraseFound = (list) => (list.length > 1 || queryWords.length <= 2) && list.every((w) => typed.has(w))
+  if (has(entry.title) || (query.length >= 3 && entry.title.startsWith(query))) score += TITLE_MATCH
+  else if (entry.phraseWords.some(phraseFound) || entry.phrases.some((p) => query.length >= 4 && p.startsWith(query))) {
+    score += PHRASE_MATCH
+  }
+
+  // Word by word
+  queryWords.forEach((typed) => {
+    let best = 0
+    let bestWord = null
+    entry.words.forEach((known) => {
+      const m = wordMatch(typed, known)
+      if (m > best) {
+        best = m
+        bestWord = known
+      }
+    })
+    if (bestWord) score += best * weight(bestWord) * 2
+  })
+
+  return score
+}
+
+// Returns the matching services, best match first
+export function searchServices(index, rawQuery) {
+  const query = normalise(rawQuery)
+  if (!query) return index.entries.map((e) => e.service)
+
+  const queryWords = tokens(query)
+  const scored = index.entries
+    .map((entry) => ({ service: entry.service, score: scoreEntry(entry, query, queryWords, index.weight) }))
+    .filter((r) => r.score > 0)
+    .sort((a, b) => b.score - a.score)
+
+  if (scored.length === 0) return []
+  const cutOff = scored[0].score * MIN_SHARE_OF_BEST
+  return scored.filter((r) => r.score >= cutOff).map((r) => r.service)
 }
