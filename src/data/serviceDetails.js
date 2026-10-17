@@ -1151,6 +1151,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  removalist: {
+    title: 'Removalist & Rubbish Removal',
+    pageTitle: 'Removalist & Rubbish Removal Services Melbourne',
+    hero: {
+      accent: 'Removalist & Rubbish Removal',
+      title: 'Services Melbourne',
+      description:
+        'Rubbish removal, property clear-outs and small moving jobs for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-removalist.jpg',
+      imageAlt: 'Removalists loading furniture into a truck',
+    },
+  },
 }
 
 export function servicePath(slug) {
