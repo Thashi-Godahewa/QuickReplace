@@ -1163,6 +1163,37 @@ export const serviceDetails = {
       image: '/images/service-removalist.jpg',
       imageAlt: 'Removalists loading furniture into a truck',
     },
+    offerings: {
+      heading: { before: 'Our Removalist', accent: 'Services' },
+      intro:
+        'We clear unwanted items, remove rubbish after repairs and assist with smaller moves for tenants, owners and businesses.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Rubbish Removal',
+          tag: 'Cleanup',
+          text: 'Removal of unwanted items, general rubbish and waste associated with property maintenance and clean-ups.',
+        },
+        {
+          icon: 'home',
+          title: 'Property Clear-Outs',
+          tag: 'Removal',
+          text: 'Property clear-outs and removal of unwanted furniture, rubbish and other items after tenants have vacated residential or commercial premises.',
+        },
+        {
+          icon: 'office',
+          title: 'Post-Maintenance Cleanup',
+          tag: 'Site Cleanup',
+          text: 'Removal of waste and unwanted materials following repair or maintenance work.',
+        },
+        {
+          icon: 'tower',
+          title: 'Small Property Moves',
+          tag: 'Removal',
+          text: 'Small moving jobs for tenants, property owners and businesses relocating furniture and other items into, out of or between properties.',
+        },
+      ],
+    },
   },
 }
 
