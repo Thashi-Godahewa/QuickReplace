@@ -196,6 +196,24 @@ export const testimonials = [
     quote:
       'Great people to work with! Sonny was very responsive from the minute I called to inquire about his services. He went over every detail with me and we set up a plan for the day of work.',
   },
+  {
+    avatar: '/images/avatar-4.jpg',
+    name: 'Jora Broerse',
+    quote:
+      'I rang Quick Replace after another company tried to rip me off. I was so impressed with the efficiency, cleanliness and honesty that they now became my regular maintenance guys. Definitely recommend this company.',
+  },
+  {
+    avatar: '/images/avatar-5.jpg',
+    name: 'LN Muzzin',
+    quote:
+      "Sonny and his team were so professional and courteous. Had a leak in our roof which was very challenging to find. Sonny's crew found the source of the leak and they did a wonderful job of repairing the roof, all in one day.",
+  },
+  {
+    avatar: '/images/avatar-6.jpg',
+    name: 'John Culina',
+    quote:
+      "I've used Quick Replace on many occasions and every time I get the same prompt response, a competitive quote and the job delivered on time and on budget. Definitely the go-to maintenance company.",
+  },
 ]
 
 export const clients = [
