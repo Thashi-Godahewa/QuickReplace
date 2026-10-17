@@ -1066,6 +1066,18 @@ export const serviceDetails = {
           tag: 'Commercial',
           text: 'Graffiti removal for shops, offices, warehouses, commercial buildings and managed properties.',
         },
+        {
+          icon: 'office',
+          title: 'Paint & Marker Removal',
+          tag: 'Surface Cleaning',
+          text: 'Removal of spray paint, markers and other graffiti using a cleaning method appropriate for the affected surface.',
+        },
+        {
+          icon: 'tower',
+          title: 'Surface Repair & Repainting',
+          tag: 'Repainting',
+          text: 'Where graffiti cannot be fully removed or has damaged the existing finish, we can prepare and repaint the affected area to restore its appearance.',
+        },
       ],
     },
   },
