@@ -58,22 +58,43 @@ export const allServices = [
     title: 'Make Safe',
     description:
       'Urgent property make-safe assistance for damage that needs to be secured before permanent repairs can be completed.',
+    keywords: [
+      'make safe', 'storm', 'roof blown off', 'secure property', 'board up', 'boarding', 'storm damage', 'break in', 'break-in',
+      'fire damage', 'flood damage', 'after accident', 'vehicle impact', 'temporary repair', 'secure', 'hazard',
+      'unsafe', 'car crashed into building', 'vandalism', 'damaged shop front',
+    ],
   },
   {
     slug: 'locksmith',
     title: 'Locksmith',
     badge: 'Security Licenced',
     description: 'Lock repairs, replacements and access solutions for residential and commercial properties across Melbourne.',
+    keywords: [
+      'broken lock', 'lock', 'locked out', 'lockout', 'lost keys', 'key', 'keys', 'key cutting', 'rekey',
+      'change locks', 'lock change', 'deadlock', 'door lock', 'window lock', 'padlock', 'master key',
+      'digital lock', 'smart lock', 'stuck key', 'locksmith', 'security',
+      'cannot get in', 'tenant locked out', 'locked out of the house',
+    ],
   },
   {
     slug: 'heating-cooling',
     title: 'Heating & Cooling',
     description: 'Heating and cooling maintenance and repair support for residential and commercial properties across Melbourne.',
+    keywords: [
+      'air conditioner', 'air conditioning', 'aircon', 'air con', 'ac', 'split system', 'heater', 'heating',
+      'no heat', 'cooling', 'cold', 'hot', 'ducted heating', 'evaporative cooling', 'heat pump', 'hvac',
+      'thermostat', 'gas heater', 'furnace', 'ac not cooling', 'heater not working',
+      'house is cold', 'freezing inside', 'too hot inside',
+    ],
   },
   {
     slug: 'gutter-cleaning',
     title: 'Gutter Cleaning',
     description: 'Professional gutter cleaning and maintenance for residential and commercial properties across Melbourne.',
+    keywords: [
+      'blocked gutter', 'gutter', 'gutters', 'overflowing gutter', 'leaves in gutter', 'downpipe', 'downpipes',
+      'roof gutter', 'gutter guard', 'eaves', 'spouting', 'clogged gutter', 'rainwater',
+    ],
   },
   {
     slug: 'doors-windows',
