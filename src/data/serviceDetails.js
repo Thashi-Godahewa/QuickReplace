@@ -639,6 +639,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  carpentry: {
+    title: 'Carpentry',
+    pageTitle: 'Carpentry Services Melbourne',
+    hero: {
+      accent: 'Carpentry',
+      title: 'Services Melbourne',
+      description:
+        'Carpentry repairs and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-carpentry.jpg',
+      imageAlt: 'Carpenter working on timber joinery',
+    },
+  },
 }
 
 export function servicePath(slug) {
