@@ -110,6 +110,11 @@ export default function ServiceFinder() {
 
   const scrollToResults = () => resultsRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
+  const onSubmit = (e) => {
+    e.preventDefault()
+    scrollToResults()
+  }
+
   const viewAll = () => {
     setQuery('')
     scrollToResults()
@@ -127,7 +132,7 @@ export default function ServiceFinder() {
           </h2>
 
           <div className="mt-5 flex flex-col gap-4 lg:flex-row lg:items-center">
-            <div className="relative flex-1">
+            <form className="relative flex-1" onSubmit={onSubmit} role="search">
               <label className="sr-only" htmlFor="service-search">
                 Search by service name
               </label>
@@ -154,7 +159,7 @@ export default function ServiceFinder() {
                   <X aria-hidden="true" className="h-4 w-4" />
                 </button>
               )}
-            </div>
+            </form>
 
             <button
               className="group inline-flex h-12 items-center justify-center gap-3 self-start rounded-full bg-brand-navy py-2.5 pl-5 pr-2.5 text-base font-medium text-white shadow-card transition-colors hover:bg-brand-navyLight lg:self-auto"
