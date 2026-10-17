@@ -423,6 +423,37 @@ export const serviceDetails = {
       image: '/images/service-gutter-cleaning.jpg',
       imageAlt: 'Gutter filled with leaves and debris on a tiled roof',
     },
+    offerings: {
+      heading: { before: 'Our Gutter Cleaning', accent: 'Services' },
+      intro:
+        'We clear gutters on houses and commercial buildings, and can schedule regular visits for properties needing ongoing maintenance.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Gutter Cleaning',
+          tag: 'Cleaning',
+          text: 'Removal of leaves, dirt and accumulated debris from accessible gutter systems.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Gutter Cleaning',
+          tag: 'Commercial',
+          text: 'Gutter cleaning for commercial buildings, warehouses, retail premises and managed properties, with one-off and scheduled maintenance available.',
+        },
+        {
+          icon: 'office',
+          title: 'Scheduled Gutter Maintenance',
+          tag: 'Preventative',
+          text: 'Scheduled gutter cleaning for managed residential and commercial properties, with recurring maintenance available where required.',
+        },
+        {
+          icon: 'tower',
+          title: 'Post-Storm Gutter Checks',
+          tag: 'Maintenance',
+          text: 'Inspection and cleaning of gutters affected by storms, leaves or heavy debris.',
+        },
+      ],
+    },
   },
 }
 
