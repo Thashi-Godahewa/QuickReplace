@@ -1,9 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpDown, Phone, Search, X } from 'lucide-react'
+import { ArrowRight, ArrowUpDown, Phone, Search, Sparkles, X } from 'lucide-react'
 import { contact } from '../../data/siteData'
 import { allServices, popularSearches } from '../../data/servicesData'
 import { servicePath } from '../../data/serviceDetails'
+import { loadAiSearch } from '../../utils/aiServiceSearch'
 import { Accent, Container } from '../ui'
 
 const SORTS = [
@@ -49,15 +50,60 @@ export default function ServiceFinder() {
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState('default')
 
-  const shown = useMemo(() => {
-    const q = query.trim().toLowerCase()
+  // AI search: 'idle' until someone uses the search box, then 'loading',
+  // then 'ready' (or 'failed', which quietly keeps the text search)
+  const [aiState, setAiState] = useState('idle')
+  const aiRank = useRef(null)
+  const [aiResult, setAiResult] = useState({ query: '', services: [] })
+
+  const startAi = () => {
+    if (aiState !== 'idle') return
+    setAiState('loading')
+    loadAiSearch(allServices)
+      .then((rank) => {
+        aiRank.current = rank
+        setAiState('ready')
+      })
+      .catch(() => setAiState('failed'))
+  }
+
+  const trimmed = query.trim()
+  // Text search on service names and descriptions
+  const textResults = useMemo(() => {
+    const q = trimmed.toLowerCase()
     const list = q
       ? allServices.filter((s) => `${s.title} ${s.description}`.toLowerCase().includes(q))
       : [...allServices]
     if (sort === 'az') list.sort((a, b) => a.title.localeCompare(b.title))
     if (sort === 'za') list.sort((a, b) => b.title.localeCompare(a.title))
     return list
-  }, [query, sort])
+  }, [trimmed, sort])
+  // Anything the text search cannot find ("water dripping through the roof") goes to the AI
+  const askAi = trimmed.length >= 3 && textResults.length === 0
+
+  useEffect(() => {
+    if (!askAi || aiState !== 'ready') return undefined
+    let cancelled = false
+    const timer = setTimeout(() => {
+      aiRank
+        .current(trimmed)
+        .then((services) => {
+          if (!cancelled) setAiResult({ query: trimmed, services })
+        })
+        .catch(() => {})
+    }, 250)
+    return () => {
+      cancelled = true
+      clearTimeout(timer)
+    }
+  }, [askAi, aiState, trimmed])
+
+  const aiAnswered = askAi && aiState === 'ready' && aiResult.query === trimmed
+  const aiThinking = askAi && (aiState === 'loading' || (aiState === 'ready' && !aiAnswered))
+  const usingAi = aiAnswered && aiResult.services.length > 0
+
+  let shown = textResults
+  if (aiAnswered) shown = aiResult.services
 
   const nextSort = () => {
     const i = SORTS.findIndex((s) => s.id === sort)
@@ -87,7 +133,11 @@ export default function ServiceFinder() {
               <input
                 className="h-12 w-full rounded-lg border border-brand-line bg-brand-mist pl-12 pr-10 text-[15px] text-brand-ink placeholder:text-brand-muted focus:border-brand-sky focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-sky/25"
                 id="service-search"
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => {
+                  setQuery(e.target.value)
+                  startAi()
+                }}
+                onFocus={startAi}
                 placeholder="Search by service name"
                 type="search"
                 value={query}
@@ -144,13 +194,31 @@ export default function ServiceFinder() {
               </button>
             ))}
           </div>
+
+          <div aria-live="polite">
+            {aiState === 'ready' && (usingAi || aiThinking) && (
+              <p className="mt-4 flex items-center gap-2 text-[14px] text-brand-ink/80">
+                <Sparkles aria-hidden="true" className="h-4 w-4 shrink-0 text-brand-sky" />
+                {usingAi ? (
+                  <span>
+                    Smart match: we think this is a job for{' '}
+                    <span className="font-semibold text-brand-ink">
+                      {aiResult.services.map((s) => s.title).join(' or ')}
+                    </span>
+                  </span>
+                ) : (
+                  <span>Finding the right service...</span>
+                )}
+              </p>
+            )}
+          </div>
         </div>
 
         <p aria-live="polite" className="sr-only">
           {shown.length} {shown.length === 1 ? 'service' : 'services'} shown
         </p>
 
-        {shown.length > 0 ? (
+        {shown.length > 0 || aiThinking ? (
           <ul className="mt-14 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {shown.map((s) => (
               <ServiceCard key={s.slug} service={s} />
