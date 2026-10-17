@@ -809,6 +809,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  tiling: {
+    title: 'Tiling & Tile Repair',
+    pageTitle: 'Tiling & Tile Repairs Services Melbourne',
+    hero: {
+      accent: 'Tiling & Tile Repairs',
+      title: 'Services Melbourne',
+      description:
+        'Tiling repairs, replacement and maintenance for bathrooms, kitchens and other tiled areas in residential and commercial properties across Melbourne.',
+      image: '/images/before-after-shower.jpg',
+      imageAlt: 'Shower with a cracked tiled wall before and after repair',
+    },
+  },
 }
 
 export function servicePath(slug) {
