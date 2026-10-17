@@ -1106,6 +1106,25 @@ export const serviceDetails = {
       image: '/images/service-emergency-repairs.jpg',
       imageAlt: 'Plumber clearing a blocked floor drain in a tiled bathroom',
     },
+    offerings: {
+      heading: { before: 'Our Emergency Repairs', accent: 'Services' },
+      intro:
+        'From urgent leaks and broken glass to unsafe electrical faults, we respond to property problems that cannot wait for routine maintenance.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Emergency Plumbing',
+          tag: 'Plumbing',
+          text: 'Urgent assistance for significant leaks, blocked drains, burst pipes and other plumbing problems requiring prompt attention.',
+        },
+        {
+          icon: 'home',
+          title: 'Emergency Glazing',
+          tag: 'Glazing',
+          text: 'Urgent assistance following broken glass, including securing affected windows, doors or shopfronts and arranging replacement.',
+        },
+      ],
+    },
   },
 }
 
