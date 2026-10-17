@@ -637,6 +637,7 @@ export const serviceDetails = {
         'Minor wall patching and surface repairs',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
