@@ -864,6 +864,7 @@ export const serviceDetails = {
         'Damaged tiles on commercial floors, staircases and steps',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
