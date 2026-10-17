@@ -980,6 +980,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'window-tinting': {
+    title: 'Window Tinting',
+    pageTitle: 'Window Tinting Services Melbourne',
+    hero: {
+      accent: 'Window Tinting',
+      title: 'Services Melbourne',
+      description:
+        'Window tinting and film installation for residential and commercial properties across Melbourne, helping reduce glare and solar heat while improving privacy and UV protection.',
+      image: '/images/before-after-window.jpg',
+      imageAlt: 'Glazed door with frosted window film applied',
+    },
+  },
 }
 
 export function servicePath(slug) {
