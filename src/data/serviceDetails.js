@@ -580,6 +580,7 @@ export const serviceDetails = {
         'Minor cracking in brickwork and mortar joints',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
