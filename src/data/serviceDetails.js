@@ -468,6 +468,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'doors-windows': {
+    title: 'Doors & Windows',
+    pageTitle: 'Doors & Windows Services Melbourne',
+    hero: {
+      accent: 'Doors & Windows',
+      title: 'Services Melbourne',
+      description:
+        'Repairs and maintenance for doors and windows in residential and commercial properties across Melbourne.',
+      image: '/images/service-doors-windows.jpg',
+      imageAlt: 'Tradesperson repairing a door',
+    },
+  },
 }
 
 export function servicePath(slug) {
