@@ -750,6 +750,7 @@ export const serviceDetails = {
         'Pressure cleaning of commercial entrances and common areas',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
