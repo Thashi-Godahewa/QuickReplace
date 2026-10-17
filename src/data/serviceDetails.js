@@ -582,6 +582,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  handyman: {
+    title: 'Handyman',
+    pageTitle: 'Handyman Services Melbourne',
+    hero: {
+      accent: 'Handyman',
+      title: 'Services Melbourne',
+      description:
+        'General property repairs and maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-handyman.jpg',
+      imageAlt: 'Handyman carrying out a repair',
+    },
+  },
 }
 
 export function servicePath(slug) {
