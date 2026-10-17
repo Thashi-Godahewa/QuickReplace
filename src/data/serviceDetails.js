@@ -1149,6 +1149,7 @@ export const serviceDetails = {
         'Storm damage and other urgent make-safe work',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
