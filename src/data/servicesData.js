@@ -176,6 +176,27 @@ export const allServices = [
       'storm', 'burst pipe', 'gas leak', 'no power', 'dangerous', 'immediate',
     ],
   },
+  {
+    slug: 'graffiti-removal',
+    title: 'Graffiti Removal',
+    description:
+      'Professional graffiti removal to restore walls and surfaces. Fast, effective cleaning that leaves your property looking fresh.',
+    keywords: [
+      'graffiti', 'graffiti removal', 'tagging', 'tags on wall', 'spray paint', 'spray painted wall', 'vandalised wall',
+      'paint on brick', 'anti graffiti coating', 'marker on wall', 'graffiti on fence', 'graffiti on shopfront',
+    ],
+  },
+  {
+    slug: 'window-tinting',
+    title: 'Window Tinting',
+    description:
+      'Professional window tinting for improved privacy and comfort. Helps reduce glare, heat, and UV exposure while enhancing your property.',
+    keywords: [
+      'window tinting', 'window tint', 'tint', 'tinted windows', 'window film', 'privacy film', 'frosted film',
+      'glare', 'too much sun', 'sun coming through windows', 'uv protection', 'heat through windows', 'privacy',
+      'neighbours can see in', 'office tinting', 'security film',
+    ],
+  },
 ]
 
 export const popularSearches = ['Plumbing', 'Painting & Plastering', 'Electrical', 'Glazing', 'Make Safe']
