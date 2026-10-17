@@ -1092,6 +1092,7 @@ export const serviceDetails = {
         'Surface preparation and repainting where required',
       ],
     },
+    quote: sharedQuote,
   },
 }
 
