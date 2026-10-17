@@ -525,6 +525,19 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  'brick-repointing': {
+    title: 'Brick Repointing & Mortar Repairs',
+    pageTitle: 'Brick Repointing & Mortar Repairs Services Melbourne',
+    hero: {
+      accent: 'Brick Repointing & Mortar Repairs',
+      title: 'Services Melbourne',
+      description:
+        'Brick repointing, mortar repairs and brickwork maintenance for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-brick-repointing.jpg',
+      imageAlt: 'Bricklayer repointing mortar joints on a brick wall',
+    },
+  },
 }
 
 export function servicePath(slug) {
