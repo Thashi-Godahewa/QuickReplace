@@ -651,6 +651,37 @@ export const serviceDetails = {
       image: '/images/service-carpentry.jpg',
       imageAlt: 'Carpenter working on timber joinery',
     },
+    offerings: {
+      heading: { before: 'Our Carpentry', accent: 'Services' },
+      intro:
+        'Timber doors, frames, skirting, fencing and other carpentry repairs—we can repair or replace damaged components.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Door & Frame Repairs',
+          tag: 'Doors',
+          text: 'Repairs to timber doors, door frames, jambs and associated components.',
+        },
+        {
+          icon: 'home',
+          title: 'Timber Repairs',
+          tag: 'Repairs',
+          text: 'Repair or replacement of damaged, rotten or deteriorated timber components.',
+        },
+        {
+          icon: 'office',
+          title: 'Skirting & Trim Repairs',
+          tag: 'Finishing',
+          text: 'Repair and replacement of skirting boards, architraves, trims and other timber finishing elements.',
+        },
+        {
+          icon: 'tower',
+          title: 'General Property Carpentry',
+          tag: 'Maintenance',
+          text: 'General carpentry repairs and maintenance for residential and commercial properties.',
+        },
+      ],
+    },
   },
 }
 
