@@ -480,6 +480,37 @@ export const serviceDetails = {
       image: '/images/service-doors-windows.jpg',
       imageAlt: 'Tradesperson repairing a door',
     },
+    offerings: {
+      heading: { before: 'Our Doors & Windows', accent: 'Services' },
+      intro:
+        'From sticking doors and faulty window hardware to commercial roller shutters, we repair the parts that aren’t working as they should.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Door Repairs',
+          tag: 'Doors',
+          text: 'Repairs to damaged, sticking or poorly operating doors, including door trimming, alignment and hinge adjustments.',
+        },
+        {
+          icon: 'home',
+          title: 'Window Repairs',
+          tag: 'Windows',
+          text: 'Repairs to damaged or poorly operating windows, including components and opening mechanisms.',
+        },
+        {
+          icon: 'office',
+          title: 'Door & Window Maintenance',
+          tag: 'Maintenance',
+          text: 'General maintenance for doors and windows to keep moving components, hardware and operating mechanisms working correctly.',
+        },
+        {
+          icon: 'tower',
+          title: 'Roller Doors & Shutters',
+          tag: 'Roller Doors & Shutters',
+          text: 'Repairs and maintenance for commercial roller doors and shutters, including factories, warehouses and shopfronts, as well as residential window roller shutters.',
+        },
+      ],
+    },
   },
 }
 
