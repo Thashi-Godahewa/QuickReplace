@@ -15,6 +15,24 @@ const MODEL = 'Xenova/all-MiniLM-L6-v2'
 
 // How sure the AI must be before its answer is shown (0 to 1)
 const MIN_SIMILARITY = 0.45
+
+// Everyday topics that have nothing to do with property repairs. Short words
+// like "rose" or "food" are always a little similar to something, so the AI
+// also compares the search with these. If the search is closer to one of
+// these than to any service, nothing is shown.
+const UNRELATED_TOPICS = [
+  'food', 'meal', 'restaurant', 'pizza', 'fruit', 'coffee', 'drink',
+  'flower', 'rose', 'plant', 'garden flowers',
+  'name of a person', 'hello', 'thank you', 'how are you',
+  'animal', 'dog', 'cat', 'pet', 'bird',
+  'music', 'movie', 'song', 'game', 'sport', 'football',
+  'weather forecast', 'rain today', 'colour', 'red', 'blue',
+  'phone', 'computer', 'internet', 'email', 'app',
+  'car', 'bus', 'train', 'travel', 'holiday', 'flight',
+  'shopping', 'clothes', 'shoes', 'money', 'bank', 'job', 'school', 'study',
+  'doctor', 'medicine', 'love', 'birthday', 'party', 'book', 'news',
+]
+const UNRELATED_MARGIN = 0.02
 // Also show services that are nearly as close as the best one
 const CLOSE_TO_BEST = 0.06
 const MAX_RESULTS = 3
@@ -46,6 +64,7 @@ export async function createAiSearch(extractor, services) {
     const vectors = await embed(extractor, phrasesFor(service))
     entries.push({ service, vectors })
   }
+  const unrelated = await embed(extractor, UNRELATED_TOPICS)
 
   return async function rank(query) {
     const [q] = await embed(extractor, [query])
@@ -63,6 +82,9 @@ export async function createAiSearch(extractor, services) {
     const top = scored[0]
     if (!top || top.score < MIN_SIMILARITY) return []
 
+    // Not about property repairs at all (for example "rose" or "pizza")
+    const offTopic = Math.max(...unrelated.map((v) => dot(q, v)))
+    if (offTopic >= top.score - UNRELATED_MARGIN) return []
 
     return scored
       .filter((r) => r.score >= MIN_SIMILARITY && r.score >= top.score - CLOSE_TO_BEST)
