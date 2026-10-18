@@ -1,7 +1,6 @@
 import PageHero from '../components/PageHero'
 import ClientSectors from '../components/clients/ClientSectors'
 import Deployments from '../components/clients/Deployments'
-import ApproachCards from '../components/clients/ApproachCards'
 import Accreditations from '../components/clients/Accreditations'
 import CaseStudy from '../components/clients/CaseStudy'
 import ServiceLocator from '../components/ServiceLocator'
@@ -9,24 +8,28 @@ import CTA from '../components/CTA'
 import usePageTitle from '../hooks/usePageTitle'
 
 export default function ClientsPage() {
-  usePageTitle('Clients - Who We Serve')
+  usePageTitle('Clients - Who We Work With')
 
   return (
     <>
       <PageHero
-        accent="Who We Serve:"
         breadcrumb="Clients"
-        description="We provide reliable property maintenance solutions, working closely with clients to keep their properties safe, functional, and well maintained."
-        descriptionWidth="max-w-[700px]"
-        image="/images/contact-hero-team.jpg"
-        imageAlt="The Quick Replace team standing outside a commercial building"
+        description="From everyday repairs to larger jobs requiring multiple trades, we work with property managers, businesses and property owners across Melbourne to make property maintenance easier to manage."
+        descriptionWidth="max-w-[760px]"
+        heading={
+          <>
+            <span className="text-brand-sky">Who We Work With:</span>
+            <br />
+            Property Maintenance for Businesses, Managers &amp; Owners
+          </>
+        }
+        image="/images/clients-hero.jpg"
+        imageAlt="Two Quick Replace technicians inspecting water damage on a ceiling beside large windows"
         reviewsLabel="100+ Verified Customer Reviews"
         showActions={false}
-        title="Tailored Property Care for Victoria's Key Sectors"
       />
       <ClientSectors />
       <Deployments />
-      <ApproachCards />
       <Accreditations />
       <CaseStudy />
       <ServiceLocator />

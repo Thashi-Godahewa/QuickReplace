@@ -1,11 +1,11 @@
-import { BadgeCheck, Building2, Shield, ShieldPlus, UserCog, Zap } from 'lucide-react'
+import { BadgeCheck, Building2, Shield, ShieldPlus, UserCheck, Zap } from 'lucide-react'
 import { accreditations } from '../../data/clientsData'
-import { Container } from '../ui'
+import { Accent, Container, SectionBadge } from '../ui'
 
 const icons = {
   shield: Shield,
   building: Building2,
-  builder: UserCog,
+  police: UserCheck,
   energy: Zap,
   iso: BadgeCheck,
   worksafe: ShieldPlus,
@@ -13,16 +13,18 @@ const icons = {
 
 export default function Accreditations() {
   return (
-    <section aria-labelledby="accreditations-heading" className="bg-[#f6f7fc] py-16">
+    <section aria-labelledby="accreditations-heading" className="bg-white py-16">
       <Container wide>
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-medium uppercase tracking-wide text-brand-sky">
-            Statutory accreditation &amp; industry bodies
-          </p>
-          <h2 className="mt-2 text-2xl font-semibold tracking-tight text-brand-ink sm:text-[26px]" id="accreditations-heading">
-            Engineered to Exceed Victorian Regulatory Standards
+        <div className="mx-auto max-w-3xl text-center">
+          <SectionBadge>Statutory Accreditation &amp; Industry Bodies</SectionBadge>
+          <h2
+            className="mt-7 text-3xl font-extrabold italic leading-[1.1] tracking-tight text-brand-ink sm:text-4xl lg:text-[44px]"
+            id="accreditations-heading"
+          >
+            Engineered to Exceed <Accent>Victorian</Accent>
+            <br className="hidden sm:block" /> <Accent>Regulatory Standards</Accent>
           </h2>
-          <p className="mt-2 text-[15px] leading-relaxed text-brand-muted">
+          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-brand-muted">
             We maintain full corporate memberships and licensed registrations across every mandatory property and trade
             body in Australia.
           </p>
@@ -33,11 +35,11 @@ export default function Accreditations() {
             const Icon = icons[a.icon]
             return (
               <li
-                className="flex flex-col items-center justify-center rounded-lg border border-brand-line bg-white px-3 py-6 text-center shadow-sm"
+                className="flex flex-col items-center justify-start rounded-lg border border-brand-line bg-white px-3 py-6 text-center shadow-sm"
                 key={a.title}
               >
                 <Icon aria-hidden="true" className="h-8 w-8 text-brand-sky" strokeWidth={1.75} />
-                <p className="mt-3 text-[15px] font-semibold text-brand-ink">{a.title}</p>
+                <p className="mt-3 text-[15px] font-semibold leading-snug text-brand-ink">{a.title}</p>
                 <p className="mt-1 text-[13px] leading-snug text-brand-muted">{a.detail}</p>
               </li>
             )
