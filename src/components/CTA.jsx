@@ -4,15 +4,15 @@ import { Container } from './ui'
 
 // variant="compact": short banner with the call button on the right (below About)
 // variant="emergency": full banner with badge, longer heading and two buttons (service pages)
-// variant="urgent": same full banner with the home page wording
+// variant="urgent": same full banner and wording (home page)
 const COPY = {
   compact: {
     heading: ['Quick Replace is here for you!'],
     text: 'From everyday repairs to larger maintenance jobs, tell us what’s happening and we’ll help work out the right way forward. One point of contact, multiple trades and clear communication throughout the job.',
   },
   emergency: {
-    heading: ['Need an emergency repair or make safe right now?', 'Quick Replace is here for you!'],
-    text: 'Don’t let water leaks, electrical hazards, or broken glazing risk property damage. Our certified local technicians arrive asap.',
+    heading: ['Need an urgent repair or make safe right now?', 'Quick Replace is here to help!'],
+    text: 'Don’t let water leaks, electrical hazards or broken glass cause further property damage. Contact us and we’ll organise the appropriate trade as quickly as possible.',
   },
   urgent: {
     heading: ['Need an urgent repair or make safe right now?', 'Quick Replace is here to help!'],

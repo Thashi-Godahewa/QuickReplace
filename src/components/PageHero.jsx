@@ -11,6 +11,7 @@ import TradesMarquee from './TradesMarquee'
 // `secondaryAction` is the outlined button next to the phone number.
 // The photo fills the whole hero at 50% opacity behind the same dark fade as the home page hero.
 // `imagePosition` picks which part of the photo stays in view when it is cropped.
+// `imageOpacity` sets how strongly the photo shows through (default 'opacity-50').
 // `breadcrumbParent` adds a middle breadcrumb link, e.g. { label: 'Services', to: '/services' }.
 export default function PageHero({
   breadcrumb,
@@ -27,11 +28,12 @@ export default function PageHero({
   secondaryAction = { label: 'Explore Past Works', to: '/our-work' },
   breadcrumbParent = null,
   imagePosition = 'object-center',
+  imageOpacity = 'opacity-50',
 }) {
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
       <div className="absolute inset-0 z-0">
-        <img alt={imageAlt} className={`h-full w-full object-cover opacity-50 ${imagePosition}`} src={image} />
+        <img alt={imageAlt} className={`h-full w-full object-cover ${imageOpacity} ${imagePosition}`} src={image} />
         <div className="hero-mask absolute inset-0" />
       </div>
 
