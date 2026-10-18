@@ -47,6 +47,7 @@ Builds the production bundle into `build/`.
 | `/about` | About Us | `src/pages/AboutPage.jsx` |
 | `/clients` | Clients (Who We Serve) | `src/pages/ClientsPage.jsx` |
 | `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
+| `/privacy-policy` | Privacy Policy | `src/pages/PrivacyPolicyPage.jsx` |
 
 Routing uses `react-router-dom` (`BrowserRouter` in `src/App.js`). Inner pages share
 `components/PageHero.jsx`. All nav links now open their own page.
@@ -55,6 +56,7 @@ When deploying, the host must send every URL to `index.html` (for example a Netl
 `_redirects` rule or a Vercel rewrite), otherwise refreshing `/contact` shows a 404.
 
 Clients page content (sectors, accreditations, case study) lives in `src/data/clientsData.js`.
+Privacy Policy content (intro and clauses) lives in `src/data/privacyData.js`.
 About Us page content (story, principles, trades, trust stats) lives in `src/data/aboutData.js`.
 Our Work page content (projects, filters, FAQ) lives in `src/data/workData.js`.
 Services page content (all 16 services, popular searches) lives in `src/data/servicesData.js`.

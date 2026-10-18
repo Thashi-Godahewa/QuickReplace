@@ -109,9 +109,9 @@ export default function Footer() {
           <p>&copy; Quick Replace Pty Ltd | ABN 90 632 652 727 | All rights reserved.</p>
           <ul className="flex flex-wrap gap-x-6 gap-y-3">
             <li>
-              <a className="transition-colors hover:text-white" href="#top">
+              <Link className="transition-colors hover:text-white" to="/privacy-policy">
                 Privacy Policy
-              </a>
+              </Link>
             </li>
             <li>
               <a className="transition-colors hover:text-white" href="#top">
