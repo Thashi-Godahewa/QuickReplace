@@ -114,9 +114,9 @@ export default function Footer() {
               </Link>
             </li>
             <li>
-              <a className="transition-colors hover:text-white" href="#top">
+              <Link className="transition-colors hover:text-white" to="/terms-and-conditions">
                 Terms of Service
-              </a>
+              </Link>
             </li>
             <li>
               <a className="transition-colors hover:text-white" href="#top">

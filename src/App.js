@@ -10,6 +10,7 @@ import OurWorkPage from './pages/OurWorkPage'
 import ServicesPage from './pages/ServicesPage'
 import ServiceDetailPage from './pages/ServiceDetailPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
+import TermsPage from './pages/TermsPage'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
             <Route element={<ClientsPage />} path="/clients" />
             <Route element={<ContactPage />} path="/contact" />
             <Route element={<PrivacyPolicyPage />} path="/privacy-policy" />
+            <Route element={<TermsPage />} path="/terms-and-conditions" />
             {/* Unknown URLs fall back to the home page for now */}
             <Route element={<HomePage />} path="*" />
           </Routes>
