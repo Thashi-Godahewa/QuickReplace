@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { CircleMarker, MapContainer, Marker, Polygon, TileLayer, Tooltip, useMap, useMapEvents } from 'react-leaflet'
+import { CircleMarker, MapContainer, Marker, Polygon, Tooltip, useMap, useMapEvents } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
+import 'maplibre-gl/dist/maplibre-gl.css'
+import '@maplibre/maplibre-gl-leaflet'
 import { ArrowRight, CircleAlert, CircleCheck } from 'lucide-react'
 import { contact } from '../data/siteData'
 import { Accent, Container, SectionBadge } from './ui'
@@ -577,13 +579,133 @@ const MELBOURNE = [-37.8136, 144.9631]
 const AREA_BOUNDS = L.latLngBounds(SERVICE_BOUNDARY)
 const FIT_OPTIONS = { padding: [16, 16] }
 
-const RED = '#e3262f'
+const RED = '#ff0000'
 const BLUE = '#01aee4' // brand sky blue, used for the checked post code pin
 
-// Free satellite imagery from Esri (no place names - those are drawn by this component).
+/* Map colours, taken from the design */
+const COLOURS = {
+  land: '#eef1e7',
+  park: '#c9edc3',
+  water: '#72cefa',
+  motorway: '#ffe082',
+  motorwayEdge: '#f2c14e',
+  mainRoad: '#fff1a8',
+  road: '#ffffff',
+  shield: '#008000', // green road number signs (M1, M31 ...)
+  areaGreen: '#4fe34f', // service area fill
+  townLabel: 'rgba(15, 20, 25, 0.9)',
+}
+
+// Free vector map from OpenFreeMap (OpenStreetMap data, no API key needed), drawn with MapLibre
+// so every colour can be set here. Place names are drawn by this component, not the map.
 // The attribution must stay visible.
-const SATELLITE_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
-const ATTRIBUTION = 'Imagery &copy; Esri, Maxar, Earthstar Geographics'
+const ATTRIBUTION =
+  '<a href="https://openfreemap.org" target="_blank">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a> contributors'
+
+const roadLine = (id, classes, colour, widths, minzoom = 0) => ({
+  id,
+  type: 'line',
+  source: 'osm',
+  'source-layer': 'transportation',
+  minzoom,
+  filter: ['in', ['get', 'class'], ['literal', classes]],
+  layout: { 'line-cap': 'round', 'line-join': 'round' },
+  paint: { 'line-color': colour, 'line-width': ['interpolate', ['exponential', 1.5], ['zoom'], ...widths] },
+})
+
+const MAP_STYLE = {
+  version: 8,
+  glyphs: 'https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf',
+  sources: { osm: { type: 'vector', url: 'https://tiles.openfreemap.org/planet' } },
+  layers: [
+    { id: 'land', type: 'background', paint: { 'background-color': COLOURS.land } },
+    {
+      id: 'greenery',
+      type: 'fill',
+      source: 'osm',
+      'source-layer': 'landcover',
+      filter: ['in', ['get', 'class'], ['literal', ['wood', 'grass']]],
+      paint: { 'fill-color': COLOURS.park },
+    },
+    { id: 'parks', type: 'fill', source: 'osm', 'source-layer': 'park', paint: { 'fill-color': COLOURS.park } },
+    { id: 'water', type: 'fill', source: 'osm', 'source-layer': 'water', paint: { 'fill-color': COLOURS.water } },
+    {
+      id: 'rivers',
+      type: 'line',
+      source: 'osm',
+      'source-layer': 'waterway',
+      paint: { 'line-color': COLOURS.water, 'line-width': ['interpolate', ['linear'], ['zoom'], 8, 0.5, 14, 2] },
+    },
+    roadLine('streets', ['minor', 'service'], COLOURS.road, [11, 0.5, 16, 6], 11),
+    roadLine('roads', ['tertiary', 'secondary'], COLOURS.road, [8, 0.5, 16, 8], 8),
+    roadLine('main-roads', ['primary'], COLOURS.mainRoad, [7, 0.6, 16, 10], 7),
+    roadLine('highway-edges', ['motorway', 'trunk'], COLOURS.motorwayEdge, [5, 1, 16, 14]),
+    roadLine('highways', ['motorway', 'trunk'], COLOURS.motorway, [5, 0.6, 16, 11]),
+    {
+      id: 'road-numbers',
+      type: 'symbol',
+      source: 'osm',
+      'source-layer': 'transportation_name',
+      minzoom: 7,
+      filter: ['all', ['has', 'ref'], ['in', ['get', 'class'], ['literal', ['motorway', 'trunk', 'primary']]]],
+      layout: {
+        'symbol-placement': 'line',
+        'symbol-spacing': 500,
+        'icon-image': 'qr-shield',
+        'icon-text-fit': 'both',
+        'icon-rotation-alignment': 'viewport',
+        'text-rotation-alignment': 'viewport',
+        'text-field': ['get', 'ref'],
+        'text-font': ['Noto Sans Bold'],
+        'text-size': 9,
+      },
+      paint: { 'text-color': '#ffffff' },
+    },
+  ],
+}
+
+// Draws the small green road number sign used behind M1, M31 and so on
+function addShieldImage(glMap) {
+  if (glMap.hasImage('qr-shield')) return
+  const ratio = 2
+  const width = 20 * ratio
+  const height = 14 * ratio
+  const canvas = document.createElement('canvas')
+  canvas.width = width
+  canvas.height = height
+  const ctx = canvas.getContext('2d')
+  ctx.fillStyle = COLOURS.shield
+  ctx.strokeStyle = '#ffffff'
+  ctx.lineWidth = ratio
+  ctx.beginPath()
+  ctx.roundRect(ratio / 2, ratio / 2, width - ratio, height - ratio, 3 * ratio)
+  ctx.fill()
+  ctx.stroke()
+  const edge = 5 * ratio
+  glMap.addImage('qr-shield', ctx.getImageData(0, 0, width, height), {
+    pixelRatio: ratio,
+    stretchX: [[edge, width - edge]],
+    stretchY: [[edge, height - edge]],
+    content: [4 * ratio, 2 * ratio, width - 4 * ratio, height - 2 * ratio],
+  })
+}
+
+// Adds the coloured background map underneath the service area shapes
+function BaseMap() {
+  const map = useMap()
+  useEffect(() => {
+    const layer = L.maplibreGL({ style: MAP_STYLE, attributionControl: { customAttribution: ATTRIBUTION } })
+    layer.addTo(map)
+    const glMap = layer.getMaplibreMap()
+    const onMissing = (e) => e.id === 'qr-shield' && addShieldImage(glMap)
+    glMap.on('styleimagemissing', onMissing)
+    return () => {
+      glMap.off('styleimagemissing', onMissing)
+      map.removeLayer(layer)
+    }
+  }, [map])
+  return null
+}
 
 const placeIcon = (name) =>
   L.divIcon({ className: 'qr-place', html: `<span>${name}</span>`, iconSize: [0, 0], iconAnchor: [0, 0] })
@@ -600,17 +722,19 @@ const pinIcon = (label, colour = RED) =>
 
 // Styles for the map labels (Leaflet renders these outside React, so plain CSS is needed)
 const MAP_STYLES = `
-  .qr-map .leaflet-tooltip.qr-town { background: rgba(11, 26, 46, 0.82); border: 0; border-radius: 4px; box-shadow: none;
+  .qr-map .leaflet-tooltip.qr-town { background: ${COLOURS.townLabel}; border: 1px solid #fff; border-radius: 4px; box-shadow: none;
     color: #fff; font: 600 11px/1.3 "Plus Jakarta Sans", sans-serif; padding: 1px 6px; }
   .qr-map .leaflet-tooltip.qr-town::before { display: none; }
   .qr-map .qr-pin { background: none; border: 0; }
   .qr-map .qr-place { background: none; border: 0; }
-  .qr-map .qr-place span { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; color: #f1f5f9;
-    font: 500 11px/1 "Plus Jakarta Sans", sans-serif; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9); pointer-events: none; }
+  .qr-map .qr-place span { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; color: #4b5563;
+    font: 500 11px/1 "Plus Jakarta Sans", sans-serif; pointer-events: none;
+    text-shadow: 0 0 2px #fff, 0 0 2px #fff, 0 0 3px #fff; }
   .qr-map .qr-pin-label { position: absolute; left: 50%; top: 46px; transform: translateX(-50%); white-space: nowrap;
     background: ${RED}; color: #fff; border: 1px solid #fff; border-radius: 4px; padding: 2px 7px;
     font: 700 12px/1.3 "Plus Jakarta Sans", sans-serif; }
   .qr-map .leaflet-control-zoom a { color: #0b1a2e; }
+  .qr-map .leaflet-container { background: ${COLOURS.land}; }
   .qr-map .leaflet-control-attribution { font-size: 9px; }
 `
 
@@ -655,17 +779,18 @@ function ServiceMap({ checked }) {
         zoomControl={false}
         zoomSnap={0.25}
       >
-        <TileLayer attribution={ATTRIBUTION} url={SATELLITE_URL} />
+        <BaseMap />
         <ZoomTopRight />
         <ViewWatcher onChange={setView} />
 
+        {/* Green service area. Inner Melbourne is cut out of it so its own pink shows cleanly. */}
         <Polygon
-          pathOptions={{ color: RED, weight: 3, fillColor: '#4ade80', fillOpacity: 0.35 }}
-          positions={SERVICE_BOUNDARY}
+          pathOptions={{ color: RED, weight: 2.5, fillColor: COLOURS.areaGreen, fillOpacity: 0.35 }}
+          positions={detailed ? SERVICE_BOUNDARY : [SERVICE_BOUNDARY, INNER_MELBOURNE]}
         />
         {!detailed && (
           <Polygon
-            pathOptions={{ color: '#fff', weight: 1.5, dashArray: '3 4', fillColor: RED, fillOpacity: 0.45 }}
+            pathOptions={{ color: RED, weight: 1.5, dashArray: '4 4', fillColor: RED, fillOpacity: 0.24 }}
             positions={INNER_MELBOURNE}
           />
         )}

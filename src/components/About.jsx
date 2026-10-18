@@ -23,10 +23,10 @@ export default function About() {
 
         <div className="lg:pl-8">
           <img
-            alt="Quick Replace plumber adjusting a copper and PEX manifold in a plant room"
+            alt="Quick Replace tradesperson shaking hands with a customer at the front door"
             className="aspect-[4/3] w-full rounded-3xl object-cover shadow-[0_24px_40px_-20px_rgba(0,27,51,0.45)]"
             loading="lazy"
-            src="/images/about-technician.jpg"
+            src="/images/about-handshake.jpg"
           />
         </div>
       </Container>

@@ -3,9 +3,26 @@ import { contact } from '../data/siteData'
 import { Container } from './ui'
 
 // variant="compact": short banner with the call button on the right (below About)
-// variant="emergency": full banner with badge, longer heading and two buttons (above Footer)
+// variant="emergency": full banner with badge, longer heading and two buttons (service pages)
+// variant="urgent": same full banner with the home page wording
+const COPY = {
+  compact: {
+    heading: ['Quick Replace is here for you!'],
+    text: 'From everyday repairs to larger maintenance jobs, tell us what’s happening and we’ll help work out the right way forward. One point of contact, multiple trades and clear communication throughout the job.',
+  },
+  emergency: {
+    heading: ['Need an emergency repair or make safe right now?', 'Quick Replace is here for you!'],
+    text: 'Don’t let water leaks, electrical hazards, or broken glazing risk property damage. Our certified local technicians arrive asap.',
+  },
+  urgent: {
+    heading: ['Need an urgent repair or make safe right now?', 'Quick Replace is here to help!'],
+    text: 'Don’t let water leaks, electrical hazards or broken glass cause further property damage. Contact us and we’ll organise the appropriate trade as quickly as possible.',
+  },
+}
+
 export default function CTA({ variant = 'emergency' }) {
   const compact = variant === 'compact'
+  const copy = COPY[variant] || COPY.emergency
 
   const callButton = (
     <a
@@ -51,18 +68,15 @@ export default function CTA({ variant = 'emergency' }) {
                 className="text-3xl font-bold leading-[1.12] tracking-tight sm:text-4xl sm:leading-[1.12] lg:text-[48px]"
                 id={`cta-heading-${variant}`}
               >
-                {compact ? (
-                  'Quick Replace is here for you!'
-                ) : (
+                {copy.heading[0]}
+                {copy.heading[1] && (
                   <>
-                    Need an emergency repair or make safe right now?
-                    <br className="hidden sm:block" /> Quick Replace is here for you!
+                    <br className="hidden sm:block" /> {copy.heading[1]}
                   </>
                 )}
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-                Don&rsquo;t let water leaks, electrical hazards, or broken glazing risk property damage. Our certified
-                local technicians arrive asap.
+              <p className={`mt-6 text-base leading-relaxed text-white/85 sm:text-lg ${compact ? 'max-w-3xl' : 'max-w-xl'}`}>
+                {copy.text}
               </p>
             </div>
 

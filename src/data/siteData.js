@@ -6,8 +6,8 @@ export const contact = {
   phoneHref: 'tel:0401411636',
   email: 'info@quickreplace.com.au',
   emailHref: 'mailto:info@quickreplace.com.au',
-  accountsEmail: 'accounts@quickreplace.com.au',
-  accountsEmailHref: 'mailto:accounts@quickreplace.com.au',
+  accountsEmail: 'info@quickreplace.com.au',
+  accountsEmailHref: 'mailto:info@quickreplace.com.au',
   headOffice: 'Sunshine West, VIC',
 }
 
@@ -121,7 +121,10 @@ export const projectFilters = [
   'Painting & Plastering',
   'Make Safe',
   'Heating & Cooling',
+  'Electrical',
   'Carpentry',
+  'Maintenance & Repairs',
+  'Doors & Windows',
 ]
 
 // Placeholder titles - replace with the real job details from the client
@@ -149,10 +152,10 @@ export const projects = [
   },
   {
     src: '/images/project-living-room.jpg',
-    alt: 'Freshly painted living room with large windows',
-    title: 'Interior Repaint',
-    subtitle: 'Painting, Plaster Patching & Make-Good',
-    category: 'Painting & Plastering',
+    alt: 'Living room with large new glass windows',
+    title: 'Living Room Windows',
+    subtitle: 'Glazing, Large Window Installation',
+    category: 'Glazing',
   },
   {
     src: '/images/project-door-lock.jpg',
@@ -175,6 +178,146 @@ export const projects = [
     subtitle: 'Glazing, Measure & Install',
     category: 'Glazing',
   },
+  {
+    src: '/images/project-line-marking.jpg',
+    alt: 'Yellow safety line marking painted on a drive-through lane',
+    title: 'Drive-Through Line Marking',
+    subtitle: 'Painting, Safety Markings & Car Parks',
+    category: 'Painting & Plastering',
+  },
+  {
+    src: '/images/project-gas-valve.jpg',
+    alt: 'Old corroded plumbing valve removed from beside a hot water unit',
+    title: 'Plumbing Valve Replacement',
+    subtitle: 'Plumbing, Valves',
+    category: 'Plumbing',
+  },
+  {
+    src: '/images/project-shopfront-make-safe.jpg',
+    alt: 'Temporary fencing set up around a damaged corner shopfront',
+    title: 'Shopfront Make Safe',
+    subtitle: 'Make Safe, Temporary Fencing & Boarding',
+    category: 'Make Safe',
+  },
+  {
+    src: '/images/project-glass-install.jpg',
+    alt: 'Team lifting a large glass panel into a shopfront',
+    title: 'Shopfront Glass Install',
+    subtitle: 'Glazing, Large Panel Replacement',
+    category: 'Glazing',
+  },
+  {
+    src: '/images/project-window-board-up.jpg',
+    alt: 'Broken window boarded up with plywood on a brick wall',
+    title: 'Window Board-Up',
+    subtitle: 'Make Safe, Broken Glass Boarding',
+    category: 'Make Safe',
+  },
+  {
+    src: '/images/project-exterior-painting.jpg',
+    alt: 'Commercial building entrance with a freshly painted navy column',
+    title: 'Commercial Exterior Painting',
+    subtitle: 'Painting, Columns & Building Facade',
+    category: 'Painting & Plastering',
+  },
+  {
+    src: '/images/project-shopfront-window.jpg',
+    alt: 'Replaced shopfront window with reflective glass',
+    title: 'Shopfront Window Replacement',
+    subtitle: 'Glazing, Commercial Shopfront',
+    category: 'Glazing',
+  },
+  {
+    src: '/images/project-salon-window-make-safe.jpg',
+    alt: 'Salon window boarded with plywood from the inside',
+    title: 'Salon Window Make Safe',
+    subtitle: 'Make Safe, Temporary Boarding',
+    category: 'Make Safe',
+  },
+  {
+    src: '/images/project-office-glass-make-safe.jpg',
+    alt: 'Broken glass panel beside an office door boarded with plywood',
+    title: 'Office Door Panel Repair',
+    subtitle: 'Doors & Windows, Glass Door Panel',
+    category: 'Doors & Windows',
+  },
+  {
+    src: '/images/project-coolroom-service.jpg',
+    alt: 'Technician on a scissor lift servicing coolroom fans',
+    title: 'Coolroom Refrigeration Service',
+    subtitle: 'Heating & Cooling, Commercial Refrigeration',
+    category: 'Maintenance & Repairs',
+  },
+  {
+    src: '/images/project-office-led-lighting.jpg',
+    alt: 'New LED panel lights in an office suspended ceiling',
+    title: 'Office LED Lighting',
+    subtitle: 'Electrical, LED Panel Upgrade',
+    category: 'Electrical',
+  },
+  {
+    src: '/images/project-steps-handrails.jpg',
+    alt: 'Timber steps with yellow safety nosing and stainless steel handrails',
+    title: 'Steps & Handrails',
+    subtitle: 'Carpentry, Handrails & Safety Nosing',
+    category: 'Carpentry',
+  },
+  {
+    src: '/images/project-shower-grab-rail.jpg',
+    alt: 'Grab rail installed on a tiled shower wall',
+    title: 'Shower Grab Rail',
+    subtitle: 'Handyman, Accessibility & Safety',
+    category: 'Handyman',
+  },
+  {
+    src: '/images/project-verandah-gutter.jpg',
+    alt: 'Tradesperson fitting a new gutter along a shop verandah',
+    title: 'Verandah Gutter Replacement',
+    subtitle: 'Guttering, Commercial Shopfront',
+    category: 'Guttering',
+  },
+  {
+    src: '/images/project-under-sink-water.jpg',
+    alt: 'Boiling and chilled filtered water units installed under a kitchen sink',
+    title: 'Filtered Water System',
+    subtitle: 'Plumbing, Under-Sink Installation',
+    category: 'Plumbing',
+  },
+  {
+    src: '/images/project-training-room-fitout.jpg',
+    alt: 'Training room with new ceiling tiles and LED lighting',
+    title: 'Room Lights Upgrade',
+    subtitle: 'Electrical, Lighting & Ceiling Tiles',
+    category: 'Electrical',
+  },
+  {
+    src: '/images/project-balcony-glass.jpg',
+    alt: 'Apartment balcony with frosted glass balustrade panels',
+    title: 'Balcony Privacy Glass',
+    subtitle: 'Glazing, Frosted Balustrade Panels',
+    category: 'Glazing',
+  },
+  {
+    src: '/images/project-retail-lighting.jpg',
+    alt: 'Retail store ceiling with new LED batten lights',
+    title: 'Retail Store Lighting',
+    subtitle: 'Electrical, LED Batten Upgrade',
+    category: 'Electrical',
+  },
+  {
+    src: '/images/project-verandah-lighting.jpg',
+    alt: 'Shop verandah ceiling after an old sign was removed',
+    title: 'Sign Removal',
+    subtitle: 'Electrical, Sign Disconnection & Removal',
+    category: 'Electrical',
+  },
+  {
+    src: '/images/project-track-lighting-cctv.jpg',
+    alt: 'Warehouse ceiling with a water-damaged section to be repaired',
+    title: 'Water Damaged Ceiling Repair',
+    subtitle: 'Plastering, Ceiling Repair & Make-Good',
+    category: 'Painting & Plastering',
+  },
 ]
 
 export const testimonials = [
@@ -195,6 +338,24 @@ export const testimonials = [
     name: 'Eduard Mjeda',
     quote:
       'Great people to work with! Sonny was very responsive from the minute I called to inquire about his services. He went over every detail with me and we set up a plan for the day of work.',
+  },
+  {
+    avatar: '/images/avatar-4.jpg',
+    name: 'Jora Broerse',
+    quote:
+      'I rang Quick Replace after another company tried to rip me off. I was so impressed with the efficiency, cleanliness and honesty that they now became my regular maintenance guys. Definitely recommend this company.',
+  },
+  {
+    avatar: '/images/avatar-5.jpg',
+    name: 'LN Muzzin',
+    quote:
+      "Sonny and his team were so professional and courteous. Had a leak in our roof which was very challenging to find. Sonny's crew found the source of the leak and they did a wonderful job of repairing the roof, all in one day.",
+  },
+  {
+    avatar: '/images/avatar-6.jpg',
+    name: 'John Culina',
+    quote:
+      "I've used Quick Replace on many occasions and every time I get the same prompt response, a competitive quote and the job delivered on time and on budget. Definitely the go-to maintenance company.",
   },
 ]
 
@@ -221,15 +382,15 @@ export const beforeAfter = [
   {
     src: '/images/before-after-2.jpg',
     alt: 'Brick wall under scaffolding beside the finished repointed wall',
-    title: 'Brick Wall Repairment',
+    title: 'Brick Wall Repair',
     tag: 'Brick Repointing & Mortar Repairs',
-    location: 'Prahran VIC',
+    location: 'Prahran',
   },
   {
     src: '/images/before-after-3.jpg',
     alt: 'Shattered shower screen beside the new glass screen',
     title: 'Shower Screen Replacement',
-    tag: 'Glazier',
+    tag: 'Glazing',
     location: 'Maribyrnong',
   },
 ]
