@@ -48,6 +48,7 @@ Builds the production bundle into `build/`.
 | `/clients` | Clients (Who We Work With) | `src/pages/ClientsPage.jsx` |
 | `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
 | `/privacy-policy` | Privacy Policy | `src/pages/PrivacyPolicyPage.jsx` |
+| `/terms-and-conditions` | Terms & Conditions | `src/pages/TermsPage.jsx` |
 
 Routing uses `react-router-dom` (`BrowserRouter` in `src/App.js`). Inner pages share
 `components/PageHero.jsx`. All nav links now open their own page.
@@ -57,6 +58,7 @@ When deploying, the host must send every URL to `index.html` (for example a Netl
 
 Clients page content (sectors, accreditations, case study) lives in `src/data/clientsData.js`.
 Privacy Policy content (intro and clauses) lives in `src/data/privacyData.js`.
+Terms & Conditions content lives in `src/data/termsData.js`.
 About Us page content (story, principles, trades, trust stats) lives in `src/data/aboutData.js`.
 Our Work page content (projects, filters, FAQ) lives in `src/data/workData.js`.
 Services page content (all 16 services, popular searches) lives in `src/data/servicesData.js`.

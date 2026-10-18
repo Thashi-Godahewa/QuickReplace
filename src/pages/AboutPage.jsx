@@ -2,7 +2,7 @@ import PageHero from '../components/PageHero'
 import OurStory from '../components/about/OurStory'
 import HowWeWork from '../components/about/HowWeWork'
 import MultiTrade from '../components/about/MultiTrade'
-import TrustSection from '../components/about/TrustSection'
+import OurJourney from '../components/about/OurJourney'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
 import usePageTitle from '../hooks/usePageTitle'
@@ -15,7 +15,7 @@ export default function AboutPage() {
       <PageHero
         accent="About"
         breadcrumb="About Us"
-        description="We provide reliable property maintenance solutions, working closely with clients to keep their properties safe, functional, and well maintained."
+        description="Quick Replace is a Melbourne property maintenance company built to make repairs and maintenance simpler. With multiple trades coordinated through one point of contact, we focus on quality work, clear communication and making the process easier for our clients."
         descriptionWidth="max-w-[700px]"
         image="/images/contact-hero-team.jpg"
         imageAlt="The Quick Replace team standing outside a commercial building"
@@ -27,7 +27,7 @@ export default function AboutPage() {
       <OurStory />
       <HowWeWork />
       <MultiTrade />
-      <TrustSection />
+      <OurJourney />
       <ServiceLocator />
       <CTA variant="emergency" />
     </>

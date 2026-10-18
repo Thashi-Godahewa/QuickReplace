@@ -1,27 +1,25 @@
-// Content for the About Us page.
-// Figures (7.4 years, 350+, 99.2%) come from the Figma design and
-// must be confirmed with Quick Replace before launch.
+// Content for the About Us page, taken from the Figma design.
 
 export const founder = {
   name: 'Sonny Rolih',
   image: '/images/about-founder.jpg',
-  imageAlt: 'Sonny Rolih, founder of Quick Replace, wearing a blue Quick Replace polo shirt',
-  caption: 'Sonny Rolih • Executive Guarantee',
+  imageAlt: 'Sonny Rolih, Managing Director of Quick Replace, wearing a blue Quick Replace polo shirt',
+  caption: 'Sonny Rolih • Managing Director',
 }
 
 export const story = {
-  heading: 'Built to Do Things Differently',
+  heading: 'Built to do things differently',
   // The founder's name is inserted between `introBefore` and `introAfter`
   introBefore: 'Quick Replace was founded by ',
   introAfter:
-    ', after years of working with major hotel groups and builders and seeing first-hand how difficult it could be to find reliable tradespeople.',
+    ' after years of working with major hotel groups and builders and seeing first-hand how difficult it could be to find reliable tradespeople.',
   paragraphs: [
     "Too often, clients were left waiting for contractors who didn't show up when promised, quotes that never arrived, or invoices where it wasn't clear what they were actually paying for.",
-    "We realized that premium facilities and discerning homeowners didn't just need a plumber or an electrician - they needed absolute engineering transparency, single-point accountability, and a team that treats high-stakes emergencies with surgical precision.",
+    'We knew there had to be a better way. Clients needed reliable tradespeople, clear communication, transparent pricing and one point of contact who would take responsibility for getting the job done.',
   ],
   quote: 'Be a company people can rely on.',
   quoteNote:
-    'The foundational operating principle that guides every Quick Replace service call, emergency make-safe, and preventative maintenance contract.',
+    "It's a simple principle, but it still guides how we work today - answer the phone, communicate clearly, do quality work and follow through on what we promise.",
 }
 
 // `icon` keys map to lucide-react icons in HowWeWork.jsx
@@ -31,56 +29,98 @@ export const principles = [
     tag: 'Reliable Service',
     icon: 'clock',
     title: 'Show up when we say we will.',
-    text: 'Punctual technician dispatch tracked in real-time with verified GPS arrival windows.',
-    footer: 'On-Time Standard',
+    text: 'We arrive as arranged, complete the work properly and keep you informed if anything changes.',
+    footer: 'We Follow Through',
   },
   {
     number: '02',
     tag: 'Clear Communication',
     icon: 'messages',
-    title: 'Keep clients informed throughout the job.',
-    text: 'Instant status updates from diagnosis to photographic completion sign-off.',
-    footer: 'Client Portal',
+    title: 'Keep you informed.',
+    text: "We explain what we've found, what needs to be done and keep you updated as the job progresses.",
+    footer: 'Clear Updates',
   },
   {
     number: '03',
     tag: 'Transparent Quotes',
     icon: 'receipt',
-    title: 'Make costs clear from the beginning.',
-    text: 'Upfront itemized scopes with zero hidden call-out fees or unexpected post-repair extras.',
-    footer: 'Pricing Policy',
+    title: 'Make the costs clear.',
+    text: "Our quotes clearly explain the scope of work and costs, so you understand what you're approving before work begins.",
+    footer: 'Clear Quoting',
   },
   {
     number: '04',
     tag: 'Practical Solutions',
     icon: 'tools',
-    title: 'Find a way forward when problems arise.',
-    text: 'Master trade problem solving for complex facility issues, aging infrastructure, and custom builds.',
-    footer: 'Resolution Rate',
+    title: 'Help find the right solution.',
+    text: "Not every property problem is straightforward. We'll help identify the issue, explain the options and work out the best way forward.",
+    footer: 'Problem Solving',
   },
+]
+
+export const multiTradePoints = [
+  'One Point of Contact for Multiple Trades',
+  'Clear Communication & Regular Updates',
+  'Repairs Managed from Start to Finish',
 ]
 
 // `icon` keys map to lucide-react icons in MultiTrade.jsx
 export const coordinatedTrades = [
-  { icon: 'plumbing', title: 'Plumbing', text: 'Burst pipes, backflow valves & boilers' },
-  { icon: 'electrical', title: 'Electrical', text: 'Switchboards, fault isolation & testing' },
+  { icon: 'plumbing', title: 'Plumbing', text: 'Hot water, burst pipes, backflow valves & risers' },
+  { icon: 'electrical', title: 'Electrical', text: 'Switchboards, safety switches, power fault isolation' },
   { icon: 'hvac', title: 'Heating & Cooling', text: 'Ducted system motor replacements' },
-  { icon: 'glazing', title: 'Glazing', text: 'AS1288 emergency make-safes & facade glass' },
-  { icon: 'painting', title: 'Painting & Plaster', text: 'Tenancy make-goods, moisture repairs' },
+  { icon: 'glazing', title: 'Glazing', text: 'AS1288 emergency make-safes & commercial glass' },
+  { icon: 'painting', title: 'Painting & Plaster', text: 'Tenancy make-goods, moisture repairs & finishes' },
   { icon: 'makeSafe', title: 'Make Safe', text: 'Immediate physical risk mitigation' },
 ]
 
-export const trust = {
-  image: '/images/about-trust.jpg',
-  imageAlt: 'Quick Replace technicians servicing equipment in a multi-level glass office building',
-  tenure: { value: '7.4 Years', label: 'Average Client Partnership Tenure', tag: 'Melbourne Wide' },
-  heading: 'Trust Built Over Time',
-  text: 'Over time, we have built strong relationships with property managers, businesses and property owners across Melbourne. Many of those relationships are based on something very simple - trust.',
-  quote: 'We have never lost a client because of our service.',
-  quoteText:
-    'Many of our clients have been with us for years, and those long-term relationships are what we value most. We earn retention through consistent performance, transparent documentation, and showing up ready to execute.',
-  stats: [
-    { icon: 'portfolio', value: '350+', label: 'Active Strata & Commercial Portfolios' },
-    { icon: 'sla', value: '99.2%', label: 'SLA Rapid Response Adherence' },
-  ],
-}
+// Our Journey timeline. `label` is the short text under each year on the timeline.
+export const journey = [
+  {
+    year: '2019',
+    label: 'Our Beginning',
+    title: 'Our Beginning',
+    text: 'Quick Replace was founded by Sonny Rolih in Melbourne, with the support of his wife and family. Starting with glazing, painting and electrical services, the goal was simple: make property maintenance easier and more reliable for clients.',
+    highlights: ['Melbourne Founded', 'Glazing, Painting & Electrical', 'Family-Supported Business'],
+    boxLabel: 'Our Mission',
+    boxQuote:
+      'Make property maintenance easier with reliable tradespeople, clear communication and one point of contact.',
+  },
+  {
+    year: '2021',
+    label: 'Personal Approach',
+    title: 'Building Lasting Client Relationships',
+    text: 'Quick Replace continued building long-term relationships with property managers, businesses and homeowners. We take a personal approach, getting to know our clients and their properties while keeping records of previous maintenance issues, repairs and solutions. This helps us provide a more consistent and efficient service every time.',
+    highlights: ['Personal Approach', 'Property Maintenance History', 'Long-Term Relationships'],
+    boxLabel: 'Our Personal Approach',
+    boxQuote:
+      "We don't just remember our clients. We know their properties, understand their maintenance history and keep track of what's been done.",
+  },
+  {
+    year: '2023',
+    label: 'One Contact Multiple Trades',
+    title: 'One Contact. Multiple Trades.',
+    text: 'As our range of services expanded, Quick Replace made it easier for clients to arrange different repairs and maintenance jobs through one point of contact. From organising trades to following up on completed work, we focused on making property maintenance simpler.',
+    highlights: ['Multiple Trades', 'One Point of Contact', 'Simplified Maintenance'],
+    boxLabel: 'Our Advantage',
+    boxQuote: 'One contact for multiple trades, making property maintenance simpler from start to finish.',
+  },
+  {
+    year: '2025',
+    label: 'Growing Across Melbourne',
+    title: 'Growing Across Melbourne',
+    text: 'Quick Replace continued expanding its network of experienced tradespeople and contractors, strengthening our ability to handle residential, commercial and ongoing property maintenance across Melbourne while maintaining the personal service our clients value.',
+    highlights: ['Contractor Network', 'Commercial Maintenance', 'Melbourne-Wide Services'],
+    boxLabel: 'Our Commitment',
+    boxQuote: 'As our network grows, our commitment to personal service stays the same.',
+  },
+  {
+    year: '2026',
+    label: '160+ Tradespeople & Contractors',
+    title: 'Quick Replace Today',
+    text: 'Today, Quick Replace works with a network of more than 160 experienced tradespeople and contractors across Melbourne. From everyday repairs to larger multi-trade jobs, we help property managers, businesses and homeowners get their maintenance sorted, with one point of contact throughout the process.',
+    highlights: ['160+ Trade Network', '21 Service Categories', 'One Point of Contact'],
+    boxLabel: 'Looking Ahead',
+    boxQuote: 'Keep growing, keep improving and never lose the personal service our clients rely on.',
+  },
+]

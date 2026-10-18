@@ -1,8 +1,8 @@
-import { Clock, Hammer, MessagesSquare, ReceiptText } from 'lucide-react'
+import { Clock, MessagesSquare, ReceiptText, Wrench } from 'lucide-react'
 import { principles } from '../../data/aboutData'
-import { Container, SectionBadge } from '../ui'
+import { Accent, Container, SectionBadge } from '../ui'
 
-const icons = { clock: Clock, messages: MessagesSquare, receipt: ReceiptText, tools: Hammer }
+const icons = { clock: Clock, messages: MessagesSquare, receipt: ReceiptText, tools: Wrench }
 
 export default function HowWeWork() {
   return (
@@ -10,7 +10,7 @@ export default function HowWeWork() {
       <Container wide>
         <SectionBadge>How We Work</SectionBadge>
         <h2 className="mt-8 text-4xl font-bold tracking-tight text-brand-ink sm:text-[42px]" id="how-heading">
-          Simple Service. Clear Communication.
+          Simple <Accent>Service</Accent>. Clear <Accent>Communication</Accent>.
         </h2>
         <p className="mt-3 max-w-2xl text-lg leading-relaxed text-brand-muted">
           For us, that means showing up when we say we will, communicating clearly, providing transparent quotes and
@@ -28,12 +28,12 @@ export default function HowWeWork() {
                 <div className="flex-1 px-6 pb-5 pt-5">
                   <div className="flex items-center justify-between gap-3">
                     <span className="whitespace-nowrap rounded bg-brand-skySoft px-2 py-0.5 text-xs font-medium uppercase tracking-wide text-[#0b5f8a]">
-                      {p.number} - {p.tag}
+                      {p.number} &mdash; {p.tag}
                     </span>
                     <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-brand-sky" />
                   </div>
                   <h3 className="mt-4 text-lg font-semibold leading-snug text-brand-ink">{p.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-brand-muted">{p.text}</p>
+                  <p className="mt-2 text-[15px] leading-relaxed text-brand-ink/75">{p.text}</p>
                 </div>
                 <p className="bg-brand-mist px-6 py-3 text-[13px] font-medium text-brand-sky">{p.footer}</p>
               </li>

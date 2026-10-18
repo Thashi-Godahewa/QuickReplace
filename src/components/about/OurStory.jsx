@@ -11,13 +11,13 @@ export default function OurStory() {
           <h2 className="mt-8 text-4xl font-bold tracking-tight text-brand-ink sm:text-[42px]" id="story-heading">
             {story.heading}
           </h2>
-          <p className="mt-10 text-lg leading-relaxed text-brand-ink">
+          <p className="mt-10 text-lg leading-relaxed text-brand-ink/85">
             {story.introBefore}
             <em className="font-semibold italic text-brand-sky">{founder.name}</em>
             {story.introAfter}
           </p>
           {story.paragraphs.map((p) => (
-            <p className="mt-4 text-base leading-relaxed text-brand-muted" key={p.slice(0, 20)}>
+            <p className="mt-6 text-lg leading-relaxed text-brand-ink/85" key={p.slice(0, 20)}>
               {p}
             </p>
           ))}

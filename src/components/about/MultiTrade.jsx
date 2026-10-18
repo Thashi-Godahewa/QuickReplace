@@ -1,5 +1,6 @@
-import { Fan, Grid2x2, Network, PaintRoller, Toolbox, Wrench, Zap } from 'lucide-react'
-import { coordinatedTrades } from '../../data/aboutData'
+import { Link } from 'react-router-dom'
+import { ArrowRight, CircleCheck, Fan, Grid2x2, Headset, PaintRoller, Toolbox, Wrench, Zap } from 'lucide-react'
+import { coordinatedTrades, multiTradePoints } from '../../data/aboutData'
 import { Container, SectionBadge } from '../ui'
 
 const icons = {
@@ -13,54 +14,67 @@ const icons = {
 
 export default function MultiTrade() {
   return (
-    <section aria-labelledby="multi-trade-heading" className="bg-[#e3f2fd] py-20" id="multi-trade">
-      <Container wide>
-        <SectionBadge>Multi-Trade Coordination</SectionBadge>
-        <div className="mt-6 grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
+    <section aria-labelledby="multi-trade-heading" className="bg-[#e3f2fd] py-16 lg:py-20" id="multi-trade">
+      <Container wide className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        <div className="lg:col-span-5">
+          <SectionBadge>Multi-Trade Coordination</SectionBadge>
           <h2
-            className="text-4xl font-bold leading-[1.1] tracking-tight text-brand-ink sm:text-5xl lg:col-span-7 lg:text-[54px]"
+            className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]"
             id="multi-trade-heading"
           >
-            One Contact. Multiple Trades. <em className="font-bold italic text-brand-sky">One Clear Goal.</em>
+            One Contact. Multiple Trades.
           </h2>
-          <p className="text-base leading-relaxed text-brand-ink/85 lg:col-span-5 lg:pl-10">
-            Our goal hasn&rsquo;t changed since the beginning: look after our clients, make property maintenance easier,
-            and never leave them wondering who to call when something goes wrong.
+          <p className="mt-5 text-lg leading-relaxed text-brand-ink/75">
+            If a job requires several different trades, we coordinate them so our clients don&apos;t have to spend
+            their time chasing multiple contractors.
           </p>
+          <ul className="mt-6 space-y-2.5 rounded-xl bg-white px-5 py-5 shadow-sm">
+            {multiTradePoints.map((point) => (
+              <li className="flex items-center gap-3 text-[15px] font-medium text-brand-ink" key={point}>
+                <CircleCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-[#0b5f8a]" />
+                {point}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 text-sm font-medium text-brand-sky">Tell us what needs fixing. We&apos;ll take care of the rest.</p>
         </div>
 
-        <div className="mt-16 flex items-center gap-4 border-b border-brand-navy/10 pb-6">
-          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-navy text-white">
-            <Network aria-hidden="true" className="h-6 w-6" strokeWidth={1.75} />
-          </span>
-          <div>
-            <p className="flex flex-wrap items-center gap-x-2 text-xs">
-              <span className="font-mono uppercase tracking-widest text-brand-sky">Central Operations Hub</span>
-              <span aria-hidden="true" className="h-1 w-1 rounded-full bg-brand-muted/50" />
-              <span className="text-brand-ink/70">Direct In-House Dispatch</span>
-            </p>
-            <p className="mt-1 text-lg font-semibold tracking-tight text-brand-ink">Quick Replace Central Command Desk</p>
+        <div className="rounded-2xl bg-white p-5 shadow-card sm:p-8 lg:col-span-7">
+          <div className="flex items-center gap-4 rounded-xl bg-gradient-to-r from-brand-footer to-brand-navyLight px-5 py-5 text-white shadow-card">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/10">
+              <Headset aria-hidden="true" className="h-6 w-6" strokeWidth={1.75} />
+            </span>
+            <div>
+              <p className="text-lg font-semibold leading-snug">Quick Replace &ndash; One Point of Contact</p>
+              <p className="mt-0.5 text-sm text-white/80">Multiple trades. One team looking after your property maintenance.</p>
+            </div>
+          </div>
+
+          <ul className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {coordinatedTrades.map((t) => {
+              const Icon = icons[t.icon]
+              return (
+                <li className="rounded-lg bg-[#e8f1fd] px-4 py-4" key={t.title}>
+                  <p className="flex items-center gap-2 text-lg font-semibold text-brand-ink">
+                    <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-brand-sky" />
+                    {t.title}
+                  </p>
+                  <p className="mt-1 text-sm leading-snug text-brand-ink/70">{t.text}</p>
+                </li>
+              )
+            })}
+          </ul>
+
+          <div className="mt-6 flex justify-end border-t border-brand-line pt-3">
+            <Link
+              className="group inline-flex items-center gap-1.5 text-base font-semibold text-brand-sky hover:text-brand-skyHover"
+              to="/services"
+            >
+              All Services
+              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
-
-        <ul className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
-          {coordinatedTrades.map((t, i) => {
-            const Icon = icons[t.icon]
-            return (
-              <li key={t.title}>
-                <span
-                  className={`flex h-10 w-10 items-center justify-center rounded-lg ${
-                    i === 0 ? 'bg-brand-navy text-brand-sky' : 'bg-white text-brand-sky shadow-sm'
-                  }`}
-                >
-                  <Icon aria-hidden="true" className="h-4 w-4" />
-                </span>
-                <p className="mt-3 text-base font-semibold text-brand-ink">{t.title}</p>
-                <p className="mt-0.5 text-[13px] leading-snug text-brand-ink/70">{t.text}</p>
-              </li>
-            )
-          })}
-        </ul>
       </Container>
     </section>
   )
