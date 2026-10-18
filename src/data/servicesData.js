@@ -1,6 +1,5 @@
 // Content for the Services page.
 // Each service needs a photo at /public/images/service-<slug>.jpg.
-// `badge` is optional and shows as a small label on the photo.
 // `keywords` are the everyday problems people type into the search box
 // (for example "leaking tap"), so the right service comes up even when
 // they do not know the trade name. Add more any time - see src/utils/serviceSearch.js.
@@ -32,7 +31,6 @@ export const allServices = [
   {
     slug: 'electrical',
     title: 'Electrical',
-    badge: 'Licensed Electrical',
     description: 'Electrical repairs, maintenance and installations for residential and commercial properties across Melbourne.',
     keywords: [
       'no power', 'power', 'power outage', 'blackout', 'lights not working', 'light', 'lighting', 'light fitting',
@@ -67,7 +65,6 @@ export const allServices = [
   {
     slug: 'locksmith',
     title: 'Locksmith',
-    badge: 'Security Licenced',
     description: 'Lock repairs, replacements and access solutions for residential and commercial properties across Melbourne.',
     keywords: [
       'broken lock', 'lock', 'locked out', 'lockout', 'lost keys', 'key', 'keys', 'key cutting', 'rekey',
@@ -158,7 +155,6 @@ export const allServices = [
   {
     slug: 'removalist',
     title: 'Removalist & Rubbish Removal',
-    badge: 'Preventative Care',
     description: 'Property-related removal and cleanup support for residential and commercial premises across Melbourne.',
     keywords: [
       'rubbish', 'rubbish removal', 'junk', 'junk removal', 'hard rubbish', 'waste', 'clean up', 'cleanup',
@@ -168,7 +164,6 @@ export const allServices = [
   {
     slug: 'emergency-repairs',
     title: 'Emergency Repairs',
-    badge: 'Preventative Care',
     description:
       'Urgent property maintenance and make-safe support when unexpected damage or faults require prompt attention.',
     keywords: [

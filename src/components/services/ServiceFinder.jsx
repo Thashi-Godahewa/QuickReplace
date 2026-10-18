@@ -21,19 +21,12 @@ function ServiceCard({ service }) {
           loading="lazy"
           src={`/images/service-${service.slug}.jpg`}
         />
-        {service.badge && (
-          <span className="absolute left-3 top-3 rounded-md bg-brand-ink/90 px-2.5 py-1 text-xs font-semibold uppercase tracking-wide text-white">
-            {service.badge}
-          </span>
-        )}
       </div>
-      <div className="flex flex-1 flex-col px-6 pt-6">
+      <div className="flex flex-1 flex-col px-6 pb-9 pt-6">
         <h3 className="text-[22px] font-semibold tracking-tight text-brand-ink">{service.title}</h3>
         <p className="mt-3 flex-1 text-[15px] leading-relaxed text-brand-muted">{service.description}</p>
-      </div>
-      <div className="mt-5 border-t border-brand-line bg-brand-mist/60 px-6 pb-6 pt-3">
         <Link
-          className="inline-flex items-center gap-2 text-[15px] font-semibold text-brand-sky transition-colors hover:text-brand-skyHover"
+          className="mt-6 inline-flex items-center gap-2 self-start text-[15px] font-semibold text-brand-sky transition-colors hover:text-brand-skyHover"
           to={servicePath(service.slug)}
         >
           Learn More <span className="sr-only">about {service.title}</span>
