@@ -7,68 +7,71 @@ export const clientSectors = [
   {
     icon: 'commercial',
     title: 'Commercial Property Managers & Owners',
-    tags: 'High-Density Towers • Multi-Level Residential',
     description:
       'Property maintenance and repairs for offices, commercial buildings, warehouses and other business premises. From minor repairs to ongoing maintenance and multi-trade jobs, we provide one point of contact throughout the process.',
   },
   {
     icon: 'residential',
     title: 'Residential Property Managers & Owners',
-    tags: 'Grade-A Towers • Tenancy Suites',
     description:
       'Repairs and maintenance for houses, apartments and units across Melbourne. We can communicate directly with tenants, arrange access, coordinate the required trades and provide before-and-after photos.',
   },
   {
     icon: 'strata',
     title: 'Owners Corporations & Strata Managers',
-    tags: 'Business Parks • Civic Infrastructure',
     description:
       'Maintenance and repairs for common areas and shared property, with clear quoting, communication and reporting. We can coordinate access directly with building managers, committees and nominated contacts.',
   },
   {
     icon: 'agedCare',
     title: 'Aged Care & Retirement Living',
-    tags: 'Retirement Villages • Day Surgeries',
     description:
       'Property maintenance for aged care facilities, retirement living properties and Home Care Package clients, with particular attention to communication, safety and minimising disruption to residents.',
   },
   {
     icon: 'retail',
     title: 'Retail & Hospitality Businesses',
-    tags: 'Shopping Centers • Restaurant Strips',
     description:
       'Repairs and maintenance for shops, restaurants, cafés, hotels and other customer-facing businesses, with work organised to minimise disruption to staff, customers and normal operations.',
   },
   {
     icon: 'schools',
     title: 'Schools & Childcare Centres',
-    tags: 'Private Schools • Child Care Centres',
     description:
       "Property repairs and maintenance for schools and childcare facilities, with work coordinated around the facility's requirements and schedule. Working with Children Checks can be provided where required.",
   },
   {
     icon: 'industrial',
     title: 'Industrial & Warehouse Operators',
-    tags: 'Distribution Hubs • Freight Terminals',
+    // The Figma card repeats the Owners Corporations text here, so the earlier
+    // industrial copy is kept until Quick Replace confirms the wording.
     description:
       'Property and facility maintenance for warehouses, workshops, factories and other industrial premises, including general repairs, preventative maintenance and work requiring multiple trades.',
+  },
+  {
+    icon: 'insurance',
+    title: 'Insurance & Claims Managers',
+    description:
+      'Property make-safe, repairs and reinstatement for insurance claims. We coordinate the required trades and provide clear quotes, photos and job documentation from initial attendance through to completion.',
   },
 ]
 
 export const deployments = [
   {
-    src: '/images/clients-plant-room.jpg',
-    alt: 'Two technicians commissioning an electrical switchboard in a glass office tower',
-    label: 'Active Metropolitan Deployment',
-    title: 'Preventative Central Plant & Hydraulic Commissioning',
-    detail: 'Collins Street Corporate Tower Precinct • Scheduled Quarter Diagnostic',
+    src: '/images/service-make-safe.jpg',
+    alt: 'Boarded-up shopfront behind temporary fencing after an emergency make-safe',
+    label: 'Emergency Make Safe',
+    title: 'Rapid Emergency Make Safe Services',
+    detail:
+      'Fast, reliable emergency response to secure damaged properties, address immediate hazards and help protect people and buildings from further damage.',
   },
   {
-    src: '/images/clients-healthcare.jpg',
-    alt: 'Technician with a tool bag and tablet walking through a healthcare building corridor',
-    label: 'Priority Rapid Dispatch',
-    title: 'Healthcare & Commercial Tenancy Continuity',
-    detail: 'Zero-Interruption Protocol Execution • Melbourne Healthcare Campus',
+    src: '/images/clients-building-maintenance.jpg',
+    alt: 'Technician working from a scissor lift on the glass facade of a commercial building',
+    label: 'Commercial Property Maintenance',
+    title: 'Professional Building Maintenance',
+    detail:
+      'Reliable building repairs, façade maintenance and exterior refurbishment to keep commercial properties safe, functional and looking their best.',
   },
 ]
 
@@ -98,29 +101,30 @@ export const clientsPartners = {
 
 // `icon` keys map to lucide-react icons in Accreditations.jsx
 export const accreditations = [
-  { icon: 'shield', title: 'VBA Licenced', detail: 'Lic #DB-U-49102' },
-  { icon: 'building', title: 'SCA Member', detail: 'Strata Community Assoc' },
-  { icon: 'builder', title: 'Master Builders', detail: 'MBV Corporate Partner' },
-  { icon: 'energy', title: 'Energy Safe Vic', detail: 'Gas & High Voltage Certified' },
-  { icon: 'iso', title: 'ISO 9001:2015', detail: 'Quality Safety Matrix' },
-  { icon: 'worksafe', title: 'WorkSafe Victoria', detail: '$20M Public Liability' },
+  { icon: 'shield', title: 'Public Liability', detail: 'Insured certificate of currency available' },
+  { icon: 'building', title: 'Licensed Trades', detail: 'Qualified professionals' },
+  { icon: 'police', title: 'Police Checked', detail: 'National police checks where required' },
+  { icon: 'energy', title: 'Working With Children', detail: 'Suitable technicians for schools & childcare' },
+  { icon: 'iso', title: 'SWMS & Compliance Site Documentation', detail: 'Where required' },
+  { icon: 'worksafe', title: 'WorkSafe Victoria', detail: 'Work cover insurance where required' },
 ]
 
 export const caseStudy = {
-  image: '/images/clients-case-study.jpg',
-  imageAlt: 'Technicians working on a pump station inside a multi-level glass building',
-  badge: 'Featured Deployment',
-  title: 'Eureka Tower & Southbank Precinct Rapid Response',
-  subtitle: 'Multi-stage hydraulic pump station replacement without residential water cutoff.',
+  image: '/images/clients-testimonial.jpg',
+  imageAlt: 'Quick Replace technician on a ladder installing ceiling fittings, giving a thumbs up',
+  badge: 'Property Management Support',
+  title: 'One Contact. Multiple Trades.',
+  subtitle:
+    'Plumbing, electrical, glazing, locksmith, painting, plastering and general property repairs - coordinated through one point of contact.',
   stats: [
-    { value: '0 hrs', label: 'Downtime Incurred' },
-    { value: '$44,000', label: 'Rebates & Efficiencies' },
-    { value: '100%', label: 'Strata Committee Signoff' },
+    { value: 'Multiple Trades', label: 'One point of contact' },
+    { value: 'Clear Updates', label: 'Photos & job reporting' },
+    { value: 'Less Follow-Up', label: 'We keep you informed' },
   ],
   label: 'Client Satisfaction',
-  quote: 'Quick Replace transformed our maintenance workflow from reactive panic into predictable preventative calm.',
-  paragraphs: [
-    'When a legacy 4-inch main copper riser developed high-pressure micro-fractures in Southbank, 180 apartment residents were at immediate risk of complete water shutdown. Quick Replace dispatched our emergency rapid crew within 22 minutes.',
-    "By deploying temporary high-flow bypass manifolds, our certified technicians isolated the degraded line and rebuilt the manifold in under 6 hours - all during working hours, completely invisible to the building's residents.",
-  ],
+  quote: 'Quick Replace makes managing property maintenance so much easier.',
+  testimonial:
+    "Quick Replace always answers the phone and follows up on our emails. We're never left waiting or wondering what's happening with a job. Whatever issue comes up, they find a way to get it sorted. If we can't get hold of someone else, we know Quick Replace will be there for us.",
+  author: 'Sarah M.',
+  role: 'Property Manager, Melbourne',
 }

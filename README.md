@@ -45,7 +45,7 @@ Builds the production bundle into `build/`.
 | `/services/:slug` | Service detail (e.g. `/services/painting-plastering`) | `src/pages/ServiceDetailPage.jsx` |
 | `/our-work` | Our Work (before & after, FAQ) | `src/pages/OurWorkPage.jsx` |
 | `/about` | About Us | `src/pages/AboutPage.jsx` |
-| `/clients` | Clients (Who We Serve) | `src/pages/ClientsPage.jsx` |
+| `/clients` | Clients (Who We Work With) | `src/pages/ClientsPage.jsx` |
 | `/contact` | Contact Us | `src/pages/ContactPage.jsx` |
 | `/privacy-policy` | Privacy Policy | `src/pages/PrivacyPolicyPage.jsx` |
 

@@ -3,7 +3,7 @@ import { Container } from '../ui'
 
 export default function Deployments() {
   return (
-    <section aria-label="Recent client deployments" className="bg-[#f6f7fc] py-12">
+    <section aria-label="Recent client deployments" className="bg-white pb-8 pt-4">
       <Container wide>
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2">
           {deployments.map((d) => (
@@ -13,7 +13,7 @@ export default function Deployments() {
               <div className="absolute inset-x-0 bottom-0 p-6">
                 <p className="font-mono text-[11px] uppercase tracking-widest text-sky-200/90 sm:text-xs">{d.label}</p>
                 <h3 className="mt-1 text-lg font-semibold leading-snug text-white sm:text-xl">{d.title}</h3>
-                <p className="mt-0.5 text-xs text-white/80 sm:text-[13px]">{d.detail}</p>
+                <p className="mt-1 max-w-xl text-xs leading-snug text-white/85 sm:text-sm">{d.detail}</p>
               </div>
             </li>
           ))}
