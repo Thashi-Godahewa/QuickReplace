@@ -809,6 +809,392 @@ export const serviceDetails = {
     },
     quote: sharedQuote,
   },
+
+  tiling: {
+    title: 'Tiling & Tile Repair',
+    pageTitle: 'Tiling & Tile Repairs Services Melbourne',
+    hero: {
+      accent: 'Tiling & Tile Repairs',
+      title: 'Services Melbourne',
+      description:
+        'Tiling repairs, replacement and maintenance for bathrooms, kitchens and other tiled areas in residential and commercial properties across Melbourne.',
+      image: '/images/before-after-shower.jpg',
+      imageAlt: 'Shower with a cracked tiled wall before and after repair',
+    },
+    offerings: {
+      heading: { before: 'Our Tiling & Tile Repair', accent: 'Services' },
+      intro:
+        'We repair and replace damaged wall and floor tiles in bathrooms, kitchens, commercial staircases and other tiled areas.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Damaged Tile Repairs & Replacement',
+          tag: 'Tile Repairs',
+          text: 'Repair and replacement of cracked, chipped, loose or damaged wall and floor tiles.',
+        },
+        {
+          icon: 'home',
+          title: 'Bathroom & Wet Area Tiling',
+          tag: 'Bathrooms',
+          text: 'Tiling repairs and replacement for bathrooms, showers and other wet areas, including work following plumbing or water damage.',
+        },
+        {
+          icon: 'office',
+          title: 'Commercial Tiling & Repairs',
+          tag: 'Commercial',
+          text: 'Tile repairs and replacement for commercial properties, including damaged floor tiles, tiled staircases, steps, common areas and other tiled surfaces.',
+        },
+        {
+          icon: 'tower',
+          title: 'Kitchen & General Tiling',
+          tag: 'Tiling',
+          text: 'Tiling and tile repairs for kitchen splashbacks, floors, walls and other tiled areas in residential and commercial properties.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Tiling & Tile Repair Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Whether you need a few damaged tiles replaced or a larger tiled area repaired, we can help with tiling work across residential, commercial and managed properties in Melbourne.',
+      note: repairFinish('If tiling is part of a larger repair, we can also take care of the related plumbing, plastering or painting needed to complete the job.'),
+      items: [
+        'Cracked, chipped or loose tiles',
+        'Damaged bathroom and shower tiles',
+        'Wall and floor tile repairs',
+        'Damaged tiles on commercial floors, staircases and steps',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  roofing: {
+    title: 'Roofing',
+    pageTitle: 'Roofing Services Melbourne',
+    hero: {
+      accent: 'Roofing',
+      title: 'Services Melbourne',
+      description:
+        'Roof repairs and maintenance for residential, commercial and managed properties across Melbourne, from roof leaks and damaged roofing to general maintenance and temporary make-safe work.',
+      image: '/images/project-aircon-roof.jpg',
+      imageAlt: 'Metal roof on a commercial building',
+    },
+    offerings: {
+      heading: { before: 'Our Roofing', accent: 'Services' },
+      intro:
+        'Roof repairs and maintenance for residential, commercial and managed properties across Melbourne, from roof leaks and damaged roofing to general maintenance and temporary make-safe work.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Roof Leak Repairs',
+          tag: 'Leaks',
+          text: 'Investigation and repair of roof leaks and water-entry points affecting residential and commercial properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Tile Roof Repairs',
+          tag: 'Tiled Roofs',
+          text: 'Repair and replacement of cracked, broken or displaced roof tiles and other tiled-roof damage.',
+        },
+        {
+          icon: 'office',
+          title: 'Metal Roof Repairs',
+          tag: 'Metal Roofs',
+          text: 'Repairs and maintenance for damaged metal roofing, flashings and other associated roof components.',
+        },
+        {
+          icon: 'tower',
+          title: 'Temporary Roof Make-Safe',
+          tag: 'Make Safe',
+          text: 'Where a larger repair cannot be completed immediately, we can carry out temporary make-safe work to help protect the property until permanent repairs can be completed.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Roofing Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Where a larger repair cannot be completed immediately, we can carry out temporary make-safe work to help protect the property until permanent repairs can be completed.',
+      note: repairFinish('Where a roof leak has caused internal damage, we can also take care of the plastering, painting and other repairs required to make good the affected area.'),
+      items: [
+        'Leaking roofs',
+        'Broken or displaced roof tiles',
+        'Damaged or deteriorated flashings',
+        'Temporary roof make-safe following damage',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'pest-control': {
+    title: 'Pest Control',
+    pageTitle: 'Pest Control Services Melbourne',
+    hero: {
+      accent: 'Pest Control',
+      title: 'Services Melbourne',
+      description:
+        'Pest control and treatment for common pest problems affecting residential and commercial properties across Melbourne.',
+      image: '/images/service-general-maintenance.jpg',
+      imageAlt: 'Technician carrying out a property service',
+    },
+    offerings: {
+      heading: { before: 'Our Pest Control', accent: 'Services' },
+      intro:
+        'We arrange treatment for rodents, cockroaches, ants and other pests across residential and commercial properties.',
+      items: [
+        {
+          icon: 'home',
+          title: 'General Pest Control',
+          tag: 'Pest Control',
+          text: 'Treatment for common pests including cockroaches, ants, spiders, fleas and silverfish in residential and commercial properties.',
+        },
+        {
+          icon: 'home',
+          title: 'Rodent Control',
+          tag: 'Rodents',
+          text: 'Inspection and treatment for rats and mice affecting residential, commercial and managed properties.',
+        },
+        {
+          icon: 'office',
+          title: 'Cockroach & Ant Treatment',
+          tag: 'Insects',
+          text: 'Treatment for cockroach and ant activity in and around residential and commercial properties.',
+        },
+        {
+          icon: 'tower',
+          title: 'Commercial Pest Control',
+          tag: 'Commercial',
+          text: 'Pest control for offices, retail premises, warehouses and other commercial properties, including ongoing treatment where required.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Pest Control Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'From rodents and cockroaches to ants and other common pests, we provide pest-control services for residential, commercial and managed properties across Melbourne.',
+      note: repairFinish('For managed and commercial properties, visits can be arranged around tenants, staff and operating hours.'),
+      items: [
+        'Rats and mice',
+        'Cockroaches and ants',
+        'Spiders, fleas and silverfish',
+        'Commercial pest problems',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'window-tinting': {
+    title: 'Window Tinting',
+    pageTitle: 'Window Tinting Services Melbourne',
+    hero: {
+      accent: 'Window Tinting',
+      title: 'Services Melbourne',
+      description:
+        'Window tinting and film installation for residential and commercial properties across Melbourne, helping reduce glare and solar heat while improving privacy and UV protection.',
+      image: '/images/before-after-window.jpg',
+      imageAlt: 'Glazed door with frosted window film applied',
+    },
+    offerings: {
+      heading: { before: 'Our Window Tinting', accent: 'Services' },
+      intro:
+        'We install and replace window films for privacy, glare reduction and solar control in homes, offices and commercial premises.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Residential Window Tinting',
+          tag: 'Residential',
+          text: 'Window tinting for houses, apartments and units to improve privacy and help reduce glare, solar heat and UV exposure.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Window Tinting',
+          tag: 'Commercial',
+          text: 'Window film for offices, shopfronts and other commercial premises to help reduce glare and solar heat and improve privacy.',
+        },
+        {
+          icon: 'office',
+          title: 'Privacy & Frosted Film',
+          tag: 'Privacy',
+          text: 'Privacy and decorative films for windows, glazed doors, offices, meeting rooms and other glass areas.',
+        },
+        {
+          icon: 'tower',
+          title: 'Existing Film Removal & Replacement',
+          tag: 'Replacement',
+          text: 'Removal and replacement of old, damaged, bubbling or deteriorated window film.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Window Tinting Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Window film can provide a practical solution where existing glazing needs greater privacy, glare reduction or solar control without replacing the glass.',
+      note: repairFinish('We can help identify an appropriate film based on the property, glazing and the result you are looking to achieve.'),
+      items: [
+        'Excessive glare and solar heat',
+        'Privacy for offices and meeting rooms',
+        'Frosted and decorative glass film',
+        'Old or damaged window tint',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'graffiti-removal': {
+    title: 'Graffiti Removal',
+    pageTitle: 'Graffiti Removal Services Melbourne',
+    hero: {
+      accent: 'Graffiti Removal',
+      title: 'Services Melbourne',
+      description:
+        'Graffiti removal and exterior surface cleaning for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-pressure-washing.jpg',
+      imageAlt: 'Pressure cleaning the outside of a property',
+    },
+    offerings: {
+      heading: { before: 'Our Graffiti Removal', accent: 'Services' },
+      intro:
+        'We remove graffiti from brick, concrete, walls and shopfronts, with repainting available when cleaning alone won’t restore the finish.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Graffiti Removal',
+          tag: 'Graffiti',
+          text: 'Removal of graffiti from walls, brickwork, concrete and other external surfaces.',
+        },
+        {
+          icon: 'home',
+          title: 'Commercial Graffiti Removal',
+          tag: 'Commercial',
+          text: 'Graffiti removal for shops, offices, warehouses, commercial buildings and managed properties.',
+        },
+        {
+          icon: 'office',
+          title: 'Paint & Marker Removal',
+          tag: 'Surface Cleaning',
+          text: 'Removal of spray paint, markers and other graffiti using a cleaning method appropriate for the affected surface.',
+        },
+        {
+          icon: 'tower',
+          title: 'Surface Repair & Repainting',
+          tag: 'Repainting',
+          text: 'Where graffiti cannot be fully removed or has damaged the existing finish, we can prepare and repaint the affected area to restore its appearance.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Graffiti Removal Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'We remove graffiti from shopfronts, commercial buildings, common areas and residential properties across Melbourne.',
+      note: repairFinish('Where graffiti cannot be completely removed or has damaged the existing finish, we can prepare and repaint the affected area to restore the surface.'),
+      items: [
+        'Spray paint and marker graffiti',
+        'Graffiti on brick, concrete and painted surfaces',
+        'Shopfronts, walls and common areas',
+        'Surface preparation and repainting where required',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  'emergency-repairs': {
+    title: 'Emergency Repairs',
+    pageTitle: 'Emergency Property Repairs Services Melbourne',
+    hero: {
+      accent: 'Emergency Property Repairs',
+      title: 'Services Melbourne',
+      description:
+        'Urgent property maintenance and make-safe support when unexpected damage or faults require prompt attention.',
+      image: '/images/service-emergency-repairs.jpg',
+      imageAlt: 'Plumber clearing a blocked floor drain in a tiled bathroom',
+    },
+    offerings: {
+      heading: { before: 'Our Emergency Repairs', accent: 'Services' },
+      intro:
+        'From urgent leaks and broken glass to unsafe electrical faults, we respond to property problems that cannot wait for routine maintenance.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Emergency Plumbing',
+          tag: 'Plumbing',
+          text: 'Urgent assistance for significant leaks, blocked drains, burst pipes and other plumbing problems requiring prompt attention.',
+        },
+        {
+          icon: 'home',
+          title: 'Emergency Glazing',
+          tag: 'Glazing',
+          text: 'Urgent assistance following broken glass, including securing affected windows, doors or shopfronts and arranging replacement.',
+        },
+        {
+          icon: 'office',
+          title: 'Emergency Electrical',
+          tag: 'Electrical',
+          text: 'Urgent electrical assistance for power outages, electrical faults or damage that may present an immediate safety concern.',
+        },
+        {
+          icon: 'tower',
+          title: 'Emergency Property Make-Safe',
+          tag: 'Make Safe',
+          text: 'Temporary measures to secure damaged property, minimise further damage and reduce immediate risks until permanent repairs or flood restoration can be completed.',
+        },
+      ],
+    },
+    solutions: {
+      badge: 'Emergency Repairs Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Quick Replace provides urgent property repairs and make-safe services when unexpected damage or faults require prompt attention.',
+      note: repairFinish('Once the immediate risk is dealt with, we can arrange the permanent repairs and any make-good work needed afterwards.'),
+      items: [
+        'Unexpected leaks and water-related damage',
+        'Broken glazing, doors and unsecured openings',
+        'Electrical faults and other urgent property damage',
+        'Storm damage and other urgent make-safe work',
+      ],
+    },
+    quote: sharedQuote,
+  },
+
+  removalist: {
+    title: 'Removalist & Rubbish Removal',
+    pageTitle: 'Removalist & Rubbish Removal Services Melbourne',
+    hero: {
+      accent: 'Removalist & Rubbish Removal',
+      title: 'Services Melbourne',
+      description:
+        'Rubbish removal, property clear-outs and small moving jobs for residential, commercial and managed properties across Melbourne.',
+      image: '/images/service-removalist.jpg',
+      imageAlt: 'Removalists loading furniture into a truck',
+    },
+    offerings: {
+      heading: { before: 'Our Removalist', accent: 'Services' },
+      intro:
+        'We clear unwanted items, remove rubbish after repairs and assist with smaller moves for tenants, owners and businesses.',
+      items: [
+        {
+          icon: 'home',
+          title: 'Rubbish Removal',
+          tag: 'Cleanup',
+          text: 'Removal of unwanted items, general rubbish and waste associated with property maintenance and clean-ups.',
+        },
+        {
+          icon: 'home',
+          title: 'Property Clear-Outs',
+          tag: 'Removal',
+          text: 'Property clear-outs and removal of unwanted furniture, rubbish and other items after tenants have vacated residential or commercial premises.',
+        },
+        {
+          icon: 'office',
+          title: 'Post-Maintenance Cleanup',
+          tag: 'Site Cleanup',
+          text: 'Removal of waste and unwanted materials following repair or maintenance work.',
+        },
+        {
+          icon: 'tower',
+          title: 'Small Property Moves',
+          tag: 'Removal',
+          text: 'Small moving jobs for tenants, property owners and businesses relocating furniture and other items into, out of or between properties.',
+        },
+      ],
+    },
+  },
 }
 
 export function servicePath(slug) {
