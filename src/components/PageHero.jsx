@@ -13,6 +13,8 @@ import TradesMarquee from './TradesMarquee'
 // `imagePosition` picks which part of the photo stays in view when it is cropped.
 // `imageOpacity` sets how strongly the photo shows through (default 'opacity-50').
 // `breadcrumbParent` adds a middle breadcrumb link, e.g. { label: 'Services', to: '/services' }.
+// `showTagline` and `showReviews` hide the small pill and the star row (used on the Privacy Policy page).
+// `description` is optional - leave it out for a heading-only hero.
 export default function PageHero({
   breadcrumb,
   accent,
@@ -29,6 +31,8 @@ export default function PageHero({
   breadcrumbParent = null,
   imagePosition = 'object-center',
   imageOpacity = 'opacity-50',
+  showTagline = true,
+  showReviews = true,
 }) {
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
@@ -67,10 +71,12 @@ export default function PageHero({
             </ol>
           </nav>
 
+          {showTagline && (
           <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-sky/40 bg-brand-navy/80 px-3 py-1.5 text-[10.5px] font-medium text-brand-sky backdrop-blur-md sm:px-4 sm:text-sm">
             <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-brand-sky" />
             Residential • Commercial • Multiple Trades • One Contact
           </p>
+          )}
 
           <h1
             className={`text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px] ${singleLine ? 'lg:whitespace-nowrap' : 'max-w-[700px]'}`}
@@ -83,9 +89,11 @@ export default function PageHero({
             )}
           </h1>
 
+          {description && (
           <p className={`${descriptionWidth} text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl`}>
             {description}
           </p>
+          )}
 
           {showActions && (
           <div className="flex flex-wrap items-center gap-4">
@@ -106,6 +114,7 @@ export default function PageHero({
           </div>
           )}
 
+          {showReviews && (
           <div className="flex max-w-md items-center gap-3 border-t border-white/10 pt-6">
             <div aria-hidden="true" className="flex gap-1 text-amber-400">
               {[...Array(5)].map((_, i) => (
@@ -114,6 +123,7 @@ export default function PageHero({
             </div>
             <span className="text-sm text-white/85">{reviewsLabel}</span>
           </div>
+          )}
         </div>
       </div>
 
