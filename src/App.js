@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollManager from './components/ScrollManager'
+import Seo from './components/Seo'
 import HomePage from './pages/HomePage'
 import ContactPage from './pages/ContactPage'
 import ClientsPage from './pages/ClientsPage'
@@ -11,30 +12,40 @@ import ServicesPage from './pages/ServicesPage'
 import ServiceDetailPage from './pages/ServiceDetailPage'
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import TermsPage from './pages/TermsPage'
+import NotFoundPage from './pages/NotFoundPage'
 
-export default function App() {
+// Shared by the browser router and the build-time static renderer.
+export function AppContent() {
   return (
-    <BrowserRouter>
+    <>
+      <Seo />
       <ScrollManager />
       <div className="antialiased selection:bg-brand-sky selection:text-white">
         <Navbar />
         <main>
           <Routes>
-            <Route element={<HomePage />} path="/" />
-            <Route element={<ServicesPage />} path="/services" />
-            <Route element={<ServiceDetailPage />} path="/services/:slug" />
-            <Route element={<OurWorkPage />} path="/our-work" />
-            <Route element={<AboutPage />} path="/about" />
-            <Route element={<ClientsPage />} path="/clients" />
-            <Route element={<ContactPage />} path="/contact" />
-            <Route element={<PrivacyPolicyPage />} path="/privacy-policy" />
-            <Route element={<TermsPage />} path="/terms-and-conditions" />
-            {/* Unknown URLs fall back to the home page for now */}
-            <Route element={<HomePage />} path="*" />
+            <Route caseSensitive element={<HomePage />} path="/" />
+            <Route caseSensitive element={<ServicesPage />} path="/services" />
+            <Route caseSensitive element={<ServiceDetailPage />} path="/services/:slug" />
+            <Route caseSensitive element={<OurWorkPage />} path="/our-work" />
+            <Route caseSensitive element={<AboutPage />} path="/about" />
+            <Route caseSensitive element={<ClientsPage />} path="/clients" />
+            <Route caseSensitive element={<ContactPage />} path="/contact" />
+            <Route caseSensitive element={<PrivacyPolicyPage />} path="/privacy-policy" />
+            <Route caseSensitive element={<TermsPage />} path="/terms-and-conditions" />
+            <Route caseSensitive element={<NotFoundPage />} path="*" />
           </Routes>
         </main>
         <Footer />
       </div>
+    </>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   )
 }

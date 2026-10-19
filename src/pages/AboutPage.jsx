@@ -5,10 +5,8 @@ import MultiTrade from '../components/about/MultiTrade'
 import OurJourney from '../components/about/OurJourney'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function AboutPage() {
-  usePageTitle('About Us - Our Story')
 
   return (
     <>

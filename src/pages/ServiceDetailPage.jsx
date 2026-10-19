@@ -1,15 +1,14 @@
-import { Navigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import NotFoundPage from './NotFoundPage'
 import PageHero from '../components/PageHero'
 import ServiceOfferings from '../components/service-detail/ServiceOfferings'
 import ServiceSolutions from '../components/service-detail/ServiceSolutions'
 import ServiceQuote from '../components/service-detail/ServiceQuote'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
-import usePageTitle from '../hooks/usePageTitle'
 import { serviceDetails } from '../data/serviceDetails'
 
 function ServiceDetail({ service }) {
-  usePageTitle(service.pageTitle)
   return (
     <>
       <PageHero
@@ -38,10 +37,10 @@ function ServiceDetail({ service }) {
   )
 }
 
-// Renders /services/:slug. Services without a detail page go back to /services.
+// Unknown service slugs must be genuine missing pages, including during navigation.
 export default function ServiceDetailPage() {
   const { slug } = useParams()
+  if (!Object.prototype.hasOwnProperty.call(serviceDetails, slug)) return <NotFoundPage />
   const service = serviceDetails[slug]
-  if (!service) return <Navigate replace to="/services" />
   return <ServiceDetail key={slug} service={service} />
 }

@@ -3,10 +3,8 @@ import EnquiryForm from '../components/contact/EnquiryForm'
 import ContactSidebar from '../components/contact/ContactSidebar'
 import QuickReplaceStandard from '../components/contact/QuickReplaceStandard'
 import ServiceLocator from '../components/ServiceLocator'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function ContactPage() {
-  usePageTitle('Contact Us - Request a Quote')
 
   return (
     <>

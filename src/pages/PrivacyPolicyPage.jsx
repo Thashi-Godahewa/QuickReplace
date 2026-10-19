@@ -5,12 +5,10 @@ import { Container } from '../components/ui'
 import { ClauseBlocks, ClauseCard, useActiveClause } from '../components/legal/LegalClauses'
 import { contact } from '../data/siteData'
 import { privacyClauses, privacyIntro } from '../data/privacyData'
-import usePageTitle from '../hooks/usePageTitle'
 
 const ENQUIRIES_ID = 'privacy-enquiries'
 
 export default function PrivacyPolicyPage() {
-  usePageTitle('Privacy Policy')
   const [ids] = useState(() => [...privacyClauses.map((c) => c.id), ENQUIRIES_ID])
   const active = useActiveClause(ids)
 

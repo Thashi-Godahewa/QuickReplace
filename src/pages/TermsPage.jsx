@@ -5,10 +5,8 @@ import { Container } from '../components/ui'
 import { ClauseBlocks, ClauseCard, useActiveClause } from '../components/legal/LegalClauses'
 import { contact } from '../data/siteData'
 import { termsClauses } from '../data/termsData'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function TermsPage() {
-  usePageTitle('Terms & Conditions')
   const [ids] = useState(() => termsClauses.map((c) => c.id))
   const active = useActiveClause(ids)
 

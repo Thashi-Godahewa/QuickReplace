@@ -53,6 +53,11 @@ class UploadError extends Error {}
 
 const app = express()
 
+app.use('/api', (req, res, next) => {
+  res.set('X-Robots-Tag', 'noindex, follow')
+  next()
+})
+
 // Lets the site call this server when the two are hosted on different domains.
 // Set ALLOWED_ORIGIN in .env to the live site address, e.g. https://quickreplace.com.au
 app.use((req, res, next) => {
@@ -165,10 +170,27 @@ app.post('/api/enquiry', (req, res) => {
   })
 })
 
+app.use('/api', (req, res) => {
+  res.status(404).json({ ok: false, error: 'API endpoint not found.' })
+})
+
+// Enable this only when the API and generated frontend share one deployment.
+if (process.env.SERVE_FRONTEND === 'true') {
+  const { attachSite } = require('./site')
+  attachSite(app)
+}
+
 if (require.main === module) {
-  app.listen(PORT, () => {
-    console.log(`[enquiry-server] Listening on http://localhost:${PORT}`)
+  const server = app.listen(PORT, (error) => {
+    if (error) return // Express 5 calls this callback on listen failures too.
+    const address = server.address()
+    const actualPort = address && typeof address === 'object' ? address.port : PORT
+    console.log(`[enquiry-server] Listening on http://localhost:${actualPort}`)
     console.log(`[enquiry-server] Enquiries will be emailed to ${process.env.ENQUIRY_TO}`)
+  })
+  server.on('error', (error) => {
+    console.error(`[enquiry-server] Unable to listen: ${error.message}`)
+    process.exitCode = 1
   })
 }
 
