@@ -1,9 +1,9 @@
 import { useState } from 'react'
-import { Banknote, Camera, ChevronDown, Network, ShieldCheck, ShieldPlus, Timer } from 'lucide-react'
+import { Banknote, Camera, ChevronDown, ShieldCheck, ShieldPlus, Timer } from 'lucide-react'
 import { workFaqs } from '../../data/workData'
 import { Accent, Container, SectionBadge } from '../ui'
 
-const icons = { camera: Camera, timer: Timer, network: Network, shield: ShieldCheck, shieldPlus: ShieldPlus, money: Banknote }
+const icons = { camera: Camera, timer: Timer, shield: ShieldCheck, shieldPlus: ShieldPlus, money: Banknote }
 
 export default function WorkFaq() {
   const [open, setOpen] = useState(0)

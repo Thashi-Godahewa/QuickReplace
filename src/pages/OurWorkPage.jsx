@@ -7,24 +7,25 @@ import CTA from '../components/CTA'
 import usePageTitle from '../hooks/usePageTitle'
 
 export default function OurWorkPage() {
-  usePageTitle('Our Work - Before & After Projects')
+  usePageTitle('Our Work - From Problem to Solution')
 
   return (
     <>
       <PageHero
         breadcrumb="Our Work"
-        description="Explore before-and-after project comparisons across residential strata, commercial office fit-outs, and rapid emergency make-safe repairs delivered by our licensed Melbourne trade fleet."
-        descriptionWidth="max-w-[760px]"
+        description="Take a look at repairs and maintenance we've completed across Melbourne. See the problem, what we did and the finished result."
+        descriptionWidth="max-w-[660px]"
         heading={
           <>
-            Real Results
+            <span className="text-brand-sky">Our Work</span>
             <br />
-            Proven <span className="text-brand-sky">Transformations</span>
+            From Problem to Solution
           </>
         }
         image="/images/our-work-hero.jpg"
         imageAlt="Glazier fitting a large glass panel to a commercial building shopfront"
         reviewsLabel="100+ Verified Customer Reviews"
+        singleLine
         secondaryAction={{ label: 'Send an Enquiry', to: '/contact' }}
       />
       <WorkGallery />

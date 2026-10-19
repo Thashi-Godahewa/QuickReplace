@@ -60,7 +60,7 @@ Clients page content (sectors, accreditations, case study) lives in `src/data/cl
 Privacy Policy content (intro and clauses) lives in `src/data/privacyData.js`.
 Terms & Conditions content lives in `src/data/termsData.js`.
 About Us page content (story, principles, trades, trust stats) lives in `src/data/aboutData.js`.
-Our Work page content (projects, filters, FAQ) lives in `src/data/workData.js`.
+Our Work page content (projects, FAQ) lives in `src/data/workData.js`.
 Services page content (all 16 services, popular searches) lives in `src/data/servicesData.js`.
 Service detail pages live in `src/data/serviceDetails.js` - add an entry there to give another service its own page.
 Licence numbers, figures and the case study come from the design and need confirming with the client.

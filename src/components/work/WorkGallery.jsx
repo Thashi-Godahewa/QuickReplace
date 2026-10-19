@@ -1,21 +1,23 @@
-import { useMemo, useState } from 'react'
 import { BadgeCheck, MapPin } from 'lucide-react'
-import { workFilters, workProjects } from '../../data/workData'
+import { workProjects } from '../../data/workData'
 import { Accent, Container, SectionBadge } from '../ui'
 
 function ProjectCard({ project }) {
   return (
     <li className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-card ring-1 ring-brand-line">
-      <div className="relative aspect-[386/280]">
-        <img alt={project.alt} className="h-full w-full object-cover" loading="lazy" src={project.src} />
+      <div className="relative aspect-[386/280] bg-brand-mist">
+        <img alt={project.alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" src={project.src} />
         <span className="absolute left-3 top-3 rounded-md bg-brand-navy px-2 py-0.5 text-sm font-semibold text-white">Before</span>
         <span className="absolute right-3 top-3 rounded-md border border-brand-sky bg-white px-2 py-0.5 text-sm font-semibold text-brand-ink">
           After
         </span>
+        <span className="absolute bottom-4 left-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-navy shadow-md">
+          <img alt="" className="h-7 w-auto" src="/images/quick-replace-mark.png" />
+        </span>
       </div>
-      <div className="flex flex-1 flex-col px-4 pb-6 pt-4">
-        <h3 className="text-[22px] font-medium text-brand-ink">{project.title}</h3>
-        <span className="mt-1 self-start rounded bg-brand-skySoft px-2.5 py-0.5 text-sm font-medium text-brand-sky">
+      <div className="flex flex-1 flex-col px-4 pb-8 pt-5">
+        <h3 className="text-[22px] font-medium leading-snug text-brand-ink">{project.title}</h3>
+        <span className="mt-1.5 self-start rounded bg-brand-skySoft px-2.5 py-0.5 text-sm font-medium text-brand-sky">
           {project.tag}
         </span>
         <p className="mt-5 flex items-center gap-1.5 text-[13px] text-brand-ink/80">
@@ -29,12 +31,6 @@ function ProjectCard({ project }) {
 }
 
 export default function WorkGallery() {
-  const [filter, setFilter] = useState(workFilters[0])
-  const shown = useMemo(
-    () => (filter === workFilters[0] ? workProjects : workProjects.filter((p) => p.category === filter)),
-    [filter],
-  )
-
   return (
     <section aria-labelledby="results-heading" className="bg-white pt-12" id="results">
       <Container>
@@ -49,39 +45,11 @@ export default function WorkGallery() {
           </p>
         </div>
 
-        <div
-          aria-label="Filter projects by trade"
-          className="no-scrollbar -mx-6 mt-8 flex gap-2.5 overflow-x-auto px-6 lg:mx-0 lg:justify-between lg:px-0"
-          role="group"
-        >
-          {workFilters.map((f) => (
-            <button
-              aria-pressed={filter === f}
-              className={`shrink-0 rounded-full border px-5 py-2 text-[15px] transition-colors ${
-                filter === f
-                  ? 'border-brand-navy bg-brand-navy font-semibold text-white'
-                  : 'border-brand-line bg-white text-brand-ink hover:border-brand-sky hover:text-brand-sky'
-              }`}
-              key={f}
-              onClick={() => setFilter(f)}
-              type="button"
-            >
-              {f}
-            </button>
+        <ul className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+          {workProjects.map((p) => (
+            <ProjectCard key={`${p.title}-${p.location}`} project={p} />
           ))}
-        </div>
-
-        {shown.length > 0 ? (
-          <ul className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {shown.map((p) => (
-              <ProjectCard key={p.title} project={p} />
-            ))}
-          </ul>
-        ) : (
-          <p className="mx-auto my-16 max-w-md text-center text-brand-muted">
-            We are adding photos for {filter.toLowerCase()} jobs soon. Get in touch to see recent examples.
-          </p>
-        )}
+        </ul>
       </Container>
 
       <p className="mt-12 flex items-center justify-center gap-2 border-y border-brand-line px-6 py-8 text-center text-[15px] text-brand-ink/80">
