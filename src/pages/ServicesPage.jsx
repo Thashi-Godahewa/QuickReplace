@@ -3,10 +3,8 @@ import ServiceFinder from '../components/services/ServiceFinder'
 import Testimonials from '../components/Testimonials'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function ServicesPage() {
-  usePageTitle('Services - Property Maintenance & Repairs')
 
   return (
     <>

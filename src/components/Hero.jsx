@@ -12,6 +12,9 @@ export default function Hero() {
         <img
           alt="The Quick Replace team in uniform beside their work vans"
           className="h-full w-full object-cover object-center opacity-50"
+          decoding="async"
+          fetchpriority="high"
+          loading="eager"
           src={HERO_IMAGE}
         />
         <div className="hero-mask absolute inset-0" />

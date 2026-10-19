@@ -8,10 +8,8 @@ import Projects from '../components/Projects'
 import Testimonials from '../components/Testimonials'
 import BeforeAfter from '../components/BeforeAfter'
 import ServiceLocator from '../components/ServiceLocator'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function HomePage() {
-  usePageTitle('Property Maintenance & Building Repairs Melbourne')
   return (
     <>
       <Hero />

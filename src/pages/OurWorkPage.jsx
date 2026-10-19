@@ -4,10 +4,8 @@ import WorkFaq from '../components/work/WorkFaq'
 import Testimonials from '../components/Testimonials'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function OurWorkPage() {
-  usePageTitle('Our Work - From Problem to Solution')
 
   return (
     <>

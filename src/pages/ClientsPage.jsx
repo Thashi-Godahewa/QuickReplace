@@ -5,10 +5,8 @@ import Accreditations from '../components/clients/Accreditations'
 import CaseStudy from '../components/clients/CaseStudy'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
-import usePageTitle from '../hooks/usePageTitle'
 
 export default function ClientsPage() {
-  usePageTitle('Clients - Who We Work With')
 
   return (
     <>

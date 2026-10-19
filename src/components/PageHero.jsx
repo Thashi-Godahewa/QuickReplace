@@ -37,7 +37,7 @@ export default function PageHero({
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
       <div className="absolute inset-0 z-0">
-        <img alt={imageAlt} className={`h-full w-full object-cover ${imageOpacity} ${imagePosition}`} src={image} />
+        <img alt={imageAlt} className={`h-full w-full object-cover ${imageOpacity} ${imagePosition}`} decoding="async" fetchpriority="high" loading="eager" src={image} />
         <div className="hero-mask absolute inset-0" />
       </div>
 
