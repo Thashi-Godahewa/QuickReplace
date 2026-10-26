@@ -1,3 +1,4 @@
+
 const fs = require('fs')
 const path = require('path')
 const express = require('express')
@@ -6,9 +7,26 @@ const DEFAULT_BUILD_DIR = path.join(__dirname, '..', 'build')
 const HTML_CACHE_CONTROL = 'public, max-age=0, must-revalidate'
 const NOINDEX = 'noindex, follow'
 
+// Old public URLs must permanently redirect to their corresponding new pages.
+// This preserves incoming links and helps search engines consolidate ranking signals.
+// Update this list if additional legacy URLs are discovered in Search Console.
+const LEGACY_REDIRECTS = new Map([
+  ['/plumbing', '/services/plumbing'],
+  ['/painting', '/services/painting-plastering'],
+  ['/glass-repair', '/services/glazing'],
+  ['/property-maintenance', '/services/general-maintenance'],
+  ['/about-us', '/about'],
+  ['/contact-us', '/contact'],
+  ['/terms-conditions', '/terms-and-conditions'],
+])
+
 function isWithin(root, filename) {
   const relative = path.relative(root, filename)
-  return relative === '' || (!relative.startsWith(`..${path.sep}`) && relative !== '..' && !path.isAbsolute(relative))
+  return relative === '' || (
+    !relative.startsWith(`..${path.sep}`) &&
+    relative !== '..' &&
+    !path.isAbsolute(relative)
+  )
 }
 
 function isCanonicalRoute(route) {
@@ -24,9 +42,12 @@ function isCanonicalRoute(route) {
 }
 
 /**
- * Serve a generated SEO build. Register enquiry/API handlers before calling this.
- * The manifest is the allowlist of public pages; unknown URLs never receive a
- * successful SPA fallback. siteUrl is deliberately not used for host redirects.
+ * Serve a generated SEO build.
+ * Register enquiry/API handlers before calling this.
+ *
+ * The manifest is the allowlist of public pages.
+ * Unknown URLs never receive a successful SPA fallback.
+ * siteUrl is deliberately not used for host redirects.
  */
 function attachSite(app, { buildDir = DEFAULT_BUILD_DIR } = {}) {
   let root
@@ -35,16 +56,27 @@ function attachSite(app, { buildDir = DEFAULT_BUILD_DIR } = {}) {
   let notFoundFile
 
   function buildFile(relativePath) {
-    const filename = fs.realpathSync(path.resolve(root, relativePath))
-    if (!isWithin(root, filename) || !fs.statSync(filename).isFile()) {
+    const filename = fs.realpathSync(
+      path.resolve(root, relativePath)
+    )
+
+    if (
+      !isWithin(root, filename) ||
+      !fs.statSync(filename).isFile()
+    ) {
       throw new Error(`Invalid generated file: ${relativePath}`)
     }
+
     return filename
   }
 
   try {
     root = fs.realpathSync(path.resolve(buildDir))
-    manifest = JSON.parse(fs.readFileSync(buildFile('seo-routes.json'), 'utf8'))
+
+    manifest = JSON.parse(
+      fs.readFileSync(buildFile('seo-routes.json'), 'utf8')
+    )
+
     if (
       manifest.version !== 1 ||
       typeof manifest.siteUrl !== 'string' ||
@@ -54,27 +86,60 @@ function attachSite(app, { buildDir = DEFAULT_BUILD_DIR } = {}) {
       !manifest.routes.every(isCanonicalRoute) ||
       !manifest.routes.includes('/')
     ) {
-      throw new Error('seo-routes.json must contain a version 1 SEO route manifest.')
+      throw new Error(
+        'seo-routes.json must contain a version 1 SEO route manifest.'
+      )
     }
+
     for (const route of manifest.routes) {
-      pageFiles.set(route, buildFile(route === '/' ? 'index.html' : `${route.slice(1)}/index.html`))
+      pageFiles.set(
+        route,
+        buildFile(
+          route === '/'
+            ? 'index.html'
+            : `${route.slice(1)}/index.html`
+        )
+      )
     }
+
     notFoundFile = buildFile('404.html')
   } catch (error) {
-    throw new Error(`Cannot serve the frontend build at ${buildDir}. Run npm run build first. ${error.message}`)
+    throw new Error(
+      `Cannot serve the frontend build at ${buildDir}. ` +
+      `Run npm run build first. ${error.message}`
+    )
   }
 
   function sendHtml(req, res, next, filename, status) {
     res.status(status)
     res.set('Cache-Control', HTML_CACHE_CONTROL)
-    if (manifest.noindex || status === 404) res.set('X-Robots-Tag', NOINDEX)
+
+    if (manifest.noindex || status === 404) {
+      res.set('X-Robots-Tag', NOINDEX)
+    }
+
     res.sendFile(filename, { cacheControl: false }, (error) => {
       if (!error) return
       if (res.headersSent) return next(error)
+
       res.set('X-Robots-Tag', NOINDEX)
-      res.status(error.status === 404 ? 404 : 500).type('html').send(
-        '<!doctype html><html lang="en"><head><meta name="robots" content="noindex, follow"><title>Page unavailable</title></head><body><h1>Page unavailable</h1><p>Please try again later.</p></body></html>',
-      )
+
+      res
+        .status(error.status === 404 ? 404 : 500)
+        .type('html')
+        .send(
+          '<!doctype html>' +
+          '<html lang="en">' +
+          '<head>' +
+          '<meta name="robots" content="noindex, follow">' +
+          '<title>Page unavailable</title>' +
+          '</head>' +
+          '<body>' +
+          '<h1>Page unavailable</h1>' +
+          '<p>Please try again later.</p>' +
+          '</body>' +
+          '</html>'
+        )
     })
   }
 
@@ -84,23 +149,30 @@ function attachSite(app, { buildDir = DEFAULT_BUILD_DIR } = {}) {
 
   function apiNotFound(req, res) {
     res.set('X-Robots-Tag', NOINDEX)
-    return res.status(404).json({ ok: false, error: 'API endpoint not found.' })
+
+    return res.status(404).json({
+      ok: false,
+      error: 'API endpoint not found.',
+    })
   }
 
   const decodedPathKey = Symbol('decodedSitePath')
 
   app.use((req, res, next) => {
     // Reserve /api even when a malformed escape appears later in its URL.
-    if (/^\/api(?:\/|$)/i.test(req.path)) return apiNotFound(req, res)
+    if (/^\/api(?:\/|$)/i.test(req.path)) {
+      return apiNotFound(req, res)
+    }
 
     let decodedPath
+
     try {
       decodedPath = decodeURIComponent(req.path)
     } catch {
       return notFound(req, res, next)
     }
 
-    // This fallback also protects a standalone preview, which has no API server.
+    // Protect the API routes in a standalone frontend preview.
     if (/^\/api(?:\/|$)/i.test(decodedPath)) {
       return apiNotFound(req, res)
     }
@@ -109,69 +181,152 @@ function attachSite(app, { buildDir = DEFAULT_BUILD_DIR } = {}) {
       !['GET', 'HEAD'].includes(req.method) ||
       !decodedPath.startsWith('/') ||
       /[\\\u0000-\u001f\u007f]/.test(decodedPath) ||
-      decodedPath.split('/').some((segment) => segment.startsWith('.'))
+      decodedPath.split('/').some((segment) =>
+        segment.startsWith('.')
+      )
     ) {
       return notFound(req, res, next)
     }
 
-    let canonicalRoute = decodedPath.toLowerCase().replace(/\/+$/, '') || '/'
+    // Normalise URL casing and trailing slashes.
+    let canonicalRoute =
+      decodedPath.toLowerCase().replace(/\/+$/, '') || '/'
+
     if (canonicalRoute.endsWith('/index.html')) {
-      canonicalRoute = canonicalRoute.slice(0, -'/index.html'.length) || '/'
+      canonicalRoute =
+        canonicalRoute.slice(0, -'/index.html'.length) || '/'
     }
 
+    // SEO: Redirect old website URLs to current canonical pages.
+    // Preserve query parameters such as UTM tracking values.
+    const legacyDestination = LEGACY_REDIRECTS.get(canonicalRoute)
+
+    if (legacyDestination) {
+      const queryIndex = req.originalUrl.indexOf('?')
+      const query =
+        queryIndex === -1
+          ? ''
+          : req.originalUrl.slice(queryIndex)
+
+      res.set('Cache-Control', HTML_CACHE_CONTROL)
+
+      if (manifest.noindex) {
+        res.set('X-Robots-Tag', NOINDEX)
+      }
+
+      return res.redirect(
+        301,
+        `${legacyDestination}${query}`
+      )
+    }
+
+    // Serve valid SEO pages and redirect non-canonical URLs.
     if (pageFiles.has(canonicalRoute)) {
       if (req.path !== canonicalRoute) {
         const queryIndex = req.originalUrl.indexOf('?')
-        const query = queryIndex === -1 ? '' : req.originalUrl.slice(queryIndex)
+        const query =
+          queryIndex === -1
+            ? ''
+            : req.originalUrl.slice(queryIndex)
+
         res.set('Cache-Control', HTML_CACHE_CONTROL)
-        if (manifest.noindex) res.set('X-Robots-Tag', NOINDEX)
-        return res.redirect(301, `${canonicalRoute}${query}`)
+
+        if (manifest.noindex) {
+          res.set('X-Robots-Tag', NOINDEX)
+        }
+
+        return res.redirect(
+          301,
+          `${canonicalRoute}${query}`
+        )
       }
-      return sendHtml(req, res, next, pageFiles.get(canonicalRoute), 200)
+
+      return sendHtml(
+        req,
+        res,
+        next,
+        pageFiles.get(canonicalRoute),
+        200
+      )
     }
 
-    // HTML is served only through the known route map above. In particular,
-    // /404.html and unknown /services/<slug>/index.html keep a real 404 status.
-    if (/\.html?$/i.test(decodedPath.replace(/\/+$/, ''))) return notFound(req, res, next)
+    // HTML is only served through the known route map.
+    // Unknown URLs must return a real 404 response.
+    if (/\.html?$/i.test(decodedPath.replace(/\/+$/, ''))) {
+      return notFound(req, res, next)
+    }
 
     req[decodedPathKey] = decodedPath
     next()
   })
 
-  // express.static handles ranges, conditional requests and asset MIME types.
-  // Check real paths first so an accidental symlink cannot expose another folder.
+  // Check real paths before allowing static files to be served.
+  // This prevents symlinks from exposing files outside the build folder.
   app.use(async (req, res, next) => {
-    const candidate = path.resolve(root, `.${req[decodedPathKey]}`)
-    if (!isWithin(root, candidate)) return notFound(req, res, next)
+    const candidate = path.resolve(
+      root,
+      `.${req[decodedPathKey]}`
+    )
+
+    if (!isWithin(root, candidate)) {
+      return notFound(req, res, next)
+    }
+
     try {
       const realFilename = await fs.promises.realpath(candidate)
+
       if (
         !isWithin(root, realFilename) ||
-        path.relative(root, realFilename).split(path.sep).some((segment) => segment.startsWith('.'))
+        path
+          .relative(root, realFilename)
+          .split(path.sep)
+          .some((segment) => segment.startsWith('.'))
       ) {
         return notFound(req, res, next)
       }
     } catch (error) {
-      if (error.code === 'ENOENT' || error.code === 'ENOTDIR') return notFound(req, res, next)
+      if (
+        error.code === 'ENOENT' ||
+        error.code === 'ENOTDIR'
+      ) {
+        return notFound(req, res, next)
+      }
+
       return next(error)
     }
+
     next()
   })
 
-  app.use(express.static(root, {
-    dotfiles: 'deny',
-    index: false,
-    redirect: false,
-    fallthrough: true,
-    maxAge: 0,
-    setHeaders(res, filename) {
-      const relative = path.relative(root, filename)
-      const hashedAsset = relative.startsWith(`static${path.sep}`) && /\.[a-f0-9]{8,}\./i.test(path.basename(filename))
-      res.setHeader('Cache-Control', hashedAsset ? 'public, max-age=31536000, immutable' : HTML_CACHE_CONTROL)
-    },
-  }))
+  // Serve static assets with appropriate caching.
+  app.use(
+    express.static(root, {
+      dotfiles: 'deny',
+      index: false,
+      redirect: false,
+      fallthrough: true,
+      maxAge: 0,
 
+      setHeaders(res, filename) {
+        const relative = path.relative(root, filename)
+
+        const hashedAsset =
+          relative.startsWith(`static${path.sep}`) &&
+          /\.[a-f0-9]{8,}\./i.test(path.basename(filename))
+
+        res.setHeader(
+          'Cache-Control',
+          hashedAsset
+            ? 'public, max-age=31536000, immutable'
+            : HTML_CACHE_CONTROL
+        )
+      },
+    })
+  )
+
+  // Final fallback: all unknown pages return HTTP 404.
   app.use(notFound)
+
   return app
 }
 

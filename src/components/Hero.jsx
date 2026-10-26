@@ -31,7 +31,7 @@ export default function Hero() {
             className="max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl lg:text-[64px]"
             id="hero-heading"
           >
-            Reliable Property Maintenance &amp; <span className="text-brand-sky">Quick Replace</span> Solutions
+            Property Maintenance &amp; <span className="text-brand-sky">Building Repairs</span> in Melbourne
           </h1>
 
           <p className="max-w-[700px] text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl">

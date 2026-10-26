@@ -16,7 +16,7 @@ const repairFinish = (text) => ({ label: 'Repair + Finish', text })
 export const serviceDetails = {
   plumbing: {
     title: 'Plumbing',
-    pageTitle: 'Plumbing Services Melbourne',
+    pageTitle: 'Plumbing Repairs Melbourne',
     hero: {
       accent: 'Plumbing',
       title: 'Services Melbourne',
@@ -74,7 +74,7 @@ export const serviceDetails = {
 
   'painting-plastering': {
     title: 'Painting & Plastering',
-    pageTitle: 'Painting & Plastering Services Melbourne',
+    pageTitle: 'Painting & Plastering Melbourne',
     hero: {
       accent: 'Painting & Plastering',
       title: 'Services Melbourne',
@@ -131,7 +131,7 @@ export const serviceDetails = {
 
   electrical: {
     title: 'Electrical',
-    pageTitle: 'Electrical Services Melbourne',
+    pageTitle: 'Electrical Repairs Melbourne',
     hero: {
       accent: 'Electrical',
       title: 'Services Melbourne',
@@ -187,7 +187,7 @@ export const serviceDetails = {
 
   glazing: {
     title: 'Glazing',
-    pageTitle: 'Glazing Services Melbourne',
+    pageTitle: 'Glass Replacement Melbourne',
     hero: {
       accent: 'Glazing',
       title: 'Services Melbourne',
@@ -301,7 +301,7 @@ export const serviceDetails = {
 
   locksmith: {
     title: 'Locksmith',
-    pageTitle: 'Locksmith Services Melbourne',
+    pageTitle: 'Locksmith Melbourne',
     hero: {
       accent: 'Locksmith',
       title: 'Services Melbourne',
@@ -357,7 +357,7 @@ export const serviceDetails = {
 
   'heating-cooling': {
     title: 'Heating & Cooling',
-    pageTitle: 'Heating & Cooling Services Melbourne',
+    pageTitle: 'Heating & Cooling Repairs Melbourne',
     hero: {
       accent: 'Heating & Cooling',
       title: 'Services Melbourne',
@@ -414,7 +414,7 @@ export const serviceDetails = {
 
   'gutter-cleaning': {
     title: 'Gutter Cleaning',
-    pageTitle: 'Gutter Cleaning Services Melbourne',
+    pageTitle: 'Gutter Cleaning Melbourne',
     hero: {
       accent: 'Gutter Cleaning',
       title: 'Services Melbourne',
@@ -471,7 +471,7 @@ export const serviceDetails = {
 
   'doors-windows': {
     title: 'Doors & Windows',
-    pageTitle: 'Doors & Windows Services Melbourne',
+    pageTitle: 'Doors & Windows Melbourne',
     hero: {
       accent: 'Doors & Windows',
       title: 'Services Melbourne',
@@ -642,7 +642,7 @@ export const serviceDetails = {
 
   carpentry: {
     title: 'Carpentry',
-    pageTitle: 'Carpentry Services Melbourne',
+    pageTitle: 'Carpentry Repairs Melbourne',
     hero: {
       accent: 'Carpentry',
       title: 'Services Melbourne',
