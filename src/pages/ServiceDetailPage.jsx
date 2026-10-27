@@ -7,6 +7,7 @@ import ServiceQuote from '../components/service-detail/ServiceQuote'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
 import { serviceDetails } from '../data/serviceDetails'
+import { contact } from '../data/siteData'
 
 function ServiceDetail({ service }) {
   return (
@@ -25,7 +26,7 @@ function ServiceDetail({ service }) {
         }
         image={service.hero.image}
         imageAlt={service.hero.imageAlt}
-        secondaryAction={{ label: 'Send an Enquiry', to: '/contact' }}
+        secondaryAction={{ label: 'Send an Enquiry', href: contact.emailHref }}
       />
       {/* Sections are optional, so a page can be built up one section at a time */}
       {service.offerings && <ServiceOfferings offerings={service.offerings} />}

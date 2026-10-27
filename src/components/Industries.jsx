@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Building2, HeartHandshake, House, Landmark } from 'lucide-react'
 import { industries } from '../data/siteData'
-import { Accent, Container, SectionBadge } from './ui'
+import { Accent, Container, PillLink, SectionBadge } from './ui'
 
 const icons = {
   commercial: Building2,
@@ -17,7 +17,7 @@ export default function Industries() {
   return (
     <section aria-labelledby="industries-heading" className="border-b border-brand-line bg-white py-16 lg:py-10" id="industries">
       <Container>
-        <SectionBadge>Industries</SectionBadge>
+        <SectionBadge>Clients</SectionBadge>
         <div className="mt-10 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <h2 className="text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]" id="industries-heading">
@@ -63,6 +63,10 @@ export default function Industries() {
             )
           })}
         </ul>
+
+        <div className="mt-14 flex justify-center">
+          <PillLink to="/clients">View All Clients</PillLink>
+        </div>
       </Container>
     </section>
   )

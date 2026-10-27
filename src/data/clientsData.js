@@ -61,7 +61,7 @@ export const deployments = [
     src: '/images/service-make-safe.jpg',
     alt: 'Boarded-up shopfront behind temporary fencing after an emergency make-safe',
     label: 'Emergency Make Safe',
-    title: 'Rapid Emergency Make Safe Services',
+    title: 'Fast Emergency Make Safe Services',
     detail:
       'Fast, reliable emergency response to secure damaged properties, address immediate hazards and help protect people and buildings from further damage.',
   },
@@ -122,9 +122,9 @@ export const caseStudy = {
     { value: 'Less Follow-Up', label: 'We keep you informed' },
   ],
   label: 'Client Satisfaction',
-  quote: 'Quick Replace makes managing property maintenance so much easier.',
+  quote: 'Quick Replace makes our job as property managers so much easier.',
   testimonial:
-    "Quick Replace always answers the phone and follows up on our emails. We're never left waiting or wondering what's happening with a job. Whatever issue comes up, they find a way to get it sorted. If we can't get hold of someone else, we know Quick Replace will be there for us.",
+    "We've been working with Quick Replace for some time now, and what we appreciate most is their reliability and communication. They answer our calls, respond to emails and keep us updated on jobs. Whether it's a small repair or something more complicated, we know we can rely on them to get things done on time.",
   author: 'Sarah M.',
   role: 'Property Manager, Melbourne',
 }

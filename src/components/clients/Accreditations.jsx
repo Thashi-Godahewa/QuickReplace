@@ -1,6 +1,6 @@
 import { BadgeCheck, Building2, Shield, ShieldPlus, UserCheck, Zap } from 'lucide-react'
 import { accreditations } from '../../data/clientsData'
-import { Accent, Container, SectionBadge } from '../ui'
+import { Container, SectionBadge } from '../ui'
 
 const icons = {
   shield: Shield,
@@ -15,18 +15,18 @@ export default function Accreditations() {
   return (
     <section aria-labelledby="accreditations-heading" className="bg-white py-16">
       <Container wide>
-        <div className="mx-auto max-w-3xl text-center">
-          <SectionBadge>Statutory Accreditation &amp; Industry Bodies</SectionBadge>
+        <div className="mx-auto max-w-5xl text-center">
+          <SectionBadge>Safety &amp; Compliance</SectionBadge>
           <h2
             className="mt-7 text-3xl font-extrabold italic leading-[1.1] tracking-tight text-brand-ink sm:text-4xl lg:text-[44px]"
             id="accreditations-heading"
           >
-            Engineered to Exceed <Accent>Victorian</Accent>
-            <br className="hidden sm:block" /> <Accent>Regulatory Standards</Accent>
+            We Take Safety and Compliance Seriously
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-brand-muted">
-            We maintain full corporate memberships and licensed registrations across every mandatory property and trade
-            body in Australia.
+          <p className="mx-auto mt-5 max-w-[880px] text-base leading-relaxed text-brand-muted">
+            We know how important it is to have reliable, qualified tradespeople working on your property. That&rsquo;s
+            why we check our contractors&rsquo; qualifications, licences and insurance, and arrange additional
+            documentation where required.
           </p>
         </div>
 

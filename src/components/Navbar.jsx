@@ -22,6 +22,9 @@ export default function Navbar() {
   const actionClass =
     'group inline-flex items-center gap-3 rounded-full bg-brand-navy py-2 pl-5 pr-2 text-sm font-medium text-white shadow-card ring-1 ring-white/5 transition-colors hover:bg-brand-navyLight lg:py-2.5 lg:text-base'
 
+  const socialClass =
+    'hidden h-11 w-11 items-center justify-center rounded-full bg-brand-navy shadow-card ring-1 ring-white/5 transition-colors hover:bg-brand-navyLight lg:flex lg:h-12 lg:w-12'
+
   return (
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
@@ -57,6 +60,12 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <a aria-label="Quick Replace on Facebook" className={socialClass} href={contact.facebookHref} rel="noopener noreferrer" target="_blank">
+            <img alt="" aria-hidden="true" className="h-6 w-6" src="/images/icon-facebook.svg" />
+          </a>
+          <a aria-label="Quick Replace on Instagram" className={socialClass} href={contact.instagramHref} rel="noopener noreferrer" target="_blank">
+            <img alt="" aria-hidden="true" className="h-6 w-6" src="/images/icon-instagram.svg" />
+          </a>
           <a className={actionClass} href={contact.phoneHref}>
             <span>Call Now</span>
             <ArrowDot />

@@ -15,11 +15,11 @@ const icons = {
 export default function MultiTrade() {
   return (
     <section aria-labelledby="multi-trade-heading" className="bg-[#e3f2fd] py-16 lg:py-20" id="multi-trade">
-      <Container wide className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-12">
-        <div className="lg:col-span-5">
+      <Container wide className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-4">
           <SectionBadge>Multi-Trade Coordination</SectionBadge>
           <h2
-            className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]"
+            className="mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-brand-ink sm:text-5xl lg:text-[44px]"
             id="multi-trade-heading"
           >
             One Contact. Multiple Trades.
@@ -39,7 +39,7 @@ export default function MultiTrade() {
           <p className="mt-5 text-sm font-medium text-brand-sky">Tell us what needs fixing. We&apos;ll take care of the rest.</p>
         </div>
 
-        <div className="rounded-2xl bg-white p-5 shadow-card sm:p-8 lg:col-span-7">
+        <div className="rounded-2xl bg-white p-5 shadow-card sm:p-8 lg:col-span-8">
           <div className="flex items-center gap-4 rounded-xl bg-gradient-to-r from-brand-footer to-brand-navyLight px-5 py-5 text-white shadow-card">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-white/10">
               <Headset aria-hidden="true" className="h-6 w-6" strokeWidth={1.75} />
@@ -55,8 +55,8 @@ export default function MultiTrade() {
               const Icon = icons[t.icon]
               return (
                 <li className="rounded-lg bg-[#e8f1fd] px-4 py-4" key={t.title}>
-                  <p className="flex items-center gap-2 text-lg font-semibold text-brand-ink">
-                    <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-brand-sky" />
+                  <p className="flex items-start gap-2 text-lg font-semibold leading-tight text-brand-ink">
+                    <Icon aria-hidden="true" className="mt-px h-5 w-5 shrink-0 text-brand-sky" />
                     {t.title}
                   </p>
                   <p className="mt-1 text-sm leading-snug text-brand-ink/70">{t.text}</p>

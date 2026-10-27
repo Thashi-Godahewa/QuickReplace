@@ -6,16 +6,18 @@ export const contact = {
   phoneHref: 'tel:0401411636',
   email: 'info@quickreplace.com.au',
   emailHref: 'mailto:info@quickreplace.com.au',
-  accountsEmail: 'info@quickreplace.com.au',
-  accountsEmailHref: 'mailto:info@quickreplace.com.au',
+  accountsEmail: 'accounts@quickreplace.com.au',
+  accountsEmailHref: 'mailto:accounts@quickreplace.com.au',
   headOffice: 'Sunshine West, VIC',
+  facebookHref: 'https://www.facebook.com/QuickReplace',
+  instagramHref: 'https://www.instagram.com/quickreplaceaus/',
 }
 
 // Main navigation - each link opens its own page.
 export const navLinks = [
   { label: 'Services', to: '/services' },
   { label: 'Clients', to: '/clients' },
-  { label: 'Our work', to: '/our-work' },
+  { label: 'Our Work', to: '/our-work' },
   { label: 'About Us', to: '/about' },
   { label: 'Contact', to: '/contact' },
 ]
@@ -91,25 +93,26 @@ export const industries = [
   {
     icon: 'commercial',
     title: 'Commercial Property Managers & Owners',
-    description: 'We support facility managers with structured rapid response & SLA compliance.',
+    description:
+      'Property maintenance and repairs for offices, commercial buildings, warehouses and other business premises. From minor repairs to ongoing maintenance and multi-trade jobs, we provide one point of contact throughout the process.',
   },
   {
     icon: 'residential',
     title: 'Residential Property Managers & Owners',
     description:
-      'We can coordinate directly with tenants, arrange access, organise the required trades and provide before-and-after photos once the work is completed',
+      'Repairs and maintenance for houses, apartments and units across Melbourne. We can communicate directly with tenants, arrange access, coordinate the required trades and provide before-and-after photos.',
   },
   {
     icon: 'strata',
     title: 'Owners Corporations & Strata Managers',
     description:
-      'Maintenance and repairs for common areas and shared property. We can coordinate with building managers, committee members and site contacts throughout the job.',
+      'Maintenance and repairs for common areas and shared property, with clear quoting, communication and reporting. We can coordinate access directly with building managers, committees and nominated contacts.',
   },
   {
     icon: 'agedCare',
     title: 'Aged Care & Retirement Living',
     description:
-      'Repairs and maintenance with minimal disruption to residents and staff. National Police Checks can be provided for tradespeople attending where required.',
+      'Property maintenance for aged care facilities, retirement living properties and Home Care Package clients, with particular attention to communication, safety and minimising disruption to residents.',
   },
 ]
 
@@ -406,45 +409,50 @@ export const servicePostcodeRanges = [
   [3975, 3978],
 ]
 
+// Footer services, in three columns of seven as in the design
 export const footerServices = [
-  'Plumbing',
   'Painting & Plastering',
+  'Plumbing',
   'Electrical',
   'Glazing',
   'Make Safe',
   'Locksmith',
+  'General Property Maintenance',
   'Heating & Cooling',
   'Gutter Cleaning',
   'Doors & Windows',
-  'Brick Repointing & Mortar Repairs',
   'Handyman',
+  'Carpentry',
   'Pressure Washing',
-  'General Property Maintenance',
-  'Removalist & Rubbish Removal',
+  'Brick Repointing & Mortar Repairs',
   'Emergency Repairs',
   'Graffiti Removal',
   'Window Tinting',
+  'Pest Control',
+  'Roofing',
+  'Tiling & Tile Repairs',
+  'Removalist & Rubbish Removal',
 ]
 
 export const footerCompany = [
-  { label: 'About Us', to: '/about' },
   { label: 'Services', to: '/services' },
-  { label: 'Our Work', to: '/our-work' },
   { label: 'Clients', to: '/clients' },
-  { label: 'Contact Us', to: '/contact' },
+  { label: 'Our Work', to: '/our-work' },
+  { label: 'About Us', to: '/about' },
+  { label: 'Contact', to: '/contact' },
 ]
 
 export const contactStandards = [
   {
-    title: '100% Honest & Transparent Pricing:',
-    text: "We explain what you're paying for and provide clear pricing before work proceeds wherever possible.",
+    title: 'One Contact. Multiple Trades.',
+    text: "When you give us a job, we take ownership of it. We arrange what needs to be done, follow up with the tradespeople and make sure you know what's happening.",
   },
   {
-    title: 'Licensed Trades:',
-    text: 'Licensed Master Plumbers and Electricians will review your uploaded photos.',
+    title: 'Honest & Transparent Pricing',
+    text: "We explain the costs clearly, so you know what you're paying for before approving the work.",
   },
   {
-    title: 'Insurance Compliant Invoices:',
-    text: 'Itemised codes compliant with all commercial strata and home insurance policies.',
+    title: "We Don't Forget Your Property",
+    text: "We keep records of previous repairs and maintenance issues, so you don't have to explain everything again.",
   },
 ]

@@ -17,9 +17,9 @@ export default function PrivacyPolicyPage() {
       <PageHero
         breadcrumb="Privacy Policy"
         heading={<span className="text-brand-sky">Privacy Policy</span>}
-        image="/images/privacy-hero.jpg"
+        image="/images/about-hero-team.jpg"
         imagePosition="object-top"
-        imageAlt="The Quick Replace team standing outside a residential apartment building"
+        imageAlt="Five Quick Replace tradespeople in blue uniforms standing outside an apartment building with their tools"
         showActions={false}
         showReviews={false}
         showTagline={false}

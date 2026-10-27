@@ -8,7 +8,7 @@ import { Container } from './ui'
 const COPY = {
   compact: {
     heading: ['Quick Replace is here for you!'],
-    text: 'From everyday repairs to larger maintenance jobs, tell us what’s happening and we’ll help work out the right way forward. One point of contact, multiple trades and clear communication throughout the job.',
+    text: 'Have a repair, maintenance issue or project that needs attention? Get in touch and tell us what you need. We’ll discuss the job, explain the next steps and help you get it sorted.',
   },
   emergency: {
     heading: ['Need an urgent repair or make safe right now?', 'Quick Replace is here to help!'],
@@ -26,7 +26,7 @@ export default function CTA({ variant = 'emergency' }) {
 
   const callButton = (
     <a
-      className="inline-flex shrink-0 items-center gap-3 self-start rounded-full bg-brand-sky px-8 py-4 text-lg font-semibold text-white shadow-glow transition-colors hover:bg-brand-skyHover"
+      className="inline-flex shrink-0 items-center gap-3 self-start rounded-full lg:self-center bg-brand-sky px-8 py-4 text-lg font-semibold text-white shadow-glow transition-colors hover:bg-brand-skyHover"
       href={contact.phoneHref}
     >
       <Phone aria-hidden="true" className="h-5 w-5" fill="currentColor" strokeWidth={0} />

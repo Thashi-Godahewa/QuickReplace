@@ -4,6 +4,7 @@ import WorkFaq from '../components/work/WorkFaq'
 import Testimonials from '../components/Testimonials'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
+import { contact } from '../data/siteData'
 
 export default function OurWorkPage() {
 
@@ -22,9 +23,8 @@ export default function OurWorkPage() {
         }
         image="/images/our-work-hero.jpg"
         imageAlt="Glazier fitting a large glass panel to a commercial building shopfront"
-        reviewsLabel="100+ Verified Customer Reviews"
         singleLine
-        secondaryAction={{ label: 'Send an Enquiry', to: '/contact' }}
+        secondaryAction={{ label: 'Send an Enquiry', href: contact.emailHref }}
       />
       <WorkGallery />
       <WorkFaq />
