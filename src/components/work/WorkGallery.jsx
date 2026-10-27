@@ -8,7 +8,7 @@ function ProjectCard({ project }) {
       <div className="relative aspect-[386/280] bg-brand-mist">
         <img alt={project.alt} className="absolute inset-0 h-full w-full object-cover" loading="lazy" src={project.src} />
         <span className="absolute left-3 top-3 rounded-md bg-brand-navy px-2 py-0.5 text-sm font-semibold text-white">Before</span>
-        <span className="absolute right-3 top-3 rounded-md border border-brand-sky bg-white px-2 py-0.5 text-sm font-semibold text-brand-ink">
+        <span className="absolute right-4 top-3 rounded-md border border-brand-sky bg-white px-2 py-0.5 text-sm font-semibold text-brand-ink">
           After
         </span>
         <span className="absolute bottom-4 left-4 flex h-10 w-10 items-center justify-center rounded-lg bg-brand-navy shadow-md">
@@ -54,7 +54,7 @@ export default function WorkGallery() {
 
       <p className="mt-12 flex items-center justify-center gap-2 border-y border-brand-line px-6 py-8 text-center text-[15px] text-brand-ink/80">
         <BadgeCheck aria-hidden="true" className="h-5 w-5 shrink-0 text-brand-sky" />
-        All projects photographed &amp; certified by licensed master trades
+        Actual repairs and maintenance completed by Quick Replace.
       </p>
     </section>
   )

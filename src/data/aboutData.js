@@ -2,6 +2,7 @@
 
 export const founder = {
   name: 'Sonny Rolih',
+  linkedin: 'https://www.linkedin.com/in/sonnyrolih',
   image: '/images/about-founder.jpg',
   imageAlt: 'Sonny Rolih, Managing Director of Quick Replace, wearing a blue Quick Replace polo shirt',
   caption: 'Sonny Rolih • Managing Director',
@@ -66,12 +67,16 @@ export const multiTradePoints = [
 
 // `icon` keys map to lucide-react icons in MultiTrade.jsx
 export const coordinatedTrades = [
-  { icon: 'plumbing', title: 'Plumbing', text: 'Hot water, burst pipes, backflow valves & risers' },
-  { icon: 'electrical', title: 'Electrical', text: 'Switchboards, safety switches, power fault isolation' },
-  { icon: 'hvac', title: 'Heating & Cooling', text: 'Ducted system motor replacements' },
-  { icon: 'glazing', title: 'Glazing', text: 'AS1288 emergency make-safes & commercial glass' },
-  { icon: 'painting', title: 'Painting & Plaster', text: 'Tenancy make-goods, moisture repairs & finishes' },
-  { icon: 'makeSafe', title: 'Make Safe', text: 'Immediate physical risk mitigation' },
+  { icon: 'plumbing', title: 'Plumbing', text: 'Hot water systems, burst pipes, leaking taps, blocked drains and general plumbing repairs.' },
+  { icon: 'electrical', title: 'Electrical', text: 'Electrical repairs, faulty power points, lighting, safety switches and switchboard maintenance.' },
+  { icon: 'hvac', title: 'Heating & Cooling', text: 'Air conditioning repairs, ducted heating and cooling servicing, fault diagnosis and system replacements.' },
+  { icon: 'glazing', title: 'Glazing', text: 'Broken glass replacement, window repairs, commercial glazing and emergency glass make-safe services.' },
+  { icon: 'painting', title: 'Painting & Plaster', text: 'Interior painting, plaster repairs, wall and ceiling damage, patching and property make-good works.' },
+  {
+    icon: 'makeSafe',
+    title: 'Make Safe',
+    text: 'Urgent property repairs, securing damaged doors and windows, hazard reduction and temporary repairs to help protect people and property.',
+  },
 ]
 
 // Our Journey timeline. `label` is the short text under each year on the timeline.
@@ -119,7 +124,7 @@ export const journey = [
     label: '160+ Tradespeople & Contractors',
     title: 'Quick Replace Today',
     text: 'Today, Quick Replace works with a network of more than 160 experienced tradespeople and contractors across Melbourne. From everyday repairs to larger multi-trade jobs, we help property managers, businesses and homeowners get their maintenance sorted, with one point of contact throughout the process.',
-    highlights: ['160+ Trade Network', '21 Service Categories', 'One Point of Contact'],
+    highlights: ['160+ Trade Network', '20+ Service Categories', 'One Point of Contact'],
     boxLabel: 'Looking Ahead',
     boxQuote: 'Keep growing, keep improving and never lose the personal service our clients rely on.',
   },

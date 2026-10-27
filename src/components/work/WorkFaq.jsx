@@ -3,7 +3,17 @@ import { Banknote, Camera, ChevronDown, ShieldCheck, ShieldPlus, Timer } from 'l
 import { workFaqs } from '../../data/workData'
 import { Accent, Container, SectionBadge } from '../ui'
 
-const icons = { camera: Camera, timer: Timer, shield: ShieldCheck, shieldPlus: ShieldPlus, money: Banknote }
+// lucide-react has no shield-with-heart icon, so this one is drawn here
+function ShieldHeart(props) {
+  return (
+    <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} viewBox="0 0 24 24" {...props}>
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+      <path d="M12 16.2l-2.6-2.5a1.7 1.7 0 0 1 2.6-2.2 1.7 1.7 0 0 1 2.6 2.2z" fill="currentColor" strokeWidth={1} />
+    </svg>
+  )
+}
+
+const icons = { camera: Camera, timer: Timer, shield: ShieldCheck, shieldPlus: ShieldPlus, shieldHeart: ShieldHeart, money: Banknote }
 
 export default function WorkFaq() {
   const [open, setOpen] = useState(0)
@@ -14,11 +24,11 @@ export default function WorkFaq() {
         <div className="mx-auto max-w-3xl text-center">
           <SectionBadge>Frequently Asked Questions</SectionBadge>
           <h2 className="mt-8 text-4xl font-bold leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-[50px]" id="faq-heading">
-            Everything you need to know about <Accent>Our Work</Accent> &amp; quoting
+            Key things to know about <Accent>Our Work</Accent> &amp; quoting
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-ink/75">
-            Clear answers regarding photographic reporting, warranties, multi-trade coordination, and Melbourne-wide
-            rapid dispatch.
+            Find answers to common questions about our services, quotes, call-out fees, bookings and how we handle
+            repairs and maintenance across Melbourne.
           </p>
         </div>
 

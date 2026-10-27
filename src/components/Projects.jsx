@@ -7,6 +7,9 @@ import { Accent, Container, SectionBadge } from './ui'
 // Higher = slower.
 const SECONDS_PER_TILE = 9
 
+// The design shows no trade filter row on the home page
+const SHOW_FILTERS = false
+
 // A trade filter only shows once it has at least this many photos
 const MIN_PHOTOS_FOR_FILTER = 4
 // Below this many photos, everything goes in one row instead of two
@@ -65,33 +68,36 @@ export default function Projects() {
     <section aria-labelledby="projects-heading" className="border-b border-brand-line bg-white py-16 lg:py-11" id="projects">
       <Container>
         <div className="text-center">
-          <SectionBadge>Projects</SectionBadge>
+          <SectionBadge>Our Work</SectionBadge>
           <h2 className="mt-8 text-4xl font-bold tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]" id="projects-heading">
             <Accent>Projects</Accent> we have done
           </h2>
         </div>
 
-        <div
-          aria-label="Filter projects by trade"
-          className="no-scrollbar -mx-6 mt-14 flex gap-3 overflow-x-auto px-6 lg:mx-0 lg:justify-center lg:px-1"
-          role="group"
-        >
-          {visibleFilters.map((f) => (
-            <button
-              aria-pressed={filter === f}
-              className={`shrink-0 rounded-full border px-5 py-2 text-[15px] transition-colors ${
-                filter === f
-                  ? 'border-brand-navy bg-brand-navy font-semibold text-white'
-                  : 'border-brand-line bg-white text-brand-ink hover:border-brand-sky hover:text-brand-sky'
-              }`}
-              key={f}
-              onClick={() => setFilter(f)}
-              type="button"
-            >
-              {f}
-            </button>
-          ))}
-        </div>
+        {/* Trade filter buttons are hidden to match the design. Set SHOW_FILTERS to true to bring them back. */}
+        {SHOW_FILTERS && (
+          <div
+            aria-label="Filter projects by trade"
+            className="no-scrollbar -mx-6 mt-14 flex gap-3 overflow-x-auto px-6 lg:mx-0 lg:justify-center lg:px-1"
+            role="group"
+          >
+            {visibleFilters.map((f) => (
+              <button
+                aria-pressed={filter === f}
+                className={`shrink-0 rounded-full border px-5 py-2 text-[15px] transition-colors ${
+                  filter === f
+                    ? 'border-brand-navy bg-brand-navy font-semibold text-white'
+                    : 'border-brand-line bg-white text-brand-ink hover:border-brand-sky hover:text-brand-sky'
+                }`}
+                key={f}
+                onClick={() => setFilter(f)}
+                type="button"
+              >
+                {f}
+              </button>
+            ))}
+          </div>
+        )}
       </Container>
 
       {filtered.length === 0 ? (
@@ -99,7 +105,7 @@ export default function Projects() {
           We are adding photos for {filter.toLowerCase()} jobs soon. Get in touch to see recent examples.
         </p>
       ) : (
-        <div className="mx-auto mt-8 max-w-7xl space-y-6 px-6 lg:px-12">
+        <div className={`mx-auto ${SHOW_FILTERS ? 'mt-8' : 'mt-14'} max-w-7xl space-y-6 px-6 lg:px-12`}>
           <div className="edge-fade marquee-pause overflow-hidden">
             <div className="flex w-max animate-marquee-slow gap-6" key={`one-${filter}`} style={speedFor(rowOne)}>
               {rowOne.map((p, i) => (

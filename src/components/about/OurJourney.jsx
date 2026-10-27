@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import { ArrowLeft, ArrowRight, BadgeCheck, MapPin, ShieldCheck, Wrench, Users } from 'lucide-react'
+import { ArrowLeft, ArrowRight, BadgeCheck, MapPin, Paintbrush, ShieldCheck, Users } from 'lucide-react'
 import { journey } from '../../data/aboutData'
 import { Accent, Container, SectionBadge } from '../ui'
 
 // Icons for the three highlights at the bottom of each milestone card
-const highlightIcons = [MapPin, Wrench, Users]
+const highlightIcons = [MapPin, Paintbrush, Users]
 
 export default function OurJourney() {
   const [active, setActive] = useState(0)
@@ -20,11 +20,12 @@ export default function OurJourney() {
           className="mt-8 max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-brand-ink sm:text-[46px]"
           id="journey-heading"
         >
-          From single trade specialist to Victoria&rsquo;s <Accent>Multi-trade Authority</Accent>
+          From a few trades to one contact for all your <Accent>Property Repairs</Accent>
         </h2>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-brand-muted">
-          Over a decade and a half of relentless standards, expanding fleet capabilities, and pioneering single-desk
-          accountability across Melbourne.
+          What started in 2019 with glazing, painting and electrical services has grown into a business offering a wide
+          range of property repairs and maintenance across Melbourne, with multiple trades available through one point
+          of contact.
         </p>
 
         {/* Timeline */}
@@ -97,21 +98,20 @@ export default function OurJourney() {
         </article>
 
         {/* Pager */}
-        <div className="mt-8 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <p className="text-sm font-medium uppercase tracking-wide text-brand-ink">
-              Milestone <span className="text-brand-sky">{pad(active + 1)}</span> / {pad(count)}
-            </p>
-            <div aria-hidden="true" className="flex items-center gap-1.5">
-              {journey.map((m, i) => (
-                <span
-                  className={`h-1.5 rounded-full transition-all ${i === active ? 'w-6 bg-brand-sky' : 'w-1.5 bg-brand-line'}`}
-                  key={m.year}
-                />
-              ))}
-            </div>
+        {/* Label on the left, progress dots in the centre, arrows on the right */}
+        <div className="mt-8 grid grid-cols-2 items-center sm:grid-cols-3">
+          <p className="text-sm font-medium uppercase tracking-wide text-brand-ink">
+            Milestone <span className="text-brand-sky">{pad(active + 1)}</span> / {pad(count)}
+          </p>
+          <div aria-hidden="true" className="hidden items-center justify-center gap-1.5 sm:flex">
+            {journey.map((m, i) => (
+              <span
+                className={`h-1.5 rounded-full transition-all ${i === active ? 'w-10 bg-brand-sky' : 'w-1.5 bg-brand-line'}`}
+                key={m.year}
+              />
+            ))}
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center justify-end gap-3">
             <button
               aria-label="Previous milestone"
               className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-navy text-white transition-colors hover:bg-brand-sky disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-brand-navy"

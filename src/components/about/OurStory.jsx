@@ -1,6 +1,18 @@
-import { ShieldCheck } from 'lucide-react'
 import { founder, story } from '../../data/aboutData'
 import { Container, SectionBadge } from '../ui'
+
+// LinkedIn mark drawn inline, since lucide-react no longer ships brand logos
+function LinkedInIcon() {
+  return (
+    <svg aria-hidden="true" className="h-9 w-9" viewBox="0 0 36 36">
+      <circle cx="18" cy="18" fill="#0A66C2" r="18" />
+      <path
+        d="M11.2 14.6h3.1v10h-3.1v-10zm1.6-4.9a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6zm3.4 4.9h3v1.4h.04c.42-.79 1.44-1.62 2.97-1.62 3.17 0 3.76 2.09 3.76 4.8v5.42h-3.1v-4.8c0-1.15-.02-2.62-1.6-2.62-1.6 0-1.84 1.25-1.84 2.54v4.88h-3.1v-10z"
+        fill="#fff"
+      />
+    </svg>
+  )
+}
 
 export default function OurStory() {
   return (
@@ -13,7 +25,14 @@ export default function OurStory() {
           </h2>
           <p className="mt-10 text-lg leading-relaxed text-brand-ink/85">
             {story.introBefore}
-            <em className="font-semibold italic text-brand-sky">{founder.name}</em>
+            <a
+              className="font-semibold italic text-brand-sky underline-offset-4 hover:underline"
+              href={founder.linkedin}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {founder.name}
+            </a>
             {story.introAfter}
           </p>
           {story.paragraphs.map((p) => (
@@ -36,8 +55,16 @@ export default function OurStory() {
             loading="lazy"
             src={founder.image}
           />
-          <figcaption className="mt-8 flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-brand-sky">
-            <ShieldCheck aria-hidden="true" className="h-4 w-4" />
+          <figcaption className="mt-8 flex items-center gap-2.5 text-sm font-semibold uppercase tracking-wide text-brand-sky">
+            <a
+              aria-label={`${founder.name} on LinkedIn`}
+              className="shrink-0 rounded-full transition-opacity hover:opacity-80"
+              href={founder.linkedin}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              <LinkedInIcon />
+            </a>
             {founder.caption}
           </figcaption>
         </figure>

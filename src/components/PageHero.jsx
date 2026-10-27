@@ -9,6 +9,7 @@ import TradesMarquee from './TradesMarquee'
 // `singleLine` keeps a short heading on one line on desktop.
 // `heading` replaces accent + title when the blue words are not first.
 // `secondaryAction` is the outlined button next to the phone number.
+// Give it `to` for a page on the site, or `href` for a link such as mailto:.
 // The photo fills the whole hero at 50% opacity behind the same dark fade as the home page hero.
 // `imagePosition` picks which part of the photo stays in view when it is cropped.
 // `imageOpacity` sets how strongly the photo shows through (default 'opacity-50').
@@ -34,6 +35,9 @@ export default function PageHero({
   showTagline = true,
   showReviews = true,
 }) {
+  const secondaryClass =
+    'group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3.5 text-base font-medium text-white transition-colors hover:border-brand-sky hover:text-brand-sky'
+
   return (
     <section aria-labelledby="page-heading" className="relative overflow-hidden bg-brand-footer" id="top">
       <div className="absolute inset-0 z-0">
@@ -73,8 +77,7 @@ export default function PageHero({
 
           {showTagline && (
           <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-sky/40 bg-brand-navy/80 px-3 py-1.5 text-[10.5px] font-medium text-brand-sky backdrop-blur-md sm:px-4 sm:text-sm">
-            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-brand-sky" />
-            Residential • Commercial • Multiple Trades • One Contact
+           • Residential • Commercial • Multiple Trades • One Contact
           </p>
           )}
 
@@ -104,13 +107,17 @@ export default function PageHero({
               <Phone aria-hidden="true" className="h-5 w-5" fill="currentColor" strokeWidth={0} />
               {contact.phone}
             </a>
-            <Link
-              className="group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3.5 text-base font-medium text-white transition-colors hover:border-brand-sky hover:text-brand-sky"
-              to={secondaryAction.to}
-            >
-              {secondaryAction.label}
-              <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            {secondaryAction.href ? (
+              <a className={secondaryClass} href={secondaryAction.href}>
+                {secondaryAction.label}
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </a>
+            ) : (
+              <Link className={secondaryClass} to={secondaryAction.to}>
+                {secondaryAction.label}
+                <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            )}
           </div>
           )}
 

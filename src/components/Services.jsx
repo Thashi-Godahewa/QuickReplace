@@ -18,7 +18,7 @@ export default function Services() {
     <section aria-labelledby="services-heading" className="bg-brand-mist pb-12 pt-12 lg:pt-11" id="services">
       <Container>
         <div className="mx-auto max-w-4xl text-center">
-          <SectionBadge>Our Services</SectionBadge>
+          <SectionBadge>Services</SectionBadge>
           <h2
             className="mt-10 text-4xl font-bold leading-[1.05] tracking-tight text-brand-ink sm:text-5xl lg:text-[52px]"
             id="services-heading"

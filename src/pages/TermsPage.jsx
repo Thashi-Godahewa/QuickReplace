@@ -15,8 +15,8 @@ export default function TermsPage() {
       <PageHero
         breadcrumb="Terms & Conditions"
         heading={<span className="text-brand-sky">Terms &amp; Conditions</span>}
-        image="/images/privacy-hero.jpg"
-        imageAlt="The Quick Replace team standing outside a residential apartment building"
+        image="/images/about-hero-team.jpg"
+        imageAlt="Five Quick Replace tradespeople in blue uniforms standing outside an apartment building with their tools"
         imagePosition="object-top"
         showActions={false}
         showReviews={false}
