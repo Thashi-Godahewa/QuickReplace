@@ -112,7 +112,7 @@ export const industries = [
     icon: 'agedCare',
     title: 'Aged Care & Retirement Living',
     description:
-      'Property maintenance for aged care facilities, retirement living properties and Home Care Package clients, with particular attention to communication, safety and minimising disruption to residents.',
+      'Property maintenance, repairs and minor home modifications for aged care facilities, retirement living properties, Home Care Package clients and NDIS participants. We understand the importance of clear communication, safety, accessibility and minimising disruption to residents.',
   },
 ]
 
@@ -154,7 +154,7 @@ export const projects = [
     category: 'Plumbing',
   },
   {
-    src: '/images/project-living-room.jpg',
+    src: '/images/project-living-room.jpeg',
     alt: 'Living room with large new glass windows',
     title: 'Living Room Windows',
     subtitle: 'Glazing, Large Window Installation',
@@ -275,8 +275,8 @@ export const projects = [
   {
     src: '/images/project-verandah-gutter.jpg',
     alt: 'Tradesperson fitting a new gutter along a shop verandah',
-    title: 'Verandah Gutter Replacement',
-    subtitle: 'Guttering, Commercial Shopfront',
+    title: 'Commercial Awning Gutter Replacement',
+    subtitle: 'Guttering, Commercial Property',
     category: 'Guttering',
   },
   {
@@ -320,6 +320,13 @@ export const projects = [
     title: 'Water Damaged Ceiling Repair',
     subtitle: 'Plastering, Ceiling Repair & Make-Good',
     category: 'Painting & Plastering',
+  },
+  {
+    src: '/images/project-fence-replacement.jpg',
+    alt: 'New timber paling boundary fence along a building walkway',
+    title: 'Fence Replacement',
+    subtitle: 'Timber Boundary Fence Replacement',
+    category: 'Carpentry',
   },
 ]
 

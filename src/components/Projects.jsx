@@ -34,11 +34,11 @@ function ProjectTile({ project, hidden }) {
   return (
     <figure
       aria-hidden={hidden}
-      className="group relative h-[200px] w-[250px] shrink-0 overflow-hidden rounded-2xl bg-brand-mist sm:h-[255px] sm:w-[320px]"
+      className="group relative h-[200px] outline-none focus-visible:ring-2 focus-visible:ring-brand-sky w-[250px] shrink-0 overflow-hidden rounded-2xl bg-brand-mist sm:h-[255px] sm:w-[320px]"
       tabIndex={hidden ? -1 : 0}
     >
       <img alt={project.alt} className="h-full w-full object-cover" loading="lazy" src={project.src} />
-      <figcaption className="absolute inset-0 flex items-end bg-gradient-to-br from-[#013a5e] to-brand-navy p-9 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus:opacity-100">
+      <figcaption className="absolute inset-0 flex items-end bg-gradient-to-br from-[#013a5e] to-brand-navy p-9 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
         <div className="border-l-2 border-brand-sky pl-3">
           <p className="text-lg font-semibold tracking-tight text-white">{project.title}</p>
           <p className="mt-2 text-sm leading-relaxed text-white/75">{project.subtitle}</p>
