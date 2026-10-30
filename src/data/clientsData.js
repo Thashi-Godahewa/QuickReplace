@@ -26,7 +26,7 @@ export const clientSectors = [
     icon: 'agedCare',
     title: 'Aged Care & Retirement Living',
     description:
-      'Property maintenance for aged care facilities, retirement living properties and Home Care Package clients, with particular attention to communication, safety and minimising disruption to residents.',
+      'Property maintenance, repairs and minor home modifications for aged care facilities, retirement living properties, Home Care Package clients and NDIS participants. We understand the importance of clear communication, safety, accessibility and minimising disruption to residents.',
   },
   {
     icon: 'retail',
@@ -46,7 +46,7 @@ export const clientSectors = [
     // The Figma card repeats the Owners Corporations text here, so the earlier
     // industrial copy is kept until Quick Replace confirms the wording.
     description:
-      'Property and facility maintenance for warehouses, workshops, factories and other industrial premises, including general repairs, preventative maintenance and work requiring multiple trades.',
+      'Maintenance and repairs for common areas and shared property, with clear quoting, communication and reporting. We can coordinate access directly with building managers, committees and nominated contacts.',
   },
   {
     icon: 'insurance',
@@ -71,7 +71,7 @@ export const deployments = [
     label: 'Commercial Property Maintenance',
     title: 'Professional Building Maintenance',
     detail:
-      'Reliable building repairs, façade maintenance and exterior refurbishment to keep commercial properties safe, functional and looking their best.',
+      'Reliable building repairs, facade maintenance and exterior refurbishment to keep commercial properties safe, functional and looking their best.',
   },
 ]
 

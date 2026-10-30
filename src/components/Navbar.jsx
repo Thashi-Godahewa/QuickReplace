@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Mail, Menu, Phone, X } from 'lucide-react'
 import { contact, navLinks } from '../data/siteData'
 import { ArrowDot } from './ui'
 
@@ -26,6 +26,7 @@ export default function Navbar() {
     'hidden h-11 w-11 items-center justify-center rounded-full bg-brand-navy shadow-card ring-1 ring-white/5 transition-colors hover:bg-brand-navyLight lg:flex lg:h-12 lg:w-12'
 
   return (
+    <>
     <header
       className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         scrolled || open ? 'bg-brand-footer/90 py-3 shadow-lg backdrop-blur-md' : 'py-6 lg:py-8'
@@ -59,6 +60,7 @@ export default function Navbar() {
           ))}
         </nav>
 
+        <div className="flex items-center gap-2.5 md:gap-3">
         <div className="hidden items-center gap-3 md:flex">
           <a aria-label="Quick Replace on Facebook" className={socialClass} href={contact.facebookHref} rel="noopener noreferrer" target="_blank">
             <img alt="" aria-hidden="true" className="h-6 w-6" src="/images/icon-facebook.svg" />
@@ -79,12 +81,14 @@ export default function Navbar() {
         <button
           aria-expanded={open}
           aria-label={open ? 'Close menu' : 'Open menu'}
-          className="flex h-11 w-11 items-center justify-center rounded-full bg-white text-brand-navy lg:hidden"
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-white text-brand-navy lg:hidden"
           onClick={() => setOpen((v) => !v)}
           type="button"
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
+
+        </div>
       </div>
 
       {open && (
@@ -101,16 +105,50 @@ export default function Navbar() {
               </Link>
             ))}
             <div className="mt-2 grid grid-cols-2 gap-2 md:hidden">
-              <a className="rounded-full bg-brand-navy py-3 text-center text-sm font-medium text-white" href={contact.phoneHref}>
+              <a
+                className="flex items-center justify-center gap-2 rounded-full bg-brand-sky py-3 text-sm font-semibold text-white"
+                href={contact.phoneHref}
+              >
+                <Phone aria-hidden="true" className="h-4 w-4" fill="currentColor" strokeWidth={0} />
                 Call Now
               </a>
-              <a className="rounded-full bg-brand-navy py-3 text-center text-sm font-medium text-white" href={contact.emailHref}>
-                Email
+              <a
+                className="flex items-center justify-center gap-2 rounded-full bg-brand-navy py-3 text-sm font-semibold text-white"
+                href={contact.emailHref}
+              >
+                <Mail aria-hidden="true" className="h-4 w-4" strokeWidth={2} />
+                Email Us
               </a>
             </div>
           </div>
         </nav>
       )}
     </header>
+
+    {/* Phones: round Call and Email buttons fixed to the bottom right of the screen */}
+    <div
+      className="fixed right-4 z-40 flex flex-col gap-3 md:hidden"
+      style={{ bottom: 'calc(1rem + env(safe-area-inset-bottom))' }}
+    >
+      <a
+        aria-label={`Call Quick Replace on ${contact.phone}`}
+        className="qr-fab-in relative flex h-12 w-12 items-center justify-center rounded-full bg-brand-sky text-white shadow-lg transition-transform hover:bg-brand-skyHover active:scale-90"
+        href={contact.phoneHref}
+      >
+        {/* Soft pulse ring that draws the eye to the call button */}
+        <span aria-hidden="true" className="qr-fab-pulse absolute inset-0 rounded-full bg-brand-sky" />
+        <Phone aria-hidden="true" className="qr-fab-ring relative h-5 w-5" fill="currentColor" strokeWidth={0} />
+      </a>
+      <a
+        aria-label="Email Quick Replace"
+        className="qr-fab-in qr-fab-in-delay relative flex h-12 w-12 items-center justify-center rounded-full bg-brand-navy text-white shadow-lg ring-1 ring-white/10 transition-transform hover:bg-brand-navyLight active:scale-90"
+        href={contact.emailHref}
+      >
+        {/* Small "new message" dot that pops in with each envelope bounce */}
+        <span aria-hidden="true" className="qr-fab-dot absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-brand-sky ring-2 ring-brand-navy" />
+        <Mail aria-hidden="true" className="qr-fab-mail h-5 w-5" strokeWidth={2} />
+      </a>
+    </div>
+    </>
   )
 }

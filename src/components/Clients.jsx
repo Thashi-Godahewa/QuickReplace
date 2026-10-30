@@ -11,7 +11,7 @@ export default function Clients() {
           <li key={c.name}>
             <img
               alt={c.name}
-              className="max-h-9 w-auto max-w-[80px] object-contain opacity-90 grayscale-[20%] transition hover:opacity-100 hover:grayscale-0"
+              className="max-h-9 w-auto max-w-[80px] object-contain"
               loading="lazy"
               src={c.src}
             />

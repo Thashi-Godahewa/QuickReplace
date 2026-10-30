@@ -4,7 +4,7 @@ import { contact } from '../../data/siteData'
 export default function ContactSidebar() {
   const rows = [
     { icon: Phone, label: 'Phone', value: contact.phone, href: contact.phoneHref },
-    { icon: Mail, label: 'Sales with Enquire', value: contact.email, href: contact.emailHref },
+    { icon: Mail, label: 'Enquire', value: contact.email, href: contact.emailHref },
     { icon: Mail, label: 'Accounts & Billing', value: contact.accountsEmail, href: contact.accountsEmailHref },
   ]
 
