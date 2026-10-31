@@ -20,7 +20,7 @@ export default function CaseStudy() {
             </figure>
             <dl className="mt-4 grid grid-cols-3 gap-3">
               {caseStudy.stats.map((s) => (
-                <div className="flex flex-col-reverse rounded-lg bg-[#eef0fb] px-2 py-3 text-center" key={s.value}>
+                <div className="flex flex-col-reverse justify-end rounded-lg bg-[#eef0fb] px-2 py-3 text-center" key={s.value}>
                   <dt className="mt-0.5 text-[11px] leading-tight text-brand-ink/80 sm:text-xs">{s.label}</dt>
                   <dd className="text-xs font-semibold uppercase leading-tight text-brand-sky sm:text-[15px]">{s.value}</dd>
                 </div>
