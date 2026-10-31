@@ -18,7 +18,7 @@ the run. When a defect is fixed, remove the `todo` option so the test guards it.
 ## Running
 
 ```bash
-npm install                      # npm ci
+npm ci
 npm run build                    # needed by the SEO and E2E tests
 node --test tests/qa/unit-*.test.cjs
 node --test tests/qa/api-enquiry.test.cjs
