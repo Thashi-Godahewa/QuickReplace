@@ -138,7 +138,7 @@ test('missing origin and explicit preview mode prevent indexing and production U
     assert.equal(page.structuredData, null)
     assert.doesNotMatch(head, /rel="canonical"|application\/ld\+json|property="og:|name="twitter:/)
     assert.ok(!head.includes(testOrigin))
-    assert.match(head, /Plumbing Repairs Melbourne/)
+    assert.match(head, /Plumbing Services Melbourne/)
   }
 })
 
