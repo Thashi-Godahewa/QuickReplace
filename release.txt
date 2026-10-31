@@ -3,7 +3,7 @@ Quick Replace Website – Release v1.0.0
 Prepared from the Test Plan v1.6 (31/10/2026). The defect lists below match the Test Plan section 8.1.
 
 Release date: 31/10/2026  Tag:`v1.0.0`  Commit: `d2ae0a7` (d2ae0a79d4db89fb2f4d8b39195f2bbcfc1151e6, 30/10/2026)
-Live site: https://quickreplace.com.au (runs this commit)
+Live site: https://quickreplace.com.au
 
 Features in this release
 
