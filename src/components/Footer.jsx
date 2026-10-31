@@ -7,10 +7,9 @@ export default function Footer() {
   const heading = 'text-sm font-bold uppercase tracking-wider text-white'
   const link = 'text-sm leading-snug text-white/60 transition-colors hover:text-brand-sky'
 
-  // Services are split across two columns, as in the design
-  const half = Math.ceil(footerServices.length / 2)
-  const servicesLeft = footerServices.slice(0, half)
-  const servicesRight = footerServices.slice(half)
+  // Services are split across three columns, as in the design
+  const perColumn = Math.ceil(footerServices.length / 3)
+  const serviceColumns = [0, 1, 2].map((i) => footerServices.slice(i * perColumn, (i + 1) * perColumn))
 
   // Services with a detail page link straight to it, the rest go to /services.
   // Pages not listed on the Services page are matched by their own title.
@@ -34,9 +33,9 @@ export default function Footer() {
   )
 
   return (
-    <footer className="bg-brand-footer pt-16 text-white">
+    <footer className="bg-brand-footer pb-[136px] pt-16 text-white md:pb-0">
       <div className="mx-auto max-w-7xl px-6 lg:px-12">
-        <div className="grid grid-cols-1 gap-x-10 gap-y-12 pb-12 sm:grid-cols-2 lg:grid-cols-[2.2fr_1fr_1fr_1fr_1fr] lg:gap-x-6">
+        <div className="grid grid-cols-1 gap-x-10 gap-y-12 pb-12 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr_0.9fr_1.1fr] lg:gap-x-6">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <img
@@ -53,23 +52,19 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Services - column 1 */}
-          <nav aria-label="Footer services">
-            <h2 className={heading}>Services</h2>
-            <div className="mt-3">{renderServices(servicesLeft)}</div>
-          </nav>
-
-          {/* Services - column 2 (continues the list, no heading) */}
-          <nav aria-label="Footer services, continued" className="-mt-6 sm:mt-0">
-            <h2 aria-hidden="true" className={`${heading} invisible hidden sm:block`}>
-              &nbsp;
-            </h2>
-            <div className="sm:mt-3">{renderServices(servicesRight)}</div>
+          {/* Services - three columns, only the first has a heading */}
+          <nav aria-label="Footer services" className="grid grid-cols-1 content-start gap-y-1.5 sm:col-span-2 sm:grid-cols-3 sm:gap-x-6 lg:col-span-3">
+            <h2 className={`${heading} sm:col-span-3`}>Services</h2>
+            {serviceColumns.map((items, i) => (
+              <div className="sm:mt-1.5" key={i}>
+                {renderServices(items)}
+              </div>
+            ))}
           </nav>
 
           {/* Company */}
           <nav aria-label="Footer company">
-            <h2 className={heading}>Company</h2>
+            <h2 className={heading}>Quick Replace</h2>
             <ul className="mt-3 space-y-1.5 text-sm leading-snug">
               {footerCompany.map((c) => (
                 <li key={c.label}>
@@ -84,24 +79,21 @@ export default function Footer() {
           {/* Contact */}
           <address className="not-italic">
             <h2 className={heading}>Contact</h2>
-            <ul className="mt-3 space-y-1.5 text-sm leading-snug lg:whitespace-nowrap">
-              <li>
-                <span className="font-semibold text-white">Phone:</span>{' '}
-                <a className={`${link} ml-1.5`} href={contact.phoneHref}>
+            {/* Each label sits on its own line above the value, as in the design */}
+            <dl className="mt-3 space-y-1.5 text-sm leading-snug lg:whitespace-nowrap">
+              <dt className="font-semibold text-white">Phone:</dt>
+              <dd>
+                <a className={link} href={contact.phoneHref}>
                   {contact.phone}
                 </a>
-              </li>
-              <li>
-                <span className="font-semibold text-white">Email:</span>{' '}
-                <a className={`${link} ml-1.5`} href={contact.emailHref}>
+              </dd>
+              <dt className="font-semibold text-white">Email:</dt>
+              <dd>
+                <a className={link} href={contact.emailHref}>
                   {contact.email}
                 </a>
-              </li>
-              <li>
-                <span className="font-semibold text-white">Head office:</span>{' '}
-                <span className="ml-1.5 text-white/60">{contact.headOffice}</span>
-              </li>
-            </ul>
+              </dd>
+            </dl>
           </address>
         </div>
 
@@ -117,11 +109,6 @@ export default function Footer() {
               <Link className="transition-colors hover:text-white" to="/terms-and-conditions">
                 Terms of Service
               </Link>
-            </li>
-            <li>
-              <a className="transition-colors hover:text-white" href="#top">
-                Sitemap
-              </a>
             </li>
           </ul>
         </div>

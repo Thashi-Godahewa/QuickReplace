@@ -13,8 +13,9 @@ export default function About() {
             With over 15+ years of <Accent>Experience</Accent>, our team provides top-quality services
           </h2>
           <p className="mt-8 max-w-md text-[15px] leading-relaxed text-brand-muted">
-            Repairs and ongoing maintenance for offices, commercial buildings and managed properties. One point of
-            contact for everything from small repairs to jobs requiring multiple trades.
+            Quick Replace provides building repairs, maintenance and trade services for residential and commercial
+            properties across Melbourne. From everyday repairs and urgent issues to larger projects, we bring together
+            experienced tradespeople to handle a wide range of property maintenance needs.
           </p>
           <PillLink className="mt-10" to="/about">
             About Us

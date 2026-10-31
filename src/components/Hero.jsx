@@ -3,7 +3,7 @@ import { ArrowRight, Phone, Star } from 'lucide-react'
 import { contact } from '../data/siteData'
 import TradesMarquee from './TradesMarquee'
 
-const HERO_IMAGE = '/images/hero-team.jpg'
+const HERO_IMAGE = '/images/hero-team-vans.jpg'
 
 export default function Hero() {
   return (
@@ -23,8 +23,7 @@ export default function Hero() {
       <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-end gap-10 px-6 pb-20 pt-36 lg:grid-cols-12 lg:px-12 lg:pb-20 lg:pt-44">
         <div className="space-y-7 text-white lg:col-span-7">
           <p className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-brand-sky/40 bg-brand-navy/80 px-3 py-1.5 text-[10.5px] font-medium sm:px-4 sm:text-sm text-brand-sky backdrop-blur-md sm:text-sm">
-            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-brand-sky" />
-            Residential • Commercial • Multiple Trades • One Contact
+            • Residential • Commercial • Multiple Trades • One Contact
           </p>
 
           <h1
@@ -35,8 +34,8 @@ export default function Hero() {
           </h1>
 
           <p className="max-w-[700px] text-base font-light leading-relaxed text-white/90 sm:text-lg lg:text-xl">
-            Rapid, certified property maintenance and building repairs, emergency make-safe repairs, and installations
-            for homes &amp; commercial premises. When you need it done right, fast.
+            Melbourne-based company providing property maintenance, building repairs, emergency make-safe services and
+            installations for residential and commercial properties. When you need it done right.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
@@ -73,13 +72,13 @@ export default function Hero() {
               With multiple trades under one roof, we have the right people for the job. We&rsquo;ll organise the work,
               coordinate everything and keep you updated from start to finish.
             </p>
-            <Link
+            <a
               className="group inline-flex items-center gap-2 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-brand-ink transition-colors hover:bg-brand-sky hover:text-white"
-              to="/contact"
+              href={contact.emailHref}
             >
               Get a Quote
               <ArrowRight aria-hidden="true" className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

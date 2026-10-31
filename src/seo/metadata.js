@@ -42,7 +42,7 @@ const mainPages = [
     label: 'Home',
     type: 'home',
     title: 'Property Maintenance & Building Repairs Melbourne',
-    description: 'Quick Replace coordinates property maintenance, building repairs and emergency make-safe work for homes, businesses and managed properties across Melbourne.',
+    description: 'Quick Replace provides property maintenance, building repairs and emergency make-safe services across Melbourne for property managers, real estate agencies, strata managers and commercial properties.',
     image: '/images/hero-team.jpg',
     imageAlt: 'The Quick Replace team in uniform beside their work vans',
   },

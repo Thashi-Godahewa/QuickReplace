@@ -5,6 +5,7 @@ import Accreditations from '../components/clients/Accreditations'
 import CaseStudy from '../components/clients/CaseStudy'
 import ServiceLocator from '../components/ServiceLocator'
 import CTA from '../components/CTA'
+import { contact } from '../data/siteData'
 
 export default function ClientsPage() {
 
@@ -23,8 +24,7 @@ export default function ClientsPage() {
         }
         image="/images/clients-hero.jpg"
         imageAlt="Two Quick Replace technicians inspecting water damage on a ceiling beside large windows"
-        reviewsLabel="100+ Verified Customer Reviews"
-        showActions={false}
+        secondaryAction={{ label: 'Send an Enquiry', href: contact.emailHref }}
       />
       <ClientSectors />
       <Deployments />

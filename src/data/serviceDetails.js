@@ -22,8 +22,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Plumbing repairs and maintenance for residential and commercial properties across Melbourne, from everyday plumbing issues to urgent repairs.',
-      image: '/images/service-plumbing.jpg',
-      imageAlt: 'Plumber repairing the pipes under a kitchen sink',
+      image: '/images/hero-plumbing.jpg',
+      imageAlt: 'Quick Replace plumber repairing the pipes under a kitchen sink',
     },
     offerings: {
       heading: { before: 'Our Plumbing', accent: 'Services' },
@@ -80,8 +80,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Interior and exterior painting, plaster repairs and wall and ceiling repairs for residential and commercial properties across Melbourne.',
-      image: '/images/service-painting-hero.jpg',
-      imageAlt: 'Painter in a hard hat painting a ceiling from a step ladder',
+      image: '/images/hero-painting-plastering.jpg',
+      imageAlt: 'Quick Replace painter touching up a door frame with a brush',
     },
     offerings: {
       heading: { before: 'Our Painting', accent: 'Services' },
@@ -136,8 +136,8 @@ export const serviceDetails = {
       accent: 'Electrical',
       title: 'Services Melbourne',
       description: 'Electrical repairs, maintenance and installations for residential and commercial properties across Melbourne.',
-      image: '/images/service-electrical.jpg',
-      imageAlt: 'Electrician testing a switchboard with a multimeter',
+      image: '/images/hero-electrical.jpg',
+      imageAlt: 'Quick Replace electrician working on a switchboard outside an apartment building',
     },
     offerings: {
       heading: { before: 'Our Electrical', accent: 'Services' },
@@ -193,8 +193,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Glass repairs and replacement for residential and commercial properties across Melbourne, including urgent broken-glass situations.',
-      image: '/images/service-glazing.jpg',
-      imageAlt: 'Glazier cutting a sheet of glass to size',
+      image: '/images/hero-glazing.jpg',
+      imageAlt: 'Two Quick Replace glaziers fitting a large window pane',
     },
     offerings: {
       heading: { before: 'Our Glazing', accent: 'Services' },
@@ -250,8 +250,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Urgent property make-safe assistance for damage that needs to be secured before permanent repairs can be completed.',
-      image: '/images/service-make-safe.jpg',
-      imageAlt: 'Tradespeople securing a damaged roof',
+      image: '/images/hero-make-safe.jpg',
+      imageAlt: 'Quick Replace tradespeople securing exposed wiring and framing in a damaged room',
     },
     offerings: {
       heading: { before: 'Our Make Safe', accent: 'Services' },
@@ -306,8 +306,8 @@ export const serviceDetails = {
       accent: 'Locksmith',
       title: 'Services Melbourne',
       description: 'Lock repairs, replacements and access solutions for residential and commercial properties across Melbourne.',
-      image: '/images/service-locksmith.jpg',
-      imageAlt: 'Locksmith fitting a lock to a glass door',
+      image: '/images/hero-locksmith.jpg',
+      imageAlt: 'Quick Replace locksmith fitting a new door lock',
     },
     offerings: {
       heading: { before: 'Our Locksmith', accent: 'Services' },
@@ -363,8 +363,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Heating and cooling repairs and maintenance for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-heating-cooling.jpg',
-      imageAlt: 'Technician servicing a split-system air conditioner',
+      image: '/images/hero-heating-cooling.jpg',
+      imageAlt: 'Quick Replace technician servicing an outdoor air conditioning unit',
     },
     offerings: {
       heading: { before: 'Our Heating & Cooling', accent: 'Services' },
@@ -420,8 +420,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Gutter cleaning and maintenance for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-gutter-cleaning.jpg',
-      imageAlt: 'Gutter filled with leaves and debris on a tiled roof',
+      image: '/images/hero-gutter-cleaning.jpg',
+      imageAlt: 'Quick Replace tradesperson clearing leaves from a roof gutter',
     },
     offerings: {
       heading: { before: 'Our Gutter Cleaning', accent: 'Services' },
@@ -477,8 +477,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Repairs and maintenance for doors and windows in residential and commercial properties across Melbourne.',
-      image: '/images/service-doors-windows.jpg',
-      imageAlt: 'Tradesperson repairing a door',
+      image: '/images/hero-doors-windows.jpg',
+      imageAlt: 'Two Quick Replace tradespeople fitting a window and door frame',
     },
     offerings: {
       heading: { before: 'Our Doors & Windows', accent: 'Services' },
@@ -534,8 +534,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Brick repointing, mortar repairs and brickwork maintenance for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-brick-repointing.jpg',
-      imageAlt: 'Bricklayer repointing mortar joints on a brick wall',
+      image: '/images/hero-brick-repointing.jpg',
+      imageAlt: 'Quick Replace tradesperson repointing the mortar on a brick wall',
     },
     offerings: {
       heading: { before: 'Our Brick Repointing & Mortar Repairs', accent: 'Services' },
@@ -591,8 +591,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'General property repairs and maintenance for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-handyman.jpg',
-      imageAlt: 'Handyman carrying out a repair',
+      image: '/images/hero-handyman.jpg',
+      imageAlt: 'Quick Replace handyman using a spirit level on an interior wall',
     },
     offerings: {
       heading: { before: 'Our Handyman', accent: 'Services' },
@@ -648,8 +648,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Carpentry repairs and maintenance for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-carpentry.jpg',
-      imageAlt: 'Carpenter working on timber joinery',
+      image: '/images/hero-carpentry.jpg',
+      imageAlt: 'Quick Replace carpenter drilling into a timber shelving unit',
     },
     offerings: {
       heading: { before: 'Our Carpentry', accent: 'Services' },
@@ -664,34 +664,34 @@ export const serviceDetails = {
         },
         {
           icon: 'home',
-          title: 'Timber Repairs',
+          title: 'Timber Fence Repairs & Replacement',
           tag: 'Repairs',
-          text: 'Repair or replacement of damaged, rotten or deteriorated timber components.',
+          text: 'Repair and replacement of timber boundary fences, including damaged panels, posts, rails and gates.',
         },
         {
           icon: 'office',
           title: 'Skirting & Trim Repairs',
           tag: 'Finishing',
-          text: 'Repair and replacement of skirting boards, architraves, trims and other timber finishing elements.',
+          text: 'Repair and replacement of damaged skirting boards, architraves and other timber trims.',
         },
         {
           icon: 'tower',
           title: 'General Property Carpentry',
           tag: 'Maintenance',
-          text: 'General carpentry repairs and maintenance for residential and commercial properties.',
+          text: 'General carpentry repairs, timber replacement and maintenance for residential and commercial properties.',
         },
       ],
     },
     solutions: {
       badge: 'Carpentry Solutions',
       heading: { before: 'What We Can', accent: 'Help', after: 'With' },
-      text: 'From damaged timber doors and frames to fencing, skirting and general timber repairs, we provide carpentry services across residential, commercial and managed properties.',
-      note: repairFinish('Where carpentry repairs require painting or other finishing work, we can complete the job through one contact.'),
+      text: 'Whether it\'s a damaged door, a deteriorating timber boundary fence or general carpentry repairs, we can assess the problem and arrange the necessary repairs or replacement.',
+      note: repairFinish('Where carpentry repairs require painting, plastering or other finishing work, we can arrange the additional trades to complete the job.'),
       items: [
-        'Damaged timber doors and frames',
-        'Broken or deteriorated timber components',
-        'General carpentry maintenance and repairs',
-        'Damaged timber fencing, posts and gates',
+        'Doors that are damaged, sticking or not closing properly',
+        'Rotten or deteriorating timber around the property',
+        'Damaged skirting boards, architraves and timber fittings',
+        'Leaning, damaged or ageing timber fences and gates',
       ],
     },
     quote: sharedQuote,
@@ -704,8 +704,8 @@ export const serviceDetails = {
       accent: 'Pressure Washing',
       title: 'Services Melbourne',
       description: 'Exterior pressure cleaning for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-pressure-washing.jpg',
-      imageAlt: 'Pressure cleaning an outdoor paved surface',
+      image: '/images/hero-pressure-washing.jpg',
+      imageAlt: 'Quick Replace tradesperson pressure washing a brick wall',
     },
     offerings: {
       heading: { before: 'Our Pressure Washing', accent: 'Services' },
@@ -761,8 +761,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Property repairs and ongoing maintenance for residential, commercial and managed properties across Melbourne, with multiple trades available through one point of contact.',
-      image: '/images/service-general-maintenance.jpg',
-      imageAlt: 'Tradesperson carrying out property maintenance',
+      image: '/images/hero-general-maintenance.jpg',
+      imageAlt: 'Quick Replace tradesperson inspecting a door frame with a clipboard',
     },
     offerings: {
       heading: { before: 'Our Property Maintenance', accent: 'Services' },
@@ -818,8 +818,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Tiling repairs, replacement and maintenance for bathrooms, kitchens and other tiled areas in residential and commercial properties across Melbourne.',
-      image: '/images/before-after-shower.jpg',
-      imageAlt: 'Shower with a cracked tiled wall before and after repair',
+      image: '/images/hero-tiling.jpg',
+      imageAlt: 'Quick Replace tiler laying tiles outside a brick building',
     },
     offerings: {
       heading: { before: 'Our Tiling & Tile Repair', accent: 'Services' },
@@ -875,8 +875,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Roof repairs and maintenance for residential, commercial and managed properties across Melbourne, from roof leaks and damaged roofing to general maintenance and temporary make-safe work.',
-      image: '/images/project-aircon-roof.jpg',
-      imageAlt: 'Metal roof on a commercial building',
+      image: '/images/hero-roofing.jpg',
+      imageAlt: 'Quick Replace roofer repairing roof shingles',
     },
     offerings: {
       heading: { before: 'Our Roofing', accent: 'Services' },
@@ -932,8 +932,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Pest control and treatment for common pest problems affecting residential and commercial properties across Melbourne.',
-      image: '/images/service-general-maintenance.jpg',
-      imageAlt: 'Technician carrying out a property service',
+      image: '/images/hero-pest-control.jpg',
+      imageAlt: 'Quick Replace technician spraying pest treatment along a house wall',
     },
     offerings: {
       heading: { before: 'Our Pest Control', accent: 'Services' },
@@ -989,8 +989,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Window tinting and film installation for residential and commercial properties across Melbourne, helping reduce glare and solar heat while improving privacy and UV protection.',
-      image: '/images/before-after-window.jpg',
-      imageAlt: 'Glazed door with frosted window film applied',
+      image: '/images/hero-window-tinting.jpg',
+      imageAlt: 'Quick Replace technician applying tint film to a window',
     },
     offerings: {
       heading: { before: 'Our Window Tinting', accent: 'Services' },
@@ -1046,8 +1046,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Graffiti removal and exterior surface cleaning for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-pressure-washing.jpg',
-      imageAlt: 'Pressure cleaning the outside of a property',
+      image: '/images/hero-graffiti-removal.jpg',
+      imageAlt: 'Quick Replace tradesperson pressure washing graffiti off a brick wall',
     },
     offerings: {
       heading: { before: 'Our Graffiti Removal', accent: 'Services' },
@@ -1103,8 +1103,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Urgent property maintenance and make-safe support when unexpected damage or faults require prompt attention.',
-      image: '/images/service-emergency-repairs.jpg',
-      imageAlt: 'Plumber clearing a blocked floor drain in a tiled bathroom',
+      image: '/images/hero-emergency-repairs.jpg',
+      imageAlt: 'Two Quick Replace tradespeople carrying out an urgent window repair',
     },
     offerings: {
       heading: { before: 'Our Emergency Repairs', accent: 'Services' },
@@ -1160,8 +1160,8 @@ export const serviceDetails = {
       title: 'Services Melbourne',
       description:
         'Rubbish removal, property clear-outs and small moving jobs for residential, commercial and managed properties across Melbourne.',
-      image: '/images/service-removalist.jpg',
-      imageAlt: 'Removalists loading furniture into a truck',
+      image: '/images/hero-removalist.jpg',
+      imageAlt: 'Two Quick Replace removalists carrying furniture up a ramp into a truck',
     },
     offerings: {
       heading: { before: 'Our Removalist', accent: 'Services' },
@@ -1194,6 +1194,19 @@ export const serviceDetails = {
         },
       ],
     },
+    solutions: {
+      badge: 'Removalist Solutions',
+      heading: { before: 'What We Can', accent: 'Help', after: 'With' },
+      text: 'Whether a tenant has moved out, a property needs clearing or maintenance work has left waste behind, we can take care of the removal and clean-up.',
+      note: repairFinish('We can clear unwanted items before or after maintenance work, leaving the area ready for its next use.'),
+      items: [
+        'Unwanted items and general rubbish',
+        'Property areas requiring clearing',
+        'Waste generated during appropriate maintenance work',
+        'Small furniture and property moves',
+      ],
+    },
+    quote: sharedQuote,
   },
 }
 

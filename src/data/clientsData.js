@@ -26,7 +26,7 @@ export const clientSectors = [
     icon: 'agedCare',
     title: 'Aged Care & Retirement Living',
     description:
-      'Property maintenance for aged care facilities, retirement living properties and Home Care Package clients, with particular attention to communication, safety and minimising disruption to residents.',
+      'Property maintenance, repairs and minor home modifications for aged care facilities, retirement living properties, Home Care Package clients and NDIS participants. We understand the importance of clear communication, safety, accessibility and minimising disruption to residents.',
   },
   {
     icon: 'retail',
@@ -46,7 +46,7 @@ export const clientSectors = [
     // The Figma card repeats the Owners Corporations text here, so the earlier
     // industrial copy is kept until Quick Replace confirms the wording.
     description:
-      'Property and facility maintenance for warehouses, workshops, factories and other industrial premises, including general repairs, preventative maintenance and work requiring multiple trades.',
+      'Maintenance and repairs for common areas and shared property, with clear quoting, communication and reporting. We can coordinate access directly with building managers, committees and nominated contacts.',
   },
   {
     icon: 'insurance',
@@ -61,7 +61,7 @@ export const deployments = [
     src: '/images/service-make-safe.jpg',
     alt: 'Boarded-up shopfront behind temporary fencing after an emergency make-safe',
     label: 'Emergency Make Safe',
-    title: 'Rapid Emergency Make Safe Services',
+    title: 'Fast Emergency Make Safe Services',
     detail:
       'Fast, reliable emergency response to secure damaged properties, address immediate hazards and help protect people and buildings from further damage.',
   },
@@ -71,7 +71,7 @@ export const deployments = [
     label: 'Commercial Property Maintenance',
     title: 'Professional Building Maintenance',
     detail:
-      'Reliable building repairs, façade maintenance and exterior refurbishment to keep commercial properties safe, functional and looking their best.',
+      'Reliable building repairs, facade maintenance and exterior refurbishment to keep commercial properties safe, functional and looking their best.',
   },
 ]
 
@@ -122,9 +122,9 @@ export const caseStudy = {
     { value: 'Less Follow-Up', label: 'We keep you informed' },
   ],
   label: 'Client Satisfaction',
-  quote: 'Quick Replace makes managing property maintenance so much easier.',
+  quote: 'Quick Replace makes our job as property managers so much easier.',
   testimonial:
-    "Quick Replace always answers the phone and follows up on our emails. We're never left waiting or wondering what's happening with a job. Whatever issue comes up, they find a way to get it sorted. If we can't get hold of someone else, we know Quick Replace will be there for us.",
+    "We've been working with Quick Replace for some time now, and what we appreciate most is their reliability and communication. They answer our calls, respond to emails and keep us updated on jobs. Whether it's a small repair or something more complicated, we know we can rely on them to get things done on time.",
   author: 'Sarah M.',
   role: 'Property Manager, Melbourne',
 }

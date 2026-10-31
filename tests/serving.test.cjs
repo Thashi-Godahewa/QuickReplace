@@ -183,12 +183,23 @@ test('combined hosting keeps the enquiry API available and reports startup failu
     await api404.json()
 
     // A conflicting port must not print a successful startup or exit with 0.
-    const child = spawnSync(process.execPath, ['server/index.js'], {
-      cwd: path.resolve(__dirname, '..'),
-      env: { ...process.env, ...testSettings, ENQUIRY_PORT: String(server.address().port) },
-      encoding: 'utf8',
-      timeout: 10000,
+    // The blocker listens on all interfaces, like server/index.js does. A port held
+    // only on 127.0.0.1 does not block a wildcard bind on Windows.
+    const blocker = await new Promise((resolve, reject) => {
+      const instance = require('node:net').createServer().listen(0, () => resolve(instance))
+      instance.once('error', reject)
     })
+    let child
+    try {
+      child = spawnSync(process.execPath, ['server/index.js'], {
+        cwd: path.resolve(__dirname, '..'),
+        env: { ...process.env, ...testSettings, ENQUIRY_PORT: String(blocker.address().port) },
+        encoding: 'utf8',
+        timeout: 10000,
+      })
+    } finally {
+      await new Promise((resolve) => blocker.close(resolve))
+    }
     assert.equal(child.status, 1, child.stderr)
     assert.match(child.stderr, /Unable to listen:/)
     assert.doesNotMatch(child.stdout, /Listening on/)

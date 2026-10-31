@@ -53,8 +53,7 @@ export const workProjects = [
     src: '/images/work-tiling.jpg',
     alt: 'Worn floor beside a staircase next to the newly tiled floor',
     title: 'Tiling',
-    // Tag as shown in the Figma design - confirm whether this should be a tiling category
-    tag: 'Glazing',
+    tag: 'Tiling & Tile Repairs',
     location: 'Maribyrnong',
     description: 'Replaced damaged tiles and repaired worn surfaces to restore durability, improve appearance, and achieve a neat finish.',
   },
@@ -77,13 +76,13 @@ export const workProjects = [
       'Restored damaged plaster, holes, and wall surfaces with quality repairs that blended neatly with the existing finish.',
   },
   {
-    src: '/images/work-metal-roof.jpg',
-    alt: 'Rusted metal roof flashing beside the new replacement flashing',
-    title: 'Metal Roof Repair',
-    tag: 'Roofing',
-    location: 'Boxhill',
+    src: '/images/work-grab-rail.jpg',
+    alt: 'Timber steps without handrails beside the same steps with new grab rails and yellow safety strips',
+    title: 'Grab Rail Installation',
+    tag: 'General Property Maintenance',
+    location: 'Geelong',
     description:
-      'Repaired damaged metal roofing to address leaks, prevent further deterioration, and protect the property from harsh weather.',
+      'Installed safety features to improve accessibility, provide additional support, and reduce the risk of accidents around the property.',
   },
   {
     src: '/images/work-gate-lock.jpg',
@@ -147,7 +146,7 @@ export const workFaqs = [
       'Yes. With plumbing, electrical, glazing, carpentry, painting and other trades available through one company, we can coordinate everything so you only have one point of contact.',
   },
   {
-    icon: 'shieldPlus',
+    icon: 'camera',
     question: 'Do you provide before and after photos?',
     answer:
       'Yes. We can provide before and after photos once the work is completed, which is useful for property managers, owners corporations and insurance claims.',
@@ -165,7 +164,7 @@ export const workFaqs = [
       'Yes. We can contact tenants directly to arrange a suitable time to access the property and keep you updated throughout the job.',
   },
   {
-    icon: 'shieldPlus',
+    icon: 'shieldHeart',
     question: 'What if the service I need is not listed on our website?',
     answer:
       'Get in touch anyway. We work with a wide range of trades and can usually help, or point you in the right direction if we cannot.',

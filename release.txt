@@ -1,0 +1,82 @@
+Quick Replace Website – Release v1.0.0
+
+Prepared from the Test Plan v1.6 (31/10/2026). The defect lists below match the Test Plan section 8.1.
+
+Release date: 31/10/2026  Tag:`v1.0.0`  Commit: `d2ae0a7` (d2ae0a79d4db89fb2f4d8b39195f2bbcfc1151e6, 30/10/2026)
+Live site: https://quickreplace.com.au
+
+Features in this release
+
+| Feature | Backlog item |
+| --- | --- |
+| Responsive home page with services, about, industries, projects, reviews, before & after, service locator and contact sections; Get a Quote opens an email to Quick Replace (client request) | PB-08, PB-13 |
+| Six featured services on the home page (Plumbing, Electrical, Glazing, Locksmith, Painting & Plastering, Make Safe) and a Services page listing all 21 services | PB-09 |
+| 21 service detail pages | PB-09, PB-15 |
+| Services search by trade name or problem description, with optional in-browser AI matching | PB-09 (to add to backlog) |
+| Post code coverage checker with map | To add to backlog |
+| Our Work gallery, About Us, Clients, Privacy Policy and Terms pages | PB-10 |
+| Contact page enquiry and quote form with photo/video upload (up to 5 files, 18MB), emailed to Quick Replace | PB-11, PB-13, PB-14 |
+| Consistent header, mobile menu and footer; Call Now and Email actions | PB-11, PB-12 |
+| SEO: prerendered HTML for 29 pages, unique titles and descriptions, canonical URLs, structured data, sitemap.xml, robots.txt, real 404 page | PB-15, PB-16 |
+| Images below the fold lazy-load; some new photos are still large (see DEF-15) | PB-17, PB-18 |
+
+Testing summary (final re-run on d2ae0a7, 31 October 2026)
+
+| Suite | Tests | Pass | Fail |
+| --- | --- | --- | --- |
+| SEO and serving | 17 | 17 | 0 |
+| Unit (search) | 20 | 19 | 1 |
+| Integration (enquiry API) | 22 | 19 | 3 |
+| Browser E2E | 20 | 18 | 2 |
+| Backlog acceptance | 12 | 10 | 2 |
+| Total | 91|83| 8|
+
+The first round (22–24/10/2026, commit 0231fef) gave 82 passes and 9 failures, and the team's re-run on Windows (Node.js v24.22.1) matched it. The final re-run on this release fixed BL-10 and BL-11 (and `npm ci` now works, DEF-01) and found one new failure, BL-08 (DEF-15). The team repeated it on Windows on 31/10/2026 with the same results.
+
+Manual testing (26–30/10/2026; the 26/10 tests were on the earlier commit 0231fef): Edge and Firefox (MAN-01), Samsung Galaxy S26 Ultra in Chrome (MAN-02), live AI search and map (MAN-04) and keyboard-only use (MAN-05) all passed. On the live site, an enquiry with a photo reached the client's Gmail (MAN-03), and HTTPS, robots.txt, the sitemap and the 404 page were checked (MAN-06). A usability test with 3 real participants (USA-01) completed all tasks and produced 4 findings (U1–U4).
+
+Client acceptance: Sonny Rolih accepted the website in the recorded team meeting on 27/10/2026 and signed it off in writing by email on 30/10/2026.
+
+Fixed in this release
+
+| ID | Issue | Severity | Status |
+| --- | --- | --- | --- |
+| DEF-10 | Footer listed 17 of 21 services | Medium | Fixed in d2ae0a7, verified 31/10/2026 |
+| DEF-13 | About page said "over a decade and a half" but the timeline starts in 2019 | Medium | Fixed in d2ae0a7, verified 31/10/2026 |
+| DEF-11 | Removalist page had no "What We Can Help With" section | Low | Fixed in d2ae0a7, verified 31/10/2026 |
+| DEF-12 | Accounts email was the same as the Sales email | Low | Fixed in d2ae0a7, verified 31/10/2026 |
+| DEF-01 | package-lock.json was out of sync (yaml@2.9.1 missing), so `npm ci` failed | Medium | Fixed in d2ae0a7, verified 31/10/2026 |
+| DEF-14 | First live deployment was built in preview mode: pages had "noindex", no canonical link and an empty sitemap | High | Fixed by rebuilding with the public SEO settings; verified 30/10/2026 |
+
+Full results and evidence: Test Plan v1.6 and `tests/qa/`.
+
+Known issues
+
+| ID | Issue | Severity | Status |
+| --- | --- | --- | --- |
+| DEF-06 | Colour contrast, an unlabelled file input and a reviews list that cannot receive focus do not meet WCAG 2.1 AA | High | Open |
+| DEF-02 | Upload filter accepts a renamed executable sent with an image MIME type | High | Open |
+| DEF-09 | No quote button on the first mobile screen | Medium | Open |
+| DEF-15 | 15 new photos over 300KB (largest 2.9MB) slow page loads on phones | Medium | Open, accepted for this release |
+| DEF-04 | Enquiry endpoint has no rate limiting | Medium | Open |
+| DEF-08 | Vulnerable dependency versions (nodemailer, maplibre-gl) | Medium | Open |
+| DEF-03 | Very long job descriptions get an unclear error | Low | Open |
+| DEF-07 | Pasting a post code with spaces or "VIC" fails | Low | Open |
+| DEF-05 | "flies" not matched to Pest Control in keyword search | Low | Open |
+
+Design differences under review
+
+Nine differences between the website and the Figma design (DC-01 to DC-09, Test Plan section 7.7) are waiting for a team/client decision.
+
+Usability findings (USA-01, 26/10/2026, on commit 0231fef)
+
+| ID | Finding | Priority |
+| --- | --- | --- |
+| U1 | Technical message ("API endpoint not found.") shown after Submit when sending fails | Low–Medium |
+| U2 | Post code checker hard to find | Medium |
+| U3 | Search loading message on first use; results below the screen on phones | Medium |
+| U4 | "Get a Quote" led to a form titled "Send us an enquiry". In this release Get a Quote opens an email instead (client request) | Low – no longer applies |
+
+Not tested
+
+Safari and iPhone, screen readers, and the hosting platform's own settings and uptime (see Test Plan section 5).

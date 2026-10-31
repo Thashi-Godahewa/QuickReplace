@@ -3,6 +3,7 @@ import EnquiryForm from '../components/contact/EnquiryForm'
 import ContactSidebar from '../components/contact/ContactSidebar'
 import QuickReplaceStandard from '../components/contact/QuickReplaceStandard'
 import ServiceLocator from '../components/ServiceLocator'
+import { contact } from '../data/siteData'
 
 export default function ContactPage() {
 
@@ -14,6 +15,7 @@ export default function ContactPage() {
         description="Have a property repair or maintenance job you need help with? Send us the details and we'll take it from there. From small repairs to jobs requiring multiple trades, our team can coordinate the work from start to finish."
         image="/images/contact-hero-meeting.jpg"
         imageAlt="Quick Replace staff in hi-vis vests planning a job around a meeting table"
+        secondaryAction={{ label: 'Email Us', href: contact.emailHref }}
         singleLine
         title="Quick Replace"
       />

@@ -45,10 +45,119 @@ body {
   animation-play-state: paused;
 }
 
+/* Floating Call / Email buttons on phones */
+/* Slide up and fade in when the page loads */
+.qr-fab-in {
+  animation: qr-fab-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+}
+.qr-fab-in-delay {
+  animation-delay: 0.75s;
+}
+@keyframes qr-fab-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Ring that grows and fades behind the call button, every 2.5 seconds */
+.qr-fab-pulse {
+  animation: qr-fab-pulse 2.5s ease-out 1.5s infinite;
+}
+@keyframes qr-fab-pulse {
+  0% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.7);
+  }
+}
+
+/* Phone icon gives a short "ringing" shake, then rests (repeats every 4 seconds) */
+.qr-fab-ring {
+  animation: qr-fab-ring 4s ease-in-out 2s infinite;
+  transform-origin: 50% 50%;
+}
+@keyframes qr-fab-ring {
+  0%,
+  20%,
+  100% {
+    transform: rotate(0deg);
+  }
+  4%,
+  12% {
+    transform: rotate(-15deg);
+  }
+  8%,
+  16% {
+    transform: rotate(15deg);
+  }
+}
+
+/* Envelope hops up with a little tilt, timed between the phone's rings */
+.qr-fab-mail {
+  animation: qr-fab-mail 4s ease-in-out 4s infinite;
+}
+@keyframes qr-fab-mail {
+  0%,
+  24%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  8% {
+    transform: translateY(-5px) rotate(-8deg);
+  }
+  14% {
+    transform: translateY(0) rotate(4deg);
+  }
+  19% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+}
+
+/* "New message" dot pops in as the envelope hops, then fades out */
+.qr-fab-dot {
+  opacity: 0;
+  animation: qr-fab-dot 4s ease-out 4s infinite;
+}
+@keyframes qr-fab-dot {
+  0%,
+  6% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  12% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  18%,
+  55% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee,
   .animate-marquee-slow,
-  .animate-marquee-reverse {
+  .animate-marquee-reverse,
+  .qr-fab-in,
+  .qr-fab-pulse,
+  .qr-fab-ring,
+  .qr-fab-mail,
+  .qr-fab-dot {
     animation: none;
   }
 }
