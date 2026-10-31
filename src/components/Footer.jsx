@@ -93,8 +93,6 @@ export default function Footer() {
                   {contact.email}
                 </a>
               </dd>
-              <dt className="font-semibold text-white">Head office:</dt>
-              <dd className="text-white/60">{contact.headOffice}</dd>
             </dl>
           </address>
         </div>

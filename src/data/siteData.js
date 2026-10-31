@@ -8,7 +8,7 @@ export const contact = {
   emailHref: 'mailto:info@quickreplace.com.au',
   accountsEmail: 'accounts@quickreplace.com.au',
   accountsEmailHref: 'mailto:accounts@quickreplace.com.au',
-  headOffice: 'Sunshine West, VIC',
+  headOffice: 'VIC, Australia',
   facebookHref: 'https://www.facebook.com/QuickReplace',
   instagramHref: 'https://www.instagram.com/quickreplaceaus/',
 }

@@ -96,8 +96,6 @@ export default function PrivacyPolicyPage() {
                   <p className="text-lg font-normal">Quick Replace Pty Ltd</p>
                   <p>
                     {contact.headOffice}
-                    <br />
-                    Australia
                   </p>
                 </address>
               </ClauseCard>
