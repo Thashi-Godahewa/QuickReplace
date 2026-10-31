@@ -31,7 +31,30 @@ function fillRow(items, minLength = 6) {
   return [...out, ...out]
 }
 
-function ProjectTile({ project, hidden, onOpen }) {
+// Small WebP copy of each project photo for the carousel tiles, in /public/images/thumbs.
+// The full-size photo is only loaded when it is opened in the viewer.
+// A new project without a thumbnail falls back to its full-size photo automatically.
+function thumbFor(src) {
+  return src.replace('/images/', '/images/thumbs/').replace(/\.(jpe?g|png)$/i, '.webp')
+}
+
+function TileImage({ project, eager }) {
+  const [src, setSrc] = useState(() => thumbFor(project.src))
+  const [loaded, setLoaded] = useState(false)
+  return (
+    <img
+      alt={project.alt}
+      className={`h-full w-full object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+      decoding="async"
+      loading={eager ? 'eager' : 'lazy'}
+      onError={() => src !== project.src && setSrc(project.src)}
+      onLoad={() => setLoaded(true)}
+      src={src}
+    />
+  )
+}
+
+function ProjectTile({ project, hidden, onOpen, eager }) {
   return (
     <figure
       aria-hidden={hidden}
@@ -47,7 +70,7 @@ function ProjectTile({ project, hidden, onOpen }) {
       role={hidden ? undefined : 'button'}
       tabIndex={hidden ? -1 : 0}
     >
-      <img alt={project.alt} className="h-full w-full object-cover" loading="lazy" src={project.src} />
+      <TileImage eager={eager} project={project} />
       <figcaption className="absolute inset-0 flex items-end bg-gradient-to-br from-[#013a5e] to-brand-navy p-9 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100">
         <div className="border-l-2 border-brand-sky pl-3">
           <p className="text-lg font-semibold tracking-tight text-white">{project.title}</p>
@@ -80,11 +103,16 @@ function ProjectLightbox({ items, index, onClose, onChange }) {
     if (value === 1) setOffset({ x: 0, y: 0 })
   }, [])
 
-  // Start each photo un-zoomed
+  // Start each photo un-zoomed, and fetch the photos either side so arrows feel instant
   useEffect(() => {
     setZoom(1)
     setOffset({ x: 0, y: 0 })
-  }, [index])
+    const neighbours = [index - 1, index + 1]
+    neighbours.forEach((i) => {
+      const item = items[(i + items.length) % items.length]
+      if (item) new Image().src = item.src
+    })
+  }, [index, items])
 
   // Keyboard controls, stop the page scrolling behind, and return focus when closed
   useEffect(() => {
@@ -165,7 +193,7 @@ function ProjectLightbox({ items, index, onClose, onChange }) {
       >
         <img
           alt={project.alt}
-          className={`max-h-full max-w-full select-none object-contain transition-transform duration-150 ${
+          className={`relative max-h-full max-w-full select-none object-contain transition-transform duration-150 ${
             zoom > 1 ? 'cursor-grab active:cursor-grabbing' : 'cursor-zoom-in'
           }`}
           draggable={false}
@@ -219,6 +247,27 @@ export default function Projects() {
   // Position in `filtered` of the photo open in the viewer, or null when closed
   const [openIndex, setOpenIndex] = useState(null)
 
+  // The rows move sideways, so the browser's lazy loading can leave tiles blank as they
+  // slide in. Once the section is close to the screen, load every thumbnail straight away.
+  const sectionRef = useRef(null)
+  const [nearScreen, setNearScreen] = useState(false)
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el || nearScreen) return undefined
+    if (!('IntersectionObserver' in window)) {
+      setNearScreen(true)
+      return undefined
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) setNearScreen(true)
+      },
+      { rootMargin: '600px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [nearScreen])
+
   const filtered = useMemo(
     () => (filter === projectFilters[0] ? projects : projects.filter((p) => p.category === filter)),
     [filter],
@@ -233,7 +282,7 @@ export default function Projects() {
   const speedFor = (row) => ({ animationDuration: `${(row.length / 2) * SECONDS_PER_TILE}s` })
 
   return (
-    <section aria-labelledby="projects-heading" className="border-b border-brand-line bg-white py-16 lg:py-11" id="projects">
+    <section aria-labelledby="projects-heading" className="border-b border-brand-line bg-white py-16 lg:py-11" id="projects" ref={sectionRef}>
       <Container>
         <div className="text-center">
           <SectionBadge>Our Work</SectionBadge>
@@ -278,6 +327,7 @@ export default function Projects() {
             <div className="flex w-max animate-marquee-slow gap-6" key={`one-${filter}`} style={speedFor(rowOne)}>
               {rowOne.map((p, i) => (
                 <ProjectTile
+                  eager={nearScreen}
                   hidden={i >= rowOne.length / 2}
                   key={`${p.src}-${i}`}
                   onOpen={() => setOpenIndex(filtered.indexOf(p))}
@@ -291,6 +341,7 @@ export default function Projects() {
               <div className="flex w-max animate-marquee-reverse gap-6" key={`two-${filter}`} style={speedFor(rowTwo)}>
                 {rowTwo.map((p, i) => (
                   <ProjectTile
+                    eager={nearScreen}
                     hidden={i >= rowTwo.length / 2}
                     key={`${p.src}-${i}`}
                     onOpen={() => setOpenIndex(filtered.indexOf(p))}
